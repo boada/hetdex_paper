@@ -1,0 +1,186 @@
+%\documentclass[10pt,preprint]{aastex}
+%\documentclass[iop]{emulateapj} \font\sevenrm=cmr7  \usepackage{apjfonts}
+%preprint2 produces a double-column, single-spaced document:
+%\documentclass[preprint2]{aastex}
+\documentclass[apj, twocolappendix]{emulateapj}
+
+\usepackage{epsf}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{appendix}
+\usepackage[colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{threeparttable}
+\usepackage{multirow}
+\usepackage{natbib}
+\usepackage{etoolbox}
+
+\bibliographystyle{apj}
+\citestyle{aa}
+ 
+% General commands that are good for any agronomy paper.
+\input{commands.tex}
+
+\makeatletter
+% Patch case where name and year are separated by aysep
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+
+% Patch case where name and year are separated by opening bracket
+\patchcmd{\NAT@citex}
+  {\@citea\NAT@hyper@{%
+     \NAT@nmfmt{\NAT@nm}%
+     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+       {\@citeb\@extra@b@citeb}%
+     \NAT@date}}
+  {\@citea\NAT@nmfmt{\NAT@nm}%
+   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
+
+
+%Commands specific to the this work
+\newcommand{\editorial}[1]{\textcolor{red}{#1} }
+\DeclareRobustCommand{\ion}[2]{%
+\relax\ifmmode
+\ifx\testbx\f@series
+{\mathbf{#1\,\mathsc{#2}}}\else
+{\mathrm{#1\,\mathsc{#2}}}\fi
+\else\textup{#1\,{\mdseries\textsc{#2}}}%
+\fi}
+
+%-----------------------------------------------------------------------------------------
+
+\shorttitle{Cluster Paper}
+\shortauthors{BOADA ET AL.}
+
+%\slugcomment{\it Draft Version \today}
+%\slugcomment{\it Submitted for publication in the Astrophysical Journal}
+%\slugcomment{Accepted for Publication in the Astrophysical Journal}
+
+\begin{document}
+
+\title{Cluster Paper}
+
+\author{\sc Steven Boada\altaffilmark{1}, 
+C.~Papovich\altaffilmark{1},
+B.~Salmon\altaffilmark{1}, 
+N.~Merhtens\altaffilmark{1},
+T.~Li\altaffilmark{1}, 
+R.~Wechsler\altaffilmark{2,3},
+E.~Rozo\altaffilmark{2,4},
+E.~Rykoff\altaffilmark{2,5}} 
+
+\altaffiltext{1}{George P.\ and Cynthia Woods Mitchell Institute for
+Fundamental Physics and Astronomy, and Department of Physics and Astronomy,
+Texas A\&M University, College Station, TX, 77843-4242;
+boada@physics.tamu.edu}
+\altaffiltext{2}{Kavli Institute for Particle Astrophysics and Cosmology, Department of Physics, Stanford University, Stanford, CA 94305, USA}
+\altaffiltext{3}{Department of Particle Physics and Astrophysics, SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA}
+\altaffiltext{4}{Department of Astronomy, University of Chicago, Chicago, IL 60637, USA}
+\altaffiltext{5}{E. O. Lawrence Berkeley National Lab, 1 Cyclotron Road, Berkeley, CA 94720, USA}
+
+\begin{abstract}
+\noindent
+%
+We propose to use the Mitchell Spectrograph to provide accurate mass determinations of 10
+massive galaxy clusters at z=0.2-0.3 using integral field spectroscopy of the cluster galaxies.
+These clusters are selected optically from the SDSS DR8, and are representative of the hundreds
+of thousands of clusters expected from DES and LSST. The cluster counts provide a powerful
+measure of cosmological parameters independent of supernovae and the CMB. The dominant
+sources of error on these cosmological parameters from counts of optical clusters are systematic
+uncertainties on the absolute scale between the cluster mass and optical richness, and the intrinsic
+scatter in cluster mass at fixed richness. Here we propose a pilot study using these 10 massive
+cluster to measure independently the absolute mass scale and scatter in the cluster-optical richness
+relation. We will target each galaxy cluster with 4 pointings with the Mitchell Spectrograph,
+obtaining integral field spectroscopy for all the (more than 100) cluster galaxies out to radii of
+0.5 Mpc and luminosities down to 0.2 L*. The redshifts will allow us to calculate the line-ofsight
+velocity dispersion for each cluster, which is an estimator of the total virial mass, and
+calculate the precise cluster center. Using the independent cluster mass estimator from the
+velocity dispersions will calibrate the mass-optical richness relation, and can lead to a decrease
+on the error bars of key cosmological parameters by as much as 50\%.
+%
+\end{abstract}
+
+\section{INTRODUCTION}
+
+\section{MOCK CATALOGS}
+\subsection{Input Simulations}
+
+\section{MOCK OBSERVATIONS}
+
+\section{ANALYSIS}
+
+\subsection{Membership}
+It is expected that some of the galaxies detected will be spurious sources not associated with the any given cluster. To reject these interlopers we employ two methods. For clusters with 20 or more $Q=0$ redshifts we use the  ``shifting gapped" method of \cite{Fadda1996}. This procedure combines both the positional and velocity information. Galaxies are binned in $0.4h^{-1}$ Mpc or larger enough bins to contain at least 10 galaxies. The galaxies in each bin are sorted by their line-of-sight velocity (LOSV),
+\begin{equation}
+	v = \frac{c (z-z_{cl})}{(1+z_{cl})}
+\end{equation}
+where $z$ is the redshift of the individual galaxy and $z_{cl}$ is the average redshift of the cluster. Any galaxy with a LOSV greater than 1000 \kms of a neighboring galaxy is rejected as an interloper. The procedure repeats until the number of galaxies stabilizes in the bin.
+
+For galaxy clusters with fewer than 20 $Q=0$ redshifts we employ the method outlined in \cite{Connelly2012,Wilman2005} where we assume an initial velocity dispersion of 500\kms\ and apply both redshift and spatial limits given by:
+\begin{equation}
+	\delta(r)_{max} = \frac{1}{10}\frac{\delta(z)_{max}}{h_{75}^{-1}\mathrm{Mpc}}
+\end{equation}
+and
+\begin{equation}
+	\delta(\theta)_{max} = 206265'' \frac{\delta(r)_{max}}{h_{75}^{-1}\mathrm{Mpc}} \bigg{(}\frac{D_{\theta}}{h_{75}^{-1}\mathrm{Mpc}} \bigg{)}.
+\end{equation}
+where $\delta(z)_{max} = 2\sigma(v)/c$ and $D_\theta$ is the angular diameter distance.
+
+\subsection{Velocity Dispersion}
+The unbiased estimation of a standard deviation (a measure of statistical dispersion) is a technically involved problem. At first, we require that our estimator be unbiased in that the dispersion estimation is equal to the true dispersion, although, in practice this rarely occurs. The most commonly used estimate is the corrected sample standard deviation, given by:
+\begin{equation}
+	s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}
+\end{equation}
+with $\{x_1, x_2, ..., x_n\}$ is the random sample and $\bar{x}$ is the sample mean. The corrected sample standard deviation has the advantage in that it is unbiased (as opposed to the population standard deviation which is biased), but the removal of bias relies on knowing \textit{a priori} the underlying distribution from which the sample is drawn. An estimator which correctly estimates a standard deviation for a sample drawn from a wide range of distributions and is not adversely effected by outliers is said to be \textit{robust}.
+
+A robust estimator becomes critical as it minimizes the effect that outliers which may remain after the rejection of non-cluster members have on the measured dispersion. \cite{Beers1990} present a robust estimation of scale (yet another term for statistical dispersion) called the biweight scale estimator. \cite{Ruel2014} note that the biweight scale estimator is biased and suggests a correction. 
+
+The biweight scale estimator is given by \editorial{This isn't very good and needs to be rewritten but it gets the idea across.}:
+\begin{equation}
+	\sigma_{BI} = \sqrt{ N_{members} \frac{ \sum_{|u_i|<1} (1-u_i^2)^4 (v_i - \bar{v})^2} {D} }
+\end{equation}
+with $v_i$, the proper velocities, $\bar{v}$, the average of the proper velocities,
+\begin{equation}
+	D = \sum_{|u_i|<1} (1-u_i^2)(1-5u_i^2)
+\end{equation}
+with $u_i$ being the biweight weighting and defined as:
+\begin{equation}
+	u_i = \frac{v_i - \bar{v}}{9 {\rm MAD}(v_i)}
+\end{equation}
+where MAD is the median absolute deviation.
+
+\editorial{Need to talk about how the new biweight is different. Also need to talk about how we are using DM halos and not galaxies, so we are only going to do so well when comparing the 3d dispersions and the dispersions that we are calculating.}
+
+
+
+%The observed velocity dispersion, $\sigma_v$, of each cluster is calculated in two different ways. For clusters with at least 15 confirmed members, we use the biweight scale estimator \citep{Beers1990} which is less susceptible to outliers which may remain after the rejection of non-cluster members.
+
+%For galaxy clusters with fewer than 15 members, we employ the gapper estimator \citep{Beers1990} which provides accurate dispersions for groups as small as 5 members \citep{Hou2009}. The gapped estimator is given by
+%\begin{equation}
+%	\sigma_v = 1.135c \frac{\sqrt{\pi}}{n(n-1)} \sum_{i=1}^{n-1} w_i g_i
+%\end{equation}
+%where the weights are $w_i = i(n-i)$ and the gaps $g_i = z_{i+1} -z_i$. The factor of 1.135 is from \cite{Wilman2005} which corrects for the $2\sigma$ redshift space cut applied during membership determination.
+
+\subsection{Halo Mass}
+
+\editorial{Following \cite{Evrard2008, VanderBurg2014, Sifon2013}}
+
+\subsection{Substructure}
+
+\editorial{Going to use the DS test along with a test for non-gaussian distributions of redshifts.}
+
+\section{RESULTS}
+\subsection{Cluster Number}
+\subsection{Membership \& Cluster Masses}
+
+\section{IMPROVEMENT}
+\section{SUMMARY}
+
+\bibliography{master}
+
+\end{document}
