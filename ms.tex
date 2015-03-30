@@ -95,6 +95,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada, ante eu
 \subsection{Mock Observations}
 
 \subsection{Dynamical Properties}
+\subsubsection{Velocity Dispersion}
 The unbiased estimation of a standard deviation (a measure of statistical dispersion) is a technically involved problem. At first, we require that our estimator be unbiased in that the dispersion estimation is equal to the true dispersion, although, in practice this rarely occurs. The most commonly used estimate is the corrected sample standard deviation, given by:
 \begin{equation}
 	s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}
@@ -117,9 +118,14 @@ with $u_i$ being the biweight weighting and defined as:
 \end{equation}
 where MAD is the median absolute deviation.
 
-\editorial{Need to talk about how the new biweight is different. Also need to talk about how we are using DM halos and not galaxies, so we are only going to do so well when comparing the 3d dispersions and the dispersions that we are calculating.}
+\editorial{Need to talk about how the new biweight is different. Also need to talk about how we are using DM halos and not galaxies, so we are only going to do so well when comparing the 3d dispersions and the dispersions that we are calculating. Evrard2008 does a good job explaining the DM-galaxy bias we are assuming it is 1}
 
-For the mass \editorial{Following \cite{Evrard2008, VanderBurg2014, Sifon2013}}.
+\subsubsection{Dynamical Mass}
+Recently, the relationship between the velocity dispersion and dynamical mass has been the focus of several studies (\eg, \citealt{Evrard2008, Saro2013, Sifon2013, VanderBurg2014}), and find a best-fitting relation for the mass enclosed by $r_{200c}$ of the form
+\begin{equation}
+	M_{200c} = \frac{10^{15}}{h(z)} \bigg{(}\frac{\sigma_{1D}}{\sigma_{15}} \bigg{)}^{-\alpha} \Msol
+\end{equation}
+where $\sigma_{15} = 1082.9 \pm 4.0 \kms$, $\alpha = 0.3361 \pm 0.0026$, $h(z) = H_0 \sqrt{\Omega_\Lambda + (1+z)^3\Omega_M}$, and $\sigma_{1D}$ is the 1D velocity dispersion of the dark matter particles, which is related to the velocity dispersions of the galaxies.
 
 \subsection{Evidence of Substructure}
 We leverage the large spectroscopic dataset to study the structural properties of the clusters. \cite{Pinkney1996} determine, from a comparison of five different methods that the Dressler-Shectman (DS) test \citep{Dressler1988} is the most sensitive to the presence of substructure.
