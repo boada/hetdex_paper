@@ -87,31 +87,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada, ante eu
 
 \section{INTRODUCTION}
 
-\section{MOCK CATALOGS}
-\subsection{Input Simulations}
+\section{AARDVARK SIMULATION}
 
-\section{MOCK OBSERVATIONS}
+\section{THE HETDEX SURVEY}
 
 \section{ANALYSIS}
 
-\subsection{Membership}
-It is expected that some of the galaxies detected will be spurious sources not associated with the any given cluster. To reject these interlopers we employ two methods. For clusters with 20 or more $Q=0$ redshifts we use the  ``shifting gapped" method of \cite{Fadda1996}. This procedure combines both the positional and velocity information. Galaxies are binned in $0.4h^{-1}$ Mpc or larger enough bins to contain at least 10 galaxies. The galaxies in each bin are sorted by their line-of-sight velocity (LOSV),
-\begin{equation}
-	v = \frac{c (z-z_{cl})}{(1+z_{cl})}
-\end{equation}
-where $z$ is the redshift of the individual galaxy and $z_{cl}$ is the average redshift of the cluster. Any galaxy with a LOSV greater than 1000 \kms of a neighboring galaxy is rejected as an interloper. The procedure repeats until the number of galaxies stabilizes in the bin.
+\subsection{Mock Observations}
 
-For galaxy clusters with fewer than 20 $Q=0$ redshifts we employ the method outlined in \cite{Connelly2012,Wilman2005} where we assume an initial velocity dispersion of 500\kms\ and apply both redshift and spatial limits given by:
-\begin{equation}
-	\delta(r)_{max} = \frac{1}{10}\frac{\delta(z)_{max}}{h_{75}^{-1}\mathrm{Mpc}}
-\end{equation}
-and
-\begin{equation}
-	\delta(\theta)_{max} = 206265'' \frac{\delta(r)_{max}}{h_{75}^{-1}\mathrm{Mpc}} \bigg{(}\frac{D_{\theta}}{h_{75}^{-1}\mathrm{Mpc}} \bigg{)}.
-\end{equation}
-where $\delta(z)_{max} = 2\sigma(v)/c$ and $D_\theta$ is the angular diameter distance.
-
-\subsection{Velocity Dispersion}
+\subsection{Dynamical Properties}
 The unbiased estimation of a standard deviation (a measure of statistical dispersion) is a technically involved problem. At first, we require that our estimator be unbiased in that the dispersion estimation is equal to the true dispersion, although, in practice this rarely occurs. The most commonly used estimate is the corrected sample standard deviation, given by:
 \begin{equation}
 	s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}
@@ -136,7 +120,28 @@ where MAD is the median absolute deviation.
 
 \editorial{Need to talk about how the new biweight is different. Also need to talk about how we are using DM halos and not galaxies, so we are only going to do so well when comparing the 3d dispersions and the dispersions that we are calculating.}
 
+For the mass \editorial{Following \cite{Evrard2008, VanderBurg2014, Sifon2013}}.
 
+\subsection{Structural Properties}
+\editorial{Going to use the DS test along with a test for non-gaussian distributions of redshifts.}
+
+
+\subsection{Membership}
+It is expected that some of the galaxies detected will be spurious sources not associated with the any given cluster. To reject these interlopers we employ two methods. For clusters with 20 or more $Q=0$ redshifts we use the  ``shifting gapped" method of \cite{Fadda1996}. This procedure combines both the positional and velocity information. Galaxies are binned in $0.4h^{-1}$ Mpc or larger enough bins to contain at least 10 galaxies. The galaxies in each bin are sorted by their line-of-sight velocity (LOSV),
+\begin{equation}
+	v = \frac{c (z-z_{cl})}{(1+z_{cl})}
+\end{equation}
+where $z$ is the redshift of the individual galaxy and $z_{cl}$ is the average redshift of the cluster. Any galaxy with a LOSV greater than 1000 \kms of a neighboring galaxy is rejected as an interloper. The procedure repeats until the number of galaxies stabilizes in the bin.
+
+For galaxy clusters with fewer than 20 $Q=0$ redshifts we employ the method outlined in \cite{Connelly2012,Wilman2005} where we assume an initial velocity dispersion of 500\kms\ and apply both redshift and spatial limits given by:
+\begin{equation}
+	\delta(r)_{max} = \frac{1}{10}\frac{\delta(z)_{max}}{h_{75}^{-1}\mathrm{Mpc}}
+\end{equation}
+and
+\begin{equation}
+	\delta(\theta)_{max} = 206265'' \frac{\delta(r)_{max}}{h_{75}^{-1}\mathrm{Mpc}} \bigg{(}\frac{D_{\theta}}{h_{75}^{-1}\mathrm{Mpc}} \bigg{)}.
+\end{equation}
+where $\delta(z)_{max} = 2\sigma(v)/c$ and $D_\theta$ is the angular diameter distance.
 
 %The observed velocity dispersion, $\sigma_v$, of each cluster is calculated in two different ways. For clusters with at least 15 confirmed members, we use the biweight scale estimator \citep{Beers1990} which is less susceptible to outliers which may remain after the rejection of non-cluster members.
 
@@ -146,17 +151,8 @@ where MAD is the median absolute deviation.
 %\end{equation}
 %where the weights are $w_i = i(n-i)$ and the gaps $g_i = z_{i+1} -z_i$. The factor of 1.135 is from \cite{Wilman2005} which corrects for the $2\sigma$ redshift space cut applied during membership determination.
 
-\subsection{Halo Mass}
-
-\editorial{Following \cite{Evrard2008, VanderBurg2014, Sifon2013}}
-
-\subsection{Substructure}
-
-\editorial{Going to use the DS test along with a test for non-gaussian distributions of redshifts.}
 
 \section{RESULTS}
-\subsection{Cluster Number}
-\subsection{Membership \& Cluster Masses}
 
 \section{IMPROVEMENT}
 \section{SUMMARY}
