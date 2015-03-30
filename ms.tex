@@ -10,7 +10,6 @@
 \usepackage{natbib}
 \usepackage{etoolbox}
 
-\pdfoutput=1
 \bibliographystyle{apj}
 \citestyle{aa}
  
@@ -122,9 +121,26 @@ where MAD is the median absolute deviation.
 
 For the mass \editorial{Following \cite{Evrard2008, VanderBurg2014, Sifon2013}}.
 
-\subsection{Structural Properties}
-\editorial{Going to use the DS test along with a test for non-gaussian distributions of redshifts.}
+\subsection{Evidence of Substructure}
+We leverage the large spectroscopic dataset to study the structural properties of the clusters. \cite{Pinkney1996} determine, from a comparison of five different methods that the Dressler-Shectman (DS) test \citep{Dressler1988} is the most sensitive to the presence of substructure.
 
+The DS test, which combines the spatial positions and velocities of the galaxies, provides a method to locate substructure by identifying groups of galaxies which differ significantly from the cluster velocity distribution. Galaxy subsets are selected from a cluster of $n_{members}$ and each constituent galaxy deviation is calculated according to
+\begin{equation}
+	\delta_i^2 = \frac{N_{local}+1}{\sigma^2}\bigg{[}(\bar{v}_{local,i} - \bar{v})^2 + (\sigma_{local,i} - \sigma)^2\bigg{]}^2
+\end{equation}
+where $\bar{v}_{local}$ and $\sigma_{local}$ are the mean velocity and velocity dispersion for a subset of $N_{local}$ galaxies and $\bar{v}$ and $\sigma$ are the entire cluster's mean velocity and velocity dispersion. The choice of $N_{local}$ is left to the user. Originally, \cite{Dressler1988} choose $N_{local}=10$, however \cite{Bird1994} points out that using a fixed value for $N_{local}$ reduces the sensitivity to substructure. We follow \cite{Bird1994} in choosing $N_{local} = \sqrt n_{members}$. \editorial{doesn't talk about the nearest neighbors which is what we are using.}
+
+The DS statistic is the $\Delta$-value given by, 
+\begin{equation}
+	\Delta = \sum^{n_{members}}_i \delta_i
+\end{equation}
+where a system is considered to contain substructure if $\Delta/n_{members} > 1$ \citep{Dressler1988}. A second method, described in \cite{Hou2012}, uses probabilities (P-values) rather than a threshold for the identification of substructure. P-values are computed by comparing the observed $\Delta$-value and the $Delta$-value after the velocities (but not positions) have been shuffled through a series of Monte Carlo runs. The probability of the existence of substructure becomes
+\begin{equation}
+	P = \sum (\Delta_{shuffled} > \Delta_{Observed}) / n_{shuffle}
+\end{equation}
+where $n_{shuffle}$ is the number of shufflings used. \editorial{This sounds a whole lot like the description given in Hou2012. Make sure that we aren't copying anything word for word. That'd be bad.}
+
+In practice, we use locate the nearest neighbors using an unsupervised k-nearest neighbor algorithm as implemented in Scikit-Learn \citep{Pedregosa2012}. 
 
 \subsection{Membership}
 It is expected that some of the galaxies detected will be spurious sources not associated with the any given cluster. To reject these interlopers we employ two methods. For clusters with 20 or more $Q=0$ redshifts we use the  ``shifting gapped" method of \cite{Fadda1996}. This procedure combines both the positional and velocity information. Galaxies are binned in $0.4h^{-1}$ Mpc or larger enough bins to contain at least 10 galaxies. The galaxies in each bin are sorted by their line-of-sight velocity (LOSV),
