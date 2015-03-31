@@ -4,4 +4,4 @@
 # But not these files...
 !.gitignore
 !*.tex
-!figures/*
+!f*.pdf
