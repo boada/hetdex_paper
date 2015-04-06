@@ -88,23 +88,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada, ante eu
 
 \section{AARDVARK SIMULATION}
 \editorial{Waiting to get a look at what Casey comes up with for the proposal we are supposedly writing. If he does a decent job then I'll try to expand it a bit and fill out this section.}
-
-\section{THE HETDEX SURVEY}
-\editorial{This should probably go into the introduction. I don't think we need a whole section on something that a bunch of papers have already talked about.}
 \begin{figure} 
 	\includegraphics[width=0.49\textwidth]{surveyArea.pdf} 
 	\caption{A polar azimuthal equidistant projection of the southern sky showing the sky area (approximately a quarter of the sky) covered by the Aardvark Simulations. Concentric circles are lines of constant declination, 10 to $-80\degree$ in $10\degree$ increments. Radial lines are lines of constant right ascension. Opaqueness of the region indicates the overlap of catalog tiles (see text for details).} 
 	\label{fig:survey area} 
 \end{figure}
 
+\section{THE HETDEX SURVEY}
+\editorial{This should probably go into the introduction. I don't think we need a whole section on something that a bunch of papers have already talked about.}
+
 \section{ANALYSIS}
 
 \subsection{Mock Observations}
-\editorial{Here we need to talk about about how we set up the observations to look like what we think the HETDEX survey will see. It should be more techincal than the general discussion about what the survey hopes to accomplish, that'll go in the intro. A zoomed figure showing the tiling footprints would be appropriate.}
+\editorial{Here we need to talk about about how we set up the observations to look like what we think the HETDEX survey will see. It should be more technical than the general discussion about what the survey hopes to accomplish, that'll go in the intro. A zoomed figure showing the tiling footprints would be appropriate.}
 
 \begin{figure} 
 	\includegraphics[width=0.49\textwidth]{f01.pdf} 
-	\caption{The ICD as a function of galaxy stellar mass. Individual galaxies are shown as gray points. The galaxies are then binned together by stellar mass in bins of 0.5 dex (except for the highest mass bin which is 1.0 dex) beginning with $\mathrm{Log~M}/\Msol =8.5$. The upper and lower quartiles of ICD are indicated by the blue boxes. The median of each bin is indicated by the red line. The upper and lower black bars show the 95th and 5th percentiles. The ICD for galaxies in our sample is low for low stellar masses, peaks in the intermediate stellar masses, and returns to low values at high stellar masses.} \label{fig:icd_vs_mass} 
+	\caption{} \label{fig:ifu layout} 
 \end{figure}
 
 
@@ -191,6 +191,20 @@ In practice, we use locate the nearest neighbors using an unsupervised k-nearest
 
 
 \section{RESULTS}
+
+\subsection{\ion{O}{ii} Luminosity}
+
+HETDEX is designed to detect Lyman-$\alpha$ at redshift two. That allows us to detect \ion{O}{ii} emitters to $z\sim 0.49$. The catalog does not provide \ion{O}{ii} luminosities so we must assign them empirically. We use 177107 galaxies from the Sloan Digital Sky Survey (SDSS) Data Release 12 \citep{Alam2015} from $z = 0.05 - 0.2$. Galaxies are selected which have no redshift warning and have an \ion{O}{ii} flux five times greater than the \ion{O}{ii} flux error. 
+
+\begin{figure} 
+	\includegraphics[width=0.49\textwidth]{oii_sdss.pdf} 
+	\caption{} \label{fig:oii sdss} 
+\end{figure}
+
+We place each SDSS galaxy on a color-magnitude diagram (CMD) of $M_r$ and $g-r$, see Figure~\ref{fig:oii sdss}. To assign an \ion{O}{ii} luminosity to each galaxy in our catalog we place the galaxies on the same and select all SDSS galaxies in a small 2D bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their \ion{O}{ii} luminosities. Using a slice sampling technique we assign the catalog galaxy an \ion{O}{ii} luminosity based on the distribution of SDSS galaxies extracted.
+
+For catalog galaxies which are placed on the CMD near no, or very few ($n<3$) galaxies we assign it zero \ion{O}{ii} luminosity or the mean luminosity, respectively.
+
 
 \section{IMPROVEMENT}
 \section{SUMMARY}
