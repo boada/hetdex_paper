@@ -164,32 +164,6 @@ where $n_{shuffle}$ is the number of shufflings used. \editorial{This sounds a w
 
 In practice, we use locate the nearest neighbors using an unsupervised k-nearest neighbor algorithm as implemented in Scikit-Learn \citep{Pedregosa2012}. 
 
-%\subsection{Membership}
-%It is expected that some of the galaxies detected will be spurious sources not associated with the any given cluster. To reject these interlopers we employ two methods. For clusters with 20 or more $Q=0$ redshifts we use the  ``shifting gapped" method of \cite{Fadda1996}. This procedure combines both the positional and velocity information. Galaxies are binned in $0.4h^{-1}$ Mpc or larger enough bins to contain at least 10 galaxies. The galaxies in each bin are sorted by their line-of-sight velocity (LOSV),
-%\begin{equation}
-%	v = \frac{c (z-z_{cl})}{(1+z_{cl})}
-%\end{equation}
-%where $z$ is the redshift of the individual galaxy and $z_{cl}$ is the average redshift of the cluster. Any galaxy with a LOSV greater than 1000 \kms of a neighboring galaxy is rejected as an interloper. The procedure repeats until the number of galaxies stabilizes in the bin.
-
-%For galaxy clusters with fewer than 20 $Q=0$ redshifts we employ the method outlined in \cite{Connelly2012,Wilman2005} where we assume an initial velocity dispersion of 500\kms\ and apply both redshift and spatial limits given by:
-%\begin{equation}
-%	\delta(r)_{max} = \frac{1}{10}\frac{\delta(z)_{max}}{h_{75}^{-1}\mathrm{Mpc}}
-%\end{equation}
-%and
-%\begin{equation}
-%	\delta(\theta)_{max} = 206265'' \frac{\delta(r)_{max}}{h_{75}^{-1}\mathrm{Mpc}} \bigg{(}\frac{D_{\theta}}{h_{75}^{-1}\mathrm{Mpc}} \bigg{)}.
-%\end{equation}
-%where $\delta(z)_{max} = 2\sigma(v)/c$ and $D_\theta$ is the angular diameter distance.
-
-%The observed velocity dispersion, $\sigma_v$, of each cluster is calculated in two different ways. For clusters with at least 15 confirmed members, we use the biweight scale estimator \citep{Beers1990} which is less susceptible to outliers which may remain after the rejection of non-cluster members.
-
-%For galaxy clusters with fewer than 15 members, we employ the gapper estimator \citep{Beers1990} which provides accurate dispersions for groups as small as 5 members \citep{Hou2009}. The gapped estimator is given by
-%\begin{equation}
-%	\sigma_v = 1.135c \frac{\sqrt{\pi}}{n(n-1)} \sum_{i=1}^{n-1} w_i g_i
-%\end{equation}
-%where the weights are $w_i = i(n-i)$ and the gaps $g_i = z_{i+1} -z_i$. The factor of 1.135 is from \cite{Wilman2005} which corrects for the $2\sigma$ redshift space cut applied during membership determination.
-
-
 \section{RESULTS}
 
 \subsection{\ion{O}{ii} Luminosity}
@@ -204,7 +178,6 @@ HETDEX is designed to detect Lyman-$\alpha$ at redshift two. That allows us to d
 We place each SDSS galaxy on a color-magnitude diagram (CMD) of $M_r$ and $g-r$, see Figure~\ref{fig:oii sdss}. To assign an \ion{O}{ii} luminosity to each galaxy in our catalog we place the galaxies on the same and select all SDSS galaxies in a small 2D bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their \ion{O}{ii} luminosities. Using a slice sampling technique we assign the catalog galaxy an \ion{O}{ii} luminosity based on the distribution of SDSS galaxies extracted.
 
 For catalog galaxies which are placed on the CMD near no, or very few ($n<3$) galaxies we assign it zero \ion{O}{ii} luminosity or the mean luminosity, respectively.
-
 
 \section{IMPROVEMENT}
 \section{SUMMARY}
