@@ -106,12 +106,17 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \end{figure}
 
 \section{Recovery of Cluster Parameters, Full Knowledge}
+
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \subsection{Cluster Redshift}
-The accurate determination of the cluster redshift is crucial to the reliability of all following measurements. An incorrect cluster redshift introduces errors into the measured line of sight velocity (LOSV) and corresponding dispersion, which, in turn, contributes to errors associated with dynamical mass and radius. 
+The accurate determination of the cluster redshift ($z_c$) is crucial to the reliability of all following measurements. An incorrect cluster redshift introduces errors into the measured line of sight velocity (LOSV) and corresponding dispersion, which, in turn, contributes to errors associated with dynamical mass and radius. 
 
-In simple terms, the cluster redshift is the mean of the redshifts of all galaxies associated with the cluster. 
+In simple terms, the cluster redshift is the  mean of the redshifts of all galaxies associated with the cluster. However, because the standard mean can be quite sensitive to outliers or otherwise contaminated data, we require a more resistant statistic, and turn to the biweight location estimator \citep{Beers1990} which provides improved performance. 
+
+We compare the calculated cluster redshifts to the true redshift ($z_{c,true}$) for 107748 galaxies comprising 1683 unique halos, and we find a RMS$[\delta z/(1+z_{c,true})]= 4\times 10^{-4}$ where $\delta z = z_{c,true} - z_{c}$. 
+
+\editorial{The RMS using just the regular mean is 3.8e-4 which is only slightly better than the biweight. I don't think that will be the case when we get more complicated things.}
 
 \subsection{Line of Sight Velocity Dispersion}
 The unbiased estimation of a standard deviation (a measure of statistical dispersion) is a technically involved problem. At first, we require that our estimator be unbiased in that the dispersion estimation is equal to the true dispersion, although, in practice this rarely occurs. The most commonly used estimate is the corrected sample standard deviation, given by:
@@ -120,7 +125,7 @@ The unbiased estimation of a standard deviation (a measure of statistical disper
 \end{equation}
 with $\{x_1, x_2, ..., x_n\}$ is the random sample and $\bar{x}$ is the sample mean. The corrected sample standard deviation has the advantage in that it is unbiased (as opposed to the population standard deviation which is biased), but the removal of bias relies on knowing \textit{a priori} the underlying distribution from which the sample is drawn. An estimator which correctly estimates a standard deviation for a sample drawn from a wide range of distributions and is not adversely effected by outliers is said to be \textit{robust}.
 
-A robust estimator becomes critical as it minimizes the effect that outliers which may remain after the rejection of non-cluster members have on the measured dispersion. \cite{Beers1990} present a robust estimation of scale (yet another term for statistical dispersion) called the biweight scale estimator. \cite{Ruel2014} note that the biweight scale estimator is biased and suggests a correction. 
+A robust estimator becomes critical as it minimizes the effect that outliers which may remain after the rejection of non-cluster members have on the measured dispersion. \cite{Beers1990} present a robust estimation of scale (yet another term for statistical dispersion) called the biweight scale estimator. \cite{Ruel2014} note that the biweight scale estimator is biased and suggest a correction. 
 
 The biweight scale estimator is given by \editorial{This isn't very good and needs to be rewritten but it gets the idea across.}:
 \begin{equation}
@@ -138,7 +143,7 @@ where MAD is the median absolute deviation.
 
 \editorial{Need to talk about how the new biweight is different. Also need to talk about how we are using DM halos and not galaxies, so we are only going to do so well when comparing the 3d dispersions and the dispersions that we are calculating. Evrard2008 does a good job explaining the DM-galaxy bias we are assuming it is 1}
 
-\subsubsection{Dynamical Mass}
+\subsection{Dynamical Mass}
 Recently, the relationship between the velocity dispersion and dynamical mass has been the focus of several studies (\eg, \citealt{Evrard2008, Saro2013, Sifon2013, VanderBurg2014}), and find a best-fitting relation for the mass enclosed by $r_{200c}$ of the form
 \begin{equation}
 	M_{200c} = \frac{10^{15}}{h(z)} \bigg{(}\frac{\sigma_{1D}}{\sigma_{15}} \bigg{)}^{-\alpha} \Msol
@@ -147,6 +152,10 @@ where $\sigma_{15} = 1082.9 \pm 4.0 \kms$, $\alpha = 0.3361 \pm 0.0026$, $h(z) =
 
 \editorial{Need to talk about how the parameters are some what up for debate, and vary from study to study. I think we should just use the params from Evrard2008 and call it a day. We can show a figure where we fit the data for the parameters, but that seems kinda silly to calibrate the data on the the data we are trying to fit.}
 
+\subsection{Radial Extent}
+\begin{equation}
+	r_{200} = \bigg{[} \frac{3}{4\pi} \frac{M_{200}}{200\rho_c} \bigg{]}^{1/3}
+\end{equation}
 
 \section{Evidence of Substructure}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
