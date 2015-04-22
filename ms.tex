@@ -49,7 +49,7 @@
 
 %-----------------------------------------------------------------------------------------
 
-\shorttitle{Cluster Paper}
+\shorttitle{HETDEX PAPER}
 \shortauthors{BOADA ET AL.}
 
 %\slugcomment{\it Draft Version \today}
@@ -105,7 +105,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 	\caption{} \label{fig:ifu layout} 
 \end{figure}
 
-\section{Recovery of Cluster Parameters, Full Knowledge}
+\section{Analysis}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
@@ -114,18 +114,22 @@ The accurate determination of the cluster redshift ($z_c$) is crucial to the rel
 
 In simple terms, the cluster redshift is the  mean of the redshifts of all galaxies associated with the cluster. However, because the standard mean can be quite sensitive to outliers or otherwise contaminated data, we require a more resistant statistic, and turn to the biweight location estimator \citep{Beers1990} which provides improved performance. 
 
-We compare the calculated cluster redshifts to the true redshift ($z_{c,true}$) for 107748 galaxies comprising 1683 unique halos, and we find a RMS$[\delta z/(1+z_{c,true})]= 4\times 10^{-4}$ where $\delta z = z_{c,true} - z_{c}$. 
-
-\editorial{The RMS using just the regular mean is 3.8e-4 which is only slightly better than the biweight. I don't think that will be the case when we get more complicated things.}
+We compare the calculated cluster redshifts to the true redshift ($z_{c,true}$) for 107748 galaxies comprising 1683 unique halos, and we find a RMS$[\delta z/(1+z_{c,true})]= 4\times 10^{-4}$ where $\Delta z = z_{c,true} - z_{c}$. \editorial{The RMS using just the regular mean is 3.8e-4 which is only slightly better than the biweight. I don't think that will be the case when we get more complicated things.}
 
 \subsection{Line of Sight Velocity Dispersion}
-The unbiased estimation of a standard deviation (a measure of statistical dispersion) is a technically involved problem. At first, we require that our estimator be unbiased in that the dispersion estimation is equal to the true dispersion, although, in practice this rarely occurs. The most commonly used estimate is the corrected sample standard deviation, given by:
+We first calculate the line of sight velocity (LOSV) to each galaxy, where
+\begin{equation}
+	LOSV = c\frac{z - z_c}{1+z_c}
+\end{equation}
+and $c$ is the speed of light in \kms, $z$ is the redshift of the individual galaxy, and $z_c$ is the overall cluster redshift described in the previous section.
+
+The unbiased estimation of a standard deviation (a measure of statistical dispersion) from these LOSVs is a technically involved problem. At first, we require that our estimator be unbiased in that the dispersion estimation is equal to the true dispersion, although, in practice this rarely occurs. The most commonly used estimate is the corrected sample standard deviation, given by:
 \begin{equation}
 	s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}
 \end{equation}
-with $\{x_1, x_2, ..., x_n\}$ is the random sample and $\bar{x}$ is the sample mean. The corrected sample standard deviation has the advantage in that it is unbiased (as opposed to the population standard deviation which is biased), but the removal of bias relies on knowing \textit{a priori} the underlying distribution from which the sample is drawn. An estimator which correctly estimates a standard deviation for a sample drawn from a wide range of distributions and is not adversely effected by outliers is said to be \textit{robust}.
+with $\{x_1, x_2, ..., x_n\}$ being the random sample and $\bar{x}$ the sample mean. The corrected sample standard deviation has the advantage in that it is unbiased (as opposed to the population standard deviation which is biased), but the removal of bias relies on knowing \textit{a priori} the underlying distribution from which the sample is drawn. An estimator which correctly estimates a standard deviation for a sample drawn from a wide range of distributions and is not adversely effected by outliers is said to be robust.
 
-A robust estimator becomes critical as it minimizes the effect that outliers which may remain after the rejection of non-cluster members have on the measured dispersion. \cite{Beers1990} present a robust estimation of scale (yet another term for statistical dispersion) called the biweight scale estimator. \cite{Ruel2014} note that the biweight scale estimator is biased and suggest a correction. 
+In our situation, a robust estimator becomes critical as it minimizes the effect of outliers which the inclusion of non-cluster members have on the measured dispersion. \cite{Beers1990} present a robust estimation of scale (yet another term for statistical dispersion) called the biweight scale estimator. \cite{Ruel2014} note, however, that the biweight scale estimator is biased and suggest a correction. 
 
 The biweight scale estimator is given by \editorial{This isn't very good and needs to be rewritten but it gets the idea across.}:
 \begin{equation}
@@ -142,6 +146,10 @@ with $u_i$ being the biweight weighting and defined as:
 where MAD is the median absolute deviation.
 
 \editorial{Need to talk about how the new biweight is different. Also need to talk about how we are using DM halos and not galaxies, so we are only going to do so well when comparing the 3d dispersions and the dispersions that we are calculating. Evrard2008 does a good job explaining the DM-galaxy bias we are assuming it is 1}
+
+
+
+
 
 \subsection{Dynamical Mass}
 Recently, the relationship between the velocity dispersion and dynamical mass has been the focus of several studies (\eg, \citealt{Evrard2008, Saro2013, Sifon2013, VanderBurg2014}), and find a best-fitting relation for the mass enclosed by $r_{200c}$ of the form
