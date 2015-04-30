@@ -200,8 +200,10 @@ In practice, we use locate the nearest neighbors using an unsupervised k-nearest
 \subsection{Full Knowledge}
 We compare the calculated cluster redshifts to the true redshift ($z_{c,true}$) for 107748 galaxies comprising 1683 unique halos \editorial{these are old numbers, the current is something like 650,000 galaxies, and 16,000 halos}, and we find a RMS$[\Delta z/(1+z_{c,true})]= 4\times 10^{-4}$ where $\Delta z = z_{c,true} - z_{c}$. \editorial{The RMS using just the regular mean is 3.8e-4 which is only slightly better than the biweight. I don't think that will be the case when we get more complicated things.}
 
-
-
+\begin{figure*} 
+	\includegraphics[width=\textwidth]{fullKnowledge.pdf} 
+	\caption{686184 z<0.2 galaxies} \label{fig:oii sdss} 
+\end{figure*}
 
 \subsection{\ion{O}{ii} Luminosity}
 
@@ -209,7 +211,7 @@ HETDEX is designed to detect Lyman-$\alpha$ at redshift two. That allows us to d
 
 \begin{figure} 
 	\includegraphics[width=0.49\textwidth]{oii_sdss.pdf} 
-	\caption{177107 galaxies} \label{fig:oii sdss} 
+	\caption{686184 z<0.2 galaxies} \label{fig:oii sdss} 
 \end{figure}
 
 We place each SDSS galaxy on a color-magnitude diagram (CMD) of $M_r$ and $g-r$, see Figure~\ref{fig:oii sdss}. To assign an \ion{O}{ii} luminosity to each galaxy in our catalog we place the galaxies on the same and select all SDSS galaxies in a small 2D bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their \ion{O}{ii} luminosities. Using a slice sampling technique we assign the catalog galaxy an \ion{O}{ii} luminosity based on the distribution of SDSS galaxies extracted.
@@ -224,6 +226,7 @@ For catalog galaxies which are placed on the CMD near no, or very few ($n<3$) ga
 
 \section{IMPROVEMENT}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 \section{SUMMARY}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 \bibliography{master}
