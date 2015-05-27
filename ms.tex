@@ -95,7 +95,7 @@ This support will allow Mr. Boada to contribute to the core science of my NSF gr
 	\label{fig:survey area} 
 \end{figure}
 
-\section{THE HETDEX SURVEY}
+\section{THE HETDEX SURVEY}\label{sec:Hetdex}
 \editorial{This should probably go into the introduction. I don't think we need a whole section on something that a bunch of papers have already talked about. The text below is taken from Chiang 2015 and is NOT original to me.}
 
 The Hobby Eberly Telescope Dark Energy Experiment (HETDEX; Hill et al. 2008b) is pioneering the instrumentation development and observations of high-redshift large scale structures using wide-field IFUs. In a 3-year baseline starting from late 2015, HETDEX will leverage the cosmic evolution of the dark energy equation of state with high redshift (z $>$ 2) constraints imprinted by the Baryon Acoustic Oscillations (BAO; Eisenstein 2005) in the early universe. The program will perform a redshift survey of LAEs in 300 deg2 (Spring field) plus 150 deg2 (Fall field) at 1.9 $<$ z $<$ 3.5 (with a filling factor of 1/4.5), with a total survey volume of $\sim$ 8.5 Gpc3. The survey uses the 10-m Hobby-Eberly Telescope (HET; Ramsey et al. 1998) with a wide-field upgrade to reach a 22x22 arcmin2 field-of-view. Blind spectroscopy (R $\sim$ 750 in 350–550 nm) with no pre-selection of targets will be performed using the Visible Integral-Field Replicable Unit Spectrograph (VIRUS; Hill et al. 2012, 2014). With the LAE redshifts, HETDEX will pinpoint numerous locations of the highest density concentrations at 1.9 $<$ z $<$ 3.5, generating a substantially large and homogeneous sample of cluster progenitors in the key epoch of cluster formation before virialization.
@@ -126,15 +126,13 @@ We first calculate the line of sight velocity (LOSV) to each galaxy, where
 \end{equation}
 and $c$ is the speed of light in \kms, $z$ is the redshift of the individual galaxy, and $z_c$ is the overall cluster redshift described in the previous section.
 
-The unbiased estimation of a standard deviation (a measure of statistical dispersion) from these LOSVs is a technically involved problem. At first, we require that our estimator be unbiased in that the dispersion estimation is equal to the true dispersion, although, in practice this rarely occurs. The most commonly used estimate is the corrected sample standard deviation, given by:
+The unbiased estimation of a standard deviation (a measure of statistical dispersion) from these LOSVs is a technically involved problem. At first, we require that our estimator be unbiased in that the dispersion estimation is equal to the true dispersion regardless of the number of points sampled, although, in practice this rarely occurs. The most commonly used estimate is the corrected sample standard deviation, given by:
 \begin{equation}
 	s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}
 \end{equation}
-with $\{x_1, x_2, ..., x_n\}$ being the random sample and $\bar{x}$ the sample mean. The corrected sample standard deviation has the advantage in that it is unbiased (as opposed to the population standard deviation which is biased), but the removal of bias relies on knowing \textit{a priori} the underlying distribution from which the sample is drawn. An estimator which correctly estimates a standard deviation for a sample drawn from a wide range of distributions and is not adversely effected by outliers is said to be robust.
+with $\{x_1, x_2, ..., x_n\}$ being the random sample and $\bar{x}$ the sample mean. The corrected sample standard deviation has the advantage in that it is unbiased (as opposed to the population standard deviation which is biased), but the removal of bias relies on knowing \textit{a priori} the underlying distribution from which the sample is drawn. An estimator which correctly estimates a standard deviation for a sample drawn from a wide range of distributions and is not adversely effected by outliers is said to be robust. An estimator which correctly identifies the standard deviation, even when a number of points are replaced by different values is said to be resistant.
 
-In our situation, a robust estimator becomes critical as it minimizes the effect of outliers which the inclusion of non-cluster members have on the measured dispersion. \cite{Beers1990} present a robust estimation of scale (yet another term for statistical dispersion) called the biweight scale estimator. \cite{Ruel2014} note, however, that the biweight scale estimator is biased and suggest a correction. 
-
-The biweight scale estimator is given by \editorial{This isn't very good and needs to be rewritten but it gets the idea across.}:
+In our situation, a resistant estimator becomes critical as it minimizes the effect of outliers which the inclusion of non-cluster members have on the measured dispersion. \cite{Beers1990} present both a robust and resistant estimation of scale (yet another term for statistical dispersion) called the biweight scale estimator, which has been widely accepted by the community (\eg, \citealt{Milvang-Jensen2008, Owers2011, Murphy2011} and many others). It is given by 
 \begin{equation}
 	\sigma_{BI} = \sqrt{ N_{members} \frac{ \sum_{|u_i|<1} (1-u_i^2)^4 (v_i - \bar{v})^2} {D} }
 \end{equation}
@@ -146,16 +144,18 @@ with $u_i$ being the biweight weighting and defined as:
 \begin{equation}
 	u_i = \frac{v_i - \bar{v}}{9 {\rm MAD}(v_i)}
 \end{equation}
-where MAD is the median absolute deviation.
+where MAD is the median absolute deviation. \cite{Ruel2014} note, however, that the biweight scale estimator is biased and suggest a correction of $1/(D-1)$ to $\sigma_{BI}$ referring to it as the biweight sample variance. We adopt this method for clusters with at least 15 members. For clusters with fewer than 15 members, we adopt the gapper scale estimator \citep{Beers1990} which is shown to accurately recover the dispersion for as few as 5 member galaxies \citep{Hou2009}.
 
-\editorial{Need to talk about how the new biweight is different. Also need to talk about how we are using DM halos and not galaxies, so we are only going to do so well when comparing the 3d dispersions and the dispersions that we are calculating. Evrard2008 does a good job explaining the DM-galaxy bias we are assuming it is 1}
+There are several situations which can adversely effect the quality of our velocity dispersion measurement. The first is due to the nature of our observations. Because the HETDEX survey has a 1/4.5 fill factor (see Section~\ref{sec:Hetdex}), there will be many situations where we will not have full spectroscopic information for a cluster. Some clusters could also have intrinsic velocity distributions where the observations of only a few members could result in a LOSVD which differs by large percent. This gives rise to clusters along a fixed mass having a large range of possible LOSVDs. \cite{Saro2013} find this effect to be most pronounced for clusters with fewer than 30 members, and \cite{Ruel2014} show the effect is a net increase in scatter of about 5\% compared to clusters with greater than 30 members. \editorial{This section was adapted, pretty heavily from Ruel2014. Is that cool?}
+
+A second effect, unique to works such as this, is the difference between the LOSVD computed between dark matter halos and the galaxies that occupy them, the so-called velocity bias (\eg, \citealt{Evrard2008, White2010}). This effect is assumed to be small ($\sim5\%$) and for this work we assume there is no bias, or that the galaxies perfectly trace the velocity distribution.
 
 \subsection{Dynamical Mass}
 Recently, the relationship between the velocity dispersion and dynamical mass has been the focus of several studies (\eg, \citealt{Evrard2008, Saro2013, Sifon2013, VanderBurg2014}), and find a best-fitting relation for the mass enclosed by $r_{200c}$ of the form
 \begin{equation}
 	M_{200c} = \frac{10^{15}}{h(z)} \bigg{(}\frac{\sigma_{1D}}{\sigma_{15}} \bigg{)}^{-\alpha} \Msol
 \end{equation}
-where $\sigma_{15} = 1082.9 \pm 4.0~\kms$, $\alpha = 0.3361 \pm 0.0026$, $h(z) = H_0 \sqrt{\Omega_\Lambda + (1+z)^3 \Omega_M}$, and $\sigma_{1D}$ is the 1D velocity dispersion of the dark matter particles, which is related to the velocity dispersions of the galaxies. \editorial{This doesn't appear to be the formula that I am actually using to calculate the mass. I think I am using the relation from Saro2013.}
+where $\sigma_{15} = 1082.9 \pm 4.0~\kms$, $\alpha = 0.3361 \pm 0.0026$, $h(z) = H_0/100 \sqrt{\Omega_\Lambda + (1+z)^3 \Omega_M}$, and $\sigma_{1D}$ is the 1D velocity dispersion of the dark matter particles, which is related to the velocity dispersions of the galaxies. \editorial{This doesn't appear to be the formula that I am actually using to calculate the mass. I think I am using the relation from Saro2013.}
 
 \editorial{Need to talk about how the parameters are some what up for debate, and vary from study to study. I think we should just use the params from Evrard2008 and call it a day. We can show a figure where we fit the data for the parameters, but that seems kinda silly to calibrate the data on the the data we are trying to fit.}
 
@@ -220,7 +220,6 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \end{figure*}
 
 \subsubsection{\ion{O}{ii} Luminosity}
-
 HETDEX is designed to detect Lyman-$\alpha$ at redshift two. That allows us to detect \ion{O}{ii} emitters to $z\sim 0.49$. The catalog does not provide \ion{O}{ii} luminosities so we must assign them empirically. We use 177107 galaxies from the Sloan Digital Sky Survey (SDSS) Data Release 12 \citep{Alam2015} from $z = 0.05 - 0.2$. Galaxies are selected which have no redshift warning and have an \ion{O}{ii} flux five times greater than the \ion{O}{ii} flux error. 
 
 \begin{figure} 
