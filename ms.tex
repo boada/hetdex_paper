@@ -47,6 +47,8 @@
 \else\textup{#1\,{\mdseries\textsc{#2}}}%
 \fi}
 
+\newcommand{\citeeg}[1]{(\eg, \citealt{#1})}
+
 %-----------------------------------------------------------------------------------------
 
 \shorttitle{HETDEX PAPER}
@@ -148,16 +150,16 @@ where MAD is the median absolute deviation. \cite{Ruel2014} note, however, that 
 
 There are several situations which can adversely effect the quality of our velocity dispersion measurement. The first is due to the nature of our observations. Because the HETDEX survey has a 1/4.5 fill factor (see Section~\ref{sec:Hetdex}), there will be many situations where we will not have full spectroscopic information for a cluster. Some clusters could also have intrinsic velocity distributions where the observations of only a few members could result in a LOSVD which differs by large percent. This gives rise to clusters along a fixed mass having a large range of possible LOSVDs. \cite{Saro2013} find this effect to be most pronounced for clusters with fewer than 30 members, and \cite{Ruel2014} show the effect is a net increase in scatter of about 5\% compared to clusters with greater than 30 members. \editorial{This section was adapted, pretty heavily from Ruel2014. Is that cool?}
 
-A second effect, unique to works such as this, is the difference between the LOSVD computed between dark matter halos and the galaxies that occupy them, the so-called velocity bias (\eg, \citealt{Evrard2008, White2010}). This effect is assumed to be small ($\sim5\%$) and for this work we assume there is no bias, or that the galaxies perfectly trace the velocity distribution.
+A second effect, unique to works such as this, is the difference between the LOSVD computed between dark matter halos and the galaxies that occupy them, the so-called velocity bias \citeeg{Evrard2008, White2010}. This effect is assumed to be small ($\sim5\%$) and for this work we assume there is no bias, or that the galaxies perfectly trace the velocity distribution.
 
 \subsection{Dynamical Mass}
-Recently, the relationship between the velocity dispersion and dynamical mass has been the focus of several studies (\eg, \citealt{Evrard2008, Saro2013, Sifon2013, VanderBurg2014}), and find a best-fitting relation for the mass enclosed by $r_{200c}$ of the form
+Recently, the relationship between the LOSVD and dynamical mass has been the focus of several studies \citeeg{Evrard2008, Saro2013, Sifon2013, VanderBurg2014}, and a best fitting relationship for the mass enclosed by $r_{200c}$ of the form
 \begin{equation}
-	M_{200c} = \frac{10^{15}}{h(z)} \bigg{(}\frac{\sigma_{1D}}{\sigma_{15}} \bigg{)}^{-\alpha} \Msol
+	M_{200c} = \frac{10^{15}}{h(z)} \bigg{(}\frac{\sigma_{1D}}{A_{1D}} \bigg{)}^{-\alpha} \Msol
 \end{equation}
-where $\sigma_{15} = 1082.9 \pm 4.0~\kms$, $\alpha = 0.3361 \pm 0.0026$, $h(z) = H_0/100 \sqrt{\Omega_\Lambda + (1+z)^3 \Omega_M}$, and $\sigma_{1D}$ is the 1D velocity dispersion of the dark matter particles, which is related to the velocity dispersions of the galaxies. \editorial{This doesn't appear to be the formula that I am actually using to calculate the mass. I think I am using the relation from Saro2013.}
+with $A_{1D} =$ 1040-1140 \kms\ (\citealt{Munari2013}; referred to as $\sigma_{15}$ in \citealt{Evrard2008} and other works), $\alpha = 1/3$, $h(z) = H(z)/100$, and $\sigma_{1D}$ is the LOSVD of the velocity tracers (dark matter particles, subhalos or galaxies).
 
-\editorial{Need to talk about how the parameters are some what up for debate, and vary from study to study. I think we should just use the params from Evrard2008 and call it a day. We can show a figure where we fit the data for the parameters, but that seems kinda silly to calibrate the data on the the data we are trying to fit.}
+The choice $A_{1D}$ and $\alpha$ varies between studies \citeeg{Munari2013, VanderBurg2014} and should be calibrated on a individual basis. To do this, we randomly select 47494, $z<0.5$ clusters composed of 36000 $10^{13}$, 6000 $10^{14}$ and two $10^{15}~\Msol$ halos. We perform a linear fit to the $\sigma_{1D}-M_{200}$ values allowing both $A_{1D}$ and $\alpha$ to vary. We find best fitting parameters of $A_{1D} = 1117.9~\kms$ and $\alpha = 0.3297$, both of which are very near the values from \cite{Evrard2008} of $A_{1D} = 1082.9 \pm 4.0~\kms$ and $\alpha = 0.3361$. Therefore, we chose to adopt the parameters from \cite{Evrard2008} to better facilitate with other simulations \citeeg{Old2014}, and observational studies \citeeg{Brodwin2010}.
 
 \subsection{Radial Extent}
 We define the radius of a galaxy cluster as
