@@ -38,7 +38,7 @@
 
 
 %Commands specific to the this work
-\newcommand{\editorial}[1]{\textcolor{red}{#1} }
+\newcommand{\editorial}[1]{\textcolor{red}{#1}}
 \DeclareRobustCommand{\ion}[2]{%
 \relax\ifmmode
 \ifx\testbx\f@series
@@ -51,7 +51,7 @@
 
 %-----------------------------------------------------------------------------------------
 
-\shorttitle{HETDEX PAPER}
+\shorttitle{Cluster Dynamics with HETDEX}
 \shortauthors{BOADA ET AL.}
 
 %\slugcomment{\it Draft Version \today}
@@ -60,13 +60,11 @@
 
 \begin{document}
 
-\title{HETDEX Paper}
+\title{Cluster Dynamics Using the Hobby Eberly Telescope Dark Energy Experiment}
 
 \author{\sc Steven Boada\altaffilmark{1}, 
-C.~Papovich\altaffilmark{1},
-R.~Wechsler\altaffilmark{2,3},
-E.~Rozo\altaffilmark{2,4},
-E.~Rykoff\altaffilmark{2,5}} 
+C.~Papovich\altaffilmark{1}, and
+R.~Wechsler\altaffilmark{2,3}} 
 
 \altaffiltext{1}{George P.\ and Cynthia Woods Mitchell Institute for
 Fundamental Physics and Astronomy, and Department of Physics and Astronomy,
@@ -74,8 +72,6 @@ Texas A\&M University, College Station, TX, 77843-4242;
 boada@physics.tamu.edu}
 \altaffiltext{2}{Kavli Institute for Particle Astrophysics and Cosmology, Department of Physics, Stanford University, Stanford, CA 94305, USA}
 \altaffiltext{3}{Department of Particle Physics and Astrophysics, SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA}
-\altaffiltext{4}{Department of Astronomy, University of Chicago, Chicago, IL 60637, USA}
-\altaffiltext{5}{E. O. Lawrence Berkeley National Lab, 1 Cyclotron Road, Berkeley, CA 94720, USA}
 
 \begin{abstract}
 \noindent
@@ -84,13 +80,17 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \end{abstract}
 
 \section{INTRODUCTION}
-\editorial{A lot of these words are taken from Casey's proposal to get more funding.}
+The Hobby Eberly Telescope Dark Energy eXperiment (HETDEX; \citealt{Hill2008}) is a trailblazing effort to observe high-redshift large scale structures using cutting edge wide-field integral field unit (IFU) spectrographs. Designed to probe the evolution of the dark energy equation of state etched onto high redshift ($z>2$) galaxies by the Baryon Acoustic Oscillations \citep{Eisenstein2005} in the first moments of the universe, the survey will observe two fields for a total of 420 \degsq\ from two fields (300 \degsq, Spring field and 120 \degsq, Fall field). Tuned to find \lya\ emitting (LAE) galaxies at $1.9<z<3.5$, HETDEX expects to find 800,000 LAEs, and more than one million [\ion{O}{ii}] emitting galaxies at $z<0.5$ masquerading as high-redshift galaxies.  
+
+While a large portion of thee $\sim10^6$ interloping [\ion{O}{ii}] galaxies will be field (not associated with a larger structure) galaxies, the large area covered by HETDEX is expected to contain as many as 100 Virgo-sized ($M_{dyn}\sim 10^{15}$ \msol) clusters at $z<0.5$ (\editorial{citation?}). The near-complete spectroscopic coverage allows an unprecedentedly detailed look at a large number of clusters ranging from group scales to the very massive. In addition to the recovery of accurate dynamical masses, detailed investigations of the of dynamical state of the clusters is possible. 
+
+In addition to the spectroscopy, an imaging campaign is require first identify galaxy over densities. HETDEX overlaps with the Sloan Digital Sky Survey (SDSS; \citealt{Blanton2001a}), SDSS strip 82 \citep{Annis2014}, the Dark Energy Survey \citep{DES2005}, and the upcoming DECam/IRAC Galaxy Environment Survey (DIRGES; PI: Papovich, C. Papovich \etal in preparation).
 
 This support will allow Mr. Boada to contribute to the core science of my NSF grant (AST 1413317) for the DECam/IRAC Galaxy Environment Survey (DIRGES). He will studying both simulated and real data to understand the reliability in measuring galaxy cluster masses and dynamical states using spectroscopic information for emission-line galaxies. DIRGES will identify as many as 100 galaxy cluster progenitors at 0.8 $<$ z $<$ 1.5. Significant gains in the understanding of these clusters are possible if we can (1) interpret their dynamical nature through spectroscopy, and (2) if we can link them to clusters at lower redshift, z $<$ 0.5, from within the same dataset to suppress potential observational biases. I have plans to obtain the spectroscopy to achieve both of these supplemental goals, but the majority of the spectroscopic redshifts will be for emission-line galaxies. It is not straightforward to use these data to interpret the kinematic and dynamical states of the clusters. DIRGES is covered by SDSS Stripe 82 \citep{Annis2014}, the Dark Energy Survey (DES), and the Hobby Eberly Telescope Dark Energy eXperiment (HETDEX). One key is HETDEX, which is a spectroscopic survey covering $\sim$400 deg$^2$ and measuring redshifts for as many as ∼106 emission-line galaxies at z $<$ 0.5. HETDEX will contain as many as 100 galaxy Virgo-sized clusters ($M_{dyn}\sim10^{15}\msol$) out to z $<$ 0.5. And, because HETDEX covers DIRGES, the data will contain both low-redshift and high-redshift clusters in the same imaging dataset, allowing the most homogeneous study of the low-z and high-z universe yet.
 
-\editorial{This should probably go into the introduction. I don't think we need a whole section on something that a bunch of papers have already talked about. The text below is taken from Chiang 2015 and is NOT original to me.}
+\editorial{The text below is taken from Chiang 2015 and is NOT original to me.}
 
-The Hobby Eberly Telescope Dark Energy Experiment (HETDEX; \citealt{Hill2008}) is pioneering the instrumentation development and observations of high-redshift large scale structures using wide-field IFUs. In a 3-year baseline starting from late 2015, HETDEX will leverage the cosmic evolution of the dark energy equation of state with high redshift (z $>$ 2) constraints imprinted by the Baryon Acoustic Oscillations (BAO; Eisenstein 2005) in the early universe. The program will perform a redshift survey of LAEs in 300 deg2 (Spring field) plus 150 deg2 (Fall field) at 1.9 $<$ z $<$ 3.5 (with a filling factor of 1/4.5), with a total survey volume of $\sim$ 8.5 Gpc3. The survey uses the 10-m Hobby-Eberly Telescope (HET; \citealt{Ramsey1998}) with a wide-field upgrade to reach a 22x22 arcmin2 field-of-view. Blind spectroscopy (R $\sim$ 750 in $350–550$ nm) with no pre-selection of targets will be performed using the Visible Integral-Field Replicable Unit Spectrograph (VIRUS; \citealt{Hill2012}). With the LAE redshifts, HETDEX will pinpoint numerous locations of the highest density concentrations at 1.9 $<$ z $<$ 3.5, generating a substantially large and homogeneous sample of cluster progenitors in the key epoch of cluster formation before virialization.
+In a 3-year baseline starting from late 2015, HETDEX will leverage the cosmic evolution of the dark energy equation of state with high redshift (z $>$ 2) constraints imprinted by the Baryon Acoustic Oscillations (BAO; Eisenstein 2005) in the early universe. The program will perform a redshift survey of LAEs in 300 deg2 (Spring field) plus 150 deg2 (Fall field) at 1.9 $<$ z $<$ 3.5 (with a filling factor of 1/4.5), with a total survey volume of $\sim$ 8.5 Gpc3. The survey uses the 10-m Hobby-Eberly Telescope (HET; \citealt{Ramsey1998}) with a wide-field upgrade to reach a 22x22 arcmin2 field-of-view. Blind spectroscopy (R $\sim$ 750 in $350–550$ nm) with no pre-selection of targets will be performed using the Visible Integral-Field Replicable Unit Spectrograph (VIRUS; \citealt{Hill2012}). With the LAE redshifts, HETDEX will pinpoint numerous locations of the highest density concentrations at 1.9 $<$ z $<$ 3.5, generating a substantially large and homogeneous sample of cluster progenitors in the key epoch of cluster formation before virialization.
 
 \section{Data and Observations}
 
@@ -112,14 +112,14 @@ The catalog information, used in this study, is broken into two large portions. 
 However, the catalogs do not include information on emission or absorption lines or estimations of whether the halo is relaxed or not. We supplement the catalogs with this information and describe the method in Section~\ref{sec:oii luminosity} and others. 
 
 \subsection{Mock Observations}
-\editorial{Here we need to talk about about how we set up the observations to look like what we think the HETDEX survey will see. It should be more technical than the general discussion about what the survey hopes to accomplish, that'll go in the intro. A zoomed figure showing the tiling footprints would be appropriate.}
-
 \begin{figure} 
 	\includegraphics[width=0.49\textwidth]{f01.pdf} 
-	\caption{} \label{fig:ifu layout} 
+	\caption{Representative observation tiling scheme for the HETDEX $16'$ pointings. Each colored square is a single VIRUS IFU and the dashed octagons approximate the size of a single observation. See the text for more details.} \label{fig:ifu layout} 
 \end{figure}
 
-\editorial{Should show some sort of a figure which demonstrates the number of recovered galaxies per halo compared to the true number of galaxies in each halo. Maybe even just a statement that the average number of galaxies is XXX and the average number recovered is XXX.}
+Our ``observations'' consist of placing masks down onto the aardvark catalogs and selecting all galaxies which lie underneath. Each mask is created to accurately reproduce the HETDEX IFU pattern, see Figure~\ref{fig:ifu layout}. The pattern consists of 78 IFUs, which are comprised of 448 optical fibers subtending a $50'' \times 50''$ region on the sky \citep{Kelz2014}. The inter-IFU spacing is also $50''$ spanning a total area of $16'\times 16'$ on the sky. 
+
+The individual IFUs have a fill-factor of 1/3, which will be completely filled with three dithers of the telescope at each pointing. This means that when selecting galaxies from the aardvark catalog we assume an observation for all galaxies lying within a colored, IFU square in Figure~\ref{fig:ifu layout}. Galaxies which lie between the IFUs are missed, as well as the galaxies which lie between the pointings, as there is no overlap between one pointing and the next. This gives an overall fill-factor of 1/4.5, meaning that the entire area could be covered with 4.5 dithers of the entire survey.
 
 \section{Recovery of Parameters}
 
@@ -263,6 +263,11 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 \section{SUMMARY}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\acknowledgments 
+The authors also wish to thank the anonymous referee whose comments and
+suggestions significantly improved both the quality and clarity of this work. Several open source resources are used to complete this study Python \citep{van1991} along with Matplotlib \citep{Hunter2007} and IPython \citep{Perez2007}.
+
 \bibliography{master}
 
 \end{document}
