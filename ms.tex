@@ -39,15 +39,7 @@
 
 %Commands specific to the this work
 \newcommand{\editorial}[1]{\textcolor{red}{#1}}
-\DeclareRobustCommand{\ion}[2]{%
-\relax\ifmmode
-\ifx\testbx\f@series
-{\mathbf{#1\,\mathsc{#2}}}\else
-{\mathrm{#1\,\mathsc{#2}}}\fi
-\else\textup{#1\,{\mdseries\textsc{#2}}}%
-\fi}
 
-\newcommand{\citeeg}[1]{(\eg, \citealt{#1})}
 
 %-----------------------------------------------------------------------------------------
 
@@ -80,9 +72,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \end{abstract}
 
 \section{INTRODUCTION}
-The Hobby Eberly Telescope Dark Energy eXperiment (HETDEX; \citealt{Hill2008}) is a trailblazing effort to observe high-redshift large scale structures using cutting edge wide-field integral field unit (IFU) spectrographs. Designed to probe the evolution of the dark energy equation of state etched onto high redshift ($z>2$) galaxies by the Baryon Acoustic Oscillations \citep{Eisenstein2005} in the first moments of the universe, the survey will observe two fields for a total of 420 \degsq\ from two fields (300 \degsq, Spring field and 120 \degsq, Fall field). Tuned to find \lya\ emitting (LAE) galaxies at $1.9<z<3.5$, HETDEX expects to find 800,000 LAEs, and more than one million [\ion{O}{ii}] emitting galaxies at $z<0.5$ masquerading as high-redshift galaxies \citep{Acquaviva2014}.  
+The Hobby Eberly Telescope Dark Energy eXperiment (HETDEX; \citealt{Hill2008}) is a trailblazing effort to observe high-redshift large scale structures using cutting edge wide-field integral field unit (IFU) spectrographs. Designed to probe the evolution of the dark energy equation of state etched onto high redshift ($z>2$) galaxies by the Baryon Acoustic Oscillations \citep{Eisenstein2005} in the first moments of the universe, the survey will observe two fields for a total of 420 \degsq\ from two fields (300 \degsq, Spring field and 120 \degsq, Fall field). Tuned to find \lya\ emitting (LAE) galaxies at $1.9<z<3.5$, HETDEX expects to find 800,000 LAEs, and more than one million [\ion{O}{2}] emitting galaxies at $z<0.5$ masquerading as high-redshift galaxies \citep{Acquaviva2014}.  
 
-While a large portion of the $\sim10^6$ interloping [\ion{O}{ii}] galaxies will be field (not associated with a bound structure) galaxies, the large area covered by HETDEX is expected to contain as many as 100 Virgo-sized ($M_{dyn}\sim 10^{15}$ \msol) clusters at $z<0.5$ (\editorial{citation?}). The near-complete spectroscopic coverage allows an unprecedentedly detailed look at a very large number of clusters ranging from group scales to the very massive. In addition to the recovery of accurate dynamical masses, detailed investigations of the of dynamical state of the clusters is possible. 
+While a large portion of the $\sim10^6$ interloping [\ion{O}{2}] galaxies will be field (not associated with a bound structure) galaxies, the large area covered by HETDEX is expected to contain as many as 100 Virgo-sized ($M_{dyn}\sim 10^{15}$ \msol) clusters at $z<0.5$ (\editorial{citation?}). The near-complete spectroscopic coverage allows an unprecedentedly detailed look at a very large number of clusters ranging from group scales to the very massive. In addition to the recovery of accurate dynamical masses, detailed investigations of the of dynamical state of the clusters is possible. 
 
 In addition to the spectroscopy, an imaging campaign is require first identify galaxy over densities. HETDEX overlaps with the Sloan Digital Sky Survey (SDSS; \citealt{Blanton2001a}), SDSS stripe 82 \citep{Annis2014}, the Dark Energy Survey (DES; \citealt{DES2005}), and the upcoming DECam/IRAC Galaxy Environment Survey (DIRGES; PI: Papovich, C. Papovich \etal in preparation).
 
@@ -118,12 +110,12 @@ The catalog information, used in this study, is broken into two large portions. 
 
 However, the catalogs do not include information on emission or absorption lines or estimations of whether the halo is relaxed or not. We supplement the catalogs with this information and describe the method in Section~\ref{sec:oii luminosity} and others. 
 
-\subsection{ {\rm[\ion{O}{ii}]} Luminosity}\label{sec:oii luminosity}
-The aardvark ``truth'' catalog does not provide [\ion{O}{ii}] luminosities so we must assign them empirically. We use 503113 galaxies from the SDSS Data Release 12 \citep{Alam2015} from $z = 0.05 - 0.2$, which are selected with no redshift warning. 
+\subsection{ {\rm[\ion{O}{2}]} Luminosity}\label{sec:oii luminosity}
+The aardvark ``truth'' catalog does not provide [\ion{O}{2}] luminosities so we must assign them empirically. We use 503113 galaxies from the SDSS Data Release 12 \citep{Alam2015} from $z = 0.05 - 0.2$, which are selected with no redshift warning. 
 
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{oii_sdss.pdf} 
-	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{ii}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram.} \label{fig:oii sdss} 
+	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{2}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{2}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram.} \label{fig:oii sdss} 
 \end{figure*}
 
 While the difference is small, we convert each SDSS galaxy's observed magnitude to a similar DES magnitude using
@@ -131,15 +123,15 @@ While the difference is small, we convert each SDSS galaxy's observed magnitude 
 	g_{DES} = g_{SDSS} - 0.104(g-r)_{SDSS} + 0.01 \nonumber \\
 	r_{DES} = r_{SDSS} - 0.102(g-r)_{SDSS} + 0.02
 \end{eqnarray}
-from \cite{Bechtol2015} and place each on a color-magnitude diagram (CMD) of $M_r$ and $g-r$, see Figure~\ref{fig:oii sdss}. To assign an [\ion{O}{ii}] luminosity to each galaxy in our catalog we place the catalog galaxies on the same CMD and select all SDSS galaxies in a small 2D ($M_r$, $g-r$) bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their [\ion{O}{ii}] luminosities. Using a slice sampling technique \citep{Neal1997} we assign the catalog galaxy an [\ion{O}{ii}] luminosity based on the distribution of SDSS galaxies extracted. For catalog galaxies which are placed on the CMD near no, or very few ($1\leq n<10$) galaxies we assign it zero [\ion{O}{ii}] luminosity or the mean luminosity, respectively.
+from \cite{Bechtol2015} and place each on a color-magnitude diagram (CMD) of $M_r$ and $g-r$, see Figure~\ref{fig:oii sdss}. To assign an [\ion{O}{2}] luminosity to each galaxy in our catalog we place the catalog galaxies on the same CMD and select all SDSS galaxies in a small 2D ($M_r$, $g-r$) bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their [\ion{O}{2}] luminosities. Using a slice sampling technique \citep{Neal1997} we assign the catalog galaxy an [\ion{O}{2}] luminosity based on the distribution of SDSS galaxies extracted. For catalog galaxies which are placed on the CMD near no, or very few ($1\leq n<10$) galaxies we assign it zero [\ion{O}{2}] luminosity or the mean luminosity, respectively.
 
-The right panel of Figure~\ref{fig:oii sdss} shows the CMD of all SDSS galaxies. Two potential catalog galaxies are also placed on the CMD ($M_r, g-r = -17.7,~0.49$ and $M_r, g-r = -21.4,~1.24$) and indicated by two colored boxes. The histograms show in the Figure's left panel shows the probability density histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies in the 2D bin. We sample the distribution and assign each catalog galaxy an [\ion{O}{ii}] luminosity which is then converted into a flux.
+The right panel of Figure~\ref{fig:oii sdss} shows the CMD of all SDSS galaxies. Two potential catalog galaxies are also placed on the CMD ($M_r, g-r = -17.7,~0.49$ and $M_r, g-r = -21.4,~1.24$) and indicated by two colored boxes. The histograms show in the Figure's left panel shows the probability density histograms of the Log [\ion{O}{2}] luminosity for the SDSS galaxies in the 2D bin. We sample the distribution and assign each catalog galaxy an [\ion{O}{2}] luminosity which is then converted into a flux.
 
 \subsection{Mock Observations}\label{sec:observations}
 \editorial{don't think I say what are the actual selection criteria for the spectroscopy. That's an important detail.}
 Tentatively slated to start in the fall of 2015, HETDEX will perform blind spectroscopy (R $\sim$ 750 in $3500 - 5500~\AAA$) over two fields along the celestial equator. The 300 \degsq, Spring field and 120 \degsq, Fall field will have no preselected targets. Using VIRUS on the 10-m Hobby-Eberly Telescope (HET; \citealt{Ramsey1998}) the completed survey is expected to have an overall fill-factor of 1/4.5, meaning that the entire area could be covered with 4.5 dithers of the entire survey. 
 
-The spectral coverage allows for the detection of [\ion{O}{ii}] ($\lambda\lambda 3727-3729~\AAA$ doublet) emitters to $z\sim 0.5$ and Ca H ($\lambda 3968.5~\AAA$) and K ($\lambda 3933.7~\AAA$) absorption features to $z\sim 0.4$. HETDEX is expected to detect sources with continuum brighter than 22 mag in SDSS \sdssg, and emission line strengths above $3.5\times10^{-17}$ \ergscm. So we ``observe'' $z<0.4$ galaxies which meet either the emission line or the magnitude limit. Galaxies $0.4<z<0.5$ are only observed if their emission line strength is sufficient.   
+The spectral coverage allows for the detection of [\ion{O}{2}] ($\lambda\lambda 3727-3729~\AAA$ doublet) emitters to $z\sim 0.5$ and Ca H ($\lambda 3968.5~\AAA$) and K ($\lambda 3933.7~\AAA$) absorption features to $z\sim 0.4$. HETDEX is expected to detect sources with continuum brighter than 22 mag in SDSS \sdssg, and emission line strengths above $3.5\times10^{-17}$ \ergscm. So we ``observe'' $z<0.4$ galaxies which meet either the emission line or the magnitude limit. Galaxies $0.4<z<0.5$ are only observed if their emission line strength is sufficient.   
 
 \begin{figure} 
 	\includegraphics[width=0.49\textwidth]{f01.pdf} 
