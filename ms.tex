@@ -39,7 +39,13 @@
 
 %Commands specific to the this work
 \newcommand{\editorial}[1]{\textcolor{red}{#1}}
-
+\DeclareRobustCommand{\ion}[2]{%
+\relax\ifmmode
+\ifx\testbx\f@series
+{\mathbf{#1\,\mathsc{#2}}}\else
+{\mathrm{#1\,\mathsc{#2}}}\fi
+\else\textup{#1\,{\mdseries\textsc{#2}}}%
+\fi}
 
 %-----------------------------------------------------------------------------------------
 
@@ -52,7 +58,7 @@
 
 \begin{document}
 
-\title{Cluster Dynamics Using the Hobby Eberly Telescope Dark Energy Experiment}
+\title{Cluster Dynamics with HETDEX - I: Mass Distribution and Limits}
 
 \author{\sc Steven Boada\altaffilmark{1}, 
 C.~Papovich\altaffilmark{1}, and
@@ -72,9 +78,13 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \end{abstract}
 
 \section{INTRODUCTION}
-The Hobby Eberly Telescope Dark Energy eXperiment (HETDEX; \citealt{Hill2008}) is a trailblazing effort to observe high-redshift large scale structures using cutting edge wide-field integral field unit (IFU) spectrographs. Designed to probe the evolution of the dark energy equation of state etched onto high redshift ($z>2$) galaxies by the Baryon Acoustic Oscillations \citep{Eisenstein2005} in the first moments of the universe, the survey will observe two fields for a total of 420 \degsq\ from two fields (300 \degsq, Spring field and 120 \degsq, Fall field). Tuned to find \lya\ emitting (LAE) galaxies at $1.9<z<3.5$, HETDEX expects to find 800,000 LAEs, and more than one million [\ion{O}{2}] emitting galaxies at $z<0.5$ masquerading as high-redshift galaxies \citep{Acquaviva2014}.  
+Our ability to perform precision cosmology with clusters of galaxies has reached a critical turning point. The widely accepted $\Lambda$CDM model of cosmology makes explicit predictions about the number and masses of galaxy clusters throughout the universe. However, connecting these predictions to a set of, sufficiently large in size, observed clusters remains a principal problem. Specifically, the largest threat to modern, precision, cluster cosmology is not the identification of large numbers of clusters (the total number of clusters known is only going up) but the accurate recovery of galaxy cluster mass.
 
-While a large portion of the $\sim10^6$ interloping [\ion{O}{2}] galaxies will be field (not associated with a bound structure) galaxies, the large area covered by HETDEX is expected to contain as many as 100 Virgo-sized ($M_{dyn}\sim 10^{15}$ \msol) clusters at $z<0.5$ (\editorial{citation?}). The near-complete spectroscopic coverage allows an unprecedentedly detailed look at a very large number of clusters ranging from group scales to the very massive. In addition to the recovery of accurate dynamical masses, detailed investigations of the of dynamical state of the clusters is possible. 
+As mass is not a direct observable, a lot of work is underway to characterize galaxy cluster masses with an observable feature of galaxy clusters. The goal is to constrain, as best possible, $P(X|M,z)$ the probability ($P$) that a galaxy cluster of given mass ($M$), located at redshift ($z$) determined using observable parameter ($X$). The observable parameter most commonly observed X-ray temperatures and luminosities \citeeg{Mantz2010, Rykoff2014, Mantz2015}, cosmic microwave background observations \citeeg{Vanderlinde2010, Sehgal2011} using the Sunyaev--Zel’dovich effect (SZE; \citealt{Sunyaev1972}) or optical studies \citeeg{Rozo2010, Rozo2014} of richness \citeeg{Abell1958,Rykoff2012} or galaxy velocity dispersions \citeeg{Ruel2014, Sifon2015}.
+
+The Hobby Eberly Telescope Dark Energy eXperiment (HETDEX; \citealt{Hill2008}) is a trailblazing effort to observe high-redshift large scale structures using cutting edge wide-field integral field unit (IFU) spectrographs. Designed to probe the evolution of the dark energy equation of state etched onto high redshift ($z>2$) galaxies by the Baryon Acoustic Oscillations \citep{Eisenstein2005} in the first moments of the universe, the survey will observe two fields for a total of 420 \degsq\ from two fields (300 \degsq, Spring field and 120 \degsq, Fall field). Tuned to find \lya\ emitting (LAE) galaxies at $1.9<z<3.5$, HETDEX expects to find 800,000 LAEs, and more than one million [\ion{O}{ii}] emitting galaxies at $z<0.5$ masquerading as high-redshift galaxies \citep{Acquaviva2014}.  
+
+While a large portion of the $\sim10^6$ interloping [\ion{O}{ii}] galaxies will be field (not associated with a bound structure) galaxies, the large area covered by HETDEX is expected to contain as many as 100 Virgo-sized ($M_{dyn}\sim 10^{15}$ \msol) clusters at $z<0.5$ (\editorial{citation?}). The near-complete spectroscopic coverage allows an unprecedentedly detailed look at a very large number of clusters ranging from group scales to the very massive. In addition to the recovery of accurate dynamical masses, detailed investigations of the of dynamical state of the clusters is possible. 
 
 In addition to the spectroscopy, an imaging campaign is require first identify galaxy over densities. HETDEX overlaps with the Sloan Digital Sky Survey (SDSS; \citealt{Blanton2001a}), SDSS stripe 82 \citep{Annis2014}, the Dark Energy Survey (DES; \citealt{DES2005}), and the upcoming DECam/IRAC Galaxy Environment Survey (DIRGES; PI: Papovich, C. Papovich \etal in preparation).
 
@@ -91,56 +101,53 @@ $\Omega_M = 0.23$, $\sigma_8 = 0.83$ and $H_0= 72$ \kms \mpc), assume a Chabrier
 
 %This support will allow Mr. Boada to contribute to the core science of my NSF grant (AST 1413317) for the DECam/IRAC Galaxy Environment Survey (DIRGES). He will studying both simulated and real data to understand the reliability in measuring galaxy cluster masses and dynamical states using spectroscopic information for emission-line galaxies. DIRGES will identify as many as 100 galaxy cluster progenitors at 0.8 $<$ z $<$ 1.5. Significant gains in the understanding of these clusters are possible if we can (1) interpret their dynamical nature through spectroscopy, and (2) if we can link them to clusters at lower redshift, z $<$ 0.5, from within the same dataset to suppress potential observational biases. I have plans to obtain the spectroscopy to achieve both of these supplemental goals, but the majority of the spectroscopic redshifts will be for emission-line galaxies. It is not straightforward to use these data to interpret the kinematic and dynamical states of the clusters. And, because HETDEX covers DIRGES, the data will contain both low-redshift and high-redshift clusters in the same imaging dataset, allowing the most homogeneous study of the low-z and high-z universe yet.
 
-\section{Data and Observations}
+\section{Data and Mock Observations}
 
 Blah blah intro stuff... 
 
-\subsection{The ``Aardvark'' Catalogs}
-\begin{figure} 
-	\includegraphics[width=0.49\textwidth]{surveyArea.pdf} 
-	\caption{A polar azimuthal equidistant projection of the southern sky showing the sky area (approximately a quarter of the sky) covered by the Aardvark Simulations. Concentric circles are lines of constant declination, 10 to $-80\degree$ in $10\degree$ increments. Radial lines are lines of constant right ascension. Opaqueness of the region indicates the overlap of catalog tiles (see text for details).} 
-	\label{fig:survey area} 
-\end{figure}
+\subsection{The ``Buzzard'' Catalogs}
+The ``Buzzard'' mock galaxy catalogs (R. Wechsler et al., private communication) are derived from a combination of Sub-halo Abundance Matching (ShAM) and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) tied to an in house n-body cosmological simulation. A brief description of the catalog creation is described as follows. The initial conditions are generated with a second-order Lagrangian perturbation theory using {\tt 2LPTic} \citep{Crocce2006}. Dark matter (DM) n-body simulations are run using {\tt LGadget-2} (a version of {\tt Gadget-2}; \citealt{Springel2005}). The DM halos are identified using the {\tt ROCKSTAR} halo finder \citep{Behroozi2013} which also calculates halo masses and other various parameters. 
 
-The ``Aardvark'' mock galaxy catalogs (R. Wechsler et al., private communication) are derived from a semi-analytical model (SAM) tied to an in house n-body cosmological simulation and designed for DES. They provide a 10313 \degsq (one quarter of the sky) catalog to full DES depth and contains 1.36 billion galaxies which have a signal-to-noise of at least five in one or more DES observing bands. The catalog footprint is shown in Figure~\ref{fig:survey area}.
-
-A brief description of the catalog creation is described as follows. The initial conditions are generated with a second-order Lagrangian perturbation theory using {\tt2LPTic} \citep{Crocce2006}. Dark matter (DM) n-body simulations are run using {\tt LGadget-2} (a version of {\tt Gadget-2}; \citealt{Springel2005}), and four different light cones are stitched together along the line of sight to create the full light cone. The DM halos are identified using the {\tt ROCKSTAR} halo finder \citep{Behroozi2013} which also calculates halo masses and other various parameters. Galaxies are assigned to halos and subhalos using the ``ADDGals'' method of (R. Wechlar \etal, in preparation) which matches galaxy luminosities with local DM densities, not the individual DM halos. This becomes important in the velocity dispersion and subsequent dynamical mass recovery, see Section~\ref{sec:LOSVD}.
+Galaxy $M_r$ luminosities are added to the velocity peaks using ShAM \citep{Reddick2013}, and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) assign luminosities in the other bands. A $M_r$-density-SED relation is created using a SDSS training set, and for each mock galaxy the SED of a randomly selected training set galaxy which has a similar $M_r$ and density is assigned. The result is a 398.49 sq. degree mock catalog occupying a $60 \leq RA \leq 90$ and $-40 \leq DEC \leq -61$ portion of the sky. It contains 238 million galaxies with \sdssr\ mag $< 29$ and $z \leq 8.7$.
 
 The catalog information, used in this study, is broken into two large portions. The ``truth'' files contain the characteristics of each individual galaxies, such as right ascension (RA), declination (DEC), redshift (z), observed and rest-frame magnitudes, and many others. The ``halo'' files contain information for individual halos, to which many individual galaxies may belong. This includes five estimations of dynamical mass, RA, DEC, z, three dimensional velocity dispersion, and many others.
 
-However, the catalogs do not include information on emission or absorption lines or estimations of whether the halo is relaxed or not. We supplement the catalogs with this information and describe the method in Section~\ref{sec:oii luminosity} and others. 
+However, the catalogs do not include information on emission or absorption lines or estimations of whether the halo is relaxed or not. We supplement the catalogs with this information and describe the method in Section~\ref{sec:oii luminosity} and others.
 
-\subsection{ {\rm[\ion{O}{2}]} Luminosity}\label{sec:oii luminosity}
-The aardvark ``truth'' catalog does not provide [\ion{O}{2}] luminosities so we must assign them empirically. We use 503113 galaxies from the SDSS Data Release 12 \citep{Alam2015} from $z = 0.05 - 0.2$, which are selected with no redshift warning. 
+\begin{figure} 
+	\includegraphics[width=0.49\textwidth]{hmf.pdf} 
+	\caption{The cumulative MF of halos above $M_{200c}$ at $z=0.1$. The predicted MF is from \cite{Tinker2008}.} 
+	\label{fig:hmf} 
+\end{figure}
 
+We investigate the accuracy of the halo mass distribution by comparing the cumulative number density of halos above a mass ($M_{200c}$) threshold to the halo mass function (HMF) of \cite{Tinker2008}. Shown in Figure~\ref{fig:hmf} the HMF is calculated at central redshifts of 0, 0.2, and 0.4 using {\tt HMFcalc} \citep{Murray2013} and compared to galaxies in a redshift window of $\Delta z\pm0.01$. We find a very good agreement between the expected HMF and the observed. 
+
+\subsection{ {\rm[\ion{O}{ii}]} Luminosity}\label{sec:oii luminosity}
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{oii_sdss.pdf} 
-	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{2}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{2}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram.} \label{fig:oii sdss} 
+	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{2}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{ii}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram.} \label{fig:oii sdss} 
 \end{figure*}
 
-While the difference is small, we convert each SDSS galaxy's observed magnitude to a similar DES magnitude using
-\begin{eqnarray}
-	g_{DES} = g_{SDSS} - 0.104(g-r)_{SDSS} + 0.01 \nonumber \\
-	r_{DES} = r_{SDSS} - 0.102(g-r)_{SDSS} + 0.02
-\end{eqnarray}
-from \cite{Bechtol2015} and place each on a color-magnitude diagram (CMD) of $M_r$ and $g-r$, see Figure~\ref{fig:oii sdss}. To assign an [\ion{O}{2}] luminosity to each galaxy in our catalog we place the catalog galaxies on the same CMD and select all SDSS galaxies in a small 2D ($M_r$, $g-r$) bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their [\ion{O}{2}] luminosities. Using a slice sampling technique \citep{Neal1997} we assign the catalog galaxy an [\ion{O}{2}] luminosity based on the distribution of SDSS galaxies extracted. For catalog galaxies which are placed on the CMD near no, or very few ($1\leq n<10$) galaxies we assign it zero [\ion{O}{2}] luminosity or the mean luminosity, respectively.
+The buzzard ``truth'' catalog does not provide [\ion{O}{ii}] luminosities so we must assign them empirically. We use 503113 galaxies from the SDSS Data Release 12 \citep{Alam2015} from $z = 0.05 - 0.2$, which are selected with no redshift warning, and place each galaxy on a color-magnitude diagram (CMD) of $M_r$ and $g-r$, see Figure~\ref{fig:oii sdss}.
 
-The right panel of Figure~\ref{fig:oii sdss} shows the CMD of all SDSS galaxies. Two potential catalog galaxies are also placed on the CMD ($M_r, g-r = -17.7,~0.49$ and $M_r, g-r = -21.4,~1.24$) and indicated by two colored boxes. The histograms show in the Figure's left panel shows the probability density histograms of the Log [\ion{O}{2}] luminosity for the SDSS galaxies in the 2D bin. We sample the distribution and assign each catalog galaxy an [\ion{O}{2}] luminosity which is then converted into a flux.
+To assign an [\ion{O}{ii}] luminosity to each galaxy in our catalog we place the catalog galaxies on the same CMD and select all SDSS galaxies in a small 2D ($M_r$, $g-r$) bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their [\ion{O}{ii}] luminosities. Using a slice sampling technique \citep{Neal1997} we assign the catalog galaxy an [\ion{O}{ii}] luminosity based on the distribution of SDSS galaxies extracted. For catalog galaxies which are placed on the CMD near no, or very few ($1\leq n<10$) galaxies we assign it zero [\ion{O}{ii}] luminosity or the mean luminosity, respectively.
+
+The right panel of Figure~\ref{fig:oii sdss} shows the CMD of all SDSS galaxies. Two potential catalog galaxies are also placed on the CMD ($M_r, g-r = -17.7,~0.49$ and $M_r, g-r = -21.4,~1.24$) and indicated by two colored boxes. The histograms show in the Figure's left panel shows the probability density histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies in the 2D bin. We sample the distribution and assign each catalog galaxy an [\ion{O}{ii}] luminosity which is then converted into a flux.
 
 \subsection{Mock Observations}\label{sec:observations}
-\editorial{don't think I say what are the actual selection criteria for the spectroscopy. That's an important detail.}
+\editorial{Not sure this does a good enough job talking about the two different observations.}
 Tentatively slated to start in the fall of 2015, HETDEX will perform blind spectroscopy (R $\sim$ 750 in $3500 - 5500~\AAA$) over two fields along the celestial equator. The 300 \degsq, Spring field and 120 \degsq, Fall field will have no preselected targets. Using VIRUS on the 10-m Hobby-Eberly Telescope (HET; \citealt{Ramsey1998}) the completed survey is expected to have an overall fill-factor of 1/4.5, meaning that the entire area could be covered with 4.5 dithers of the entire survey. 
 
-The spectral coverage allows for the detection of [\ion{O}{2}] ($\lambda\lambda 3727-3729~\AAA$ doublet) emitters to $z\sim 0.5$ and Ca H ($\lambda 3968.5~\AAA$) and K ($\lambda 3933.7~\AAA$) absorption features to $z\sim 0.4$. HETDEX is expected to detect sources with continuum brighter than 22 mag in SDSS \sdssg, and emission line strengths above $3.5\times10^{-17}$ \ergscm. So we ``observe'' $z<0.4$ galaxies which meet either the emission line or the magnitude limit. Galaxies $0.4<z<0.5$ are only observed if their emission line strength is sufficient.   
+The spectral coverage allows for the detection of [\ion{O}{ii}] ($\lambda\lambda 3727-3729~\AAA$ doublet) emitters to $z\sim 0.5$ and Ca H ($\lambda 3968.5~\AAA$) and K ($\lambda 3933.7~\AAA$) absorption features to $z\sim 0.4$. HETDEX is expected to detect sources with continuum brighter than 22 mag in \sdssg, and emission line strengths above $3.5\times10^{-17}$ \ergscm. So we ``observe'' $z<0.4$ galaxies which meet either the emission line or the magnitude limit. Galaxies $0.4<z<0.5$ are only observed if their emission line strength is sufficient.   
 
 \begin{figure} 
 	\includegraphics[width=0.49\textwidth]{f01.pdf} 
 	\caption{Representative observation tiling scheme for the HETDEX $16'$ pointings. Each colored square is a single VIRUS IFU and the dashed octagons approximate the size of a single observation. See the text for more details.} \label{fig:ifu layout} 
 \end{figure}
 
-Our ``observations'' consist of placing masks down onto the aardvark ``truth'' catalogs and selecting all, $z< 0.5$ also meeting sensitivity limits, galaxies which lie underneath. Each mask is created to accurately reproduce the HETDEX IFU pattern, see Figure~\ref{fig:ifu layout}. The pattern consists of 78 IFUs, which are comprised of 448 optical fibers subtending a $50'' \times 50''$ region on the sky \citep{Kelz2014}. The inter-IFU spacing is also $50''$ spanning a total area of $16'\times 16'$ on the sky. 
+In this work we consider two separate observation cases. The first are targeted observations where we select each galaxy cluster and ``observe'' each galaxy within $8'$ of the center. The second is a survey case where observations which are blind to the positions of the clusters are conducted. In both cases, our ``observations'' consist of placing masks down onto the buzzard ``truth'' catalogs and selecting all, $z< 0.5$ also meeting sensitivity limits, galaxies which lie underneath. Each mask is created to accurately reproduce the HETDEX IFU pattern, see Figure~\ref{fig:ifu layout}. The pattern consists of 78 IFUs, which are comprised of 448 optical fibers subtending a $50'' \times 50''$ region on the sky \citep{Kelz2014}. The inter-IFU spacing is also $50''$ spanning a total area of $16'\times 16'$ on the sky. 
 
-The individual IFUs have a fill-factor of 1/3, which will be completely filled with three dithers of the telescope at each pointing. This means that when selecting galaxies from the aardvark catalog we assume an observation for all galaxies laying within a colored, IFU square in Figure~\ref{fig:ifu layout}. Galaxies which lie between the IFUs are missed, as well as the galaxies which lie between the pointings, as there is no overlap between one pointing and the next.
+The individual IFUs have a fill-factor of 1/3, which will be completely filled with three dithers of the telescope at each pointing. This means that when selecting galaxies from the buzzard catalog we assume an observation for all galaxies laying within a colored, IFU square in Figure~\ref{fig:ifu layout}. Galaxies which lie between the IFUs are missed, as well as the galaxies which lie between the pointings, as there is no overlap between one pointing and the next.
 
 \section{Cluster Membership}
 In the following sections we assume that the on sky positions and redshifts of the galaxy clusters are already known. In reality, galaxy over densities will be detected from imaging surveys \citeeg{Rykoff2014} or through techniques to identify structure in the RA, DEC, z point data (\eg, DBSCAN; \citealt{Ester1996}).
@@ -207,36 +214,6 @@ We define the radius of a galaxy cluster as
 where $\rho_c$ is critical density of the universe and defined as $3H^2/8\pi G$.
 
 
-\section{Evidence of Substructure}
-Like the recovery of dynamical parameters discussed in the previous section, the choice of method to investigate the dynamical state of galaxy clusters is heavily debated. Perhaps the most widely used metric is the Dressler-Shectman (DS) test \citep{Dressler1988}, and is not without criticism \citeeg{White2010}. New methods such as the Caustic Method (\citealt{Yu2015}, and the references therein) offer promise to shed further light on this difficult problem.
-
-\subsection{From VD profiles}
-We utilize the modality \citep{Oliva-Altamirano2014} which describes the Gaussianity of a LOSV distribution in a galaxy cluster. For clusters with Gaussian distributed LOSVs, the modality is close to 1/3. It is defined as $(1+\mathrm{skewness}^2)/(3+\mathrm{kurtosis}^2)$. \editorial{Do I need to describe what the skewness and kurtosis is?}
-
-\subsection{Dominance}
-\editorial{This is taken pretty directly from the GAMA paper. Will need to be edited to fit.}
-The dominance is defined as the luminosity gap between the brightest and the second brightest galaxy in a cluster ($\Delta m_{1, 2}$). The amplitude of the luminosity gap between the BGG/BCG and the second brightest galaxy in the halo, is expected to be a function of both the formation epoch and the recent infall history of the halo. A small magnitude gap ($\Delta m_{1, 2} < 1$) indicates a recent halo merger, and larger gaps ($\Delta m_{1, 2} > 1$), common in fossil groups, is perhaps indicative of a cluster or groups that has not undergone a recent merger.
-
-\subsection{Dressler-Schectman Test}
-We leverage the large spectroscopic dataset to study the structural properties of the clusters. \cite{Pinkney1996} determine, from a comparison of five different methods that the DS test is the most sensitive to the presence of substructure.
-
-The DS test, which combines the spatial positions and velocities of the galaxies, provides a method to locate substructure by identifying groups of galaxies which differ significantly from the cluster velocity distribution. Galaxy subsets are selected from a cluster of $n_{members}$ and each constituent galaxy deviation is calculated according to
-\begin{equation}
-	\delta_i^2 = \frac{N_{local}+1}{\sigma^2}\bigg{[}(\bar{v}_{local,i} - \bar{v})^2 + (\sigma_{local,i} - \sigma)^2\bigg{]}^2
-\end{equation}
-where $\bar{v}_{local}$ and $\sigma_{local}$ are the mean velocity and velocity dispersion for a subset of $N_{local}$ galaxies and $\bar{v}$ and $\sigma$ are the entire cluster's mean velocity and velocity dispersion. The choice of $N_{local}$ is left to the user. Originally, \cite{Dressler1988} choose $N_{local}=10$, however \cite{Bird1994} points out that using a fixed value for $N_{local}$ reduces the sensitivity to substructure. We follow \cite{Bird1994} in choosing $N_{local} = \sqrt n_{members}$. \editorial{doesn't talk about the nearest neighbors which is what we are using.}
-
-The DS statistic is the $\Delta$-value given by, 
-\begin{equation}
-	\Delta = \sum^{n_{members}}_i \delta_i
-\end{equation}
-where a system is considered to contain substructure if $\Delta/n_{members} > 1$ \citep{Dressler1988}. A second method, described in \cite{Hou2012}, uses probabilities (P-values) rather than a threshold for the identification of substructure. P-values are computed by comparing the observed $\Delta$-value and the $Delta$-value after the velocities (but not positions) have been shuffled through a series of Monte Carlo runs. The probability of the existence of substructure becomes
-\begin{equation}
-	P = \sum (\Delta_{shuffled} > \Delta_{Observed}) / n_{shuffle}
-\end{equation}
-where $n_{shuffle}$ is the number of shufflings used. \editorial{This sounds a whole lot like the description given in Hou2012. Make sure that we aren't copying anything word for word. That'd be bad.}
-
-In practice, we use locate the nearest neighbors using an unsupervised k-nearest neighbor algorithm as implemented in Scikit-Learn \citep{Pedregosa2012}. 
 
 \section{RESULTS}
 Our results section is broken into two large sections. First we analyze our ability to recover cluster parameters from an observing strategy similar to that of HETDEX. In the second Section, we apply observational limits, similar to those expected to apply, and investigate how the parameter recovery improves (or worsens) under those conditions. 
@@ -282,3 +259,34 @@ suggestions significantly improved both the quality and clarity of this work. Se
 \bibliography{master}
 
 \end{document}
+
+% \section{Evidence of Substructure}
+% Like the recovery of dynamical parameters discussed in the previous section, the choice of method to investigate the dynamical state of galaxy clusters is heavily debated. Perhaps the most widely used metric is the Dressler-Shectman (DS) test \citep{Dressler1988}, and is not without criticism \citeeg{White2010}. New methods such as the Caustic Method (\citealt{Yu2015}, and the references therein) offer promise to shed further light on this difficult problem.
+%
+% \subsection{From VD profiles}
+% We utilize the modality \citep{Oliva-Altamirano2014} which describes the Gaussianity of a LOSV distribution in a galaxy cluster. For clusters with Gaussian distributed LOSVs, the modality is close to 1/3. It is defined as $(1+\mathrm{skewness}^2)/(3+\mathrm{kurtosis}^2)$. \editorial{Do I need to describe what the skewness and kurtosis is?}
+%
+% \subsection{Dominance}
+% \editorial{This is taken pretty directly from the GAMA paper. Will need to be edited to fit.}
+% The dominance is defined as the luminosity gap between the brightest and the second brightest galaxy in a cluster ($\Delta m_{1, 2}$). The amplitude of the luminosity gap between the BGG/BCG and the second brightest galaxy in the halo, is expected to be a function of both the formation epoch and the recent infall history of the halo. A small magnitude gap ($\Delta m_{1, 2} < 1$) indicates a recent halo merger, and larger gaps ($\Delta m_{1, 2} > 1$), common in fossil groups, is perhaps indicative of a cluster or groups that has not undergone a recent merger.
+%
+% \subsection{Dressler-Schectman Test}
+% We leverage the large spectroscopic dataset to study the structural properties of the clusters. \cite{Pinkney1996} determine, from a comparison of five different methods that the DS test is the most sensitive to the presence of substructure.
+%
+% The DS test, which combines the spatial positions and velocities of the galaxies, provides a method to locate substructure by identifying groups of galaxies which differ significantly from the cluster velocity distribution. Galaxy subsets are selected from a cluster of $n_{members}$ and each constituent galaxy deviation is calculated according to
+% \begin{equation}
+% 	\delta_i^2 = \frac{N_{local}+1}{\sigma^2}\bigg{[}(\bar{v}_{local,i} - \bar{v})^2 + (\sigma_{local,i} - \sigma)^2\bigg{]}^2
+% \end{equation}
+% where $\bar{v}_{local}$ and $\sigma_{local}$ are the mean velocity and velocity dispersion for a subset of $N_{local}$ galaxies and $\bar{v}$ and $\sigma$ are the entire cluster's mean velocity and velocity dispersion. The choice of $N_{local}$ is left to the user. Originally, \cite{Dressler1988} choose $N_{local}=10$, however \cite{Bird1994} points out that using a fixed value for $N_{local}$ reduces the sensitivity to substructure. We follow \cite{Bird1994} in choosing $N_{local} = \sqrt n_{members}$. \editorial{doesn't talk about the nearest neighbors which is what we are using.}
+%
+% The DS statistic is the $\Delta$-value given by,
+% \begin{equation}
+% 	\Delta = \sum^{n_{members}}_i \delta_i
+% \end{equation}
+% where a system is considered to contain substructure if $\Delta/n_{members} > 1$ \citep{Dressler1988}. A second method, described in \cite{Hou2012}, uses probabilities (P-values) rather than a threshold for the identification of substructure. P-values are computed by comparing the observed $\Delta$-value and the $Delta$-value after the velocities (but not positions) have been shuffled through a series of Monte Carlo runs. The probability of the existence of substructure becomes
+% \begin{equation}
+% 	P = \sum (\Delta_{shuffled} > \Delta_{Observed}) / n_{shuffle}
+% \end{equation}
+% where $n_{shuffle}$ is the number of shufflings used. \editorial{This sounds a whole lot like the description given in Hou2012. Make sure that we aren't copying anything word for word. That'd be bad.}
+%
+% In practice, we use locate the nearest neighbors using an unsupervised k-nearest neighbor algorithm as implemented in Scikit-Learn \citep{Pedregosa2012}.
