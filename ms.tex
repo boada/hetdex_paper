@@ -58,7 +58,7 @@
 
 \begin{document}
 
-\title{Cluster Dynamics with HETDEX - I: Mass Distribution and Limits}
+\title{Cluster Dynamics with HETDEX - I: Simulated Performance, Mass Distribution and Limits}
 
 \author{\sc Steven Boada\altaffilmark{1}, 
 C.~Papovich\altaffilmark{1}, and
@@ -78,30 +78,28 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \end{abstract}
 
 \section{INTRODUCTION}
-Our ability to perform precision cosmology with clusters of galaxies has reached a critical turning point. The widely accepted $\Lambda$CDM model of cosmology makes explicit predictions about the number and masses of galaxy clusters throughout the universe. However, connecting these predictions to a set of, sufficiently large in size, observed clusters remains a principal problem. Specifically, the largest threat to modern, precision, cluster cosmology is not the identification of large numbers of clusters (the total number of clusters known is only going up) but the accurate recovery of galaxy cluster mass.
+Our ability to perform precision cosmology with clusters of galaxies has reached a critical turning point. The widely accepted $\Lambda$CDM model of cosmology makes explicit predictions about the number and masses of galaxy clusters throughout the universe. However, connecting these predictions to a set of, sufficiently large in size, observed clusters remains a principal problem. Specifically, the largest threat to modern, precision, cluster cosmology is not the identification of large numbers of clusters (the total number of clusters known is only going up) but the accurate recovery of galaxy cluster mass \citeeg{Sehgal2011,Plank2014, Bocquet2015}.
 
 As mass is not a direct observable, a lot of work is underway to characterize galaxy cluster masses with an observable feature of galaxy clusters. The goal is to constrain, as best possible, $P(X|M,z)$ the probability ($P$) that a galaxy cluster of given mass ($M$), located at redshift ($z$) determined using observable parameter ($X$). The observable parameter most commonly observed X-ray temperatures and luminosities \citeeg{Mantz2010, Rykoff2014, Mantz2015}, cosmic microwave background observations \citeeg{Vanderlinde2010, Sehgal2011} using the Sunyaev--Zel’dovich effect (SZE; \citealt{Sunyaev1972}) or optical studies \citeeg{Rozo2010, Rozo2014} of richness \citeeg{Abell1958,Rykoff2012} or galaxy velocity dispersions \citeeg{Ruel2014, Sifon2015}.
+
+Massive surveys, both on going and planned, are revolutionizing cluster cosmology using a large range of wavelengths. The South Pole Telescope (SPT; \citealt{Carlstrom2011}) and the Atacama Cosmology Telescope (ACT; \citealt{Swetz2011}) are discovering many clusters through the SZE. Optically, the on going The Dark Energy Survey (DES; \citealt{DES2005}) and planned Large Synoptic Survey Telescope (LSST; \citealt{LSST2012}) will identify many thousands of clusters to much lower masses than is possible with SZE measurements. However, regardless of the discovery method used, spectroscopic followup is needed to further constrain $P(X|M,z)$. But as the cluster dataset grows to many tens of thousands of clusters individual followup becomes increasingly impractical. Therefore, large spectroscopic surveys are needed to more fully constrain the observable--mass relation of clusters.
 
 The Hobby Eberly Telescope Dark Energy eXperiment (HETDEX; \citealt{Hill2008}) is a trailblazing effort to observe high-redshift large scale structures using cutting edge wide-field integral field unit (IFU) spectrographs. Designed to probe the evolution of the dark energy equation of state etched onto high redshift ($z>2$) galaxies by the Baryon Acoustic Oscillations \citep{Eisenstein2005} in the first moments of the universe, the survey will observe two fields for a total of 420 \degsq\ from two fields (300 \degsq, Spring field and 120 \degsq, Fall field). Tuned to find \lya\ emitting (LAE) galaxies at $1.9<z<3.5$, HETDEX expects to find 800,000 LAEs, and more than one million [\ion{O}{ii}] emitting galaxies at $z<0.5$ masquerading as high-redshift galaxies \citep{Acquaviva2014}.  
 
 While a large portion of the $\sim10^6$ interloping [\ion{O}{ii}] galaxies will be field (not associated with a bound structure) galaxies, the large area covered by HETDEX is expected to contain as many as 100 Virgo-sized ($M_{dyn}\sim 10^{15}$ \msol) clusters at $z<0.5$ (\editorial{citation?}). The near-complete spectroscopic coverage allows an unprecedentedly detailed look at a very large number of clusters ranging from group scales to the very massive. In addition to the recovery of accurate dynamical masses, detailed investigations of the of dynamical state of the clusters is possible. 
 
-In addition to the spectroscopy, an imaging campaign is require first identify galaxy over densities. HETDEX overlaps with the Sloan Digital Sky Survey (SDSS; \citealt{Blanton2001a}), SDSS stripe 82 \citep{Annis2014}, the Dark Energy Survey (DES; \citealt{DES2005}), and the upcoming DECam/IRAC Galaxy Environment Survey (DIRGES; PI: Papovich, C. Papovich \etal in preparation).
-
-DIRGES, in particular, will be useful as it will identify as many as 100 galaxy cluster progenitors at 0.8 $<$ z $<$ 1.5 based on similarities in galaxy \spitzer/IRAC colors. Significant gains in the understanding of these clusters are possible if we can (1) interpret their dynamical nature through spectroscopy, and (2) if we can link them to galaxy clusters at lower redshift, z $<$ 0.5, from within the same dataset to suppress potential observational biases. However, two large issues remain.
+Connecting the dynamical properties derived from spectroscopy to the properties inferred from other studies insures the greatest impact on future work. HETDEX overlaps with the Sloan Digital Sky Survey (SDSS; \citealt{Blanton2001a}), SDSS stripe 82 \citep{Annis2014}, the Dark Energy Survey (DES; \citealt{DES2005}), and the upcoming DECam/IRAC Galaxy Environment Survey (DIRGES; PI: Papovich, C. Papovich \etal\ in preparation). \editorial{SHELA and others? Would be good to have a whole list of different things and different wavelengths.} While the potential dataset is very rich, two large issues remain.
 
 It is unclear how a blind spectroscopic survey with an IFU will effect the recovery of galaxy cluster dynamical properties. Unlike many previous large cluster surveys \citeeg{Milvang-Jensen2008, Robotham2011, Sifon2015} which use multi-object spectrographs, the Visible Integral-Field Replicable Unit Spectrograph (VIRUS; \citealt{Hill2012}) used by HETDEX samples the sky unevenly which could excluded member galaxies which would otherwise be included. Secondly, it is not straightforward to use spectroscopic redshifts predominately from emission-line galaxies to interpret the kinematic and dynamical states of the clusters.
 
-This work plans to address these concerns in the following ways. Create and evaluate a HETDEX like selection ``function'' of galaxies over a similarly large portion of the sky, use well adopted techniques to recover the dynamical properties, such as velocity dispersion and mass, and to investigate the presence of substructure. This will better allow future work to predict the number and types of galaxy clusters which should be observed with HETDEX.
+This work plans to address these concerns in the following ways. We use simulated observations which target individual galaxy clusters to investigate the recovery of parameters with such observations. Secondly, we create and evaluate a HETDEX like selection ``function'' of galaxies over a similarly large portion of the sky and use well adopted techniques to recover the dynamical properties, such as velocity dispersion and mass. Each observation strategy will further be constrained with ``ideal'' and ``realistic'' knowledge. Ideal knowledge assumes that we know which individual galaxy is assigned to which cluster. With realistic knowledge this is unknown and must be determined prior to the estimation of the cluster properties. Both of these strategies will better allow future work to predict the number and types of galaxy clusters which should be observed with VIRUS during both the HETDEX survey portion and through targeted follow up observations.
 
 \editorial{Give outline of paper section.}
 
 Throughout this paper, we adopt the following cosmological model ($\Omega_\Lambda = 0.77$,
 $\Omega_M = 0.23$, $\sigma_8 = 0.83$ and $H_0= 72$ \kms \mpc), assume a Chabrier initial mass function (IMF; \citealt{Chabrier2003}), and use AB magnitudes \citep{Oke1974}.
 
-%This support will allow Mr. Boada to contribute to the core science of my NSF grant (AST 1413317) for the DECam/IRAC Galaxy Environment Survey (DIRGES). He will studying both simulated and real data to understand the reliability in measuring galaxy cluster masses and dynamical states using spectroscopic information for emission-line galaxies. DIRGES will identify as many as 100 galaxy cluster progenitors at 0.8 $<$ z $<$ 1.5. Significant gains in the understanding of these clusters are possible if we can (1) interpret their dynamical nature through spectroscopy, and (2) if we can link them to clusters at lower redshift, z $<$ 0.5, from within the same dataset to suppress potential observational biases. I have plans to obtain the spectroscopy to achieve both of these supplemental goals, but the majority of the spectroscopic redshifts will be for emission-line galaxies. It is not straightforward to use these data to interpret the kinematic and dynamical states of the clusters. And, because HETDEX covers DIRGES, the data will contain both low-redshift and high-redshift clusters in the same imaging dataset, allowing the most homogeneous study of the low-z and high-z universe yet.
-
-\section{Data and Mock Observations}
+\section{Data and Mock Observations}\label{sec:Data}
 
 Blah blah intro stuff... 
 
@@ -158,7 +156,7 @@ We employ the ``shifting gapped" method of \cite{Fadda1996} as outlined in \cite
 
 \editorial{This is taken from the other paper, and needs to be tweaked to make fit better into this framework. I think what we'll do is center a 100'' box on all of the clusters and then try to recover the galaxies. How many will we get, how many are wrong, and can we do better with a different algorithm?}
 
-\section{Recovery of Parameters}
+\section{Recovery of Parameters}\label{sec:recovery}
  In the following sections, we outline the methods we use to derive the dynamical properties of the galaxy clusters in our sample. This is not meant to be an exhaustive study of the different methods used to recover these parameters. The following is, in many cases, a subset of the available methods to derive any single parameter. The specific choice of method may improve or diminish the accuracy of the recovered parameter, but the methods chosen were to facilitate comparison with observational studies.  
 
 \subsection{Cluster Redshift}
@@ -200,7 +198,7 @@ A second effect, unique to works such as this, is the difference between the LOS
 \subsection{Dynamical Mass}\label{sec:mass}
 Recently, the relationship between the LOSVD and dynamical mass has been the focus of several studies \citeeg{Evrard2008, Saro2013, Sifon2013, VanderBurg2014}, and a best fitting relationship for the mass enclosed by $r_{200c}$ of the form
 \begin{equation}
-	M_{200c} = \frac{10^{15}}{h(z)} \bigg{(}\frac{\sigma_{1D}}{A_{1D}} \bigg{)}^{-\alpha} \Msol
+	M_{200c} = \frac{10^{15}}{h(z)} \bigg{(}\frac{\sigma_{1D}}{A_{1D}} \bigg{)}^{1/\alpha} \Msol
 \end{equation}
 with $A_{1D} =$ 1040-1140 \kms\ (\citealt{Munari2013}; referred to as $\sigma_{15}$ in \citealt{Evrard2008} and other works), $\alpha = 1/3$, $h(z) = H(z)/100$, and $\sigma_{1D}$ is the LOSVD of the velocity tracers (dark matter particles, subhalos or galaxies).
 
@@ -213,28 +211,21 @@ We define the radius of a galaxy cluster as
 \end{equation}
 where $\rho_c$ is critical density of the universe and defined as $3H^2/8\pi G$.
 
+\section{RESULTS}\label{sec:results}
+The results of this work come in two broad sections. The accuracy of which we determine each cluster's LOSVD and dynamical mass, and the probability given a determined mass it is the correct mass. We test two different observation strategies with ideal and realistic information about the membership of the observed galaxies. Ideal information is knowing the exact membership of the galaxies, and realistic information relies on methods to determine the membership. \editorial{The results of this section a shown in Figures XXX and Figures XXX for the LOSVD and masses respectively.}
 
-
-\section{RESULTS}
-Our results section is broken into two large sections. First we analyze our ability to recover cluster parameters from an observing strategy similar to that of HETDEX. In the second Section, we apply observational limits, similar to those expected to apply, and investigate how the parameter recovery improves (or worsens) under those conditions. 
-
-\subsection{Full Knowledge}
+\subsection{Targeted, Ideal Observations}
+\subsection{Targeted, Realistic Observations}
+\subsection{Blind, Ideal Observations}
+\subsection{Blind, Realistic Observations}
 We compare the calculated cluster redshifts to the true redshift ($z_{c,true}$) for 114903 galaxies comprising 1379 unique halos, and we find a RMS$[\Delta z/(1+z_{c,true})]= 4\times 10^{-4}$ where $\Delta z = z_{c,true} - z_{c}$. \editorial{The RMS using just the regular mean is 3.8e-4 which is only slightly better than the biweight. I don't think that will be the case when we get more complicated things.}
 
-\subsubsection{Dynamical Properties}
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{fullKnowledge.pdf} 
 	\caption{Intrinsic cluster properties versus the recovered cluster properties for 16758 unique halos comprised of 657916 individual galaxies. The left panel shows the line of sight velocity dispersion (LOSVD) and the right panel shows the recovered halo mass. In both panels, the red line shows the 1:1 relation and the teal line shows the best fit to data.} 
 	\label{fig:full} 
 \end{figure*}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-\subsubsection{Structural Properties}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\subsection{HETDEX Depth}
-
-\subsubsection{Dynamical Properties}
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{hetdexDepth.pdf} 
 	\caption{HETDEX DEPTH! Intrinsic cluster properties versus the recovered cluster properties for 14239 unique halos comprised of 87754 individual galaxies. The left panel shows the line of sight velocity dispersion (LOSVD) and the right panel shows the recovered halo mass. In both panels, the red line shows the 1:1 relation and the teal line shows the best fit to data.} 
@@ -242,19 +233,12 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \end{figure*}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-\subsubsection{Structural Properties}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-\section{IMPROVEMENT}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \section{SUMMARY}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \acknowledgments 
-The authors also wish to thank the anonymous referee whose comments and
-suggestions significantly improved both the quality and clarity of this work. Several open source resources are used to complete this study Python \citep{van1991} along with Matplotlib \citep{Hunter2007} and IPython \citep{Perez2007}.
+The authors also wish to thank the anonymous referee whose comments and suggestions significantly improved both the quality and clarity of this work. This research made use of This research made use of \textsc{APLpy}, an open-source plotting package for Python hosted at http://aplpy.github.com; the \textsc{IPython} package \citep{Perez2007}; \textsc{matplotlib}, a Python library for publication quality graphics \citep{Hunter2007}. Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, the National Aeronautics and Space Administration, the Japanese Monbukagakusho, the Max Planck Society, and the Higher Education Funding Council for England. The SDSS Web Site is http://www.sdss.org/. The SDSS is managed by the Astrophysical Research Consortium for the Participating Institutions.
 
 \bibliography{master}
 
