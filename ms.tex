@@ -80,7 +80,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \section{INTRODUCTION}
 Our ability to perform precision cosmology with clusters of galaxies has reached a critical turning point. The widely accepted $\Lambda$CDM model of cosmology makes explicit predictions about the number and masses of galaxy clusters throughout the universe. However, connecting these predictions to a set of, sufficiently large in size, observed clusters remains a principal problem. Specifically, the largest threat to modern, precision, cluster cosmology is not the identification of large numbers of clusters (the total number of clusters known is only going up) but the accurate recovery of galaxy cluster mass \citeeg{Sehgal2011,Plank2014, Bocquet2015}.
 
-As mass is not a direct observable, a lot of work is underway to characterize galaxy cluster masses with an observable feature of galaxy clusters. The goal is to constrain, as best possible, $P(X|M,z)$ the probability ($P$) that a galaxy cluster of given mass ($M$), located at redshift ($z$) determined using observable parameter ($X$). The observable parameter most commonly observed X-ray temperatures and luminosities \citeeg{Mantz2010, Rykoff2014, Mantz2015}, cosmic microwave background observations \citeeg{Vanderlinde2010, Sehgal2011} using the Sunyaev--Zel’dovich effect (SZE; \citealt{Sunyaev1972}) or optical studies \citeeg{Rozo2010, Rozo2014} of richness \citeeg{Abell1958,Rykoff2012} or galaxy velocity dispersions \citeeg{Ruel2014, Sifon2015}.
+As mass is not a direct observable, a lot of work is underway to characterize galaxy cluster masses with an observable feature of galaxy clusters. The goal is to constrain, as best possible, $P(X|M,z)$ the probability ($P$) that a galaxy cluster of given mass ($M$), located at redshift ($z$) determined using observable parameter ($X$). The observable parameter most commonly observed X-ray temperatures and luminosities \citeeg{Mantz2010, Rykoff2014, Mantz2015}, cosmic microwave background observations \citeeg{Vanderlinde2010, Sehgal2011} using the Sunyaev--Zel’dovich effect (SZE; \citealt{Sunyaev1972}) or optical studies \citeeg{Rozo2010, Rozo2015} of richness \citeeg{Abell1958, Rykoff2012} or galaxy velocity dispersions \citeeg{Ruel2014, Sifon2015}.
 
 Massive surveys, both on going and planned, are revolutionizing cluster cosmology using a large range of wavelengths. The South Pole Telescope (SPT; \citealt{Carlstrom2011}) and the Atacama Cosmology Telescope (ACT; \citealt{Swetz2011}) are discovering many clusters through the SZE. Optically, the on going The Dark Energy Survey (DES; \citealt{DES2005}) and planned Large Synoptic Survey Telescope (LSST; \citealt{LSST2012}) will identify many thousands of clusters to much lower masses than is possible with SZE measurements. However, regardless of the discovery method used, spectroscopic followup is needed to further constrain $P(X|M,z)$. But as the cluster dataset grows to many tens of thousands of clusters individual followup becomes increasingly impractical. Therefore, large spectroscopic surveys are needed to more fully constrain the observable--mass relation of clusters.
 
@@ -134,7 +134,7 @@ The right panel of Figure~\ref{fig:oii sdss} shows the CMD of all SDSS galaxies.
 
 \subsection{Mock Observations}\label{sec:observations}
 \editorial{Not sure this does a good enough job talking about the two different observations.}
-Tentatively slated to start in the fall of 2015, HETDEX will perform blind spectroscopy (R $\sim$ 750 in $3500 - 5500~\AAA$) over two fields along the celestial equator. The 300 \degsq, Spring field and 120 \degsq, Fall field will have no preselected targets. Using VIRUS on the 10-m Hobby-Eberly Telescope (HET; \citealt{Ramsey1998}) the completed survey is expected to have an overall fill-factor of 1/4.5, meaning that the entire area could be covered with 4.5 dithers of the entire survey. 
+Tentatively slated to start in the spring of 2016, HETDEX will perform blind spectroscopy (R $\sim$ 750 in $3500 - 5500~\AAA$) over two fields along the celestial equator. The 300 \degsq, spring field and 120 \degsq, fall field will have no preselected targets. Using VIRUS on the 10-m Hobby-Eberly Telescope (HET; \citealt{Ramsey1998}) the completed survey is expected to have an overall fill-factor of 1/4.5, meaning that the entire area could be covered with 4.5 dithers of the entire survey. 
 
 The spectral coverage allows for the detection of [\ion{O}{ii}] ($\lambda\lambda 3727-3729~\AAA$ doublet) emitters to $z\sim 0.5$ and Ca H ($\lambda 3968.5~\AAA$) and K ($\lambda 3933.7~\AAA$) absorption features to $z\sim 0.4$. HETDEX is expected to detect sources with continuum brighter than 22 mag in \sdssg, and emission line strengths above $3.5\times10^{-17}$ \ergscm. So we ``observe'' $z<0.4$ galaxies which meet either the emission line or the magnitude limit. Galaxies $0.4<z<0.5$ are only observed if their emission line strength is sufficient.  
 
@@ -147,14 +147,14 @@ In this work we consider two separate observation cases. The first are targeted 
 
 The individual IFUs have a fill-factor of 1/3, which will be completely filled with three dithers of the telescope at each pointing. This means that when selecting galaxies from the Buzzard catalog we assume an observation for all galaxies laying within a colored, IFU square in Figure~\ref{fig:ifu layout}. \editorial{This should be updated with the fiber collisions.} Galaxies which lie between the IFUs are missed, as well as the galaxies which lie between the pointings, as there is no overlap between one pointing and the next. To cover the 375.67 \degsq\ field of the Buzzard catalog we require 5370 pointings where 0.015 \degsq\ of each pointing is covered by an IFU. The total area of the sky covered by an IFU is 80.80 \degsq\ which gives a filling factor of 1/4.65 slight decreased from the expected filling factor of 1/4.5. 
 
-\section{Cluster Membership}
-In the following sections we assume that the on sky positions and redshifts of the galaxy clusters are already known. In reality, galaxy over densities will be detected from imaging surveys \citeeg{Rykoff2014} or through techniques to identify structure in the RA, DEC, z point data (\eg, DBSCAN; \citealt{Ester1996}).
-
-While the galaxy cluster center may be well known, the constituent galaxies will not. The identification of member galaxies from photometric data \citeeg{Rozo2014} is promising, however, with spectroscopic information on all galaxies, we choose to utilize the full 3D parameter space. \editorial{Not very happy about that sentence}.
-
-We employ the ``shifting gapped" method of \cite{Fadda1996} as outlined in \cite{Owers2011}, which combines both the positional and velocity information. After an initial cut of $cz_c \pm 10,000$ \kms, the galaxies are binned in $0.4h^{-1}$ Mpc or larger enough bins to contain at least 10 (arbitrarily chosen) galaxies. Galaxies farther than 3 Mpc from the cluster center are also rejected. Once binned, the galaxies are sorted by their line-of-sight velocity (LOSV; see Section~\ref{sec:LOSVD}). Any galaxy with a LOSV greater than 1000 \kms of a neighboring galaxy is rejected as an interloper. The procedure repeats until the number of galaxies stabilizes in the bin.
-
-\editorial{This is taken from the other paper, and needs to be tweaked to make fit better into this framework. I think what we'll do is center a 100'' box on all of the clusters and then try to recover the galaxies. How many will we get, how many are wrong, and can we do better with a different algorithm?}
+% \section{Cluster Membership}
+% In the following sections we assume that the on sky positions and redshifts of the galaxy clusters are already known. In reality, galaxy over densities will be detected from imaging surveys \citeeg{Rykoff2014} or through techniques to identify structure in the RA, DEC, z point data (\eg, DBSCAN; \citealt{Ester1996}).
+%
+% While the galaxy cluster center may be well known, the constituent galaxies will not. The identification of member galaxies from photometric data \citeeg{Rozo2015} is promising, however, with spectroscopic information on all galaxies, we choose to utilize the full 3D parameter space. \editorial{Not very happy about that sentence}.
+%
+% We employ the ``shifting gapped" method of \cite{Fadda1996} as outlined in \cite{Owers2011}, which combines both the positional and velocity information. After an initial cut of $cz_c \pm 10,000$ \kms, the galaxies are binned in $0.4h^{-1}$ Mpc or larger enough bins to contain at least 10 (arbitrarily chosen) galaxies. Galaxies farther than 3 Mpc from the cluster center are also rejected. Once binned, the galaxies are sorted by their line-of-sight velocity (LOSV; see Section~\ref{sec:LOSVD}). Any galaxy with a LOSV greater than 1000 \kms of a neighboring galaxy is rejected as an interloper. The procedure repeats until the number of galaxies stabilizes in the bin.
+%
+% \editorial{This is taken from the other paper, and needs to be tweaked to make fit better into this framework. I think what we'll do is center a 100'' box on all of the clusters and then try to recover the galaxies. How many will we get, how many are wrong, and can we do better with a different algorithm?}
 
 \section{Recovery of Parameters}\label{sec:recovery}
  In the following sections, we outline the methods we use to derive the dynamical properties of the galaxy clusters in our sample. This is not meant to be an exhaustive study of the different methods used to recover these parameters. The following is, in many cases, a subset of the available methods to derive any single parameter. The specific choice of method may improve or diminish the accuracy of the recovered parameter, but the methods chosen were to facilitate comparison with observational studies. 
@@ -204,14 +204,21 @@ with $A_{1D} =$ 1040-1140 \kms\ (\citealt{Munari2013}; referred to as $\sigma_{1
 
 The choice $A_{1D}$ and $\alpha$ varies between studies \citeeg{Munari2013, VanderBurg2014} and should be calibrated on a individual basis. To do this, we randomly select 47494, $z<0.5$ clusters composed of 36000 $10^{13}$, 6000 $10^{14}$ and two $10^{15}~\Msol$ halos. We perform a linear fit to the $\sigma_{1D}-M_{200}$ values allowing both $A_{1D}$ and $\alpha$ to vary. We find best fitting parameters of $A_{1D} = 1117.9~\kms$ and $\alpha = 0.3297$, both of which are very near the values from \cite{Evrard2008} of $A_{1D} = 1082.9 \pm 4.0~\kms$ and $\alpha = 0.3361$. Therefore, we chose to adopt the parameters from \cite{Evrard2008} to better facilitate with other simulations \citeeg{Old2014}, and observational studies \citeeg{Brodwin2010}.
 
-\subsection{Radial Extent}
-We define the radius of a galaxy cluster as
-\begin{equation}
-	r_{200c} = \bigg{[} \frac{3}{4\pi} \frac{M_{200}}{200\rho_c} \bigg{]}^{1/3}
-\end{equation}
-where $\rho_c$ is critical density of the universe and defined as $3H^2/8\pi G$.
+% \subsection{Radial Extent}
+% We define the radius of a galaxy cluster as
+% \begin{equation}
+% 	r_{200c} = \bigg{[} \frac{3}{4\pi} \frac{M_{200}}{200\rho_c} \bigg{]}^{1/3}
+% \end{equation}
+% where $\rho_c$ is critical density of the universe and defined as $3H^2/8\pi G$.
 
 \section{RESULTS}\label{sec:results}
+
+\subsection{Recovery of Clusters}
+\begin{figure*} 
+	\includegraphics[width=\textwidth]{recovery.pdf} 
+	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{ii}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram.} \label{fig:recovery} 
+\end{figure*}
+
 The results of this work come in two broad sections. The accuracy of which we determine each cluster's LOSVD and dynamical mass, and the probability given a determined mass it is the correct mass. We test two different observation strategies with ideal and realistic information about the membership of the observed galaxies. Ideal information is knowing the exact membership of the galaxies, and realistic information relies on methods to determine the membership. \editorial{The results of this section a shown in Figures XXX and Figures XXX for the LOSVD and masses respectively.}
 
 \subsection{Targeted, Ideal Observations}
@@ -220,17 +227,6 @@ The results of this work come in two broad sections. The accuracy of which we de
 \subsection{Blind, Realistic Observations}
 We compare the calculated cluster redshifts to the true redshift ($z_{c,true}$) for 114903 galaxies comprising 1379 unique halos, and we find a RMS$[\Delta z/(1+z_{c,true})]= 4\times 10^{-4}$ where $\Delta z = z_{c,true} - z_{c}$. \editorial{The RMS using just the regular mean is 3.8e-4 which is only slightly better than the biweight. I don't think that will be the case when we get more complicated things.}
 
-\begin{figure*} 
-	\includegraphics[width=\textwidth]{fullKnowledge.pdf} 
-	\caption{Intrinsic cluster properties versus the recovered cluster properties for 16758 unique halos comprised of 657916 individual galaxies. The left panel shows the line of sight velocity dispersion (LOSVD) and the right panel shows the recovered halo mass. In both panels, the red line shows the 1:1 relation and the teal line shows the best fit to data.} 
-	\label{fig:full} 
-\end{figure*}
-
-\begin{figure*} 
-	\includegraphics[width=\textwidth]{hetdexDepth.pdf} 
-	\caption{HETDEX DEPTH! Intrinsic cluster properties versus the recovered cluster properties for 14239 unique halos comprised of 87754 individual galaxies. The left panel shows the line of sight velocity dispersion (LOSVD) and the right panel shows the recovered halo mass. In both panels, the red line shows the 1:1 relation and the teal line shows the best fit to data.} 
-	\label{fig:hetdexDepth} 
-\end{figure*}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
