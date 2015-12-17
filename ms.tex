@@ -235,6 +235,11 @@ Figure~\ref{fig: recovery} shows the recovery fraction of member galaxies, the n
 \editorial{why does the recovery fraction decrease with redshift? Are the clusters smaller? Do they not have as many galaxies per cluster at higher redshifts? Is it a magnitude effect? I also want to add an error bar estimation for several of the percentages to give a feel for how the different recovery levels effect the accuracy of the measurements.}
 
 \subsection{Mass estimates}
+\begin{figure*} 
+	\includegraphics[width=\textwidth]{MLcomparison.pdf} 
+	\caption{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and mass for the targeted (upper row) and survey (lower row) observing strategies. The significant decline in galaxies observed with the survey strategy is due to gaps in the VIRUS IFU.} \label{fig: ML comparison} 
+\end{figure*}
+
 \editorial{It doesn't look like you can use the targeted training sample to train the survey data. If you do, it either does worse or about the same if you didn't use any training at all. After looking at it, you do have to use the survey training data to get good results about 0.13 dex MAE
 }
 
