@@ -4,13 +4,14 @@
 \usepackage{color}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage[colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
 \usepackage{threeparttable}
 \usepackage{multirow}
 \usepackage{natbib}
 \usepackage{etoolbox}
+\usepackage[breaklinks, backref, colorlinks, urlcolor=magenta, citecolor=blue, linkcolor=magenta]{hyperref}
 
 \bibliographystyle{apj}
+%\bibliographystyle{yahapj}
 \citestyle{aa}
  
 % General commands that are good for any astronomy paper.
@@ -58,7 +59,7 @@
 
 \begin{document}
 
-\title{Cluster Dynamics with HETDEX - I: Simulated Performance, Mass Distribution and Limits}
+\title{HETDEX as a Galaxy Cluster Survey - I: Simulated Performance, Mass Distribution and Limits}
 
 \author{\sc Steven Boada\altaffilmark{1}, 
 C.~Papovich\altaffilmark{1}, and
@@ -99,7 +100,7 @@ This work plans to address these concerns in the following ways. We use simulate
 Throughout this paper, we adopt the following cosmological model ($\Omega_\Lambda = 0.77$,
 $\Omega_M = 0.23$, $\sigma_8 = 0.83$ and $H_0= 72$ \kms \mpc), assume a Chabrier initial mass function (IMF; \citealt{Chabrier2003}), and use AB magnitudes \citep{Oke1974}.
 
-\section{Data and Mock Observations}\label{sec:Data}
+\section{Data and Mock Observations}\label{sec: Data}
 
 Blah blah intro stuff... 
 
@@ -110,163 +111,155 @@ Galaxy $M_r$ luminosities are added to the velocity peaks using ShAM \citep{Redd
 
 The catalog information, used in this study, is broken into two large portions. The ``truth'' files contain the characteristics of each individual galaxies, such as right ascension (RA), declination (DEC), redshift (z), observed and rest-frame magnitudes, and many others. The ``halo'' files contain information for individual halos, to which many individual galaxies may belong. This includes five estimations of dynamical mass, RA, DEC, z, three dimensional velocity dispersion, and many others.
 
-However, the catalogs do not include information on emission or absorption lines or estimations of whether the halo is relaxed or not. We supplement the catalogs with this information and describe the method in Section~\ref{sec:oii luminosity} and others.
+However, the catalogs do not include information on emission or absorption lines or estimations of whether the halo is relaxed or not. We supplement the catalogs with this information and describe the method in Section~\ref{sec: oii luminosity} and others.
 
 \begin{figure} 
 	\includegraphics[width=0.49\textwidth]{hmf.pdf} 
 	\caption{The cumulative MF of halos above $M_{200c}$ at $z=0.1$. The predicted MF is from \cite{Tinker2008}.} 
-	\label{fig:hmf} 
+	\label{fig: hmf} 
 \end{figure}
 
-We investigate the accuracy of the halo mass distribution by comparing the cumulative number density of halos above a mass ($M_{200c}$) threshold to the halo mass function (HMF) of \cite{Tinker2008}. Shown in Figure~\ref{fig:hmf} the HMF is calculated at central redshifts of 0, 0.2, and 0.4 using {\tt HMFcalc} \citep{Murray2013} and compared to galaxies in a redshift window of $\Delta z\pm0.01$. We find a very good agreement between the expected HMF and the observed. 
+We investigate the accuracy of the halo mass distribution by comparing the cumulative number density of halos above a mass ($M_{200c}$) threshold to the halo mass function (HMF) of \cite{Tinker2008}. Shown in Figure~\ref{fig: hmf} the HMF is calculated at central redshifts of 0, 0.2, and 0.4 using {\tt HMFcalc} \citep{Murray2013} and compared to galaxies in a redshift window of $\Delta z\pm0.01$. We find a very good agreement between the expected HMF and the observed. 
 
-\subsection{ {\rm[\ion{O}{ii}]} Luminosity}\label{sec:oii luminosity}
+\subsection{ {\rm[\ion{O}{ii}]} Luminosity}\label{sec: oii luminosity}
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{oii_sdss.pdf} 
-	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{ii}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram.} \label{fig:oii sdss} 
+	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{ii}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram.} \label{fig: oii sdss} 
 \end{figure*}
 
-The Buzzard ``truth'' catalog does not provide [\ion{O}{ii}] luminosities so we must assign them empirically. We use 503113 galaxies from the SDSS Data Release 12 \citep{Alam2015} from $z = 0.05 - 0.2$, which are selected with no redshift warning, and place each galaxy on a color-magnitude diagram (CMD) of $M_r$ and $g-r$, see Figure~\ref{fig:oii sdss}.
+The Buzzard ``truth'' catalog does not provide [\ion{O}{ii}] luminosities so we must assign them empirically. We use 503113 galaxies from the SDSS Data Release 12 \citep{Alam2015} from $z = 0.05 - 0.2$, which are selected with no redshift warning, and place each galaxy on a color-magnitude diagram (CMD) of $M_r$ and $g-r$, see Figure~\ref{fig: oii sdss}.
 
 To assign an [\ion{O}{ii}] luminosity to each galaxy in our catalog we place the catalog galaxies on the same CMD and select all SDSS galaxies in a small 2D ($M_r$, $g-r$) bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their [\ion{O}{ii}] luminosities. Using a slice sampling technique \citep{Neal1997} we assign the catalog galaxy an [\ion{O}{ii}] luminosity based on the distribution of SDSS galaxies extracted. For catalog galaxies which are placed on the CMD near no, or very few ($1\leq n<10$) galaxies we assign it zero [\ion{O}{ii}] luminosity or the mean luminosity, respectively.
 
-The right panel of Figure~\ref{fig:oii sdss} shows the CMD of all SDSS galaxies. Two potential catalog galaxies are also placed on the CMD ($M_r, g-r = -17.7,~0.49$ and $M_r, g-r = -21.4,~1.24$) and indicated by two colored boxes. The histograms show in the Figure's left panel shows the probability density histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies in the 2D bin. We sample the distribution and assign each catalog galaxy an [\ion{O}{ii}] luminosity which is then converted into a flux.
+The right panel of Figure~\ref{fig: oii sdss} shows the CMD of all SDSS galaxies. Two potential catalog galaxies are also placed on the CMD ($M_r, g-r = -17.7,~0.49$ and $M_r, g-r = -21.4,~1.24$) and indicated by two colored boxes. The histograms show in the Figure's left panel shows the probability density histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies in the 2D bin. We sample the distribution and assign each catalog galaxy an [\ion{O}{ii}] luminosity which is then converted into a flux.
 
-\subsection{Mock Observations}\label{sec:observations}
+\subsection{Mock Observations}\label{sec: observations}
 \editorial{Not sure this does a good enough job talking about the two different observations.}
 Tentatively slated to start in the spring of 2016, HETDEX will perform blind spectroscopy (R $\sim$ 750 in $3500 - 5500~\AAA$) over two fields along the celestial equator. The 300 \degsq, spring field and 120 \degsq, fall field will have no preselected targets. Using VIRUS on the 10-m Hobby-Eberly Telescope (HET; \citealt{Ramsey1998}) the completed survey is expected to have an overall fill-factor of 1/4.5, meaning that the entire area could be covered with 4.5 dithers of the entire survey. 
 
-The spectral coverage allows for the detection of [\ion{O}{ii}] ($\lambda\lambda 3727-3729~\AAA$ doublet) emitters to $z\sim 0.5$ and Ca H ($\lambda 3968.5~\AAA$) and K ($\lambda 3933.7~\AAA$) absorption features to $z\sim 0.4$. HETDEX is expected to detect sources with continuum brighter than 22 mag in \sdssg, and emission line strengths above $3.5\times10^{-17}$ \ergscm. So we ``observe'' $z<0.4$ galaxies which meet either the emission line or the magnitude limit. Galaxies $0.4<z<0.5$ are only observed if their emission line strength is sufficient.  
+The spectral coverage allows for the detection of [\ion{O}{ii}] ($\lambda\lambda 3727-3729~\AAA$ doublet) emitters to $z\sim 0.5$ and Ca H ($\lambda 3968.5~\AAA$) and K ($\lambda 3933.7~\AAA$) absorption features to $z\sim 0.4$. HETDEX is expected to detect sources with continuum brighter than 22 mag in \sdssg, and emission line strengths above $3.5\times10^{-17}$ \ergscm. So we ``observe'' $z<0.4$ galaxies which meet either the emission line or the magnitude limit. Galaxies $0.4<z<0.5$ are only observed if their emission line strength is sufficient. \editorial{These limits have been changed. FIX!}
 
 \begin{figure} 
 	\includegraphics[width=0.49\textwidth]{f01.pdf} 
-	\caption{Representative observation tiling scheme for the HETDEX $16' \times 16'$ pointings. Each colored square is a single VIRUS IFU and the dashed octagons approximate the size of a single observation. See the text for more details.} \label{fig:ifu layout} 
+	\caption{Representative observation tiling scheme for the HETDEX $16' \times 16'$ pointings. Each colored square is a single VIRUS IFU and the dashed octagons approximate the size of a single observation. See the text for more details.} \label{fig: ifu layout} 
 \end{figure}
 
-In this work we consider two separate observation cases. The first are targeted observations where we select each galaxy cluster and ``observe'' each galaxy within $8'$ of the center. The second is a survey case where observations which are blind to the positions of the clusters are conducted. In both cases, our ``observations'' consist of placing masks down onto the Buzzard ``truth'' catalogs and selecting all, $z< 0.5$ also meeting sensitivity limits, galaxies which lie underneath. Each mask is created to accurately reproduce the HETDEX IFU pattern, see Figure~\ref{fig:ifu layout}. The pattern consists of 78 IFUs, which are comprised of 448 optical fibers subtending a $50'' \times 50''$ region on the sky \citep{Kelz2014}. The inter-IFU spacing is also $50''$ spanning a total area of $16'\times 16'$ on the sky. 
+In this work we consider two separate observation cases. The first are targeted observations where we select each galaxy cluster and ``observe'' each galaxy within $8'$ of the center. The second is a survey case where observations which are blind to the positions of the clusters are conducted. In both cases, our ``observations'' consist of placing masks down onto the Buzzard ``truth'' catalogs and selecting all, $z< 0.5$ also meeting sensitivity limits, galaxies which lie underneath. Each mask is created to accurately reproduce the HETDEX IFU pattern, see Figure~\ref{fig: ifu layout}. The pattern consists of 78 IFUs, which are comprised of 448 optical fibers subtending a $50'' \times 50''$ region on the sky \citep{Kelz2014}. The inter-IFU spacing is also $50''$ spanning a total area of $16'\times 16'$ on the sky. 
 
-The individual IFUs have a fill-factor of 1/3, which will be completely filled with three dithers of the telescope at each pointing. This means that when selecting galaxies from the Buzzard catalog we assume an observation for all galaxies laying within a colored, IFU square in Figure~\ref{fig:ifu layout}. \editorial{This should be updated with the fiber collisions.} Galaxies which lie between the IFUs are missed, as well as the galaxies which lie between the pointings, as there is no overlap between one pointing and the next. To cover the 375.67 \degsq\ field of the Buzzard catalog we require 5370 pointings where 0.015 \degsq\ of each pointing is covered by an IFU. The total area of the sky covered by an IFU is 80.80 \degsq\ which gives a filling factor of 1/4.65 slight decreased from the expected filling factor of 1/4.5. 
+The individual IFUs have a fill-factor of 1/3, which will be completely filled with three dithers of the telescope at each pointing. This means that when selecting galaxies from the Buzzard catalog we assume an observation for all galaxies laying within a colored, IFU square in Figure~\ref{fig: ifu layout}. \editorial{This should be updated with the fiber collisions.} Galaxies which lie between the IFUs are missed, as well as the galaxies which lie between the pointings, as there is no overlap between one pointing and the next. To cover the 375.67 \degsq\ field of the Buzzard catalog we require 5370 pointings where 0.015 \degsq\ of each pointing is covered by an IFU. The total area of the sky covered by an IFU is 80.80 \degsq\ which gives a filling factor of 1/4.65 slight decreased from the expected filling factor of 1/4.5. 
 
-% \section{Cluster Membership}
-% In the following sections we assume that the on sky positions and redshifts of the galaxy clusters are already known. In reality, galaxy over densities will be detected from imaging surveys \citeeg{Rykoff2014} or through techniques to identify structure in the RA, DEC, z point data (\eg, DBSCAN; \citealt{Ester1996}).
-%
-% While the galaxy cluster center may be well known, the constituent galaxies will not. The identification of member galaxies from photometric data \citeeg{Rozo2015} is promising, however, with spectroscopic information on all galaxies, we choose to utilize the full 3D parameter space. \editorial{Not very happy about that sentence}.
-%
-% We employ the ``shifting gapped" method of \cite{Fadda1996} as outlined in \cite{Owers2011}, which combines both the positional and velocity information. After an initial cut of $cz_c \pm 10,000$ \kms, the galaxies are binned in $0.4h^{-1}$ Mpc or larger enough bins to contain at least 10 (arbitrarily chosen) galaxies. Galaxies farther than 3 Mpc from the cluster center are also rejected. Once binned, the galaxies are sorted by their line-of-sight velocity (LOSV; see Section~\ref{sec:LOSVD}). Any galaxy with a LOSV greater than 1000 \kms of a neighboring galaxy is rejected as an interloper. The procedure repeats until the number of galaxies stabilizes in the bin.
-%
-% \editorial{This is taken from the other paper, and needs to be tweaked to make fit better into this framework. I think what we'll do is center a 100'' box on all of the clusters and then try to recover the galaxies. How many will we get, how many are wrong, and can we do better with a different algorithm?}
-
-\section{Recovery of Parameters}\label{sec:recovery}
+\section{Recovery of Parameters}\label{sec: recovery}
  In the following sections, we outline the methods we use to derive the dynamical properties of the galaxy clusters in our sample. This is not meant to be an exhaustive study of the different methods used to recover these parameters. The following is, in many cases, a subset of the available methods to derive any single parameter. The specific choice of method may improve or diminish the accuracy of the recovered parameter, but the methods chosen were to facilitate comparison with observational studies. 
 
 \subsection{Cluster Redshift}
-The accurate determination of the cluster redshift ($z_c$) is crucial to the reliability of all following measurements. An incorrect cluster redshift introduces errors into the measured line of sight velocity (LOSV) and corresponding dispersion, which, in turn, contributes to errors associated with dynamical mass and radius. 
+The accurate determination of the cluster redshift ($z_c$) is crucial to the reliability of all following measurements. An incorrect cluster redshift introduces errors into the measured line-of-sight velocity (LOSV) and corresponding dispersion, which, in turn, contributes to errors associated with dynamical mass and radius. 
 
 In simple terms, the cluster redshift is the mean of the redshifts of all galaxies associated with the cluster. However, because the standard mean can be quite sensitive to outliers or otherwise contaminated data, we require a more resistant statistic, and turn to the biweight location estimator \citep{Beers1990} which provides improved performance. 
 
-\subsection{Line of Sight Velocity Dispersion}\label{sec:LOSVD}
-We first calculate the line of sight velocity (LOSV) to each galaxy, where
+\subsection{Line-of-Sight Velocity Dispersion}\label{sec: LOSVD}
+We first calculate the line-of-sight velocity (LOSV) to each galaxy, where
 \begin{equation}
 	LOSV = c\frac{z - z_c}{1+z_c}
 \end{equation}
 and $c$ is the speed of light in \kms, $z$ is the redshift of the individual galaxy, and $z_c$ is the overall cluster redshift described in the previous section.
 
-The unbiased estimation of a standard deviation (a measure of statistical dispersion) from these LOSVs is a technically involved problem. At first, we require that our estimator be unbiased in that the dispersion estimation is equal to the true dispersion regardless of the number of points sampled, although, in practice this rarely occurs. The most commonly used estimate is the corrected sample standard deviation, given by:
+The line-of-sight velocity dispersion (LOSVD) is calculated using a method of maximum likelihood following \cite{Walker2006}. We maximize the probability function 
 \begin{equation}
-	s = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}
+  \label{eq: jointGaussian}
+p(\{v_1, ..., v_N\})=\displaystyle\prod_{i=1}^{N}\frac{1}{\sqrt{2\pi(\sigma_i^2+\sigma_p^2)}}\exp\biggl[-\frac{1}{2}\frac{(v_i-\langle u \rangle)^2}{(\sigma_i^2+\sigma_p^2)}\biggr]
 \end{equation}
-with $\{x_1, x_2, ..., x_n\}$ being the random sample and $\bar{x}$ the sample mean. The corrected sample standard deviation has the advantage in that it is unbiased (as opposed to the population standard deviation which is biased), but the removal of bias relies on knowing \textit{a priori} the underlying distribution from which the sample is drawn. An estimator which correctly estimates a standard deviation for a sample drawn from a wide range of distributions and is not adversely effected by outliers is said to be robust. An estimator which correctly identifies the standard deviation, even when a number of points are replaced by different values is said to be resistant.
+where $\sigma_p$, $\langle\mu\rangle$, and $\sigma_i$ is the LOSVD, the average radial velocity and the error on the individual LOSVs respectively. Using a Monte Carlo Markov Chain sampler ({\sc emcee}\footnote{\url{http://dan.iel.fm/emcee/current/}}, \citealt{Foreman-Mackey2013}), we draw twenty thousand samples from the posterior probability distribution. Simple priors, $\langle\mu\rangle$ lies between the maximum and minimum LOSV and $0< \sigma_p$, are used. When the full distribution of LOSVDs are not used, the final LOSVD is quoted as the median value of the probability distribution with 68\% error bars defined as the 16th and 84th percentiles of the same distribution.
 
-In our situation, a resistant estimator becomes critical as it minimizes the effect of outliers which the inclusion of non-cluster members have on the measured dispersion. \cite{Beers1990} present both a robust and resistant estimation of scale (yet another term for statistical dispersion) called the biweight scale estimator, which has been widely accepted by the community (\eg, \citealt{Milvang-Jensen2008, Owers2011, Murphy2011} and many others). It is given by 
-\begin{equation}
-	\sigma_{BI} = \sqrt{ N_{members} \frac{ \sum_{|u_i|<1} (1-u_i^2)^4 (v_i - \bar{v})^2} {D} }
-\end{equation}
-with $v_i$, the proper velocities, $\bar{v}$, the average of the proper velocities,
-\begin{equation}
-	D = \sum_{|u_i|<1} (1-u_i^2)(1-5u_i^2)
-\end{equation}
-with $u_i$ being the biweight weighting and defined as:
-\begin{equation}
-	u_i = \frac{v_i - \bar{v}}{9 {\rm MAD}(v_i)}
-\end{equation}
-where MAD is the median absolute deviation. \cite{Ruel2014} note, however, that the biweight scale estimator is biased and suggest a correction of $1/(D-1)$ to $\sigma_{BI}$ referring to it as the biweight sample variance. We adopt this method for clusters with at least 15 members. For clusters with fewer than 15 members, we adopt the gapper scale estimator \citep{Beers1990} which is shown to accurately recover the dispersion for as few as 5 member galaxies \citep{Hou2009}.
+In principle, a single statistic such as the biweight scale estimator or the gapper estimator (both from \citealt{Beers1990}) with many bootstrap resamplings could be used to construct a distribution of $\sigma_p$. We prefer the maximum likelihood method for its straight forward treatment of the errors in the LOSV measurements. \editorial{Maybe run a quick check to see how they compare.}
 
-There are several situations which can adversely effect the quality of our velocity dispersion measurement. The first is due to the nature of our observations. Because the HETDEX survey has a 1/4.5 fill factor (see Section~\ref{sec:observations}), there will be many situations where we will not have full spectroscopic information for a cluster. Some clusters could also have intrinsic velocity distributions where the observations of only a few members could result in a LOSVD which differs by large percent. This gives rise to clusters along a fixed mass having a large range of possible LOSVDs. \cite{Saro2013} find this effect to be most pronounced for clusters with fewer than 30 members, and \cite{Ruel2014} show the effect is a net increase in scatter of about 5\% compared to clusters with greater than 30 members. \editorial{This section was adapted, pretty heavily from Ruel2014. Is that cool?}
-
-A second effect, unique to works such as this, is the difference between the LOSVD computed between dark matter halos and the galaxies that occupy them, the so-called velocity bias \citeeg{Evrard2008, White2010}. This effect is assumed to be small ($\sim5\%$) and for this work we assume there is no bias, or that the galaxies perfectly trace the velocity distribution.
-
-\subsection{Dynamical Mass}\label{sec:mass}
+\subsection{Dynamical Mass}\label{sec: mass}
 Recently, the relationship between the LOSVD and dynamical mass has been the focus of several studies \citeeg{Evrard2008, Saro2013, Sifon2013, VanderBurg2014}, and a best fitting relationship for the mass enclosed by $r_{200c}$ of the form
-\begin{equation}
+\begin{equation}\label{eq: mass scaling}
 	M_{200c} = \frac{10^{15}}{h(z)} \bigg{(}\frac{\sigma_{1D}}{A_{1D}} \bigg{)}^{1/\alpha} \Msol
 \end{equation}
-with $A_{1D} =$ 1040-1140 \kms\ (\citealt{Munari2013}; referred to as $\sigma_{15}$ in \citealt{Evrard2008} and other works), $\alpha = 1/3$, $h(z) = H(z)/100$, and $\sigma_{1D}$ is the LOSVD of the velocity tracers (dark matter particles, subhalos or galaxies).
+with $A_{1D} = 1177 \pm 4.2$ \kms\ (\citealt{Munari2013}; referred to as $\sigma_{15}$ in \citealt{Evrard2008} and other works), $\alpha = 1/3$, $h(z) = H(z)/100$, and $\sigma_{1D}$ is the LOSVD of the velocity tracers (dark matter particles, subhalos or galaxies). 
 
-The choice $A_{1D}$ and $\alpha$ varies between studies \citeeg{Munari2013, VanderBurg2014} and should be calibrated on a individual basis. To do this, we randomly select 47494, $z<0.5$ clusters composed of 36000 $10^{13}$, 6000 $10^{14}$ and two $10^{15}~\Msol$ halos. We perform a linear fit to the $\sigma_{1D}-M_{200}$ values allowing both $A_{1D}$ and $\alpha$ to vary. We find best fitting parameters of $A_{1D} = 1117.9~\kms$ and $\alpha = 0.3297$, both of which are very near the values from \cite{Evrard2008} of $A_{1D} = 1082.9 \pm 4.0~\kms$ and $\alpha = 0.3361$. Therefore, we chose to adopt the parameters from \cite{Evrard2008} to better facilitate with other simulations \citeeg{Old2014}, and observational studies \citeeg{Brodwin2010}.
+A growing body of work suggests that there is a significant difference in the observed LOSVD depending on the velocity tracers used. Specifically, while there is little difference between using galaxies and their host DM subhalos, there is a significant over estimation of the LOSVD when using galaxies/subhalos compared to DM particles \citep{Munari2013}. We follow other works \citeeg{Kirk2015, Sifon2015a} using the scaling relation, given in Equation~\ref{eq: mass scaling} from \cite{Munari2013} to facilitate comparisons with other observational studies. 
+% \editorial{This all needs to be stripped out and reworked.}
+% The choice $A_{1D}$ and $\alpha$ varies between studies \citeeg{Munari2013, VanderBurg2014} and should be calibrated on a individual basis. To do this, we randomly select 47494, $z<0.5$ clusters composed of 36000 $10^{13}$, 6000 $10^{14}$ and two $10^{15}~\Msol$ halos. We perform a linear fit to the $\sigma_{1D}-M_{200}$ values allowing both $A_{1D}$ and $\alpha$ to vary. We find best fitting parameters of $A_{1D} = 1117.9~\kms$ and $\alpha = 0.3297$, both of which are very near the values from \cite{Evrard2008} of $A_{1D} = 1082.9 \pm 4.0~\kms$ and $\alpha = 0.3361$. Therefore, we chose to adopt the parameters from \cite{Evrard2008} to better facilitate with other simulations \citeeg{Old2014}, and observational studies \citeeg{Brodwin2010}.
 
-% \subsection{Radial Extent}
-% We define the radius of a galaxy cluster as
-% \begin{equation}
-% 	r_{200c} = \bigg{[} \frac{3}{4\pi} \frac{M_{200}}{200\rho_c} \bigg{]}^{1/3}
-% \end{equation}
-% where $\rho_c$ is critical density of the universe and defined as $3H^2/8\pi G$.
+\subsection{Dynamical Mass Corrections}
+In this section we use two methods to predict the mass of a cluster based on other observables. Often the cluster mass is estimated based on a single observable, X-ray temperature, velocity dispersion, richness and others. Here we combine many observables to attempt to correct the mass inferred solely from the velocity dispersion. The first method is traditional probability based where we marginalize over a series of observables to find the most probable mass. The second is based on a machine learning (ML) algorithm which attempts to ``learn'' the relationship between the observables and the desired output, the mass. Both of these methods are examples of supervised learning algorithms where the relationship between the observable (known) parameters and the target parameter (the mass) are both known.
 
-\section{RESULTS}\label{sec:results}
+As with any predictive analysis it is important to test the model on data that the model has not seen before. In this section we take all of the observed clusters, our full sample, split them, and generate a training and testing set. The data is randomly split 70\% training and 30\% testing. We follow the ML convention and refer to the individual clusters in each set as a ``sample'', and the parameters associated with the cluster ($z$, LOSVD, mass, etc.) as ``features''.  
 
-\subsection{Recovery of Clusters}
+\subsubsection{Probability Based}
+We begin with the training sample. After selecting the desired features $\vec{x} = \{\sigma, z, ...\}$ we make the joint probability between the true cluster mass (M) and $\vec{x}$. Because $\vec{x}$ can be multidimensional, we rely on the corner plot to visualize the relationship between all of the training features. Figure~\ref{fig: probability corner} shows all of the one (marginalized probability) and two (joint probability) dimensional projections of the posterior probability distributions of the features of the training data.
+
+\begin{figure} 
+	\includegraphics[width=0.5\textwidth]{cornertest.pdf} 
+	\caption{Corner plot of the \emph{training} data with features $\sigma$ and $z$. The corner plots shows all of the one and two dimensional posterior probability distributions used to determine the correct cluster mass. The colored rectangles show the slices needed to create a conditional probability distribution of the mass, $P(M|\vec{x})$. See text for a complete description. } \label{fig: probability corner} 
+\end{figure}
+
+The conditional probability of the mass $P(M|\vec{x}= \{ x_1,x_2,...\})$ is determined by taking a slice through the joint probability distributions in bins centered on the desired value. The slices show by the colored bars in Figure~\ref{fig: probability corner} are centered on $\sigma = 500$ \kms and $z=0.17$. The distribution of mass contained in the three dimensional bin given by the intersection of these slices is $P(M|\vec{x} = \{ \sigma=500 \kms,z=0.17\})$.
+
+For the clusters making up the \emph{test} sample the mass is unknown (it is what we are trying to predict) but the other features are known. To determine the mass probability distribution of a test cluster, $P(M)$ we combine the conditional probability distribution, $P(M|\vec{x})$, created previously with the probability distribution of $\sigma$ through Equation~\ref{eq: Pm}.
+\begin{equation}\label{eq: Pm}
+	P(M) = \int P(M|\vec{x}) P(\sigma) d\sigma
+\end{equation}
+The expected mass is determined by integrating the mass probability, $P(M)$ over all mass. This becomes our ``predicted'' mass, $\langle M\rangle$.
+\begin{equation}\label{eq: expected mass}
+	\langle M\rangle = \int M^\prime P(M^\prime)dM^\prime
+\end{equation}
+The confidence interval associated with this prediction can be estimated two ways. First, by calculating the variance about the expected mass through
+\begin{equation}\label{eq: variance}
+	V = \int (M^\prime - \langle M\rangle)^2 P(M^\prime)dM^\prime
+\end{equation}
+or by drawing many samples from $P(M)$ and calculating the values at the 16th and 84th percentile. In practice we find that both methods produce similar results for a large number of trials. Therefore, we quote predicted masses as the most probable mass given by Equation~\ref{eq: expected mass} and associated 68\% error estimated through Equation~\ref{eq: variance}.
+
+\subsubsection{Machine Learning Based}
+The estimation in this section relies on a ML technique known as an ensemble method, where many estimators are created by a single learning method with the goal of improved generalization and robustness compared to a single estimation. Ensemble methods come in two general flavors. Averaging methods average (hence the name) the estimators to produce a single prediction. Boosting estimators build estimates sequentially by attempting to address poor performing estimators in each previous step, hence ``boosting'' the predictive power.
+
+Here we use an averaging ensemble learning method known as a forest of randomized decision trees often shorten to just random forest (RF). Decision trees can be visualized a flow chart where forks are the branches of the tree. The path along the tree is decided by the values of the feature at each branch. RF estimators use a random subset of the training set at each fork to decide which path should be followed. The final prediction is then the average of all the trees. We use RF regression methods as implemented in {\sc Scikit-Learn} \citep{Pedregosa2012}.
+
+The 68\% prediction interval is determined by calculating the 16th and 84th percentile of all the predictions made by the ensemble of estimators.
+
+\section{RESULTS}\label{sec: results}
+Here we explore the cluster member recovery rate and mass estimates for the two observing strategies. We discuss the accuracy of dynamical mass derived from both the scaling relation (see Equation~\ref{eq: mass scaling}) and through the probability and ML methods.
+
+\subsection{Recovery of Cluster Members}
+As discussed in Section~\ref{sec: observations} the observational constraints place limits on the total number fo clusters member galaxies expected to be recovered. Knowing these limits will provide important information for potential future follow up or targeted observations. 
+
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{recovery.pdf} 
-	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{ii}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram.} \label{fig:recovery} 
+	\caption{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and mass for the targeted (upper row) and survey (lower row) observing strategies. The significant decline in galaxies observed with the survey strategy is due to gaps in the VIRUS IFU.} \label{fig: recovery} 
 \end{figure*}
 
-The results of this work come in two broad sections. The accuracy of which we determine each cluster's LOSVD and dynamical mass, and the probability given a determined mass it is the correct mass. We test two different observation strategies with ideal and realistic information about the membership of the observed galaxies. Ideal information is knowing the exact membership of the galaxies, and realistic information relies on methods to determine the membership. \editorial{The results of this section a shown in Figures XXX and Figures XXX for the LOSVD and masses respectively.}
+Figure~\ref{fig: recovery} shows the recovery fraction of member galaxies, the number of observed versus the number of actual galaxies, as a function of both redshift and cluster mass for the targeted and survey observing strategies. As expected, the targeted observing strategy where the individual clusters are targeted through several dithers to ensure near complete coverage, performs significant better than the survey observing strategy for nearly all redshifts and cluster masses. This performance gain is due solely to the gaps between the fiber bundles of the IFU. 
 
-\subsection{Targeted, Ideal Observations}
-\subsection{Targeted, Realistic Observations}
-\subsection{Blind, Ideal Observations}
-\subsection{Blind, Realistic Observations}
-We compare the calculated cluster redshifts to the true redshift ($z_{c,true}$) for 114903 galaxies comprising 1379 unique halos, and we find a RMS$[\Delta z/(1+z_{c,true})]= 4\times 10^{-4}$ where $\Delta z = z_{c,true} - z_{c}$. \editorial{The RMS using just the regular mean is 3.8e-4 which is only slightly better than the biweight. I don't think that will be the case when we get more complicated things.}
+\editorial{why does the recovery fraction decrease with redshift? Are the clusters smaller? Do they not have as many galaxies per cluster at higher redshifts? Is it a magnitude effect? I also want to add an error bar estimation for several of the percentages to give a feel for how the different recovery levels effect the accuracy of the measurements.}
+
+\subsection{Mass estimates}
+\editorial{It doesn't look like you can use the targeted training sample to train the survey data. If you do, it either does worse or about the same if you didn't use any training at all. After looking at it, you do have to use the survey training data to get good results about 0.13 dex MAE
+}
+
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+\section{HETDEX as a Galaxy Cluster Survey}
+
+\subsection{Expected Results}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\subsection{Potential Improvements}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\subsection{Extendability to Other Surveys}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \section{SUMMARY}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \acknowledgments 
-The authors also wish to thank the anonymous referee whose comments and suggestions significantly improved both the quality and clarity of this work. We also thank Steven W. Crawford for many helpful discussions. This research made use of This research made use of \textsc{APLpy}, an open-source plotting package for Python hosted at http://aplpy.github.com; the \textsc{IPython} package \citep{Perez2007}; \textsc{matplotlib}, a Python library for publication quality graphics \citep{Hunter2007}. Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, the National Aeronautics and Space Administration, the Japanese Monbukagakusho, the Max Planck Society, and the Higher Education Funding Council for England. The SDSS Web Site is http://www.sdss.org/. The SDSS is managed by the Astrophysical Research Consortium for the Participating Institutions.
+The authors also wish to thank the anonymous referee whose comments and suggestions significantly improved both the quality and clarity of this work. We also thank Steven W. Crawford for many helpful discussions. This research made use of This research made use of the \textsc{IPython} package \citep{Perez2007} and \textsc{matplotlib}, a Python library for publication quality graphics \citep{Hunter2007}. Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, the National Aeronautics and Space Administration, the Japanese Monbukagakusho, the Max Planck Society, and the Higher Education Funding Council for England. The SDSS is managed by the Astrophysical Research Consortium for the Participating Institutions.
 
 \bibliography{master}
 
-\end{document}
+% We compare the calculated cluster redshifts to the true redshift ($z_{c,true}$) for 114903 galaxies comprising 1379 unique halos, and we find a RMS$[\Delta z/(1+z_{c,true})]= 4\times 10^{-4}$ where $\Delta z = z_{c,true} - z_{c}$. \editorial{The RMS using just the regular mean is 3.8e-4 which is only slightly better than the biweight. I don't think that will be the case when we get more complicated things.}
 
-% \section{Evidence of Substructure}
-% Like the recovery of dynamical parameters discussed in the previous section, the choice of method to investigate the dynamical state of galaxy clusters is heavily debated. Perhaps the most widely used metric is the Dressler-Shectman (DS) test \citep{Dressler1988}, and is not without criticism \citeeg{White2010}. New methods such as the Caustic Method (\citealt{Yu2015}, and the references therein) offer promise to shed further light on this difficult problem.
-%
-% \subsection{From VD profiles}
-% We utilize the modality \citep{Oliva-Altamirano2014} which describes the Gaussianity of a LOSV distribution in a galaxy cluster. For clusters with Gaussian distributed LOSVs, the modality is close to 1/3. It is defined as $(1+\mathrm{skewness}^2)/(3+\mathrm{kurtosis}^2)$. \editorial{Do I need to describe what the skewness and kurtosis is?}
-%
-% \subsection{Dominance}
-% \editorial{This is taken pretty directly from the GAMA paper. Will need to be edited to fit.}
-% The dominance is defined as the luminosity gap between the brightest and the second brightest galaxy in a cluster ($\Delta m_{1, 2}$). The amplitude of the luminosity gap between the BGG/BCG and the second brightest galaxy in the halo, is expected to be a function of both the formation epoch and the recent infall history of the halo. A small magnitude gap ($\Delta m_{1, 2} < 1$) indicates a recent halo merger, and larger gaps ($\Delta m_{1, 2} > 1$), common in fossil groups, is perhaps indicative of a cluster or groups that has not undergone a recent merger.
-%
-% \subsection{Dressler-Schectman Test}
-% We leverage the large spectroscopic dataset to study the structural properties of the clusters. \cite{Pinkney1996} determine, from a comparison of five different methods that the DS test is the most sensitive to the presence of substructure.
-%
-% The DS test, which combines the spatial positions and velocities of the galaxies, provides a method to locate substructure by identifying groups of galaxies which differ significantly from the cluster velocity distribution. Galaxy subsets are selected from a cluster of $n_{members}$ and each constituent galaxy deviation is calculated according to
-% \begin{equation}
-% 	\delta_i^2 = \frac{N_{local}+1}{\sigma^2}\bigg{[}(\bar{v}_{local,i} - \bar{v})^2 + (\sigma_{local,i} - \sigma)^2\bigg{]}^2
-% \end{equation}
-% where $\bar{v}_{local}$ and $\sigma_{local}$ are the mean velocity and velocity dispersion for a subset of $N_{local}$ galaxies and $\bar{v}$ and $\sigma$ are the entire cluster's mean velocity and velocity dispersion. The choice of $N_{local}$ is left to the user. Originally, \cite{Dressler1988} choose $N_{local}=10$, however \cite{Bird1994} points out that using a fixed value for $N_{local}$ reduces the sensitivity to substructure. We follow \cite{Bird1994} in choosing $N_{local} = \sqrt n_{members}$. \editorial{doesn't talk about the nearest neighbors which is what we are using.}
-%
-% The DS statistic is the $\Delta$-value given by,
-% \begin{equation}
-% 	\Delta = \sum^{n_{members}}_i \delta_i
-% \end{equation}
-% where a system is considered to contain substructure if $\Delta/n_{members} > 1$ \citep{Dressler1988}. A second method, described in \cite{Hou2012}, uses probabilities (P-values) rather than a threshold for the identification of substructure. P-values are computed by comparing the observed $\Delta$-value and the $Delta$-value after the velocities (but not positions) have been shuffled through a series of Monte Carlo runs. The probability of the existence of substructure becomes
-% \begin{equation}
-% 	P = \sum (\Delta_{shuffled} > \Delta_{Observed}) / n_{shuffle}
-% \end{equation}
-% where $n_{shuffle}$ is the number of shufflings used. \editorial{This sounds a whole lot like the description given in Hou2012. Make sure that we aren't copying anything word for word. That'd be bad.}
-%
-% In practice, we use locate the nearest neighbors using an unsupervised k-nearest neighbor algorithm as implemented in Scikit-Learn \citep{Pedregosa2012}.
+\end{document}
