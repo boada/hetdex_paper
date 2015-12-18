@@ -237,8 +237,12 @@ Figure~\ref{fig: recovery} shows the recovery fraction of member galaxies, the n
 \subsection{Mass estimates}
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{MLcomparison.pdf} 
-	\caption{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and mass for the targeted (upper row) and survey (lower row) observing strategies. The significant decline in galaxies observed with the survey strategy is due to gaps in the VIRUS IFU.} \label{fig: ML comparison} 
+	\caption{Mass predictions for the power law scaling relation (Equation~\ref{eq: mass scaling}) and the ML technique with different input features. The bottom row of panels shows the fractional error (Equation~\ref{eq: fractional error}) as a function of mass. The solid black line shows the 1:1 relation. The colored lines and shaded region show the median value and 68\% bounds respectively.} \label{fig: ML comparison} 
 \end{figure*}
+
+\begin{equation}\label{eq: fractional error}
+	\epsilon = (M_{pred} - M)/M
+\end{equation}
 
 \editorial{It doesn't look like you can use the targeted training sample to train the survey data. If you do, it either does worse or about the same if you didn't use any training at all. After looking at it, you do have to use the survey training data to get good results about 0.13 dex MAE
 }
