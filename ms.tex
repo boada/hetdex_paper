@@ -1,43 +1,33 @@
-\documentclass[apj, revtex4]{emulateapj}
-\usepackage{epsf}
-\usepackage{color}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{threeparttable}
-\usepackage{multirow}
-\usepackage{natbib}
-\usepackage{etoolbox}
-\usepackage[breaklinks, backref, colorlinks, urlcolor=magenta, citecolor=blue, linkcolor=magenta]{hyperref}
+\documentclass[a4paper,fleqn,usenatbib]{mnras}
 
-\bibliographystyle{apj}
-%\bibliographystyle{yahapj}
-\citestyle{aa}
- 
-% General commands that are good for any astronomy paper.
+% MNRAS is set in Times font. If you don't have this installed (most LaTeX
+% installations will be fine) or prefer the old Computer Modern fonts, comment
+% out the following line
+% \usepackage{newtxtext,newtxmath}
+% Depending on your LaTeX fonts installation, you might get better results with one of these:
+% \usepackage{mathptmx}
+% \usepackage{txfonts}
+
+% Use vector fonts, so it zooms properly in on-screen viewing software
+% Don't change these lines unless you know what you are doing
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
 \input{commands.tex}
 
-\makeatletter
-% Patch case where name and year are separated by aysep
-\patchcmd{\NAT@citex}
-  {\@citea\NAT@hyper@{%
-     \NAT@nmfmt{\NAT@nm}%
-     \hyper@natlinkbreak{\NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb}%
-     \NAT@date}}
-  {\@citea\NAT@nmfmt{\NAT@nm}%
-   \NAT@aysep\NAT@spacechar\NAT@hyper@{\NAT@date}}{}{}
+% Only include extra packages if you really need them. Common packages are:
+%\usepackage{epsf}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+\usepackage{natbib}
+%\usepackage[colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{multirow}
+\usepackage{etoolbox}
 
-% Patch case where name and year are separated by opening bracket
-\patchcmd{\NAT@citex}
-  {\@citea\NAT@hyper@{%
-     \NAT@nmfmt{\NAT@nm}%
-     \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
-       {\@citeb\@extra@b@citeb}%
-     \NAT@date}}
-  {\@citea\NAT@nmfmt{\NAT@nm}%
-   \NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi\NAT@hyper@{\NAT@date}}
-
-
-%Commands specific to the this work
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
 \newcommand{\editorial}[1]{\textcolor{red}{#1}}
 \DeclareRobustCommand{\ion}[2]{%
 \relax\ifmmode
@@ -47,29 +37,33 @@
 \else\textup{#1\,{\mdseries\textsc{#2}}}%
 \fi}
 
-%-----------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+\title[Short Title]{Cluster Dynamics with HETDEX - I: Simulated Performance, Mass Distribution and Limits}
 
-\shorttitle{Cluster Dynamics with HETDEX}
-\shortauthors{BOADA ET AL.}
+% The list of authors, and the short list which is used in the headers.
+% If you need two or more lines of authors, add an extra line using \newauthor
+\author[S. Boada et al.]{
+Steven Boada,$^{1}$\thanks{E-mail: boada@physics.tamu.edu (SB)}
+C.~Papovich,$^{1}$
+R.~Wechsler$^{2,3}$
+\\
+% List of institutions
+$^{1}$George P.\ and Cynthia Woods Mitchell Institute for
+Fundamental Physics and Astronomy, Texas A\&M University, College Station, TX, 77843-4242\\
+$^{2}$Kavli Institute for Particle Astrophysics and Cosmology, Department of Physics, Stanford University, Stanford, CA 94305, USA\\
+$^{3}$Department of Particle Physics and Astrophysics, SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA}
 
-%\slugcomment{\it Draft Version \today}
-%\slugcomment{\it Submitted for publication in the Astrophysical Journal}
-%\slugcomment{Accepted for Publication in the Astrophysical Journal}
+% These dates will be filled out by the publisher
+\date{Accepted XXX. Received YYY; in original form ZZZ}
 
+% Enter the current year, for the copyright statements etc.
+\pubyear{2016}
+
+% Don't change these lines
 \begin{document}
-
-\title{HETDEX as a Galaxy Cluster Survey - I: Simulated Performance, Mass Distribution and Limits}
-
-\author{\sc Steven Boada\altaffilmark{1}, 
-C.~Papovich\altaffilmark{1}, and
-R.~Wechsler\altaffilmark{2,3}} 
-
-\altaffiltext{1}{George P.\ and Cynthia Woods Mitchell Institute for
-Fundamental Physics and Astronomy, and Department of Physics and Astronomy,
-Texas A\&M University, College Station, TX, 77843-4242;
-boada@physics.tamu.edu}
-\altaffiltext{2}{Kavli Institute for Particle Astrophysics and Cosmology, Department of Physics, Stanford University, Stanford, CA 94305, USA}
-\altaffiltext{3}{Department of Particle Physics and Astrophysics, SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
 
 \begin{abstract}
 \noindent
@@ -114,7 +108,7 @@ However, the catalogs do not include information on emission or absorption lines
 
 \begin{figure} 
 	\includegraphics[width=0.49\textwidth]{hmf.pdf} 
-	\caption{The cumulative MF of halos above $M_{200c}$ at $z=0.1$. The predicted MF is from \cite{Tinker2008}.} 
+	\caption{The cumulative MF of halos above $M_{200c}$ at $z=0.1$. The predicted MF is from tinker2008.} 
 	\label{fig: hmf} 
 \end{figure}
 
@@ -263,11 +257,88 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 \section{SUMMARY}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-\acknowledgments 
-The authors also wish to thank the anonymous referee whose comments and suggestions significantly improved both the quality and clarity of this work. We also thank Steven W. Crawford for many helpful discussions. This research made use of This research made use of the \textsc{IPython} package \citep{Perez2007} and \textsc{matplotlib}, a Python library for publication quality graphics \citep{Hunter2007}. Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, the National Aeronautics and Space Administration, the Japanese Monbukagakusho, the Max Planck Society, and the Higher Education Funding Council for England. The SDSS is managed by the Astrophysical Research Consortium for the Participating Institutions.
+\section*{Acknowledgements}
+The authors also wish to thank the anonymous referee whose comments and suggestions significantly improved both the quality and clarity of this work. We also thank Steven W. Crawford for many helpful discussions. This research made use of This research made use of \textsc{APLpy}, an open-source plotting package for Python hosted at http://aplpy.github.com; the \textsc{IPython} package \citep{Perez2007}; \textsc{matplotlib}, a Python library for publication quality graphics \citep{Hunter2007}. Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, the National Aeronautics and Space Administration, the Japanese Monbukagakusho, the Max Planck Society, and the Higher Education Funding Council for England. The SDSS Web Site is http://www.sdss.org/. The SDSS is managed by the Astrophysical Research Consortium for the Participating Institutions.
 
-\bibliography{master}
+%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
+% The best way to enter references is to use BibTeX:
+\bibliographystyle{mnras}
+\bibliography{master} % if your bibtex file is called example.bib
 
-% We compare the calculated cluster redshifts to the true redshift ($z_{c,true}$) for 114903 galaxies comprising 1379 unique halos, and we find a RMS$[\Delta z/(1+z_{c,true})]= 4\times 10^{-4}$ where $\Delta z = z_{c,true} - z_{c}$. \editorial{The RMS using just the regular mean is 3.8e-4 which is only slightly better than the biweight. I don't think that will be the case when we get more complicated things.}
+%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
+% \appendix
+%
+% \section{Some extra material}
+%
+% If you want to present additional material which would interrupt the flow of the main paper,
+% it can be placed in an Appendix which appears after the list of references.
 
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
 \end{document}
+
+% \begin{equation}
+%     x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.
+% 	\label{eq:quadratic}
+% \end{equation}
+%
+% % Example figure
+% \begin{figure}
+% 	% To include a figure from a file named example.*
+% 	% Allowable file formats are eps or ps if compiling using latex
+% 	% or pdf, png, jpg if compiling using pdflatex
+% 	\includegraphics[width=\columnwidth]{example}
+%     \caption{This is an example figure. Captions appear below each figure.
+% 	Give enough detail for the reader to understand what they're looking at,
+% 	but leave detailed discussion to the main body of the text.}
+%     \label{fig:example_figure}
+% \end{figure}
+%
+% % Example table
+% \begin{table}
+% 	\centering
+% 	\caption{This is an example table. Captions appear above each table.
+% 	Remember to define the quantities, symbols and units used.}
+% 	\label{tab:example_table}
+% 	\begin{tabular}{lccr} % four columns, alignment for each
+% 		\hline
+% 		A & B & C & D\\
+% 		\hline
+% 		1 & 2 & 3 & 4\\
+% 		2 & 4 & 6 & 8\\
+% 		3 & 5 & 7 & 9\\
+% 		\hline
+% 	\end{tabular}
+% \end{table}
+
+% \section{Evidence of Substructure}
+% Like the recovery of dynamical parameters discussed in the previous section, the choice of method to investigate the dynamical state of galaxy clusters is heavily debated. Perhaps the most widely used metric is the Dressler-Shectman (DS) test \citep{Dressler1988}, and is not without criticism \citeeg{White2010}. New methods such as the Caustic Method (\citealt{Yu2015}, and the references therein) offer promise to shed further light on this difficult problem.
+%
+% \subsection{From VD profiles}
+% We utilize the modality \citep{Oliva-Altamirano2014} which describes the Gaussianity of a LOSV distribution in a galaxy cluster. For clusters with Gaussian distributed LOSVs, the modality is close to 1/3. It is defined as $(1+\mathrm{skewness}^2)/(3+\mathrm{kurtosis}^2)$. \editorial{Do I need to describe what the skewness and kurtosis is?}
+%
+% \subsection{Dominance}
+% \editorial{This is taken pretty directly from the GAMA paper. Will need to be edited to fit.}
+% The dominance is defined as the luminosity gap between the brightest and the second brightest galaxy in a cluster ($\Delta m_{1, 2}$). The amplitude of the luminosity gap between the BGG/BCG and the second brightest galaxy in the halo, is expected to be a function of both the formation epoch and the recent infall history of the halo. A small magnitude gap ($\Delta m_{1, 2} < 1$) indicates a recent halo merger, and larger gaps ($\Delta m_{1, 2} > 1$), common in fossil groups, is perhaps indicative of a cluster or groups that has not undergone a recent merger.
+%
+% \subsection{Dressler-Schectman Test}
+% We leverage the large spectroscopic dataset to study the structural properties of the clusters. \cite{Pinkney1996} determine, from a comparison of five different methods that the DS test is the most sensitive to the presence of substructure.
+%
+% The DS test, which combines the spatial positions and velocities of the galaxies, provides a method to locate substructure by identifying groups of galaxies which differ significantly from the cluster velocity distribution. Galaxy subsets are selected from a cluster of $n_{members}$ and each constituent galaxy deviation is calculated according to
+% \begin{equation}
+% 	\delta_i^2 = \frac{N_{local}+1}{\sigma^2}\bigg{[}(\bar{v}_{local,i} - \bar{v})^2 + (\sigma_{local,i} - \sigma)^2\bigg{]}^2
+% \end{equation}
+% where $\bar{v}_{local}$ and $\sigma_{local}$ are the mean velocity and velocity dispersion for a subset of $N_{local}$ galaxies and $\bar{v}$ and $\sigma$ are the entire cluster's mean velocity and velocity dispersion. The choice of $N_{local}$ is left to the user. Originally, \cite{Dressler1988} choose $N_{local}=10$, however \cite{Bird1994} points out that using a fixed value for $N_{local}$ reduces the sensitivity to substructure. We follow \cite{Bird1994} in choosing $N_{local} = \sqrt n_{members}$. \editorial{doesn't talk about the nearest neighbors which is what we are using.}
+%
+% The DS statistic is the $\Delta$-value given by,
+% \begin{equation}
+% 	\Delta = \sum^{n_{members}}_i \delta_i
+% \end{equation}
+% where a system is considered to contain substructure if $\Delta/n_{members} > 1$ \citep{Dressler1988}. A second method, described in \cite{Hou2012}, uses probabilities (P-values) rather than a threshold for the identification of substructure. P-values are computed by comparing the observed $\Delta$-value and the $Delta$-value after the velocities (but not positions) have been shuffled through a series of Monte Carlo runs. The probability of the existence of substructure becomes
+% \begin{equation}
+% 	P = \sum (\Delta_{shuffled} > \Delta_{Observed}) / n_{shuffle}
+% \end{equation}
+% where $n_{shuffle}$ is the number of shufflings used. \editorial{This sounds a whole lot like the description given in Hou2012. Make sure that we aren't copying anything word for word. That'd be bad.}
+%
+% In practice, we use locate the nearest neighbors using an unsupervised k-nearest neighbor algorithm as implemented in Scikit-Learn \citep{Pedregosa2012}.
