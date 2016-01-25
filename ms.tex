@@ -1,4 +1,4 @@
-\documentclass[a4paper,fleqn,usenatbib]{mnras}
+\documentclass[fleqn,usenatbib]{mnras}
 
 % MNRAS is set in Times font. If you don't have this installed (most LaTeX
 % installations will be fine) or prefer the old Computer Modern fonts, comment
@@ -22,8 +22,8 @@
 \usepackage{amssymb}	% Extra maths symbols
 \usepackage{natbib}
 %\usepackage[colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
-\usepackage{multirow}
-\usepackage{etoolbox}
+%\usepackage{multirow}
+%\usepackage{etoolbox}
 
 %%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
 \input{commands.tex}
@@ -100,7 +100,7 @@ $\Omega_M = 0.23$, $\sigma_8 = 0.83$ and $H_0= 72$ \kms \mpc), assume a Chabrier
 
 \section{Data and Mock Observations}\label{sec: Data}
 
-Blah blah intro stuff... 
+\editorial{Blah blah intro stuff... Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}
 
 \subsection{The ``Buzzard'' Catalogs}
 The ``Buzzard'' mock galaxy catalogs (R. Wechsler et al., private communication) cover 375.68 \degsq\ between $60 < RA < 90$ and $-61 < DEC < -41$ and are derived from a combination of Sub-halo Abundance Matching (ShAM) and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) tied to an in house n-body cosmological simulation. A brief description of the catalog creation is described as follows. The initial conditions are generated with a second-order Lagrangian perturbation theory using {\tt 2LPTic} \citep{Crocce2006}. Dark matter (DM) n-body simulations are run using {\tt LGadget-2} (a version of {\tt Gadget-2}; \citealt{Springel2005}). The DM halos are identified using the {\tt ROCKSTAR} halo finder \citep{Behroozi2013} which also calculates halo masses and other various parameters. 
@@ -166,9 +166,9 @@ The line-of-sight velocity dispersion (LOSVD) is calculated using a method of ma
   \label{eq: jointGaussian}
 p(\{v_1, ..., v_N\})=\displaystyle\prod_{i=1}^{N}\frac{1}{\sqrt{2\pi(\sigma_i^2+\sigma_p^2)}}\exp\biggl[-\frac{1}{2}\frac{(v_i-\langle u \rangle)^2}{(\sigma_i^2+\sigma_p^2)}\biggr]
 \end{equation}
-where $\sigma_p$, $\langle\mu\rangle$, and $\sigma_i$ is the LOSVD, the average radial velocity and the error on the individual LOSVs respectively. Using a Monte Carlo Markov Chain sampler ({\sc emcee}\footnote{\url{http://dan.iel.fm/emcee/current/}}, \citealt{Foreman-Mackey2013}), we draw twenty thousand samples from the posterior probability distribution. Simple priors, $\langle\mu\rangle$ lies between the maximum and minimum LOSV and $0< \sigma_p$, are used. When the full distribution of LOSVDs are not used, the final LOSVD is quoted as the median value of the probability distribution with 68\% error bars defined as the 16th and 84th percentiles of the same distribution.
+where $\sigma_p$, $\langle\mu\rangle$, and $\sigma_i$ is the LOSVD, the average radial velocity and the error on the individual LOSVs respectively. Using a Monte Carlo Markov Chain sampler (MCMC; {\tt emcee}\footnote{\url{http://dan.iel.fm/emcee/current/}}, \citealt{Foreman-Mackey2013}), we draw twenty thousand samples from the posterior probability distribution. Simple priors, $\langle\mu\rangle$ lies between the maximum and minimum LOSV and $0< \sigma_p$ \editorial{check}, are used. When the full distribution of LOSVDs are not used, the final LOSVD is quoted as the median value of the posterior probability distribution with 68\% error bars defined as the 16th and 84th percentiles of the same distribution.
 
-In principle, a single statistic such as the biweight scale estimator or the gapper estimator (both from \citealt{Beers1990}) with many bootstrap resamplings could be used to construct a distribution of $\sigma_p$. We prefer the maximum likelihood method for its straight forward treatment of the errors in the LOSV measurements. \editorial{Maybe run a quick check to see how they compare.}
+In principle, a single statistic such as the biweight scale estimator or the gapper estimator (both from \citealt{Beers1990}) with many bootstrap resamplings could be used to construct a distribution of $\sigma_p$. In simple tests where the values of both $\sigma_p$ and $\langle\mu\rangle$ are known. The 68\% error bars derived from the MCMC method give slightly better results with the true LOSVD value bracketed by the error bars in $\sim68\%$ of the cases versus $\sim57\%$ with bootstrapping and a single statistic. In addition, we prefer the maximum likelihood method for its straight forward treatment of the errors in the LOSV measurements.
 
 \subsection{Dynamical Mass}\label{sec: mass}
 Recently, the relationship between the LOSVD and dynamical mass has been the focus of several studies \citeeg{Evrard2008, Saro2013, Sifon2013, VanderBurg2014}, and a best fitting relationship for the mass enclosed by $r_{200c}$ of the form
@@ -215,7 +215,7 @@ The estimation in this section relies on a ML technique known as an ensemble met
 
 Here we use an averaging ensemble learning method known as a forest of randomized decision trees often shorten to just random forest (RF). Decision trees can be visualized a flow chart where forks are the branches of the tree. The path along the tree is decided by the values of the feature at each branch. RF estimators use a random subset of the training set at each fork to decide which path should be followed. The final prediction is then the average of all the trees. We use RF regression methods as implemented in {\tt Scikit-Learn} \citep{Pedregosa2012}.
 
-The 68\% prediction interval is determined by calculating the 16th and 84th percentile of all the predictions made by the ensemble of estimators.
+The 68\% prediction interval is determined by calculating the 16th and 84th percentile of all the predictions made by the ensemble of estimators. \editorial{should talk about how random forests can give error bars on the individual estimates.}
 
 \section{RESULTS}\label{sec: results}
 Here we explore the cluster member recovery rate and mass estimates for the two observing strategies. We discuss the accuracy of dynamical mass derived from both the scaling relation (see Equation~\ref{eq: mass scaling}) and through the probability and ML methods.
@@ -228,7 +228,14 @@ As discussed in Section~\ref{sec: observations} the observational constraints pl
 	\caption{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and mass for the targeted (upper row) and survey (lower row) observing strategies. The significant decline in galaxies observed with the survey strategy is due to gaps in the VIRUS IFU.} \label{fig: recovery} 
 \end{figure*}
 
-Figure~\ref{fig: recovery} shows the recovery fraction of member galaxies, the number of observed versus the number of actual galaxies, as a function of both redshift and cluster mass for the targeted and survey observing strategies. As expected, the targeted observing strategy where the individual clusters are targeted through several dithers to ensure near complete coverage, performs significant better than the survey observing strategy for nearly all redshifts and cluster masses. This performance gain is due solely to the gaps between the fiber bundles of the IFU. 
+Figure \ref{fig: recovery} shows the recovery fraction of member galaxies, the number of observed galaxies divided by the number of actual galaxies, as function of both redshift and cluster mass. It is important to note that if few than five member galaxies are observed the cluster is not considered detected, and is excluded from this plot. As expected, the targeted observing strategy where the individual clusters are targeted through several dithers to ensure near complete coverage, performs significant better than the survey observing strategy for nearly all redshifts and cluster masses. 
+
+
+\editorial{There is no obvious trend between number of galaxies observed and redshift. There is a trend between number of galaxies observed and cluster mass though. This is the "richness" and it's something that we should have expected. To test where the galaxies go we are going to apply an absolute magnitude cut instead of the apparent magnitude cut and then derive the catalog. That will let us know if things are going on.}
+
+
+This performance gain is due solely to the gaps between the fiber bundles of the IFU. 
+
 
 \editorial{why does the recovery fraction decrease with redshift? Are the clusters smaller? Do they not have as many galaxies per cluster at higher redshifts? Is it a magnitude effect? I also want to add an error bar estimation for several of the percentages to give a feel for how the different recovery levels effect the accuracy of the measurements.}
 
@@ -240,6 +247,8 @@ All of the figures presented here show the predicted versus true cluster masses 
 	\epsilon = (M_{pred} - M)/M
 \end{equation}
 where $M_{pred}$ is the predicted cluster mass and $M$ is the true cluster mass.
+
+Any scatter in recovered masses can be attributed to both physical and numerical effects. As the cluster mass increases, clusters become more virialized and contain many individual galaxies. The presence of any in-falling matter onto lower mass clusters can introduce a significant amount of substructure, which can increase the observed LOSVD increasing the predicted mass. Also, as the number of cluster galaxies decreases the LOSVD PDF is poorly sampled leading to poorly recovered cluster masses due to numerical effects. The masses presented here are recovered using the best possible conditions, where we have perfect knowledge of the cluster membership. In reality, the mass recovery levels presented in this section represent a lower bound on the accuracy achievable through this method. \editorial{\cite{Ntampaka2015} does have a discussion about how well they do with contaiminated galaxy catalogs. We could do something similar and have a similar discussion, but I'm not sure it is worth it. Should be simple enough to do with the targeted catalog, but with the HETDEX catalog it would be pretty bad IMO.} 
 
 \subsubsection{Probability Based}
 Figures \ref{fig:Probability comparison_survey} and \ref{fig:Probability comparison} show the power law predictions compared to the predictions based on probability propagation. 
