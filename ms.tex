@@ -3,8 +3,8 @@
 % MNRAS is set in Times font. If you don't have this installed (most LaTeX
 % installations will be fine) or prefer the old Computer Modern fonts, comment
 % out the following line
-% \usepackage{newtxtext,newtxmath}
-\usepackage{times}
+\usepackage{newtxtext,newtxmath}
+%\usepackage{times}
 % Depending on your LaTeX fonts installation, you might get better results with one of these:
 % \usepackage{mathptmx}
 % \usepackage{txfonts}
@@ -166,7 +166,7 @@ The line-of-sight velocity dispersion (LOSVD) is calculated using a method of ma
   \label{eq: jointGaussian}
 p(\{v_1, ..., v_N\})=\displaystyle\prod_{i=1}^{N}\frac{1}{\sqrt{2\pi(\sigma_i^2+\sigma_p^2)}}\exp\biggl[-\frac{1}{2}\frac{(v_i-\langle u \rangle)^2}{(\sigma_i^2+\sigma_p^2)}\biggr]
 \end{equation}
-where $\sigma_p$, $\langle\mu\rangle$, and $\sigma_i$ is the LOSVD, the average radial velocity and the error on the individual LOSVs respectively. Using a Monte Carlo Markov Chain sampler (MCMC; {\tt emcee}\footnote{\url{http://dan.iel.fm/emcee/current/}}, \citealt{Foreman-Mackey2013}), we draw twenty thousand samples from the posterior probability distribution. Simple priors, $\langle\mu\rangle$ lies between the maximum and minimum LOSV and $0< \sigma_p$ \editorial{check}, are used. When the full distribution of LOSVDs are not used, the final LOSVD is quoted as the median value of the posterior probability distribution with 68\% error bars defined as the 16th and 84th percentiles of the same distribution.
+where $\sigma_p$, $\langle\mu\rangle$, and $\sigma_i$ is the LOSVD, the average radial velocity and the error on the individual LOSVs respectively. Using a Monte Carlo Markov Chain (MCMC) sampler ({\tt emcee}\footnote{\url{http://dan.iel.fm/emcee/current/}}; \citealt{Foreman-Mackey2013}), we draw twenty thousand samples from the posterior probability distribution. Simple priors, $\langle\mu\rangle$ lies between the maximum and minimum LOSV and $0< \sigma_p$ \editorial{check}, are used. When the full distribution of LOSVDs are not used, the final LOSVD is quoted as the median value of the posterior probability distribution with 68\% error bars defined as the 16th and 84th percentiles of the same distribution.
 
 In principle, a single statistic such as the biweight scale estimator or the gapper estimator (both from \citealt{Beers1990}) with many bootstrap resamplings could be used to construct a distribution of $\sigma_p$. In simple tests where the values of both $\sigma_p$ and $\langle\mu\rangle$ are known. The 68\% error bars derived from the MCMC method give slightly better results with the true LOSVD value bracketed by the error bars in $\sim68\%$ of the cases versus $\sim57\%$ with bootstrapping and a single statistic. In addition, we prefer the maximum likelihood method for its straight forward treatment of the errors in the LOSV measurements.
 
@@ -215,29 +215,29 @@ The estimation in this section relies on a ML technique known as an ensemble met
 
 Here we use an averaging ensemble learning method known as a forest of randomized decision trees often shorten to just random forest (RF). Decision trees can be visualized a flow chart where forks are the branches of the tree. The path along the tree is decided by the values of the feature at each branch. RF estimators use a random subset of the training set at each fork to decide which path should be followed. The final prediction is then the average of all the trees. We use RF regression methods as implemented in {\tt Scikit-Learn} \citep{Pedregosa2012}.
 
+Any uncertainties quoted by this method are, in fact, prediction intervals. A prediction interval is an estimate of the interval encompassing future observations, with a certain probability. And, unlike confidence intervals, which describe certainties on the different moments of a population, a prediction interval is unique to each prediction. In many regresson analyses, such as linear fitting, the prediction intervals are based on underlying assumptions of normally distributed residuals. However, RF estimators do not have any such assumptions and require special treatment.
+
+The prediction intervals here are based on the general method of quantile regression forests \citep{Meinshausen2006}.
+
+
 The 68\% prediction interval is determined by calculating the 16th and 84th percentile of all the predictions made by the ensemble of estimators. \editorial{should talk about how random forests can give error bars on the individual estimates.}
 
 \section{RESULTS}\label{sec: results}
 Here we explore the cluster member recovery rate and mass estimates for the two observing strategies. We discuss the accuracy of dynamical mass derived from both the scaling relation (see Equation~\ref{eq: mass scaling}) and through the probability and ML methods.
 
 \subsection{Recovery of Cluster Members}
-As discussed in Section~\ref{sec: observations} the observational constraints place limits on the total number fo clusters member galaxies expected to be recovered. Knowing these limits will provide important information for potential future follow up or targeted observations. 
+As discussed in Section \ref{sec: observations} the observational constraints place limits on the total number fo clusters member galaxies expected to be recovered. Knowing these limits will provide important information for potential future follow up or targeted observations. 
 
-\begin{figure*} 
+\begin{figure*}
 	\includegraphics[width=\textwidth]{figures/recovery.pdf} 
-	\caption{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and mass for the targeted (upper row) and survey (lower row) observing strategies. The significant decline in galaxies observed with the survey strategy is due to gaps in the VIRUS IFU.} \label{fig: recovery} 
+	\caption{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and mass for the targeted and survey observing strategies. The solide lines are the median values and the shaded regions represent the 68\% scatter. The significant decline in galaxies observed with the survey strategy is due to gaps in the VIRUS IFU.} \label{fig: recovery} 
 \end{figure*}
 
-Figure \ref{fig: recovery} shows the recovery fraction of member galaxies, the number of observed galaxies divided by the number of actual galaxies, as function of both redshift and cluster mass. It is important to note that if few than five member galaxies are observed the cluster is not considered detected, and is excluded from this plot. As expected, the targeted observing strategy where the individual clusters are targeted through several dithers to ensure near complete coverage, performs significant better than the survey observing strategy for nearly all redshifts and cluster masses. 
+Figure \ref{fig: recovery} shows the recovery fraction of member galaxies, the number of observed galaxies divided by the number of actual galaxies ($N_{obs}/N_{True}$), as function of both redshift and cluster mass. It is important to note that if few than five member galaxies are observed the cluster is not considered detected, and is excluded from this figure. As expected, the targeted observing strategy where the individual clusters are targeted through several dithers to ensure near complete coverage, performs significantly better than the survey observing strategy across all redshifts and cluster masses. 
 
+For the clusters recovered as a function of redshift, there are two effects at work. The decrease in recovery fraction with increasing redshift is a magnitude effect. If, instead of being limited to 22 mag in \sdssg apparent, the observations where limited by absolute magnitude, the sharp downward trend disappears. The second key feature is the strong decline in clusters recovered from survey observations. This is due to gaps in the VIRUS IFU. The median recovery fraction in survey observations is almost exactly 4.5 times less than the targeted median recovery fraction. As the total filling factor of the survey increases the two lines will converge.
 
-\editorial{There is no obvious trend between number of galaxies observed and redshift. There is a trend between number of galaxies observed and cluster mass though. This is the "richness" and it's something that we should have expected. To test where the galaxies go we are going to apply an absolute magnitude cut instead of the apparent magnitude cut and then derive the catalog. That will let us know if things are going on.}
-
-
-This performance gain is due solely to the gaps between the fiber bundles of the IFU. 
-
-
-\editorial{why does the recovery fraction decrease with redshift? Are the clusters smaller? Do they not have as many galaxies per cluster at higher redshifts? Is it a magnitude effect? I also want to add an error bar estimation for several of the percentages to give a feel for how the different recovery levels effect the accuracy of the measurements.}
+The recovery rate as a function of cluster mass, right panel of Figure \ref{fig: recovery}, shows that of the the low mass clusters we detect ($N_{obs} >5$), observe the majority of the galaxies. This also shows a rapid decrease in the detection fraction, which can again be explained by considering absolute magnitudes instead of apparent magnitudes. Just as before, if the survey was limited by absolute magnitude, we find a much more consistent detection fraction.
 
 \subsection{Mass estimates}
 In this section we discuss the how accurately we are able to reproduce the true cluster mass from a set of observations. We report on two methods the probability based approach (Section \ref{sec:probability method}) and the machine learning based method (Section \ref{sec:machine learning method}). For each method we consider both targeted and HETDEX-like observing strategies.
@@ -248,7 +248,7 @@ All of the figures presented here show the predicted versus true cluster masses 
 \end{equation}
 where $M_{pred}$ is the predicted cluster mass and $M$ is the true cluster mass.
 
-Any scatter in recovered masses can be attributed to both physical and numerical effects. As the cluster mass increases, clusters become more virialized and contain many individual galaxies. The presence of any in-falling matter onto lower mass clusters can introduce a significant amount of substructure, which can increase the observed LOSVD increasing the predicted mass. Also, as the number of cluster galaxies decreases the LOSVD PDF is poorly sampled leading to poorly recovered cluster masses due to numerical effects. The masses presented here are recovered using the best possible conditions, where we have perfect knowledge of the cluster membership. In reality, the mass recovery levels presented in this section represent a lower bound on the accuracy achievable through this method. \editorial{\cite{Ntampaka2015} does have a discussion about how well they do with contaiminated galaxy catalogs. We could do something similar and have a similar discussion, but I'm not sure it is worth it. Should be simple enough to do with the targeted catalog, but with the HETDEX catalog it would be pretty bad IMO.} 
+Any scatter in recovered masses can be attributed to both physical and numerical effects. As the cluster mass increases, clusters become more virialized and contain many individual galaxies. The presence of any in-falling matter onto lower mass clusters can introduce a significant amount of substructure, which can increase the observed LOSVD increasing the predicted mass. Also, as the number of cluster galaxies decreases the LOSVD PDF is poorly sampled leading to poorly recovered cluster masses due to numerical effects. The masses presented here are recovered using the best possible conditions, where we have perfect knowledge of the cluster membership. In reality, the mass recovery levels presented in this section represent a lower bound on the accuracy achievable through this method. \editorial{\cite{Ntampaka2015} does have a discussion about how well they do with contaminated galaxy catalogs. We could do something similar and have a similar discussion, but I'm not sure it is worth it. Should be simple enough to do with the targeted catalog, but with the HETDEX catalog it would be pretty bad IMO. We should also talk about how often the true mass lies within the error bars. Many of them are going to be with the 68\% range, but we can drop the error estimates to $0.5\sigma$ if that actually means anything} 
 
 \subsubsection{Probability Based}
 Figures \ref{fig:Probability comparison_survey} and \ref{fig:Probability comparison} show the power law predictions compared to the predictions based on probability propagation. 
@@ -263,7 +263,7 @@ Figures \ref{fig:Probability comparison_survey} and \ref{fig:Probability compari
 	\caption{Mass predictions for the power law scaling relation (Equation~\ref{eq: mass scaling}) and the ML technique with different input features. The bottom row of panels shows the fractional error (Equation~\ref{eq: fractional error}) as a function of mass. The solid black line shows the 1:1 relation. The colored lines and shaded region show the median value and 68\% bounds respectively.} \label{fig:Probability comparison} 
 \end{figure*}
 
-
+\editorial{Need to talk about the cluster rotations to fill out the survey data. Otherwise there aren't that many clusters detected.}
 
 \subsubsection{Machine Learning Based}
 Figures \ref{fig: ML comparison_survey} and \ref{fig: ML comparison} show the power law predictions compared to the RF predictions using LOSVD ($\sigma$) combined with both $z$ and the number of galaxies observed, $N_{gal}$.  
