@@ -37,6 +37,7 @@
 \else\textup{#1\,{\mdseries\textsc{#2}}}%
 \fi}
 \newcommand{\multic}[2]{\multicolumn{#1}{c}{#2}}
+\newcommand{\rottext}[2]{\multirow{#1}{*}{\rotatebox[origin=c]{90}{#2}}}
 
 %%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
 \title[Short Title]{Cluster Dynamics with HETDEX - I: Simulated Performance, Mass Distribution and Limits}
@@ -94,12 +95,12 @@ It is unclear how a blind spectroscopic survey with an IFU will effect the recov
 
 This work plans to address these concerns in the following ways. We use simulated observations which target individual galaxy clusters to investigate the recovery of parameters with such observations. Secondly, we create and evaluate a HETDEX like selection ``function'' of galaxies over a similarly large portion of the sky and use well adopted techniques to recover the dynamical properties, such as velocity dispersion and mass. Each observation strategy will further be constrained with ``ideal'' and ``realistic'' knowledge. Ideal knowledge assumes that we know which individual galaxy is assigned to which cluster. With realistic knowledge this is unknown and must be determined prior to the estimation of the cluster properties. Both of these strategies will better allow future work to predict the number and types of galaxy clusters which should be observed with VIRUS during both the HETDEX survey portion and through targeted follow up observations.
 
-\editorial{Give outline of paper section.}
+We begin in Section \ref{sec:Data} by giving an overview of what data is used, how it is created, and how we make our ``observations.'' Details about the determination of cluster parameters, velocity dispersion, total mass, etc., are discussed in Section \ref{sec:recovery}. Next, we present the results of our study in Section \ref{sec:results} and discuss their implications in Section \ref{sec:discussion}. Finally we summarize our findings in Section \ref{sec:summary}.
 
 Throughout this paper, we adopt the following cosmological model ($\Omega_\Lambda = 0.77$,
 $\Omega_M = 0.23$, $\sigma_8 = 0.83$ and $H_0= 72$ \kms \mpc), assume a Chabrier initial mass function (IMF; \citealt{Chabrier2003}), and use AB magnitudes \citep{Oke1974}.
 
-\section{Data and Mock Observations}\label{sec: Data}
+\section{Data and Mock Observations}\label{sec:Data}
 
 \editorial{Blah blah intro stuff... Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}
 
@@ -147,7 +148,7 @@ In this work we consider two separate observation cases. The first are targeted 
 
 The individual IFUs have a fill-factor of 1/3, which will be completely filled with three dithers of the telescope at each pointing. This means that when selecting galaxies from the Buzzard catalog we assume an observation for all galaxies laying within a colored, IFU square in Figure~\ref{fig: ifu layout}. \editorial{This should be updated with the fiber collisions.} Galaxies which lie between the IFUs are missed, as well as the galaxies which lie between the pointings, as there is no overlap between one pointing and the next. To cover the 375.67 \degsq\ field of the Buzzard catalog we require 5370 pointings where 0.015 \degsq\ of each pointing is covered by an IFU. The total area of the sky covered by an IFU is 80.80 \degsq\ which gives a filling factor of 1/4.65 slight decreased from the expected filling factor of 1/4.5. 
 
-\section{Recovery of Parameters}\label{sec: recovery}
+\section{Recovery of Parameters}\label{sec:recovery}
  In the following sections, we outline the methods we use to derive the dynamical properties of the galaxy clusters in our sample. This is not meant to be an exhaustive study of the different methods used to recover these parameters. The following is, in many cases, a subset of the available methods to derive any single parameter. The specific choice of method may improve or diminish the accuracy of the recovered parameter, but the methods chosen were to facilitate comparison with observational studies. 
 
 \subsection{Cluster Redshift}
@@ -220,7 +221,7 @@ Any uncertainties quoted by this method are prediction intervals not confidence 
 
 The prediction intervals here are based on the general method of quantile regression forests \citep{Meinshausen2006}. The general idea is that all response variables are recorded, not just the mean. Then the prediction can be returned as the full conditional probability distribution of all responses, which allows us to generate the prediction intervals. The 68\% prediction interval is determined by calculating the 16th and 84th percentile of the full conditional probability distribution. 
 
-\section{RESULTS}\label{sec: results}
+\section{RESULTS}\label{sec:results}
 Here we explore the cluster member recovery rate and mass estimates for the two observing strategies. We discuss the accuracy of dynamical mass derived from both the scaling relation (see Equation \ref{eq:power law}) and through the probability and ML methods.
 
 \subsection{Recovery of Cluster Members}
@@ -240,30 +241,55 @@ The recovery rate as a function of cluster mass, right panel of Figure \ref{fig:
 \subsection{Mass estimates}
 In this section we discuss the how accurately we are able to reproduce the true cluster mass from a set of observations. We report on two methods the probability based approach (Section \ref{sec:probability method}) and the ML based method (Section \ref{sec:machine learning method}). For each method we consider both targeted and HETDEX-like observing strategies.
 
-Both of the figures shown below show the predicted versus true cluster masses for each of the two observing strategries. In each panel the solid black line is the 1:1 relationship, the solid colored line is the median recovered mass for the targeted observing, and the colored, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions are the 68\% scatter around the median values (the 16\% and 84\% quartiles). The lower panels show the fractional cluster mass error: 
-\begin{equation}\label{eq: fractional error}
-	\epsilon = (M_{pred} - M)/M
-\end{equation}
-where $M_{pred}$ is the predicted cluster mass and $M$ is the true cluster mass.
-
 In both figures, we include the cluster masses recovered through the power law scaling relation given in Equation \ref{eq:power law} for both the targeted and survey observations. It should serve as baseline to compare the probability based and ML cluster mass recovery methods. And, while there are many possible metrics to evaluate performance, we compute two: the median absolute error (MAE) and the root mean squared error (RMSE). Both metrics evaluate how closely the ensemble of predicted cluster masses are to the true cluster masses, and in both cases lower numbers are better.   
 
 Just because a predicted cluster mass may not exactly match the true value does not mean it is a bad prediction. In addition to the MAE and RMSE, we also report the fraction of predictions where the the true cluster mass is contained within the 68\% confidence or prediction intervals (see Sections \ref{sec:probability method} and \ref{sec:machine learning method}). 
 
 The cluster masses predicted by Equation \ref{eq:power law} gives the following results. The MAE is 0.263 dex and for both the targeted and survey observations. The RMSE is 0.396 dex and 0.394 dex for the targeted and survey observations respectively. This scatter in recovered masses can be attributed to both physical and numerical effects. As the cluster mass increases, clusters become more virialized and contain many individual galaxies. The presence of any in-falling matter onto lower mass clusters can introduce a significant amount of substructure, which can increase the observed LOSVD increasing the predicted mass. Also, as the number of cluster galaxies decreases the LOSVD PDF is poorly sampled leading to poorly recovered cluster masses due to numerical effects. The masses presented here are recovered using the best possible conditions, where we have perfect knowledge of the cluster membership. In reality, the mass recovery levels presented in this section represent an upper bound (the best) on the accuracy achievable through this method. \editorial{\cite{Ntampaka2015} does have a discussion about how well they do with contaminated galaxy catalogs. We could do something similar and have a similar discussion, but I'm not sure it is worth it. Should be simple enough to do with the targeted catalog, but with the HETDEX catalog it would be pretty bad IMO. We should also talk about how often the true mass lies within the error bars. Many of them are going to be with the 68\% range, but we can drop the error estimates to $0.5\sigma$ if that actually means anything} 
 
-\subsubsection{Probability Based}
-Figure \ref{fig:Probability comparison} shows the cluster mass predictions for the power law scaling relation and the probability based method with different input features. 
+\begin{table*}
+\centering
+\caption{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}
+\begin{tabular}{cccccccc}
+	%\hline
+	&& \multic{3}{Targeted} & \multic{3}{Survey} \\
+	\cline{3-5} \cline{6-8}
+	& Input Features & MAE & RMSE & Overlap & MAE & RMSE & Overlap \\
+	& & (dex) & (dex) & (\%) & (dex) & (dex) & (\%) \\
+	\hline
+	\rottext{4}{Prob Based} & Power Law & 0.263 & 0.396 & --- & 0.263 & 0.393 & --- \\
+	&$\sigma$ & 0.220 & 0.335 & --- & 0.222 & 0.329 & --- \\
+	&$\sigma, z$ & 0.189 & 0.286 & --- & 0.194 & 0.278 & --- \\
+	&$\sigma, z, N_{gal}$ & 0.129 & 0.207 & --- & 0.140 & 0.222 & --- \\
+
+	\hline
+	\rottext{4}{ML Based} & Power Law & 0.263 & 0.396 & --- & 0.263 & 0.393 & --- \\
+	&$\sigma$ & 0.246 & 0.361 & --- & 0.238 & 0.344 & --- \\
+	&$\sigma, z$ & 0.193 & 0.285 & --- & 0.171 & 0.260 & --- \\
+	&$\sigma, z, N_{gal}$ & 0.117 & 0.193 & --- & 0.093 & 0.179 & --- \\
+
+	\hline
+\end{tabular}
+\label{tbl:mass comparisons}
+\end{table*}
+
+The MAE and RMSE associated with the ensemble of predictions are summarized in Table \ref{tbl:mass comparisons}. As expected, we find that both the probability based and ML based methods out perform the standard power law based methods for both the targeted and survey observations. We also find that the ML based method produces lower ensemble error for both the observation strategies when compared to the probability based method, although the MAE and RMSE are reduced by only $\sim0.01$ dex. \editorial{here is where we would talk about cross validation on the errors.} 
+
+In both Figures \ref{fig:Probability comparison} and \ref{fig: ML comparison}, we show the predicted versus true cluster masses for each of the two observing strategries. In each panel the solid black line is the 1:1 relationship, the solid colored line is the median recovered mass for the targeted observing, and the colored, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions are the 68\% scatter around the median values (the 16\% and 84\% quartiles). The lower panels show the fractional cluster mass error: 
+\begin{equation}\label{eq: fractional error}
+	\epsilon = (M_{pred} - M)/M
+\end{equation}
+where $M_{pred}$ is the predicted cluster mass and $M$ is the true cluster mass.
+
+In both figures we successively add additional information to further contrain the true cluster masses which subsequently reduces the error associated with the ensemble of predictions (see Table \ref{tbl:mass comparisons}). The power law derived masses, using the single (not including the cosmological parameters) free parameter, $\sigma$ (the LOSVD), over estimates the predicted cluster mass at all masses. Both the probability and ML methods over predict the mass of low mass clusters and under predict the mass of the higher mass clusters. When the redshift information is also added, the amount of this over and under prediction is lessened but the cross over point, remains roughly consistent at $\sim10^{14}$ \msol. Additionally, the number of galaxies observed, $N_{gal}$, further reduces the MAE and RMSE on the predictions but also lowers the cross over point to $\sim10^{13.5}$ \msol.
 
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{figures/Probcomparison.pdf} 
 	\caption{Mass predictions for the power law scaling relation (Equation~\ref{eq:power law}) and the probability based technique with different input features as a function of true cluster mass. The bottom row of panels shows the fractional error (Equation~\ref{eq: fractional error}) also as a function of true cluster mass. The solid black line shows the 1:1 relation. The solid, colored line is the median predicted mass for the targeted observing, and the colored, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions represent the 68\% scatter around the median values.} \label{fig:Probability comparison} 
 \end{figure*}
 
-\editorial{Need to talk about the cluster rotations to fill out the survey data. Otherwise there aren't that many clusters detected.}
+\editorial{Need to talk about the cluster rotations to fill out the survey data. Otherwise there aren't that many clusters detected.} 
 
-\subsubsection{Machine Learning Based}
-Figure \ref{fig: ML comparison} show the power law predictions compared to the RF predictions using LOSVD ($\sigma$) combined with both $z$ and the number of galaxies observed, $N_{gal}$.  
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{figures/MLcomparison.pdf} 
 	\caption{Mass predictions for the power law scaling relation (Equation~\ref{eq:power law}) and the ML based technique with different input features as a function of true cluster mass. The bottom row of panels shows the fractional error (Equation~\ref{eq: fractional error}) also as a function of true cluster mass. The solid black line shows the 1:1 relation. The solid, colored line is the median predicted mass for the targeted observing, and the colored, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions represent the 68\% scatter around the median values.} \label{fig: ML comparison} 
@@ -272,39 +298,29 @@ Figure \ref{fig: ML comparison} show the power law predictions compared to the R
 % \editorial{It doesn't look like you can use the targeted training sample to train the survey data. If you do, it either does worse or about the same if you didn't use any training at all. After looking at it, you do have to use the survey training data to get good results about 0.13 dex MAE
 % }
 
-\begin{table*}
-\centering
-\caption{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}
-	\begin{tabular}{ccccccc}
-		%\hline
-		& \multic{3}{Targeted} & \multic{3}{Survey} \\
-		\cline{2-4} \cline{5-7}
-		Input Features & MAE (dex) & RMSE (dex) & Overlap & MAE (dex) & RMSE (dex) & Overlap \\
-		\hline \hline
-		Power Law & 0.263 & 0.396 & --- & 0.263 & 0.393 & --- \\
-		$\sigma$ & 0.246 & 0.361 & --- & 0.238 & 0.344 & --- \\
-		$\sigma, z$ & 0.193 & 0.285 & --- & 0.171 & 0.260 & --- \\
-		$\sigma, z, N_{gal}$ & 0.117 & 0.193 & --- & 0.093 & 0.179 & --- \\
-
-		\hline
-	\end{tabular}
-\label{tbl: derived parameters}
-\end{table*}
-
-\section{HETDEX as a Galaxy Cluster Survey}
+\section{HETDEX as a Galaxy Cluster Survey}\label{sec:discussion}
 
 \subsection{Expected Results}
-\editorial{This is where I am going to discuss the redMapper stuff.}
+\editorial{Expected results in what context? How well we can obtain cluster masses? How many masses will we get to what accuracy? This is sorta talk about in the results section but we don't really come out and say "this is what we think HETDEX will and and how well we think it will do it." That might worth saying, even if we are wrong it will give people a starting point when thinking about this stuff in the future.}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \subsection{Potential Improvements}
+\editorial{The potential improvements are really three fold. We know that the observing won't cover all of the sky. So we can simply tile more and try to get more clusters. We can observe deeper. I'm not sure the current exposure times (they are in an email that I sent to casey) but if we can extend them, then we can get further down the IMF and try to build up some of the clusters that are really more like groups than anything else. The last thing we can do is to attempt to  build better models to make better predictions on the masses. That might be something like the study that \cite{Acquaviva2016} did with the stellar metallicities. Or we'll need something else that I haven't thought of just yet.}
+
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \subsection{Extendability to Other Surveys}
+\editorial{This is where I am going to discuss the redMapper stuff. In this section I want to talk about the calibration of the red sequence (i think), and how we might be able to use HETDEX to help nail that down and then use those relationships to better calibrate the cluster masses coming out of DES and LSST. Other surveys that we can think of that people might apply this sort of method to? GOGREEN? GAMA? There are going to be a good number of blind photometric surveys, but I can't really think of another blind spectroscopy survey or some survey that is designed to one specific thing that we can try to co-opt to do what we want.}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-\section{SUMMARY}
+\section{SUMMARY}\label{sec:summary}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+It is our hope that this work may be useful to others when conducting their own research. Because this work relies heavily on (often) complex data analysis, and in order to promote transparency, we provide all of the code used to conduct this study at https://github.com/boada/desCluster. Regrettably, large file size prevents including the source data with the analysis routines. The authors are happy to provide them, if requested.
 
 \section*{Acknowledgements}
 The authors also wish to thank the anonymous referee whose comments and suggestions significantly improved both the quality and clarity of this work. We also thank Steven W. Crawford for many helpful discussions. This research made use of This research made use of  the {\tt IPython} package \citep{Perez2007} and {\tt matplotlib}, a Python library for publication quality graphics \citep{Hunter2007}. Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, the National Aeronautics and Space Administration, the Japanese Monbukagakusho, the Max Planck Society, and the Higher Education Funding Council for England. The SDSS Web Site is http://www.sdss.org/. The SDSS is managed by the Astrophysical Research Consortium for the Participating Institutions. \editorial{People to thank: Joe, maybe authorship.}
