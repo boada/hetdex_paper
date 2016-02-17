@@ -113,11 +113,11 @@ The catalog information, used in this study, is broken into two large portions. 
 
 However, the catalogs do not include information on emission or absorption lines or estimations of whether the halo is relaxed or not. We supplement the catalogs with this information and describe the method in Section~\ref{sec: oii luminosity} and others.
 
-\begin{figure} 
-	\includegraphics[width=\columnwidth]{figures/hmf.pdf} 
-	\caption{The cumulative MF (from \citealt{Tinker2008}) of halos above $M_{200c}$ at $z=0.1$} 
-	\label{fig: hmf} 
-\end{figure}
+% \begin{figure}
+% 	\includegraphics[width=\columnwidth]{figures/hmf.pdf}
+% 	\caption{The cumulative MF (from \citealt{Tinker2008}) of halos above $M_{200c}$ at $z=0.1$}
+% 	\label{fig: hmf}
+% \end{figure}
 
 We investigate the accuracy of the halo mass distribution by comparing the cumulative number density of halos above a mass ($M_{200c}$) threshold to the halo mass function (HMF) of \cite{Tinker2008}. Shown in Figure~\ref{fig: hmf} the HMF is calculated at central redshifts of 0, 0.2, and 0.4 using {\tt HMFcalc} \citep{Murray2013} and compared to galaxies in a redshift window of $\Delta z\pm0.01$. We find a very good agreement between the expected HMF and the observed. 
 
@@ -219,18 +219,18 @@ Here we use an averaging ensemble learning method known as a forest of randomize
 
 Any uncertainties quoted by this method are prediction intervals not confidence intervals. A prediction interval is an estimate of the interval encompassing future observations, with a certain probability. And, unlike confidence intervals, which describe certainties on the different moments of a population, a prediction interval is unique to each prediction. In many regresson analyses, such as linear fitting, the prediction intervals are based on underlying assumptions of normally distributed residuals. However, RF estimators do not have any such assumptions and require special treatment.
 
-The prediction intervals here are based on the general method of quantile regression forests \citep{Meinshausen2006}. The general idea is that all response variables are recorded, not just the mean. Then the prediction can be returned as the full conditional probability distribution of all responses, which allows us to generate the prediction intervals. The 68\% prediction interval is determined by calculating the 16th and 84th percentile of the full conditional probability distribution. 
+The prediction intervals here are based on the general method of quantile regression forests \citep{Meinshausen2006}. The general idea is that all response variables are recorded, not just the mean. Then the prediction can be returned as the full conditional probability distribution of all responses, which allows us to generate the prediction intervals. The 68\% prediction interval is determined by calculating the 16th and 84th percentile of the full conditional probability distribution. \editorial{I am going to change this to just the std of the distribution. I need the errorbars to be sysmetric to make the fitting routine easy later on.}
 
 \section{RESULTS}\label{sec:results}
 Here we explore the cluster member recovery rate and mass estimates for the two observing strategies. We discuss the accuracy of dynamical mass derived from both the scaling relation (see Equation \ref{eq:power law}) and through the probability and ML methods.
-
-\subsection{Recovery of Cluster Members}
-As discussed in Section \ref{sec: observations} the observational constraints place limits on the total number fo clusters member galaxies expected to be recovered. Knowing these limits will provide important information for potential future follow up or targeted observations. 
 
 \begin{figure*}
 	\includegraphics[width=\textwidth]{figures/recovery.pdf} 
 	\caption{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and mass for the targeted and survey observing strategies. The solide lines are the median values and the shaded regions represent the 68\% scatter. The significant decline in galaxies observed with the survey strategy is due to gaps in the VIRUS IFU.} \label{fig: recovery} 
 \end{figure*}
+
+\subsection{Recovery of Cluster Members}
+As discussed in Section \ref{sec: observations} the observational constraints place limits on the total number fo clusters member galaxies expected to be recovered. Knowing these limits will provide important information for potential future follow up or targeted observations. 
 
 Figure \ref{fig: recovery} shows the recovery fraction of member galaxies, the number of observed galaxies divided by the number of actual galaxies ($N_{obs}/N_{True}$), as function of both redshift and cluster mass. It is important to note that if few than five member galaxies are observed the cluster is not considered detected, and is excluded from this figure. As expected, the targeted observing strategy where the individual clusters are targeted through several dithers to ensure near complete coverage, performs significantly better than the survey observing strategy across all redshifts and cluster masses. 
 
@@ -249,7 +249,7 @@ The cluster masses predicted by Equation \ref{eq:power law} gives the following 
 
 \begin{table*}
 \centering
-\caption{Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}
+\caption{Summary of the errors associated with the Targeted and Survey observation strategies, as an ensemble of predictions. See the text for discussion about the MAE and RMSE. Overlap is the percentage of clusters where the true cluster mass is bracketed by the prediction intervals of the predicted mass. See Sections \ref{sec:probability method} and \ref{sec:machine learning method} for a discussion on prediction intervals.}
 \begin{tabular}{cccccccc}
 	%\hline
 	&& \multic{3}{Targeted} & \multic{3}{Survey} \\
@@ -300,27 +300,54 @@ In both figures we successively add additional information to further contrain t
 
 \section{HETDEX as a Galaxy Cluster Survey}\label{sec:discussion}
 
-\subsection{Expected Results}
-\editorial{Expected results in what context? How well we can obtain cluster masses? How many masses will we get to what accuracy? This is sorta talk about in the results section but we don't really come out and say "this is what we think HETDEX will and and how well we think it will do it." That might worth saying, even if we are wrong it will give people a starting point when thinking about this stuff in the future.}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+% \subsection{Expected Results}
+% \editorial{Expected results in what context? How well we can obtain cluster masses? How many masses will we get to what accuracy? This is sorta talk about in the results section but we don't really come out and say "this is what we think HETDEX will and and how well we think it will do it." That might worth saying, even if we are wrong it will give people a starting point when thinking about this stuff in the future.}
+% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \subsection{Potential Improvements}
-\editorial{The potential improvements are really three fold. We know that the observing won't cover all of the sky. So we can simply tile more and try to get more clusters. We can observe deeper. I'm not sure the current exposure times (they are in an email that I sent to casey) but if we can extend them, then we can get further down the IMF and try to build up some of the clusters that are really more like groups than anything else. The last thing we can do is to attempt to  build better models to make better predictions on the masses. That might be something like the study that \cite{Acquaviva2016} did with the stellar metallicities. Or we'll need something else that I haven't thought of just yet.}
+\editorial{The potential improvements are really three fold. We know that the observing won't cover all of the sky. So we can simply tile more and try to get more clusters. We can observe deeper. I'm not sure the current exposure times (they are in an email that I sent to casey) but if we can extend them, then we can get further down the IMF and try to build up some of the clusters that are really more like groups than anything else. The last thing we can do is to attempt to  build better models to make better predictions on the masses. That might be something like the study that \cite{Acquaviva2016} did with the stellar metallicities. Or we'll need something else that I haven't thought of just yet. The other idea is to come up with some sort of cheat sheet for HETDEX. Basically, a if you detect such and such type of galaxy in the survey model then you should go back and try to follow it up with targeted observations. It might be good to talk about the recovery fraction between the two surveys above. Like... if there are 30 cluster members then we should detect the cluster in both surveys.}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \subsection{Extendability to Other Surveys}
-\editorial{This is where I am going to discuss the redMapper stuff. In this section I want to talk about the calibration of the red sequence (i think), and how we might be able to use HETDEX to help nail that down and then use those relationships to better calibrate the cluster masses coming out of DES and LSST. Other surveys that we can think of that people might apply this sort of method to? GOGREEN? GAMA? There are going to be a good number of blind photometric surveys, but I can't really think of another blind spectroscopy survey or some survey that is designed to one specific thing that we can try to co-opt to do what we want.}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Large-scale optical surveys (\eg, DES and LSST) expect to detect hundreds of thousands of galaxy clusters at $z < 1$. Because they are photometric, a major challenge for these surveys is relating a cluster observable to the total dark-matter mass. One promising mass estimator is the optical richness \citeeg{Abell1958}. Specifically, here, we use $\lambda$, the weighted number of galaxies within a scale aperture \citeeg{Rozo2011} as calculated by the redMapper algorithm \citep{Rykoff2012}. Previous works \citeeg{Rozo2010} show that the richness correlates strongly with cluster mass on the average, but the absolute mass scale of the optical richness mass estimator and the scatter in cluster mass at fixed optical richness are imprecisely known \citep{Rykoff2012}. These systematics remain the major source of uncertainty in deriving cosmological constraints from cluster abundances and must be measured using independent methods to realize the full potential of these surveys.
+
+\begin{figure} 
+	\includegraphics[width=\columnwidth]{figures/massRichness_targeted.pdf} 
+	\caption{The optical richness, $\lambda$, versus the predicted cluster mass. The purple and blue points represent clusters with targeted and survey detections respectively. Error bars show $1\sigma$ prediction interval. The solid and dashed lines are fits to either the targeted or survey sets. } \label{fig:mass richness} 
+\end{figure}
+
+We leverage the large spectroscopic dataset of HETDEX to estimate its ability to constrain the scatter and absolute scale of the richness-mass relationship. We begin by cross matching both the targeted and survey observations with a redMapper catalog. The redMapper catalog is limited to $\lambda >= 20$, or at least twenty object assigned to each cluster. With the targeted and survey observations, we observe 138 and 58 clusters respectively. 
+
+Figure \ref{fig:mass richness} shows the optical richness, $\lambda$, versus the predicted cluster mass. The cluster masses are the $ML_{\sigma, z, N_{gal}}$ based and correspond to the correct observation strategy. The error bars represent the $1\sigma$ prediction intervals for each cluster mass. The solid and dashed lines are fits to the targeted and survey datasets. For comparison, the richness-mass relations from \cite{Rykoff2012} (their equation B5) is shown as a dash-dotted line.
+
+To generate the best fitting lines we follow the general procedure of \cite{Hogg2010}, by defining an objective function and then minimizing the loss. Our loss function is
+\begin{equation}
+	\mathrm{ln}L= \frac{-1}{2} \bigg{(} \sum^N_{i=1}\frac{[y_i - mx_i - b]^2}{\sigma_{yi}} + \sum^N_{i=1}\frac{[y_i - mx_i - b]^2}{\sigma_{xi}} \bigg{)}
+\end{equation} 
+where we have taken into account the uncertainties in both the richness and predicted cluster mass. We again rely on MCMC samples to sample the posterior probability distribution. The best fitting slope and intercept are quoted as the median value of the posterior probability distribution with 68\% error bars defined as the 16th and 84th percentiles of the same distribution.
+
+Following the notation of \cite{Rykoff2012} we find a best-fitting relation for the targeted observations as
+\begin{equation}
+	ln\bigg{(}\frac{M_{200c}}{h_{70}^{-1} 10^{14}\Msol}\bigg{)} = 1\pm0.13 + 1.34\pm0.17 ln\bigg{(}\frac{\lambda}{60}\bigg{)} \nonumber
+\end{equation}
+and the survey observations as
+\begin{equation}
+	ln\bigg{(}\frac{M_{200c}}{h_{70}^{-1} 10^{14}\Msol}\bigg{)} = 1.02\pm0.13 + 0.96\pm0.22 ln\bigg{(}\frac{\lambda}{60}\bigg{)} \nonumber
+\end{equation}
+%Applying my current work to a large photometric survey such as those mentioned above is the logical next step. For example, the HETDEX observations overlap with the DES area and SDSS Stripe 82 which provides a wealth of external data. Using preexisting datasets, the observations from HETDEX, or through dedicated followup spectroscopic observations, I will be able to measure the absolute mass scale of the richness estimator and measure the scatter of the richness-mass relation, $\sigma_{M|\lambda}$. An accurate measure of this scatter can lead to a decrease on the error bar on cosmological measures ($\sigma_8$ and $\Omega_M$) by as much as 50\% \citep{Rozo2010}. An absolute calibration of the richness-mass relation will provide a much needed tool for future imaging surveys which will identify clusters to $z=1$ and beyond.
 
 \section{SUMMARY}\label{sec:summary}
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Our main conclusions are the following:
+\begin{enumerate}
+	\item Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\item Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\item Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\end{enumerate}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-It is our hope that this work may be useful to others when conducting their own research. Because this work relies heavily on (often) complex data analysis, and in order to promote transparency, we provide all of the code used to conduct this study at https://github.com/boada/desCluster. Regrettably, large file size prevents including the source data with the analysis routines. The authors are happy to provide them, if requested.
+It is the author's hope that this work may be useful to others when conducting their own research. Because this work relies heavily on (often) complex data analysis, and in order to promote transparency, we provide all of the code used to conduct this study at https://github.com/boada/desCluster. Regrettably, large file size prevents including the source data with the analysis routines. The authors are happy to provide them, if requested.
 
 \section*{Acknowledgements}
 The authors also wish to thank the anonymous referee whose comments and suggestions significantly improved both the quality and clarity of this work. We also thank Steven W. Crawford for many helpful discussions. This research made use of This research made use of  the {\tt IPython} package \citep{Perez2007} and {\tt matplotlib}, a Python library for publication quality graphics \citep{Hunter2007}. Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, the National Aeronautics and Space Administration, the Japanese Monbukagakusho, the Max Planck Society, and the Higher Education Funding Council for England. The SDSS Web Site is http://www.sdss.org/. The SDSS is managed by the Astrophysical Research Consortium for the Participating Institutions. \editorial{People to thank: Joe, maybe authorship.}
