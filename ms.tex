@@ -75,7 +75,6 @@ $^{4}$The University of Texas}
 \begin{abstract}
 \noindent
 The study of clusters of galaxies has been argued to be a very effective way to measure cosmological parameters, including measuring dark energy and testing models of gravity. The Hobby Eberly Telescope Dark Energy Experiment (HETDEX) will observe many hundreds of square degrees, covering a large sample of galaxy clusters out to $z = 0.5$ based on their optical spectra ($3500-5500\AAA$). The spectra will provide important measures of the clusters dynamics and may enable constraints on cosmological parameters, but only if the measurements provide accurate estimates of the total cluster masses. We have carried out a study to investigate the ability of HETDEX to recover accurate galaxy cluster masses over a wide range of masses and redshifts. We used a detailed mock galaxy catalog and present mock observations of two different scenarios: (1) We targeted individual galaxy clusters to investigate the recovery of parameters with such observations. (2) We created and evaluated a HETDEX-like selection "function'' of galaxies over a similarly sized portion of the sky and use well adopted techniques to recover the dynamical properties, such as velocity dispersion and mass. Using both observing strategies, we produce cluster mass probability density functions $P(X|M,z)$, which can be used to determine the probability that a galaxy cluster of given mass (M), located at redshift ($z$) determined using observable parameter (X). 
-% We then applied these probability functions to ten galaxy clusters selected from the Sloan Digital Sky Survey DR8 and the Chandra-XMM X-ray Cluster Survey at $z=0.2-0.3$, and observed by the HETDEX spectrograph prototype instrument (VIRUS-p). We measured spectroscopic redshifts and line-of-sight velocities of the galaxies in and around each cluster, derived a line-of-sight velocity dispersion, and inferred a dynamical mass for each cluster which ranges from $(0.4-24) \times 10^{14} \Msol (M_{200c})$. Using the mass probability density functions described above, we updated these masses and compared them to existing literature estimates, or to the masses estimated from other observables such as X-ray temperature or richness.
 \end{abstract}
 
 \section{INTRODUCTION}
@@ -93,7 +92,7 @@ Connecting the dynamical properties derived from spectroscopy to the properties 
 
 It is unclear how a blind spectroscopic survey with an IFU will effect the recovery of galaxy cluster dynamical properties. Unlike many previous large cluster surveys \citeeg{Milvang-Jensen2008, Robotham2011, Sifon2015} which use multi-object spectrographs, the Visible Integral-Field Replicable Unit Spectrograph (VIRUS; \citealt{Hill2012}) used by HETDEX samples the sky unevenly which could excluded member galaxies which would otherwise be included. Secondly, it is not straightforward to use spectroscopic redshifts predominately from emission-line galaxies to interpret the kinematic and dynamical states of the clusters.
 
-This work plans to address these concerns in the following ways. We use simulated observations which target individual galaxy clusters to investigate the recovery of parameters with such observations. Secondly, we create and evaluate a HETDEX like selection ``function'' of galaxies over a similarly large portion of the sky and use well adopted techniques to recover the dynamical properties, such as velocity dispersion and mass. Each observation strategy will further be constrained with ``ideal'' and ``realistic'' knowledge. Ideal knowledge assumes that we know which individual galaxy is assigned to which cluster. With realistic knowledge this is unknown and must be determined prior to the estimation of the cluster properties. Both of these strategies will better allow future work to predict the number and types of galaxy clusters which should be observed with VIRUS during both the HETDEX survey portion and through targeted follow up observations.
+\editorial{The wording here needs to be updated when the time comes.} This work plans to address these concerns in the following ways. We use simulated observations which target individual galaxy clusters to investigate the recovery of parameters with such observations. Secondly, we create and evaluate a HETDEX like selection ``function'' of galaxies over a similarly large portion of the sky and use well adopted techniques to recover the dynamical properties, such as velocity dispersion and mass. Each observation strategy will further be constrained with ``ideal'' and ``realistic'' knowledge. Ideal knowledge assumes that we know which individual galaxy is assigned to which cluster. With realistic knowledge this is unknown and must be determined prior to the estimation of the cluster properties. Both of these strategies will better allow future work to predict the number and types of galaxy clusters which should be observed with VIRUS during both the HETDEX survey portion and through targeted follow up observations.
 
 We begin in Section \ref{sec:Data} by giving an overview of what data is used, how it is created, and how we make our ``observations.'' Details about the determination of cluster parameters, velocity dispersion, total mass, etc., are discussed in Section \ref{sec:recovery}. Next, we present the results of our study in Section \ref{sec:results} and discuss their implications in Section \ref{sec:discussion}. Finally we summarize our findings in Section \ref{sec:summary}.
 
@@ -101,17 +100,19 @@ Throughout this paper, we adopt the following cosmological model ($\Omega_\Lambd
 $\Omega_M = 0.23$, $\sigma_8 = 0.83$ and $H_0= 72$ \kms \mpc), assume a Chabrier initial mass function (IMF; \citealt{Chabrier2003}), and use AB magnitudes \citep{Oke1974}.
 
 \section{Data and Mock Observations}\label{sec:Data}
-
-\editorial{Blah blah intro stuff... Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.}
+In this section, we describe the data products and the techniques used to replicate the HETDEX survey. We use the information from a large mock galaxy catalog supplemented by galaxies from the SDSS to create a realistic ``sky'' and ``observe'' it with a HETDEX-like observing strategy.
 
 \subsection{The ``Buzzard'' Catalogs}
+\begin{figure*} 
+	\includegraphics[width=\textwidth]{figures/oii_sdss.pdf} 
+	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two colored boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{ii}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram. See the text for a full description of the process.} \label{fig: oii sdss} 
+\end{figure*}
+
 The ``Buzzard'' mock galaxy catalogs (R. Wechsler et al., private communication) cover 375.68 \degsq\ between $60 < RA < 90$ and $-61 < DEC < -41$ and are derived from a combination of Sub-halo Abundance Matching (ShAM) and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) tied to an in house n-body cosmological simulation. A brief description of the catalog creation is described as follows. The initial conditions are generated with a second-order Lagrangian perturbation theory using {\tt 2LPTic} \citep{Crocce2006}. Dark matter (DM) n-body simulations are run using {\tt LGadget-2} (a version of {\tt Gadget-2}; \citealt{Springel2005}). The DM halos are identified using the {\tt ROCKSTAR} halo finder \citep{Behroozi2013} which also calculates halo masses and other various parameters. 
 
 Galaxy $M_r$ luminosities are added to the velocity peaks using ShAM \citep{Reddick2013}, and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) assign luminosities in the other bands. A $M_r$-density-SED relation is created using a SDSS training set, and for each mock galaxy the SED of a randomly selected training set galaxy which has a similar $M_r$ and density is assigned. The result is a 398.49 sq. degree mock catalog occupying a $60 \leq RA \leq 90$ and $-40 \leq DEC \leq -61$ portion of the sky. It contains 238 million galaxies with \sdssr\ mag $< 29$ and $z \leq 8.7$.
 
-The catalog information, used in this study, is broken into two large portions. The ``truth'' files contain the characteristics of each individual galaxies, such as right ascension (RA), declination (DEC), redshift (z), observed and rest-frame magnitudes, and many others. The ``halo'' files contain information for individual halos, to which many individual galaxies may belong. This includes five estimations of dynamical mass, RA, DEC, z, three dimensional velocity dispersion, and many others.
-
-However, the catalogs do not include information on emission or absorption lines or estimations of whether the halo is relaxed or not. We supplement the catalogs with this information and describe the method in Section~\ref{sec: oii luminosity} and others.
+The catalog information, used in this study, is broken into two large portions. The ``truth'' files contain the characteristics of each individual galaxies, such as right ascension (RA), declination (DEC), redshift ($z$), observed and rest-frame magnitudes, and many others. The ``halo'' files contain information for individual halos, to which many individual galaxies may belong. This includes five estimations of dynamical mass, RA, DEC, z, three dimensional velocity dispersion, and many others. However, the catalogs do not include information for emission lines. We supplement the catalogs by generating this information; the process is described in Section~\ref{sec: oii luminosity}.
 
 % \begin{figure}
 % 	\includegraphics[width=\columnwidth]{figures/hmf.pdf}
@@ -119,34 +120,32 @@ However, the catalogs do not include information on emission or absorption lines
 % 	\label{fig: hmf}
 % \end{figure}
 
-We investigate the accuracy of the halo mass distribution by comparing the cumulative number density of halos above a mass ($M_{200c}$) threshold to the halo mass function (HMF) of \cite{Tinker2008}. Shown in Figure~\ref{fig: hmf} the HMF is calculated at central redshifts of 0, 0.2, and 0.4 using {\tt HMFcalc} \citep{Murray2013} and compared to galaxies in a redshift window of $\Delta z\pm0.01$. We find a very good agreement between the expected HMF and the observed. 
+We investigate the accuracy of the halo mass distribution by comparing the cumulative number density of halos above a mass ($M_{200c}$) threshold to the halo mass function (HMF) of \cite{Tinker2008}. We calculate the HMF is calculated at central redshifts of 0.1, 0.2, and 0.4 using {\tt HMFcalc} \citep{Murray2013} and compared to galaxies in a redshift window of $\Delta z\pm0.01$. We find a very good agreement between the predicted HMF and the observed distribution of clusters.
 
 \subsection{ {\rm[\ion{O}{ii}]} Luminosity}\label{sec: oii luminosity}
-\begin{figure*} 
-	\includegraphics[width=\textwidth]{figures/oii_sdss.pdf} 
-	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{ii}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram.} \label{fig: oii sdss} 
-\end{figure*}
-
-The Buzzard ``truth'' catalog does not provide [\ion{O}{ii}] luminosities so we must assign them empirically. We use 503113 galaxies from the SDSS Data Release 12 \citep{Alam2015} from $z = 0.05 - 0.2$, which are selected with no redshift warning, and place each galaxy on a color-magnitude diagram (CMD) of $M_r$ and $g-r$, see Figure~\ref{fig: oii sdss}.
+The Buzzard ``truth'' catalog does not provide [\ion{O}{ii}] luminosities so we must assign them empirically. We use 503113 galaxies from the SDSS Data Release 12 \citep{Alam2015} from $z = 0.05 - 0.2$, which are selected with no redshift warning, and place each galaxy on a color-magnitude diagram (CMD) of $M_r$ and $g-r$; see the left panel of Figure \ref{fig: oii sdss}.
 
 To assign an [\ion{O}{ii}] luminosity to each galaxy in our catalog we place the catalog galaxies on the same CMD and select all SDSS galaxies in a small 2D ($M_r$, $g-r$) bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their [\ion{O}{ii}] luminosities. Using a slice sampling technique \citep{Neal1997} we assign the catalog galaxy an [\ion{O}{ii}] luminosity based on the distribution of SDSS galaxies extracted. For catalog galaxies which are placed on the CMD near no, or very few ($1\leq n<10$) galaxies we assign it zero [\ion{O}{ii}] luminosity or the mean luminosity, respectively.
 
-The right panel of Figure~\ref{fig: oii sdss} shows the CMD of all SDSS galaxies. Two potential catalog galaxies are also placed on the CMD ($M_r, g-r = -17.7,~0.49$ and $M_r, g-r = -21.4,~1.24$) and indicated by two colored boxes. The histograms show in the Figure's left panel shows the probability density histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies in the 2D bin. We sample the distribution and assign each catalog galaxy an [\ion{O}{ii}] luminosity which is then converted into a flux.
+The right panel of Figure~\ref{fig: oii sdss} shows the CMD of all SDSS galaxies. Two potential catalog galaxies are also placed on the CMD ($M_r, g-r = -17.7,~0.49$ and $M_r, g-r = -21.4,~1.24$) and indicated by the two colored boxes. The histograms show in the Figure's right panel show the probability density histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies in the 2D bin around the individual catalog galaxies. We sample the distribution and assign each catalog galaxy an [\ion{O}{ii}] luminosity which is then converted into a flux.
 
 \subsection{Mock Observations}\label{sec: observations}
-\editorial{Not sure this does a good enough job talking about the two different observations.}
-Tentatively slated to start in the spring of 2016, HETDEX will perform blind spectroscopy (R $\sim$ 750 in $3500 - 5500~\AAA$) over two fields along the celestial equator. The 300 \degsq, spring field and 120 \degsq, fall field will have no preselected targets. Using VIRUS on the 10-m Hobby-Eberly Telescope (HET; \citealt{Ramsey1998}) the completed survey is expected to have an overall fill-factor of 1/4.5, meaning that the entire area could be covered with 4.5 dithers of the entire survey. 
-
-The spectral coverage allows for the detection of [\ion{O}{ii}] ($\lambda\lambda 3727-3729~\AAA$ doublet) emitters to $z\sim 0.5$ and Ca H ($\lambda 3968.5~\AAA$) and K ($\lambda 3933.7~\AAA$) absorption features to $z\sim 0.4$. HETDEX is expected to detect sources with continuum brighter than 22 mag in \sdssg, and emission line strengths above $3.5\times10^{-17}$ \ergscm. So we ``observe'' $z<0.4$ galaxies which meet either the emission line or the magnitude limit. Galaxies $0.4<z<0.5$ are only observed if their emission line strength is sufficient. \editorial{These limits have been changed. FIX!}
-
 \begin{figure} 
-	\includegraphics[width=\columnwidth]{figures/f01.pdf} 
+	\includegraphics[width=\columnwidth]{figures/pointings.pdf} 
 	\caption{Representative observation tiling scheme for the HETDEX $16' \times 16'$ pointings. Each colored square is a single VIRUS IFU and the dashed octagons approximate the size of a single observation. See the text for more details.} \label{fig: ifu layout} 
 \end{figure}
 
-In this work we consider two separate observation cases. The first are targeted observations where we select each galaxy cluster and ``observe'' each galaxy within $8'$ of the center. The second is a survey case where observations which are blind to the positions of the clusters are conducted. In both cases, our ``observations'' consist of placing masks down onto the Buzzard ``truth'' catalogs and selecting all, $z< 0.5$ also meeting sensitivity limits, galaxies which lie underneath. Each mask is created to accurately reproduce the HETDEX IFU pattern, see Figure~\ref{fig: ifu layout}. The pattern consists of 78 IFUs, which are comprised of 448 optical fibers subtending a $50'' \times 50''$ region on the sky \citep{Kelz2014}. The inter-IFU spacing is also $50''$ spanning a total area of $16'\times 16'$ on the sky. 
+Tentatively slated to start in the spring of 2016, HETDEX will perform blind spectroscopy (R $\sim$ 750 in $3500 - 5500~\AAA$) over two fields along the celestial equator. The 300 \degsq, spring field and 120 \degsq, fall field will have no preselected targets. Using VIRUS on the 10-m Hobby-Eberly Telescope (HET; \citealt{Ramsey1998}) the completed survey is expected to have an overall fill-factor of 1/4.5, meaning that the entire area could be covered with 4.5 dithers of the entire survey. 
 
-The individual IFUs have a fill-factor of 1/3, which will be completely filled with three dithers of the telescope at each pointing. This means that when selecting galaxies from the Buzzard catalog we assume an observation for all galaxies laying within a colored, IFU square in Figure~\ref{fig: ifu layout}. \editorial{This should be updated with the fiber collisions.} Galaxies which lie between the IFUs are missed, as well as the galaxies which lie between the pointings, as there is no overlap between one pointing and the next. To cover the 375.67 \degsq\ field of the Buzzard catalog we require 5370 pointings where 0.015 \degsq\ of each pointing is covered by an IFU. The total area of the sky covered by an IFU is 80.80 \degsq\ which gives a filling factor of 1/4.65 slight decreased from the expected filling factor of 1/4.5. 
+Each mask is created to accurately reproduce the HETDEX IFU pattern, see Figure~\ref{fig: ifu layout}. The pattern consists of 78 IFUs, which are comprised of 448 optical fibers subtending a $50'' \times 50''$ region on the sky \citep{Kelz2014}. The inter-IFU spacing is also $50''$ spanning a total area of $16'\times 16'$ on the sky. 
+
+The individual IFUs have a fill-factor of 1/3, which will be completely filled with three dithers of the telescope at each pointing. This means that when selecting galaxies from the Buzzard catalog we assume an observation for all galaxies laying within a colored, IFU square in Figure~\ref{fig: ifu layout}. Galaxies which lie between the IFUs are missed, as well as the galaxies which lie between the pointings, as there is no overlap between one pointing and the next. To cover the 375.67 \degsq\ field of the Buzzard catalog we require 5370 pointings where 0.015 \degsq\ of each pointing is covered by an IFU. The total area of the sky covered by an IFU is 80.80 \degsq\ which gives a filling factor of 1/4.65 slight decreased from the expected filling factor of 1/4.5.
+
+The spectral coverage allows for the detection of [\ion{O}{ii}] ($\lambda\lambda 3727-3729~\AAA$ doublet) emitters to $z\sim 0.5$ and Ca H ($\lambda 3968.5~\AAA$) and K ($\lambda 3933.7~\AAA$) absorption features to $z\sim 0.4$. HETDEX is expected to detect sources with continuum brighter than $\sdssg=22$ mag, and emission line strengths above $3.5\times10^{-17}$ \ergscm.
+
+In this work we consider two separate observing strategies and two detection limits. The two observing strategies are targeted and survey-like. The targeted observations use ``direct'' observations where each cluster is targeted individual, and every cluster member galaxy is assumed to be observed. The survey observations mimic the HETDEX observation pattern across the sky, where no cluster is directly targeted and not all cluster member galaxies are observed. In both cases we use two detection thresholds. ``Perfect'' observations assume no detection threshold, if a cluster member galaxy is observed, it is also detected. ``Realistic'' observations assume the HETDEX-like detection thresholds where a galaxy may be observed but not necessarily detected.
+
+These observations provide four levels of quality with targeted-perfect being the highest and survey-realistic being the lowest. 
 
 \section{Recovery of Parameters}\label{sec:recovery}
  In the following sections, we outline the methods we use to derive the dynamical properties of the galaxy clusters in our sample. This is not meant to be an exhaustive study of the different methods used to recover these parameters. The following is, in many cases, a subset of the available methods to derive any single parameter. The specific choice of method may improve or diminish the accuracy of the recovered parameter, but the methods chosen were to facilitate comparison with observational studies. 
@@ -168,7 +167,7 @@ The line-of-sight velocity dispersion (LOSVD) is calculated using a method of ma
   \label{eq: jointGaussian}
 p(\{v_1, ..., v_N\})=\displaystyle\prod_{i=1}^{N}\frac{1}{\sqrt{2\pi(\sigma_i^2+\sigma_p^2)}}\exp\biggl[-\frac{1}{2}\frac{(v_i-\langle u \rangle)^2}{(\sigma_i^2+\sigma_p^2)}\biggr]
 \end{equation}
-where $\sigma_p$, $\langle\mu\rangle$, and $\sigma_i$ is the LOSVD, the average radial velocity and the error on the individual LOSVs respectively. Using a Monte Carlo Markov Chain (MCMC) sampler ({\tt emcee}\footnote{\url{http://dan.iel.fm/emcee/current/}}; \citealt{Foreman-Mackey2013}), we draw twenty thousand samples from the posterior probability distribution. Simple priors, $\langle\mu\rangle$ lies between the maximum and minimum LOSV and $0< \sigma_p$ \editorial{check}, are used. When the full distribution of LOSVDs are not used, the final LOSVD is quoted as the median value of the posterior probability distribution with 68\% error bars defined as the 16th and 84th percentiles of the same distribution.
+where $\sigma_p$, $\langle\mu\rangle$, and $\sigma_i$ is the LOSVD, the average radial velocity and the error on the individual LOSVs respectively. Using a Monte Carlo Markov Chain (MCMC) sampler ({\tt emcee}\footnote{\url{http://dan.iel.fm/emcee/current/}}; \citealt{Foreman-Mackey2013}) which is based on affine-invariant ensemble sampler (see \citealt{Goodman2010} for details on affine-invariant samplers). We draw twenty thousand samples from the posterior probability distribution. Simple priors, $\langle\mu\rangle$ lies between the maximum and minimum LOSV and $0< \sigma_p < 1400$ \kms, are used. When the full distribution of LOSVDs are not used, the final LOSVD is quoted as the median value of the posterior probability distribution with 68\% error bars defined as the 16th and 84th percentiles of the same distribution.
 
 In principle, a single statistic such as the biweight scale estimator or the gapper estimator (both from \citealt{Beers1990}) with many bootstrap resamplings could be used to construct a distribution of $\sigma_p$. In simple tests where the values of both $\sigma_p$ and $\langle\mu\rangle$ are known. The 68\% error bars derived from the MCMC method give slightly better results with the true LOSVD value bracketed by the error bars in $\sim68\%$ of the cases versus $\sim57\%$ with bootstrapping and a single statistic. In addition, we prefer the maximum likelihood method for its straight forward treatment of the errors in the LOSV measurements.
 
@@ -193,10 +192,15 @@ We begin with the training sample. After selecting the desired features $\vec{x}
 
 \begin{figure} 
 	\includegraphics[width=\columnwidth]{figures/cornertest.pdf} 
-	\caption{Corner plot of the \emph{training} data with features $\sigma$ and $z$. The corner plots shows all of the one and two dimensional posterior probability distributions used to determine the correct cluster mass. The colored rectangles show the slices needed to create a conditional probability distribution of the mass, $P(M|\vec{x})$. See text for a complete description. } \label{fig: probability corner} 
+	\caption{Corner plot of the \emph{training} data with features $\sigma$ and $z$. The corner plots shows all of the one and two dimensional posterior probability distributions used to determine the correct cluster mass. The colored rectangles, which have been enlarged for clarity, show the slices needed to create a conditional probability distribution of the mass, $P(M|\vec{x})$. See text for a complete description. } \label{fig: probability corner} 
 \end{figure}
 
-The conditional probability of the mass $P(M|\vec{x}= \{ x_1,x_2,...\})$ is determined by taking a slice through the joint probability distributions in bins centered on the desired value. The slices show by the colored bars in Figure~\ref{fig: probability corner} are centered on $\sigma = 500$ \kms and $z=0.17$. The distribution of mass contained in the three dimensional bin given by the intersection of these slices is $P(M|\vec{x} = \{ \sigma=500 \kms,z=0.17\})$.
+The conditional probability of the mass $P(M|\vec{x}= \{ x_1,x_2,...\})$ is determined by taking a slice through the joint probability distributions in bins centered on the desired value. The slices show by the colored bars in Figure~\ref{fig: probability corner} are centered on $\sigma = 400$ \kms and $z=0.17$. The distribution of mass contained in the three dimensional bin given by the intersection of these slices is $P(M|\vec{x} = \{ \sigma=400 \kms,z=0.17\})$.
+
+\begin{figure*}
+	\includegraphics[width=0.8\textwidth]{figures/recovery.pdf} 
+	\caption{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and mass for the targeted and survey observing strategies. The solide lines are the median values and the shaded regions represent the 68\% scatter. The significant decline in galaxies observed with the survey strategy is due to gaps in the VIRUS IFU.} \label{fig: recovery} 
+\end{figure*}
 
 For the clusters making up the \emph{test} sample the mass is unknown (it is what we are trying to predict) but the other features are known. To determine the mass probability distribution of a test cluster, $P(M)$ we combine the conditional probability distribution, $P(M|\vec{x})$, created previously with the probability distribution of $\sigma$ through Equation~\ref{eq: Pm}.
 \begin{equation}\label{eq: Pm}
@@ -224,17 +228,12 @@ The prediction intervals here are based on the general method of quantile regres
 \section{RESULTS}\label{sec:results}
 Here we explore the cluster member recovery rate and mass estimates for the two observing strategies. We discuss the accuracy of dynamical mass derived from both the scaling relation (see Equation \ref{eq:power law}) and through the probability and ML methods.
 
-\begin{figure*}
-	\includegraphics[width=\textwidth]{figures/recovery.pdf} 
-	\caption{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and mass for the targeted and survey observing strategies. The solide lines are the median values and the shaded regions represent the 68\% scatter. The significant decline in galaxies observed with the survey strategy is due to gaps in the VIRUS IFU.} \label{fig: recovery} 
-\end{figure*}
-
 \subsection{Recovery of Cluster Members}
 As discussed in Section \ref{sec: observations} the observational constraints place limits on the total number fo clusters member galaxies expected to be recovered. Knowing these limits will provide important information for potential future follow up or targeted observations. 
 
 Figure \ref{fig: recovery} shows the recovery fraction of member galaxies, the number of observed galaxies divided by the number of actual galaxies ($N_{obs}/N_{True}$), as function of both redshift and cluster mass. It is important to note that if few than five member galaxies are observed the cluster is not considered detected, and is excluded from this figure. As expected, the targeted observing strategy where the individual clusters are targeted through several dithers to ensure near complete coverage, performs significantly better than the survey observing strategy across all redshifts and cluster masses. 
 
-For the clusters recovered as a function of redshift, there are two effects at work. The decrease in recovery fraction with increasing redshift is a magnitude effect. If, instead of being limited to 22 mag in \sdssg apparent, the observations where limited by absolute magnitude, the sharp downward trend disappears. The second key feature is the strong decline in clusters recovered from survey observations. This is due to gaps in the VIRUS IFU. The median recovery fraction in survey observations is almost exactly 4.5 times less than the targeted median recovery fraction. As the total filling factor of the survey increases the two lines will converge.
+For the clusters recovered as a function of redshift, there are two effects at work. The decrease in recovery fraction with increasing redshift is a magnitude effect. If, instead of being limited to $\sdssg= 22$ mag, the observations where limited by absolute magnitude, the sharp downward trend disappears. The second key feature is the strong decline in clusters recovered from survey observations. This is due to gaps in the VIRUS IFU. The median recovery fraction in survey observations is almost exactly 4.5 times less than the targeted median recovery fraction. As the total filling factor of the survey increases the two lines will converge.
 
 The recovery rate as a function of cluster mass, right panel of Figure \ref{fig: recovery}, shows that of the the low mass clusters we detect ($N_{obs} >5$), observe the majority of the galaxies. This also shows a rapid decrease in the detection fraction, which can again be explained by considering absolute magnitudes instead of apparent magnitudes. Just as before, if the survey was limited by absolute magnitude, we find a much more consistent detection fraction.
 
@@ -257,16 +256,16 @@ The cluster masses predicted by Equation \ref{eq:power law} gives the following 
 	& Input Features & MAE & RMSE & Overlap & MAE & RMSE & Overlap \\
 	& & (dex) & (dex) & (\%) & (dex) & (dex) & (\%) \\
 	\hline
-	\rottext{4}{Prob Based} & Power Law & 0.263 & 0.396 & --- & 0.263 & 0.393 & --- \\
-	&$\sigma$ & 0.220 & 0.335 & --- & 0.222 & 0.329 & --- \\
-	&$\sigma, z$ & 0.189 & 0.286 & --- & 0.194 & 0.278 & --- \\
-	&$\sigma, z, N_{gal}$ & 0.129 & 0.207 & --- & 0.140 & 0.222 & --- \\
+	\rottext{4}{Prob Based} & Power Law & 0.259 & 0.394 & \nd & 0.243 & 0.357 & \nd \\
+	&$\sigma$ & 0.220 & 0.337 & \nd & 0.210 & 0.310 & \nd \\
+	&$\sigma, z$ & 0.193 & 0.283 & \nd & 0.184 & 0.271 & \nd \\
+	&$\sigma, z, N_{gal}$ & 0.128 & 0.204 & \nd & 0.141 & 0.215 & \nd \\
 
 	\hline
-	\rottext{4}{ML Based} & Power Law & 0.263 & 0.396 & --- & 0.263 & 0.393 & --- \\
-	&$\sigma$ & 0.246 & 0.361 & --- & 0.238 & 0.344 & --- \\
-	&$\sigma, z$ & 0.193 & 0.285 & --- & 0.171 & 0.260 & --- \\
-	&$\sigma, z, N_{gal}$ & 0.117 & 0.193 & --- & 0.093 & 0.179 & --- \\
+	\rottext{4}{ML Based} & Power Law & 0.258 & 0.394 & \nd & 0.255 & 0.380 & \nd \\
+	&$\sigma$ & 0.241 & 0.359 & \nd & 0.223 & 0.342 & \nd \\
+	&$\sigma, z$ & 0.193 & 0.282 & \nd & 0.197 & 0.290 & \nd \\
+	&$\sigma, z, N_{gal}$ & 0.118 & 0.192 & \nd & 0.140 & 0.221 & \nd \\
 
 	\hline
 \end{tabular}
@@ -300,14 +299,38 @@ In both figures we successively add additional information to further contrain t
 
 \section{HETDEX as a Galaxy Cluster Survey}\label{sec:discussion}
 
-% \subsection{Expected Results}
-% \editorial{Expected results in what context? How well we can obtain cluster masses? How many masses will we get to what accuracy? This is sorta talk about in the results section but we don't really come out and say "this is what we think HETDEX will and and how well we think it will do it." That might worth saying, even if we are wrong it will give people a starting point when thinking about this stuff in the future.}
-% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\subsection{Potential Improvements}
-\editorial{The potential improvements are really three fold. We know that the observing won't cover all of the sky. So we can simply tile more and try to get more clusters. We can observe deeper. I'm not sure the current exposure times (they are in an email that I sent to casey) but if we can extend them, then we can get further down the IMF and try to build up some of the clusters that are really more like groups than anything else. The last thing we can do is to attempt to  build better models to make better predictions on the masses. That might be something like the study that \cite{Acquaviva2016} did with the stellar metallicities. Or we'll need something else that I haven't thought of just yet. The other idea is to come up with some sort of cheat sheet for HETDEX. Basically, a if you detect such and such type of galaxy in the survey model then you should go back and try to follow it up with targeted observations. It might be good to talk about the recovery fraction between the two surveys above. Like... if there are 30 cluster members then we should detect the cluster in both surveys.}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\begin{table*}
+\centering
+\caption{Associated mass prediction errors (MAE) for different bins of predicted mass. This table shows the relative error for the targeted (top section) and survey (bottom section) observations for different predicted mass bins. The values in the table correspond to the MAE for the galaxies in the predicted mass bin (top row) for the different mass recovery strategies (leftmost column). It can be used to understand how precise the predicted cluster mass is.}
+\begin{tabular}{cccccccccc} 
+		&& \multic{8}{Bins -- Log $M_{pred}$ ($\Msol$)} \\
+		\cline{3-10} 
+		\multicolumn{2}{c}{Input Features} & $11.5-12$ & $12-12.5$ & $12.5-13$ & $13-13.5$ & $13.5-14$ & $14-14.5$ & $14.5-15$ & $15-15.5$ \\
+		\hline 
+		\rottext{4}{Prob Based} & Power Law & 0.602 & 0.376 & 0.340 & 0.278 & 0.225 & 0.177 & 0.114 & 0.041 \\
+		&$\sigma$ & 1.030 & 0.655 & 0.389 & 0.212 & 0.160 & 0.158 & 0.224 & 0.328 \\
+		&$\sigma, z$ & 0.804 & 0.476 & 0.242 & 0.173 & 0.170 & 0.210 & 0.353 & 0.529 \\
+		&$\sigma, z, N_{gal}$ & 0.649 & 0.372 & 0.163 & 0.124 & 0.113 & 0.111 & 0.105 & 0.241 \\
+		\hline
+		\rottext{4}{ML Based} & Power Law & 0.602 & 0.376 & 0.340 & 0.278 & 0.225 & 0.177 & 0.114 & 0.041 \\
+		&$\sigma$ & 0.773 & 0.557 & 0.287 & 0.210 & 0.230 & 0.267 & 0.337 & 0.323 \\
+		&$\sigma, z$ & 0.631 & 0.380 & 0.211 & 0.172 & 0.182 & 0.236 & 0.284 & 0.265 \\
+		&$\sigma, z, N_{gal}$ & 0.539 & 0.304 & 0.148 & 0.117 & 0.105 & 0.095 & 0.078 & 0.110 \\
+		\hline 
+		\hline
+		\rottext{4}{Prob Based} & Power Law & \nd & \nd & 0.520 & 0.319 & 0.263 & 0.214 & 0.140 & 0.069 \\
+		&$\sigma$ & \nd & \nd & 0.765 & 0.434 & 0.198 & 0.149 & 0.163 & 0.346 \\
+		&$\sigma, z$ & \nd & \nd & 0.592 & 0.305 & 0.162 & 0.165 & 0.257 & 0.396 \\
+		&$\sigma, z, N_{gal}$ & \nd & \nd & 0.476 & 0.171 & 0.125 & 0.141 & 0.141 & 15.002 \\
+		\hline
+		\rottext{4}{ML Based} & Power Law & \nd & 0.583 & 0.316 & 0.337 & 0.278 & 0.214 & 0.140 & 0.069 \\
+		&$\sigma$ & \nd & 0.606 & 0.551 & 0.263 & 0.201 & 0.227 & 0.200 & 0.192 \\
+		&$\sigma, z$ & \nd & 0.916 & 0.434 & 0.206 & 0.171 & 0.205 & 0.249 & 0.202 \\
+		&$\sigma, z, N_{gal}$ & \nd & 0.780 & 0.401 & 0.155 & 0.129 & 0.136 & 0.145 & 0.142 \\
+		\hline
+	\end{tabular}
+\label{tbl:sersic number bins}
+\end{table*}
 
 \subsection{Extendability to Other Surveys}
 Large-scale optical surveys (\eg, DES and LSST) expect to detect hundreds of thousands of galaxy clusters at $z < 1$. Because they are photometric, a major challenge for these surveys is relating a cluster observable to the total dark-matter mass. One promising mass estimator is the optical richness \citeeg{Abell1958}. Specifically, here, we use $\lambda$, the weighted number of galaxies within a scale aperture \citeeg{Rozo2011} as calculated by the redMapper algorithm \citep{Rykoff2012}. Previous works \citeeg{Rozo2010} show that the richness correlates strongly with cluster mass on the average, but the absolute mass scale of the optical richness mass estimator and the scatter in cluster mass at fixed optical richness are imprecisely known \citep{Rykoff2012}. These systematics remain the major source of uncertainty in deriving cosmological constraints from cluster abundances and must be measured using independent methods to realize the full potential of these surveys.
@@ -335,22 +358,35 @@ and the survey observations as
 \begin{equation}
 	ln\bigg{(}\frac{M_{200c}}{h_{70}^{-1} 10^{14}\Msol}\bigg{)} = 1.02\pm0.13 + 0.96\pm0.22 ln\bigg{(}\frac{\lambda}{60}\bigg{)} \nonumber
 \end{equation}
+
+The bottom panel of Figure \ref{fig:mass richness} shows the scatter in cluster masses at fixed richness, $\sigma_{M|\lambda}$. The solid and dashed lines represent the targeted and survey observations respectively, and have been offset from one another for clarity. The cluster masses are binned in increasing ten richness intervals ($20-30$, $30-40$, etc.). The two horizontal lines show the mean scatter of 0.26 dex for the targeted observations and 0.21 dex for the survey observations. While not shown in the figure, we find a mean scatter of 0.27 dex if we replace $M_{pred}$ with the true cluster mass for the clusters identified with targeted observations. The reduction in scatter from the targeted to survey observations is due to fewer objects detected in survey mode.
+
+%Much like the MAE and RMSE associated with the cluster mass recovery, comparing the individual $\sigma_{M|\lambda}$ values directly is incorrect. When comparing only the clusters with observations in both the targeted and survey strategies we 
+	
 %Applying my current work to a large photometric survey such as those mentioned above is the logical next step. For example, the HETDEX observations overlap with the DES area and SDSS Stripe 82 which provides a wealth of external data. Using preexisting datasets, the observations from HETDEX, or through dedicated followup spectroscopic observations, I will be able to measure the absolute mass scale of the richness estimator and measure the scatter of the richness-mass relation, $\sigma_{M|\lambda}$. An accurate measure of this scatter can lead to a decrease on the error bar on cosmological measures ($\sigma_8$ and $\Omega_M$) by as much as 50\% \citep{Rozo2010}. An absolute calibration of the richness-mass relation will provide a much needed tool for future imaging surveys which will identify clusters to $z=1$ and beyond.
 
-\section{SUMMARY}\label{sec:summary}
+\subsection{Potential Improvements}
+\editorial{The potential improvements are really three fold. We know that the observing won't cover all of the sky. So we can simply tile more and try to get more clusters. We can observe deeper. I'm not sure the current exposure times (they are in an email that I sent to casey) but if we can extend them, then we can get further down the IMF and try to build up some of the clusters that are really more like groups than anything else. The last thing we can do is to attempt to  build better models to make better predictions on the masses. That might be something like the study that \cite{Acquaviva2016} did with the stellar metallicities. Or we'll need something else that I haven't thought of just yet. The other idea is to come up with some sort of cheat sheet for HETDEX. Basically, a if you detect such and such type of galaxy in the survey model then you should go back and try to follow it up with targeted observations. It might be good to talk about the recovery fraction between the two surveys above. Like... if there are 30 cluster members then we should detect the cluster in both surveys.}
+
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+\section{SUMMARY}\label{sec:summary}
+Here, we present detailed simulations of the upcoming HETDEX survey's applicability to the detection and total mass measurement of galaxy clusters. We use mock galaxy catalogs, and simulated HETDEX-like observational strategies to estimate the number of clusters observed and the precision of their total mass estimates, using three different mass estimates. With an eye to galaxy cluster studies, we discuss potential improvements to the HETDEX survey, and comment on how HETDEX may improve current and future photometric large-area sky surveys' cluster mass estimates derived from optical richness.
 
 Our main conclusions are the following:
 \begin{enumerate}
-	\item Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	\item Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	\item Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	\item HETDEX-like observations do a good job observing galaxy clusters. The number of galaxy clusters detected in the HETDEX-like observations is almost exact 4.5 times less than in the targeted observations. This difference is the same as the overall HETDEX fill factor.
+	\item Overall, we find that a traditional power-law conversion from LOSVD to cluster mass performs significantly poorer than either the probability based or ML based methods also tested. We find the MAE and RMSE of survey detected cluster mass estimates to be approximately 38\% and 65\% respectively, compared to approximately 123\% when a power-law is used alone.
+	\item While the power-law may be outperformed, overall, comparisons of similar mass galaxy clusters shows that above Log M $=14.5$ \Msol, the power-law gives a lower MAE than either the probability based or ML based methods. For HETDEX-like observations and clusters with $13 < Log M <14.5$ \Msol, we find the $ML_{\sigma, z, N_{gal}}$ method performs the best. Below Log M $=13$ \Msol\ no method with survey observations gives an MAE of less than 50\%.
+	\item For followup targeted observations only galaxy clusters with masses inferred to be Log M $<13$ \Msol\ from survey observations should be targeted. Galaxy clusters with inferred masses below Log M $=13$ \Msol\ can see as much as an 81\% improvement in cluster mass estimation with targeted observations. While the improvement of clusters with masses above Log M $=13$ \Msol\ is often approximately 10\%.
+	\item \editorial{Something about the richness.}
 \end{enumerate}
 
 It is the author's hope that this work may be useful to others when conducting their own research. Because this work relies heavily on (often) complex data analysis, and in order to promote transparency, we provide all of the code used to conduct this study at https://github.com/boada/desCluster. Regrettably, large file size prevents including the source data with the analysis routines. The authors are happy to provide them, if requested.
 
 \section*{Acknowledgements}
-The authors also wish to thank the anonymous referee whose comments and suggestions significantly improved both the quality and clarity of this work. We also thank Steven W. Crawford for many helpful discussions. This research made use of This research made use of  the {\tt IPython} package \citep{Perez2007} and {\tt matplotlib}, a Python library for publication quality graphics \citep{Hunter2007}. Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, the National Aeronautics and Space Administration, the Japanese Monbukagakusho, the Max Planck Society, and the Higher Education Funding Council for England. The SDSS Web Site is http://www.sdss.org/. The SDSS is managed by the Astrophysical Research Consortium for the Participating Institutions. \editorial{People to thank: Joe, maybe authorship.}
+The authors also wish to thank the anonymous referee whose comments and suggestions significantly improved both the quality and clarity of this work. We also thank Steven W. Crawford for many helpful discussions. This research made use of This research made use of  the {\tt IPython} package \citep{Perez2007} and {\tt matplotlib}, a Python library for publication quality graphics \citep{Hunter2007}. Figure \ref{fig: probability corner} is heavily based on \cite{Foreman-Mackey2016}. Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, the National Aeronautics and Space Administration, the Japanese Monbukagakusho, the Max Planck Society, and the Higher Education Funding Council for England. The SDSS Web Site is http://www.sdss.org/. The SDSS is managed by the Astrophysical Research Consortium for the Participating Institutions. \editorial{People to thank: Joe, maybe authorship.}
 
 %%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
 % The best way to enter references is to use BibTeX:
