@@ -4,7 +4,7 @@
 % installations will be fine) or prefer the old Computer Modern fonts, comment
 % out the following line
 \usepackage{newtxtext,newtxmath}
-%\usepackage{times}
+\usepackage{times}
 % Depending on your LaTeX fonts installation, you might get better results with one of these:
 % \usepackage{mathptmx}
 % \usepackage{txfonts}
@@ -40,25 +40,24 @@
 \newcommand{\rottext}[2]{\multirow{#1}{*}{\rotatebox[origin=c]{90}{#2}}}
 
 %%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
-\title[Short Title]{Cluster Dynamics with HETDEX - I: Simulated Performance, Mass Distribution and Limits}
+\title[Short Title]{Cluster Dynamics with HETDEX at z < 0.5 - I: Simulated Performance, Mass Distribution and Limits}
 
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
-\author[S. Boada et al.]{
-Steven Boada,$^{1}$\thanks{E-mail: boada@physics.tamu.edu}
+\author[S. Boada et al.]
+{\parbox{\textwidth}{Steven Boada,$^{1}$\thanks{E-mail: boada@physics.tamu.edu}
 C.~Papovich,$^{1}$
 R.~Wechsler,$^{2,3}$
-T. S.~Li,$^{1}$\newauthor\phantom{x}
-K.~Gebhardt,$^{4}$
-E.~Rozo,$^{2}$
-E. S.~Rykoff,$^{2}$
+T. S.~Li,$^{1}$
+K.~Gebhardt,$^{5}$
+E.~Rozo,$^{2,4}$
+E. S.~Rykoff,$^{2}$}\vspace{0.4cm}\
 \\
-% List of institutions
-$^{1}$George P.\ and Cynthia Woods Mitchell Institute for
-Fundamental Physics and Astronomy, Texas A\&M University, College Station, TX, 77843-4242\\
+\parbox{\textwidth}{$^{1}$George P.\ and Cynthia Woods Mitchell Institute for Fundamental Physics and Astronomy, and Department of Physics and Astronomy, Texas A\&M University, College Station, TX, 77843-4242, USA\\
 $^{2}$Kavli Institute for Particle Astrophysics and Cosmology, Department of Physics, Stanford University, Stanford, CA 94305, USA\\
 $^{3}$Department of Particle Physics and Astrophysics, SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA\\
-$^{4}$The University of Texas}
+$^{4}$Department of Physics, University of Arizona, Tucson, AZ 85721, USA\\
+$^{5}$Department of Astronomy, The University of Texas at Austin, Austin, TX 78712, USA}}
 
 % These dates will be filled out by the publisher
 \date{Accepted XXX. Received YYY; in original form ZZZ}
@@ -96,8 +95,8 @@ It is unclear how a blind spectroscopic survey with an IFU will effect the recov
 
 We begin in Section \ref{sec:Data} by giving an overview of what data is used, how it is created, and how we make our ``observations.'' Details about the determination of cluster parameters, velocity dispersion, total mass, etc., are discussed in Section \ref{sec:recovery}. Next, we present the results of our study in Section \ref{sec:results} and discuss their implications in Section \ref{sec:discussion}. Finally we summarize our findings in Section \ref{sec:summary}.
 
-Throughout this paper, we adopt the following cosmological model ($\Omega_\Lambda = 0.77$,
-$\Omega_M = 0.23$, $\sigma_8 = 0.83$ and $H_0= 72$ \kms \mpc), assume a Chabrier initial mass function (IMF; \citealt{Chabrier2003}), and use AB magnitudes \citep{Oke1974}.
+Throughout this paper, we adopt the following cosmological model: $\Omega_\Lambda = 0.714$,
+$\Omega_M = 0.286$, $\sigma_8 = 0.82$ and $H_0= 70$ \kms \mpc (taken from the Buzzard catalogs; see below), assume a Chabrier initial mass function (IMF; \citealt{Chabrier2003}), and use AB magnitudes \citep{Oke1974}.
 
 \section{Data and Mock Observations}\label{sec:Data}
 In this section, we describe the data products and the techniques used to replicate the HETDEX survey. We use the information from a large mock galaxy catalog supplemented by galaxies from the SDSS to create a realistic ``sky'' and ``observe'' it with a HETDEX-like observing strategy.
@@ -108,7 +107,7 @@ In this section, we describe the data products and the techniques used to replic
 	\caption{\textit{Left}: CMD of 503113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two colored boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log [\ion{O}{ii}] luminosity for the SDSS galaxies located in the two highlighted regions on the right. New [\ion{O}{ii}] luminosity (and subsequently fluxes) are assigned to catalog galaxies from slice sampling the probability histogram. See the text for a full description of the process.} \label{fig: oii sdss} 
 \end{figure*}
 
-The ``Buzzard'' mock galaxy catalogs (R. Wechsler et al., private communication) cover 375.68 \degsq\ between $60 < RA < 90$ and $-61 < DEC < -41$ and are derived from a combination of Sub-halo Abundance Matching (ShAM) and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) tied to an in house n-body cosmological simulation. A brief description of the catalog creation is described as follows. The initial conditions are generated with a second-order Lagrangian perturbation theory using {\tt 2LPTic} \citep{Crocce2006}. Dark matter (DM) n-body simulations are run using {\tt LGadget-2} (a version of {\tt Gadget-2}; \citealt{Springel2005}). The DM halos are identified using the {\tt ROCKSTAR} halo finder \citep{Behroozi2013} which also calculates halo masses and other various parameters. 
+The ``Buzzard'' mock galaxy catalogs (R. Wechsler et al., private communication) cover 375.68 \degsq\ between $4^h< RA < 6^h$ and $-61\degree < DEC < -41\degree$ and are derived from a combination of Sub-halo Abundance Matching (ShAM) and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) tied to an in house n-body cosmological simulation. A brief description of the catalog creation is described as follows. The initial conditions are generated with a second-order Lagrangian perturbation theory using {\tt 2LPTic} \citep{Crocce2006}. Dark matter (DM) n-body simulations are run using {\tt LGadget-2} (a version of {\tt Gadget-2}; \citealt{Springel2005}). The DM halos are identified using the {\tt ROCKSTAR} halo finder \citep{Behroozi2013} which also calculates halo masses and other various parameters. 
 
 Galaxy $M_r$ luminosities are added to the velocity peaks using ShAM \citep{Reddick2013}, and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) assign luminosities in the other bands. A $M_r$-density-SED relation is created using a SDSS training set, and for each mock galaxy the SED of a randomly selected training set galaxy which has a similar $M_r$ and density is assigned. The result is a 398.49 sq. degree mock catalog occupying a $60 \leq RA \leq 90$ and $-40 \leq DEC \leq -61$ portion of the sky. It contains 238 million galaxies with \sdssr\ mag $< 29$ and $z \leq 8.7$.
 
