@@ -116,7 +116,7 @@ In this section, we describe the data products and the techniques used to replic
 
 The ``Buzzard'' mock galaxy catalogs (R. Wechsler et al., private communication) cover 375.68 \degsq\ between $4^h< RA < 6^h$ and $-61\degree < DEC < -41\degree$ and are derived from a combination of Sub-halo Abundance Matching (ShAM) and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) tied to an in house n-body cosmological simulation. A brief description of the catalog creation is described as follows. The initial conditions are generated with a second-order Lagrangian perturbation theory using {\tt 2LPTic} \citep{Crocce2006}. Dark matter (DM) n-body simulations are run using {\tt LGadget-2} (a version of {\tt Gadget-2}; \citealt{Springel2005}). The DM halos are identified using the {\tt ROCKSTAR} halo finder \citep{Behroozi2013} which also calculates halo masses and other various parameters. 
 
-Galaxy $M_r$ luminosities are added to the velocity peaks using ShAM \citep{Reddick2013}, and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) assign luminosities in the other bands. A $M_r$-density-SED relation is created using a SDSS training set, and for each mock galaxy the SED of a randomly selected training set galaxy which has a similar $M_r$ and density is assigned. The result is a 398.49 sq. degree mock catalog occupying a $60 \leq RA \leq 90$ and $-40 \leq DEC \leq -61$ portion of the sky. It contains 238 million galaxies with \sdssr\ mag $< 29$ and $z \leq 8.7$.
+Galaxy $M_r$ luminosities are added to the velocity peaks using ShAM \citep{Reddick2013}, and ADDSEDs (Adding Density Dependent Spectral Energy Distributions) assign luminosities in the other bands. A $M_r$-density-SED relation is created using a SDSS training set, and for each mock galaxy the SED of a randomly selected training set galaxy which has a similar $M_r$ and density is assigned. The result is a 398.49 sq. degree mock catalog occupying a $4^h \leq RA \leq 6^h$ and $-61\degree < DEC < -41\degree$ portion of the sky. It contains 238 million galaxies with \sdssr\ mag $< 29$ and $z \leq 8.7$.
 
 The catalog information, used in this study, is broken into two large portions. The ``truth'' files contain the characteristics of each individual galaxies, such as right ascension (RA), declination (DEC), redshift ($z$), observed and rest-frame magnitudes, and many others. The ``halo'' files contain information for individual halos, to which many individual galaxies may belong. This includes five estimations of dynamical mass, RA, DEC, z, three dimensional velocity dispersion, and many others. However, the catalogs do not include information for emission lines. We supplement the catalogs by generating this information; the process is described in Section~\ref{sec: oii luminosity}.
 
@@ -242,105 +242,125 @@ For the clusters recovered as a function of redshift, there are two effects at w
 The recovery rate as a function of cluster mass, right panel of Figure \ref{fig: recovery}, shows that of the the low mass clusters we detect ($N_{obs} >5$), we observe the majority of the galaxies. This also shows a rapid decrease in the detection fraction, which can again be explained by considering absolute magnitudes instead of apparent magnitudes, as above. Also, high mass clusters are rare, so inorder to detect them we must probe a large volume of space. The higher redshift cluster members suffer from the limiting apparent magnitude and suppress the recovery fraction at fixed mass. If we were to limit the survey to $z<0.2$ we find the recovery fraction of clusters, at all masses, increases substantially, and we find a much more consistent detection fraction across masses.
 
 \subsection{Mass estimates}
-\begin{table*}
-\centering
-\caption{Summary of the errors associated with the Targeted and Survey observation strategies, as an ensemble of predictions. See the text for discussion about the MAE and RMSE. Overlap is the percentage of clusters where the true cluster mass is bracketed by the prediction intervals of the predicted mass. See Sections \ref{sec:probability method} and \ref{sec:machine learning method} for a discussion on prediction intervals.}
-\begin{tabular}{cccccccc}
-	%\hline
-	&& \multic{3}{Targeted} & \multic{3}{Survey} \\
-	\cline{3-5} \cline{6-8}
-	& Input Features & MAE & RMSE & Overlap & MAE & RMSE & Overlap \\
-	& & (dex) & (dex) & (\%) & (dex) & (dex) & (\%) \\
-	\hline
-	\rottext{4}{Prob Based} & Power Law & 0.259 & 0.394 & \nd & 0.243 & 0.357 & \nd \\
-	&$\sigma$ & 0.220 & 0.337 & \nd & 0.210 & 0.310 & \nd \\
-	&$\sigma, z$ & 0.193 & 0.283 & \nd & 0.184 & 0.271 & \nd \\
-	&$\sigma, z, N_{gal}$ & 0.128 & 0.204 & \nd & 0.141 & 0.215 & \nd \\
-	\hline
-	\rottext{4}{ML Based} & Power Law & 0.258 & 0.394 & \nd & 0.255 & 0.380 & \nd \\
-	&$\sigma$ & 0.241 & 0.359 & \nd & 0.223 & 0.342 & \nd \\
-	&$\sigma, z$ & 0.193 & 0.282 & \nd & 0.197 & 0.290 & \nd \\
-	&$\sigma, z, N_{gal}$ & 0.118 & 0.192 & \nd & 0.140 & 0.221 & \nd \\
-	\hline
-\end{tabular}
-\label{tbl:mass comparisons}
-\end{table*}
-
-In this section we discuss the how accurately we are able to reproduce the true cluster mass from a set of observations. We report on two methods the probability based approach (Section \ref{sec:probability method}) and the ML based method (Section \ref{sec:machine learning method}). For each method we consider both targeted and HETDEX-like observing strategies.
-
-We include the cluster masses recovered through the power law scaling relation given in Equation \ref{eq:power law} for the perfect, targeted and survey observations. It should serve as baseline to compare the probability based and ML cluster mass recovery methods. And, while there are many possible metrics to evaluate performance, we compute two: the median absolute error (MAE) 
-\begin{equation}
-\mathrm{MAE}(y,\hat{y}) = \mathrm{median}(|y_1 - \hat{y_1}|, \ldots, |y_n - \hat{y_n}|) \nonumber
-\end{equation}
-where $y$ is the true value and $\hat{y}$ is the predicted value, and the root mean squared error (RMSE)
-\begin{equation}
-	\mathrm{RMSE}(y,\hat{y}) = \bigg{[}\frac{1}{N} \sum_{i=0}^N (y_i - \hat{y_i})^2 \bigg{]}^{1/2}.\nonumber
-\end{equation} 
-Both metrics evaluate how closely the ensemble of predicted cluster masses are to the true cluster masses, and in both cases lower numbers are better.   
-
-Just because a predicted cluster mass may not exactly match the true value does not mean it is a bad prediction. In addition to the MAE and RMSE, we also report the fraction of predictions where the the true cluster mass is contained within the 68\% confidence or prediction intervals (see Sections \ref{sec:probability method} and \ref{sec:machine learning method}). 
-
-The cluster masses predicted by Equation \ref{eq:power law} gives the following results. The MAE is 0.263 dex and for both the targeted and survey observations. The RMSE is 0.396 dex and 0.394 dex for the targeted and survey observations respectively. This scatter in recovered masses can be attributed to both physical and numerical effects. As the cluster mass increases, clusters become more virialized and contain many individual galaxies. The presence of any in-falling matter onto lower mass clusters can introduce a significant amount of substructure, which can increase the observed LOSVD increasing the predicted mass. Also, as the number of cluster galaxies decreases the LOSVD PDF is poorly sampled leading to poorly recovered cluster masses due to numerical effects. The masses presented here are recovered using the best possible conditions, where we have perfect knowledge of the cluster membership. In reality, the mass recovery levels presented in this section represent an upper bound (the best) on the accuracy achievable through this method. \editorial{\cite{Ntampaka2015} does have a discussion about how well they do with contaminated galaxy catalogs. We could do something similar and have a similar discussion, but I'm not sure it is worth it. Should be simple enough to do with the targeted catalog, but with the HETDEX catalog it would be pretty bad IMO. We should also talk about how often the true mass lies within the error bars. Many of them are going to be with the 68\% range, but we can drop the error estimates to $0.5\sigma$ if that actually means anything} 
+% \begin{table*}
+% \centering
+% \caption{Summary of the errors associated with the Targeted and Survey observation strategies, as an ensemble of predictions. See the text for discussion about the MAE and RMSE. Overlap is the percentage of clusters where the true cluster mass is bracketed by the prediction intervals of the predicted mass. See Sections \ref{sec:probability method} and \ref{sec:machine learning method} for a discussion on prediction intervals.}
+% \begin{tabular}{cccccccc}
+% 	%\hline
+% 	&& \multic{3}{Targeted} & \multic{3}{Survey} \\
+% 	\cline{3-5} \cline{6-8}
+% 	& Input Features & MAE & RMSE & Overlap & MAE & RMSE & Overlap \\
+% 	& & (dex) & (dex) & (\%) & (dex) & (dex) & (\%) \\
+% 	\hline
+% 	\rottext{4}{Prob Based} & Power Law & 0.259 & 0.394 & \nd & 0.243 & 0.357 & \nd \\
+% 	&$\sigma$ & 0.220 & 0.337 & \nd & 0.210 & 0.310 & \nd \\
+% 	&$\sigma, z$ & 0.193 & 0.283 & \nd & 0.184 & 0.271 & \nd \\
+% 	&$\sigma, z, N_{gal}$ & 0.128 & 0.204 & \nd & 0.141 & 0.215 & \nd \\
+% 	\hline
+% 	\rottext{4}{ML Based} & Power Law & 0.258 & 0.394 & \nd & 0.255 & 0.380 & \nd \\
+% 	&$\sigma$ & 0.241 & 0.359 & \nd & 0.223 & 0.342 & \nd \\
+% 	&$\sigma, z$ & 0.193 & 0.282 & \nd & 0.197 & 0.290 & \nd \\
+% 	&$\sigma, z, N_{gal}$ & 0.118 & 0.192 & \nd & 0.140 & 0.221 & \nd \\
+% 	\hline
+% \end{tabular}
+% \label{tbl:mass comparisons}
+% \end{table*}
 
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{figures/Probcomparison.pdf} 
 	\caption{Mass predictions for the power law scaling relation (Equation~\ref{eq:power law}) and the probability based technique with different input features as a function of true cluster mass. The bottom row of panels shows the fractional error (Equation~\ref{eq: fractional error}) also as a function of true cluster mass. The solid black line shows the 1:1 relation. The solid, colored line is the median predicted mass for the targeted observing, and the colored, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions represent the 68\% scatter around the median values.} \label{fig:Probability comparison} 
 \end{figure*}
 
+In this section we discuss the how accurately we are able to reproduce the true cluster mass from a set of observations. We report on three methods, the power law based approach (Eq. \ref{eq:power law}), the probability based approach (Section \ref{sec:probability method}) and the ML based method (Section \ref{sec:machine learning method}). For each method we consider observations with perfect knowledge, targeted observations and survey observations.
+
+Because it represents the best possible scenario, the perfect knowledge observations should serve as baseline to compare the probability based and ML cluster mass recovery methods. And, while there are many possible metrics to evaluate performance, we compute two: the average bias 
+\begin{equation}
+\mathrm{\mu_{bias}}(y,\hat{y}) = \frac{1}{N} \sum_{i=0}^N (\hat{y_i} - y_i).\nonumber
+\end{equation}
+where $y$ is the true value and $\hat{y}$ is the predicted value, and the scatter about the bias
+\begin{equation}
+	\sigma_{bias}(y,\hat{y}, \mu_{bias}) = \bigg{[}\frac{1}{N-1} \sum_{i=0}^N (\hat{y_i} - y_i - \mu_{bias})^2 \bigg{]}^{1/2}\nonumber
+\end{equation}
+for different bins of cluster mass. Both metrics evaluate how closely the ensemble of predicted cluster masses are to the true cluster masses, and in both cases values closer to zero are better.
+
+We begin with the perfect knowledge observations. These observations are of the same clusters as the targeted observations but without any observational limits. The cluster masses predicted by Equation \ref{eq:power law} gives the following results. Across all cluster masses, we find $\mu_{bias} = 0.15\pm{0.24}$ dex. The scatter in recovered masses can be attributed to both physical and numerical effects. The presence of any in-falling matter onto lower mass clusters can introduce a significant amount of substructure, which increases the observed LOSVD increasing the predicted mass \citeeg{Ntampaka2015}. Also, as the number of cluster galaxies decreases the LOSVD PDF is poorly sampled leading to poorly recovered cluster masses due to numerical effects. The masses presented here are recovered using the best possible conditions, where we have perfect knowledge of the cluster membership. In reality, the mass recovery levels presented in this section represent an upper bound (the best) on the accuracy achievable through this method.
+
+\editorial{\cite{Ntampaka2015} does have a discussion about how well they do with contaminated galaxy catalogs. We could do something similar and have a similar discussion, but I'm not sure it is worth it. Should be simple enough to do with the targeted catalog, but with the HETDEX catalog it would be pretty bad IMO. We should also talk about how often the true mass lies within the error bars. Many of them are going to be with the 68\% range, but we can drop the error estimates to $0.5\sigma$ if that actually means anything} 
+
+For the targeted and survey observations the power law predicted cluster masses give $\mu_{bias} =0.13\pm{0.37}$ dex and $\mu_{bias} =0.11\pm{0.36}$ dex, respectively. So while, both realistic observations have similar levels of bias, the amount of scatter significantly decreases as more cluster member galaxies are detected, better sampling the LOSVD PDF.
+
 \begin{figure*} 
 	\includegraphics[width=\textwidth]{figures/MLcomparison.pdf} 
 	\caption{Mass predictions for the power law scaling relation (Equation~\ref{eq:power law}) and the ML based technique with different input features as a function of true cluster mass. The bottom row of panels shows the fractional error (Equation~\ref{eq: fractional error}) also as a function of true cluster mass. The solid black line shows the 1:1 relation. The solid, colored line is the median predicted mass for the targeted observing, and the colored, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions represent the 68\% scatter around the median values.} \label{fig: ML comparison} 
 \end{figure*}
 
-
-
-The MAE and RMSE associated with the ensemble of predictions are summarized in Table \ref{tbl:mass comparisons}. As expected, we find that both the probability based and ML based methods out perform the standard power law based methods for both the targeted and survey observations. We also find that the ML based method produces lower ensemble error for both the observation strategies when compared to the probability based method, although the MAE and RMSE are reduced by only $\sim0.01$ dex. \editorial{here is where we would talk about cross validation on the errors.} 
-
-In both Figures \ref{fig:Probability comparison} and \ref{fig: ML comparison}, we show the predicted versus true cluster masses for each of the two observing strategries. In each panel the solid black line is the 1:1 relationship, the solid colored line is the median recovered mass for the targeted observing, and the colored, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions are the 68\% scatter around the median values (the 16\% and 84\% quartiles). The lower panels show the fractional cluster mass error: 
+In both Figures \ref{fig:Probability comparison} and \ref{fig: ML comparison}, we show the predicted versus true cluster masses for each of the two observing strategries. In each panel the solid black line is the 1:1 relationship, the solid purple line is the median recovered mass for the targeted observing, and the turquoise, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions are the 68\% scatter around the median values (the 16\% and 84\% quartiles). For reference we also show the median masses recovered with perfect knowledge as a solid orange line. The lower panels show the fractional cluster mass error: 
 \begin{equation}\label{eq: fractional error}
 	\epsilon = (M_{pred} - M)/M
 \end{equation}
 where $M_{pred}$ is the predicted cluster mass and $M$ is the true cluster mass.
 
-In both figures we successively add additional information to further constrain the true cluster masses which subsequently reduces the error associated with the ensemble of predictions (see Table \ref{tbl:mass comparisons}). The power law derived masses, using the single (not including the cosmological parameters) free parameter, $\sigma$ (the LOSVD), over estimates the predicted cluster mass at all masses. Both the probability and ML methods over predict the mass of low mass clusters and under predict the mass of the higher mass clusters. When the redshift information is also added, the amount of this over and under prediction is lessened but the cross over point, remains roughly consistent at $\sim10^{14}$ \msol. Additionally, the number of galaxies observed, $N_{gal}$, further reduces the MAE and RMSE on the predictions but also lowers the cross over point to $\sim10^{13.5}$ \msol.
+Qualitatively, the top panels of Figures \ref{fig:Probability comparison} and \ref{fig: ML comparison} show that both the probability based and ML based methods out perform (closer to the black 1:1 relation) the power law method when taking advantage of other cluster observables ($z$, $N_{gal}$, etc.). Generally, we find that the single parameter probability and ML methods perform significantly poorer than the power law method, especially at low cluster masses. When combined with the cluster redshift, the predicted cluster masses are improved, even though it is unclear exactly why the additional information should effect the predicted cluster mass. The final addition of the number of observed galaxies, $N_{gal}$ acts as a type of richness estimate, and significantly improves both the bias and the amount of scatter in the predicted masses.
+
+
+% In both figures we successively add additional information to further constrain the true cluster masses which subsequently reduces the error associated with the ensemble of predictions (see Table \ref{tbl:mass comparisons}). The power law derived masses, using the single (not including the cosmological parameters) free parameter, $\sigma$ (the LOSVD), over estimates the predicted cluster mass at all masses. Both the probability and ML methods over predict the mass of low mass clusters and under predict the mass of the higher mass clusters. When the redshift information is also added, the amount of this over and under prediction is lessened but the cross over point, remains roughly consistent at $\sim10^{14}$ \msol. Additionally, the number of galaxies observed, $N_{gal}$, further reduces the MAE and RMSE on the predictions but also lowers the cross over point to $\sim10^{13.5}$ \msol.
 
 % \editorial{It doesn't look like you can use the targeted training sample to train the survey data. If you do, it either does worse or about the same if you didn't use any training at all. After looking at it, you do have to use the survey training data to get good results about 0.13 dex MAE
 % }
-
-\section{HETDEX as a Galaxy Cluster Survey at $z < 0.5$}\label{sec:discussion}
-
 \begin{table*}
 \centering
-\caption{Associated mass prediction errors (MAE) for different bins of predicted mass. This table shows the relative error for the targeted (top section) and survey (bottom section) observations for different predicted mass bins. The values in the table correspond to the MAE for the galaxies in the predicted mass bin (top row) for the different mass recovery strategies (leftmost column). It can be used to understand how precise the predicted cluster mass is.}
+\caption{Bias and scatter of the true cluster mass for different bins of predicted cluster mass. This table shows the offset and scatter in the true cluster mass for the perfect (top section), targeted (middle section), and survey (bottom section) observations in different predicted mass bins. The different mass recovery strategies are given in the leftmost column. It can be used to understand how the predicted cluster mass differs from the true cluster masses. Positive numbers indicate the predicted cluster mass over estimates when compared to the true cluster mass.}
 \begin{tabular}{cccccccccc} 
 		&& \multic{8}{Bins -- Log $M_{pred}$ ($\Msol$)} \\
 		\cline{3-10} 
-		\multicolumn{2}{c}{Input Features} & $11.5-12$ & $12-12.5$ & $12.5-13$ & $13-13.5$ & $13.5-14$ & $14-14.5$ & $14.5-15$ & $15-15.5$ \\
+		\multicolumn{2}{c}{Method} & $11.5-12$ & $12-12.5$ & $12.5-13$ & $13-13.5$ & $13.5-14$ & $14-14.5$ & $14.5-15$ & $15-15.5$ \\
 		\hline 
-		\rottext{4}{Prob Based} & Power Law & 0.602 & 0.376 & 0.340 & 0.278 & 0.225 & 0.177 & 0.114 & 0.041 \\
-		&$\sigma$ & 1.030 & 0.655 & 0.389 & 0.212 & 0.160 & 0.158 & 0.224 & 0.328 \\
-		&$\sigma, z$ & 0.804 & 0.476 & 0.242 & 0.173 & 0.170 & 0.210 & 0.353 & 0.529 \\
-		&$\sigma, z, N_{gal}$ & 0.649 & 0.372 & 0.163 & 0.124 & 0.113 & 0.111 & 0.105 & 0.241 \\
+		\rottext{4}{Prob Based} & Power Law & $0.49\pm{0.34}$ & $0.28\pm{0.39}$ & $0.23\pm{0.34}$ & $0.16\pm{0.22}$ & $0.11\pm{0.16}$ & $0.07\pm{0.14}$ & $0.02\pm{0.14}$ & $-0.07\pm{0.10}$ \\
+		&$\sigma$ & $0.87\pm{0.15}$ & $0.53\pm{0.24}$ & $0.32\pm{0.26}$ & $0.16\pm{0.20}$ & $0.10\pm{0.16}$ & $0.07\pm{0.14}$ & $0.05\pm{0.16}$ & $-0.18\pm{0.17}$ \\
+		&$\sigma, z$ & $0.76\pm{0.16}$ & $0.42\pm{0.21}$ & $0.17\pm{0.23}$ & $0.01\pm{0.19}$ & $-0.06\pm{0.16}$ & $-0.11\pm{0.55}$ & $-0.14\pm{0.16}$ & $-0.38\pm{0.34}$ \\
+		&$\sigma, z, N_{gal}$ & $0.65\pm{0.10}$ & $0.28\pm{0.14}$ & $0.04\pm{0.47}$ & $-0.02\pm{0.14}$ & $-0.02\pm{0.10}$ & $-0.05\pm{0.54}$ & $-0.22\pm{1.61}$ & $-6.62\pm{8.08}$ \\
 		\hline
-		\rottext{4}{ML Based} & Power Law & 0.602 & 0.376 & 0.340 & 0.278 & 0.225 & 0.177 & 0.114 & 0.041 \\
-		&$\sigma$ & 0.773 & 0.557 & 0.287 & 0.210 & 0.230 & 0.267 & 0.337 & 0.323 \\
-		&$\sigma, z$ & 0.631 & 0.380 & 0.211 & 0.172 & 0.182 & 0.236 & 0.284 & 0.265 \\
-		&$\sigma, z, N_{gal}$ & 0.539 & 0.304 & 0.148 & 0.117 & 0.105 & 0.095 & 0.078 & 0.110 \\
+		\rottext{4}{ML Based} & Power Law & $0.49\pm{0.34}$ & $0.28\pm{0.39}$ & $0.23\pm{0.34}$ & $0.16\pm{0.22}$ & $0.11\pm{0.16}$ & $0.07\pm{0.14}$ & $0.02\pm{0.14}$ & $-0.07\pm{0.10}$ \\
+		&$\sigma$ & $0.69\pm{0.20}$ & $0.36\pm{0.27}$ & $0.15\pm{0.29}$ & $-0.02\pm{0.24}$ & $-0.07\pm{0.21}$ & $-0.09\pm{0.19}$ & $-0.11\pm{0.18}$ & $-0.12\pm{0.19}$ \\
+		&$\sigma, z$ & $0.62\pm{0.18}$ & $0.33\pm{0.22}$ & $0.12\pm{0.25}$ & $-0.01\pm{0.20}$ & $-0.06\pm{0.18}$ & $-0.09\pm{0.16}$ & $-0.11\pm{0.17}$ & $-0.19\pm{0.13}$ \\
+		&$\sigma, z, N_{gal}$ & $0.51\pm{0.14}$ & $0.23\pm{0.18}$ & $0.05\pm{0.17}$ & $-0.02\pm{0.14}$ & $-0.02\pm{0.10}$ & $-0.02\pm{0.08}$ & $-0.02\pm{0.08}$ & $-0.08\pm{0.08}$ \\
 		\hline 
 		\hline
-		\rottext{4}{Prob Based} & Power Law & \nd & \nd & 0.520 & 0.319 & 0.263 & 0.214 & 0.140 & 0.069 \\
-		&$\sigma$ & \nd & \nd & 0.765 & 0.434 & 0.198 & 0.149 & 0.163 & 0.346 \\
-		&$\sigma, z$ & \nd & \nd & 0.592 & 0.305 & 0.162 & 0.165 & 0.257 & 0.396 \\
-		&$\sigma, z, N_{gal}$ & \nd & \nd & 0.476 & 0.171 & 0.125 & 0.141 & 0.141 & 15.002 \\
+		\rottext{4}{Prob Based} & Power Law & $0.49\pm{0.31}$ & $0.27\pm{0.41}$ & $0.20\pm{0.43}$ & $0.13\pm{0.39}$ & $0.10\pm{0.33}$ & $0.09\pm{0.27}$ & $0.02\pm{0.18}$ & $-0.08\pm{0.09}$ \\
+		&$\sigma$ & $1.02\pm{0.13}$ & $0.66\pm{0.19}$ & $0.40\pm{0.24}$ & $0.17\pm{0.25}$ & $0.02\pm{0.25}$ & $-0.08\pm{0.22}$ & $-0.19\pm{0.19}$ & $-0.35\pm{0.26}$ \\
+		&$\sigma, z$ & $0.85\pm{0.18}$ & $0.49\pm{0.20}$ & $0.25\pm{0.24}$ & $0.08\pm{0.24}$ & $-0.06\pm{0.23}$ & $-0.21\pm{0.56}$ & $-0.35\pm{0.21}$ & $-0.59\pm{0.31}$ \\
+		&$\sigma, z, N_{gal}$ & $0.70\pm{0.13}$ & $0.37\pm{0.18}$ & $0.13\pm{0.20}$ & $0.01\pm{0.19}$ & $-0.05\pm{0.17}$ & $-0.12\pm{0.67}$ & $-0.44\pm{2.26}$ & $-4.45\pm{7.44}$ \\
 		\hline
-		\rottext{4}{ML Based} & Power Law & \nd & 0.583 & 0.316 & 0.337 & 0.278 & 0.214 & 0.140 & 0.069 \\
-		&$\sigma$ & \nd & 0.606 & 0.551 & 0.263 & 0.201 & 0.227 & 0.200 & 0.192 \\
-		&$\sigma, z$ & \nd & 0.916 & 0.434 & 0.206 & 0.171 & 0.205 & 0.249 & 0.202 \\
-		&$\sigma, z, N_{gal}$ & \nd & 0.780 & 0.401 & 0.155 & 0.129 & 0.136 & 0.145 & 0.142 \\
+		\rottext{4}{ML Based} & Power Law & $0.49\pm{0.31}$ & $0.27\pm{0.41}$ & $0.20\pm{0.43}$ & $0.13\pm{0.39}$ & $0.10\pm{0.33}$ & $0.09\pm{0.27}$ & $0.02\pm{0.18}$ & $-0.08\pm{0.09}$ \\
+		&$\sigma$ & $0.76\pm{0.28}$ & $0.54\pm{0.29}$ & $0.26\pm{0.31}$ & $0.01\pm{0.31}$ & $-0.13\pm{0.32}$ & $-0.23\pm{0.30}$ & $-0.33\pm{0.29}$ & $-0.32\pm{0.09}$ \\
+		&$\sigma, z$ & $0.66\pm{0.13}$ & $0.37\pm{0.23}$ & $0.17\pm{0.26}$ & $0.03\pm{0.25}$ & $-0.09\pm{0.24}$ & $-0.21\pm{0.22}$ & $-0.31\pm{0.25}$ & $-0.28\pm{0.13}$ \\
+		&$\sigma, z, N_{gal}$ & $0.57\pm{0.12}$ & $0.28\pm{0.21}$ & $0.09\pm{0.21}$ & $-0.01\pm{0.18}$ & $-0.05\pm{0.16}$ & $-0.08\pm{0.14}$ & $-0.07\pm{0.12}$ & $-0.14\pm{0.13}$ \\
 		\hline
+		\hline
+		\rottext{4}{Prob Based} & Power Law & \nd & \nd & $0.53\pm{0.15}$ & $0.30\pm{0.29}$ & $0.16\pm{0.33}$ & $0.07\pm{0.31}$ & $0.01\pm{0.24}$ & $-0.09\pm{0.13}$ \\
+		&$\sigma$ & \nd & \nd & $0.77\pm{0.10}$ & $0.42\pm{0.18}$ & $0.18\pm{0.22}$ & $-0.03\pm{0.22}$ & $-0.18\pm{0.19}$ & $-0.39\pm{0.22}$ \\
+		&$\sigma, z$ & \nd & \nd & $0.61\pm{0.12}$ & $0.29\pm{0.19}$ & $0.08\pm{0.22}$ & $-0.11\pm{0.21}$ & $-0.38\pm{1.30}$ & $-0.48\pm{0.27}$ \\
+		&$\sigma, z, N_{gal}$ & \nd & \nd & $0.48\pm{0.13}$ & $0.18\pm{0.18}$ & $0.02\pm{0.19}$ & $-0.08\pm{0.19}$ & $-0.50\pm{2.25}$ & $-8.81\pm{7.98}$ \\
+		\hline
+		\rottext{4}{ML Based} & Power Law & \nd & $0.06\pm{0.80}$ & $0.17\pm{0.39}$ & $0.17\pm{0.41}$ & $0.13\pm{0.38}$ & $0.07\pm{0.32}$ & $0.01\pm{0.24}$ & $-0.09\pm{0.13}$ \\
+		&$\sigma$ & \nd & $0.58\pm{0.17}$ & $0.54\pm{0.26}$ & $0.24\pm{0.28}$ & $0.03\pm{0.30}$ & $-0.17\pm{0.30}$ & $-0.26\pm{0.30}$ & $-0.30\pm{0.25}$ \\
+		&$\sigma, z$ & \nd & $1.02\pm{0.35}$ & $0.42\pm{0.21}$ & $0.19\pm{0.25}$ & $0.03\pm{0.25}$ & $-0.14\pm{0.25}$ & $-0.25\pm{0.24}$ & $-0.31\pm{0.26}$ \\
+		&$\sigma, z, N_{gal}$ & \nd & $0.91\pm{0.45}$ & $0.39\pm{0.19}$ & $0.12\pm{0.21}$ & $-0.00\pm{0.20}$ & $-0.08\pm{0.19}$ & $-0.14\pm{0.19}$ & $-0.21\pm{0.20}$ \\
+	\hline
 	\end{tabular}
-\label{tbl:sersic number bins}
+\label{tbl:mass bias}
 \end{table*}
+
+We quantify the bias and scatter for all of the different cluster mass recovery strategies and observing methods in Table \ref{tbl:mass bias}. It should serve as a type of look up table for future cluster observations with HETDEX. The columns represent bins of predicted galaxy cluster mass and the individual values show the bias and scatter of the true cluster mass. The three horizontal sections represent represent perfect, targeted and survey observations respectively. So, for example, if a cluster mass is predicted using the $ML_{\sigma, z}$ method and targeted observations to be Log M $=13-13.5$ \Msol, it is biased upward by $0.03\pm0.25$ dex. 
+
+ A few caveats apply to the numbers given in Table \ref{tbl:mass bias}. While we provide corrections for cluster masses above $10^{15}$, they are estimated from only a handful of objects, and do not constitute a representative sample of clusters. On the oposite end of the cluster mass spectrum, survey observations of low mass clusters are incomplete for two potential reasons. There are very few, if any, clusters detected with survey observations below $10^{12}$. Missing corrections above $10^{12}$ in the probability based methods are due to low number statstics and an inability to sample the cluster mass PDF well enough to assign cluster mass predictions.
+
+
+
+
+\section{HETDEX as a Galaxy Cluster Survey at $z < 0.5$}\label{sec:discussion}
+
+
 
 \subsection{Extendability to Other Surveys}
 Large-scale optical surveys (\eg, DES and LSST) expect to detect hundreds of thousands of galaxy clusters at $z < 1$. Because they are photometric, a major challenge for these surveys is relating a cluster observable to the total dark-matter mass. One promising mass estimator is the optical richness \citeeg{Abell1958}. Specifically, here, we use $\lambda$, the weighted number of galaxies within a scale aperture \citeeg{Rozo2011} as calculated by the redMapper algorithm \citep{Rykoff2012}. Previous works \citeeg{Rozo2010} show that the richness correlates strongly with cluster mass on the average, but the absolute mass scale of the optical richness mass estimator and the scatter in cluster mass at fixed optical richness are imprecisely known \citep{Rykoff2012}. These systematics remain the major source of uncertainty in deriving cosmological constraints from cluster abundances and must be measured using independent methods to realize the full potential of these surveys.
@@ -378,9 +398,6 @@ The bottom panel of Figure \ref{fig:mass richness} shows the scatter in cluster 
 \subsection{Potential Improvements}
 \editorial{The potential improvements are really three fold. We know that the observing won't cover all of the sky. So we can simply tile more and try to get more clusters. We can observe deeper. I'm not sure the current exposure times (they are in an email that I sent to casey) but if we can extend them, then we can get further down the IMF and try to build up some of the clusters that are really more like groups than anything else. The last thing we can do is to attempt to  build better models to make better predictions on the masses. That might be something like the study that \cite{Acquaviva2016} did with the stellar metallicities. Or we'll need something else that I haven't thought of just yet. The other idea is to come up with some sort of cheat sheet for HETDEX. Basically, a if you detect such and such type of galaxy in the survey model then you should go back and try to follow it up with targeted observations. It might be good to talk about the recovery fraction between the two surveys above. Like... if there are 30 cluster members then we should detect the cluster in both surveys.}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
 \section{SUMMARY}\label{sec:summary}
 Here, we present detailed simulations of the upcoming HETDEX survey's applicability to the detection and total mass measurement of galaxy clusters. We use mock galaxy catalogs, and simulated HETDEX-like observational strategies to estimate the number of clusters observed and the precision of their total mass estimates, using three different mass estimates. With an eye to galaxy cluster studies, we discuss potential improvements to the HETDEX survey, and comment on how HETDEX may improve current and future photometric large-area sky surveys' cluster mass estimates derived from optical richness.
 
@@ -393,7 +410,7 @@ Our main conclusions are the following:
 	\item \editorial{Something about the richness.}
 \end{enumerate}
 
-It is the author's hope that this work may be useful to others when conducting their own research. Because this work relies heavily on (often) complex data analysis, and in order to promote transparency, we provide all of the code used to conduct this study at https://github.com/boada/desCluster. Regrettably, large file size prevents including the source data with the analysis routines. The authors are happy to provide them, if requested.
+It is the author's hope that this work may be useful to others when conducting their own research. Because this work relies heavily on (often) complex data analysis, and in order to promote transparency and reproducible science, we provide all of the code used to conduct this study at https://github.com/boada/desCluster. Regrettably, large file size prevents including the source data with the analysis routines. The authors are happy to provide them, if requested.
 
 \section*{Acknowledgements}
 The authors also wish to thank the anonymous referee whose comments and suggestions significantly improved both the quality and clarity of this work. We also thank Steven W. Crawford for many helpful discussions. This research made use of This research made use of  the {\tt IPython} package \citep{Perez2007} and {\tt matplotlib}, a Python library for publication quality graphics \citep{Hunter2007}. Figure \ref{fig: probability corner} is heavily based on \cite{Foreman-Mackey2016}. Funding for the SDSS and SDSS-II has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, the U.S. Department of Energy, the National Aeronautics and Space Administration, the Japanese Monbukagakusho, the Max Planck Society, and the Higher Education Funding Council for England. The SDSS Web Site is http://www.sdss.org/. The SDSS is managed by the Astrophysical Research Consortium for the Participating Institutions. \editorial{People to thank: Joe, maybe authorship.}
