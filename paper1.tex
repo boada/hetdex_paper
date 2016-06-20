@@ -25,6 +25,7 @@
 %\usepackage[colorlinks,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
 \usepackage{multirow}
 \usepackage{etoolbox}
+\usepackage{listings}
 
 %%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
 \input{commands.tex}
@@ -406,7 +407,45 @@ All simulations (including that used for Buzzard) use specific values for cosmol
 
 To test for this, we used the Millennium simulation as an alternative data set. The Millennium simulation uses a set of cosmological parameters that are substantially different from Buzzard. The Millennium simulation adopts a flat cosmological model based of the values derived from the Two-degree Field Galaxy Redshift Survey \citep{Colless2001} and the first year data of the \emph{Wilkinson Microwave Anisotropy Probe} (WMAP; \citealt{Spergel2003}): $\Omega_\Lambda = 0.75$, $\Omega_M = 0.25$, $\sigma_8 = 0.9$, $n_s = 1$ and $H_0= 73$ \kms \mpc. The clusters in Millennium provide a testing sample to understand how a training sample derived from Buzzard will impact the mass recovery on a wholly new dataset. 
 
-We repeat our analysis using cluster halo and galaxy catalogs from the Millennium simulation \citep{Springel2005a} obtained via querying the Millennium online database\footnote{http://gavo.mpa-garching.mpg.de/Millennium/} \citep{Lemson2006}. The Millennium simulation tracks $2160^3$ dark matter particles of $8.6\times 10^8 ~h^{-1}$ \Msol\ inside a comoving 500 $(h^{-1} \mathrm{Mpc})^3$ box from $z=127$ to 0. 
+We repeat our analysis using cluster halo and galaxy catalogs from the Millennium simulation \citep{Springel2005a} obtained via querying the Millennium online database\footnote{http://gavo.mpa-garching.mpg.de/Millennium/} \citep{Lemson2006}. The Millennium simulation tracks $2160^3$ dark matter particles of $8.6\times 10^8 ~h^{-1}$ \Msol\ inside a comoving 500 $(h^{-1} \mathrm{Mpc})^3$ box from $z=127$ to 0. The following SQL query selects the cluster halos:
+\begin{lstlisting}[language=SQL]
+SELECT * 
+FROM   mfield..fof 
+WHERE  snapnum IN (SELECT snapnum 
+                   FROM   snapshots..mr 
+                   WHERE  z BETWEEN 0.01 AND 0.5) 
+       AND m_crit200 > 100 
+       AND random BETWEEN 0 AND 10000 
+\end{lstlisting}
+To select the corresponding galaxies, we use:
+\begin{lstlisting}[language=SQL, breaklines=true]
+SELECT sh.fofid, 
+       sh.subhaloid, 
+       g.galaxyid, 
+       g.x, 
+       g.y, 
+       g.z, 
+       g.redshift, 
+       g.velx, 
+       g.vely, 
+       g.velz, 
+       sdss.g_sdss, 
+       sdss.r_sdss, 
+       sdss.i_sdss 
+FROM   mfield..fofsubhalo AS sh 
+       INNER JOIN mpagalaxies..delucia2006a AS g 
+               ON sh.subhaloid = g.subhaloid 
+       INNER JOIN mpagalaxies..delucia2006a_sdss2mass AS sdss 
+               ON g.galaxyid = sdss.galaxyid 
+WHERE  sh.fofid IN (SELECT fofid 
+                FROM   mfield..fof 
+                WHERE  snapnum IN (SELECT snapnum 
+                               FROM   snapshots..mr 
+                               WHERE  z BETWEEN 0.01 AND 0.5) 
+                       AND m_crit200 > 1000 
+                       AND random BETWEEN 0 AND 10000) 
+\end{lstlisting}
+
 
 We select 4,806 clusters, comprised of 623,663 galaxies, at $0.02 < z < 0.5$ and $M > 10^{13}$ \Msol, and apply the same data processing as with the Buzzard galaxies. We begin by assigning each galaxy an [\ion{O}{ii}] flux value (see Section \ref{sec: oii luminosity}), and ``observe'' each galaxy using realistic (see Section \ref{sec: observations}) observational limits. After recovering 3750 clusters which have at least five galaxies observed, we calculate the LOSVD of each cluster as in Section \ref{sec: LOSVD}. 
 
