@@ -93,18 +93,41 @@
 \newcommand{\rcal}{\hbox{$\mathcal{R}$}}
 \newcommand{\scal}{\hbox{$\mathcal{S}$}}
 \newcommand{\infinity}{\hbox{$\infty$}}
-\newcommand{\err}[2]{$^{+#1}_{-#2}$}
+\newcommand{\err}[2]{$^{+#2}_{-#1}$}
 
 %%% General %%%
 \newcommand{\etal}{et al.}
 \newcommand{\eg}{e.g.}
 \newcommand{\ie}{i.e.}
 \newcommand{\cf}{cf.}
-\def\ion#1#2{#1$\;${\small\rm\@Roman{#2}}\relax}
+% \newcommand{\ion}[2]{\hbox{#1$\;${\small\rm{#2}}}}
 \newcommand{\mybullet}{\noindent$\bullet$}
 \newcommand{\uit}{\textit{UIT}}
-\newcommand{\nd}{$...$}
+\newcommand{\nd}{...}
 %\newcommand{\cmodel}{\hbox{\tt cmodel}}
 %\newcommand{\bs}{\hbox{$\!\!\!\!$}}
 \newcommand{\todo}[1]{{\tt #1}}
 \newcommand{\citeeg}[1]{(\eg, \citealt{#1})}
+\newcommand{\ignore}[1]{}
+
+%%% Extra %%% 
+% \newcommand{\farcm}{\mbox{\ensuremath{.\mkern-4mu^\prime}}}%fractional arcminute symbol 0.'0
+% \newcommand{\farcs}{\mbox{\ensuremath{.\!\!^{\prime\prime}}}}%fractional arcsecond symbol: 0.''0
+% \newcommand{\fdg}{\mbox{\ensuremath{.\!\!^\circ}}}%fractional degree symbol:     0.°0
+\newcommand{\arcdeg}{\ensuremath{^{\circ}}}%                    % degree symbol:  °
+% \newcommand{\sun}{\ensuremath{\odot}}%                          % sun symbol
+% \newcommand{\apj}{ApJ}%                                         % Journal abbreviations
+% \newcommand{\apjs}{ApJS}
+% \newcommand{\apjl}{ApJL}
+% \newcommand{\aap}{A{\&}A}
+% \newcommand{\aaps}{A{\&}AS}
+% \newcommand{\mnras}{MNRAS}
+% \newcommand{\aj}{AJ}
+% \newcommand{\araa}{ARAA}
+% \newcommand{\pasp}{PASP}
+\newcommand{\Teff}{\ensuremath{T_{\mathrm{eff}}}}%              % T_eff
+\newcommand{\logg}{\ensuremath{\log g}}%                        % log g
+\newcommand{\bv}{\ensuremath{B\!-\!V}}%                         % B-V
+\newcommand{\ub}{\ensuremath{U\!-\!B}}%                         % U-B
+\newcommand{\vr}{\ensuremath{V\!-\!R}}%                         % V-R
+\newcommand{\ur}{\ensuremath{U\!-\!R}}%                         % U-R
