@@ -1,7 +1,30 @@
-# Ignore everything
-*
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz
+*.lb
+*.fls
+*.fdb_latexmk
 
-# But not these files...
-!.gitignore
-!*.tex
-!*.pdf
+# Specific folders
+/comments/*
+/papers/*
