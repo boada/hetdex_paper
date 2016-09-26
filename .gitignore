@@ -25,6 +25,8 @@
 *.fls
 *.fdb_latexmk
 
+.DS_Store
+
 # Specific folders
 /comments/*
 /papers/*
