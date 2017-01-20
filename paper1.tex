@@ -265,7 +265,7 @@ Here we explore the cluster member recovery rate and mass estimates for the two 
 \subsection{Recovery of Cluster Members}
 \begin{figure*}
 	\includegraphics[width=0.8\textwidth]{figures/recovery.pdf} 
-	\caption[Recovery fractions for the Targeted and Survey observations.]{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and true cluster mass for the Targeted and Survey observing strategies. We have applied HETDEX-like observational limits on the cluster galaxy detection, and require at least five galaxies to be detected for a cluster to be recovered. The shading indicates the mean recovery fraction for clusters within each small bin of redshift and cluster mass. We find a significant decrease in the recovery of galaxies with increasing redshift. This leads to lower recovery fractions of high mass clusters as many only exist at larger redshifts. The significant decline in the number of galaxies observed with the Survey strategy is due to gaps in the VIRUS IFU, where the galaxies are missed.}
+	\caption[Recovery fractions for the Targeted and Survey observations.]{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and true cluster mass for the Targeted and Survey observing strategies. The Targeted observations include HETDEX line and continuum flux limits and have a unity fill factor. The Survey observations again include HETDEX-like flux limits but a HETDEX-like fill factor, 1/4.5. We require at least five galaxies to be detected for a cluster to be recovered. The shading indicates the mean recovery fraction for clusters within each small bin of redshift and cluster mass. We find a significant decrease in the recovery of galaxies with increasing redshift. This leads to lower recovery fractions of high mass clusters as many only exist at larger redshifts. The significant decline in the number of galaxies observed with the Survey strategy is due to gaps in the VIRUS IFU, where the galaxies are missed.}
 	\label{fig: recovery} 
 \end{figure*}
 
@@ -314,7 +314,7 @@ In both Figures \ref{fig:Probability comparison} and \ref{fig: ML comparison}, w
 \begin{equation}\label{eq: fractional error}
 	\epsilon = (M_{pred} - M_{200c})/M_{200c}
 \end{equation}
-where $M_{pred}$ is the predicted cluster mass and $M_{200c}$ is the true cluster mass. Higher values of $\epsilon$ indicate the predicted cluster mass exceeds the true cluster mass.
+where $M_{pred}$ is the predicted cluster mass and $M_{200c}$ is the true cluster mass. Positive values of $\epsilon$ indicate the predicted cluster mass exceeds the true cluster mass.
 
 Qualitatively, the top panels of Figures \ref{fig:Probability comparison} and \ref{fig: ML comparison} show that both the probability based and ML based methods out perform (closer to the black 1:1 relation) the power law method when taking advantage of other cluster observables ($z$, $N_{gal}$, etc.). Generally, we find that the single parameter probability and ML methods perform significantly poorer than the power law method, especially at low cluster masses. When combined with the cluster redshift, the predicted cluster masses are improved, because the range of cluster masses decrease with increasing redshift (see Figure~\ref{fig: recovery}). The final addition of the number of observed galaxies, $N_{gal}$ acts as a type of richness estimate, and significantly improves both the bias and the amount of scatter in the predicted masses.
 
@@ -375,7 +375,7 @@ We quantify the bias and scatter for all of the different cluster mass recovery 
 
 \begin{table*}
 \centering
-\caption[Mean scatter in cluster mass after bias correction for different bins of predicted cluster mass.]{Mean scatter (Eqn.~\ref{eqn: scatter}) in cluster mass after bias correction for different bins of predicted cluster mass. This table shows the scatter in the predicted cluster mass for the perfect (top section), Targeted (middle section), and Survey (bottom section) observations in different predicted mass bins. The different mass recovery strategies are given in the leftmost column. It can be used to understand how the predicted cluster mass differs from the true cluster masses.}
+\caption[Mean scatter in cluster mass after bias correction for different bins of predicted cluster mass.]{Mean scatter (Eqn.~\ref{eqn: scatter}) in cluster mass after bias correction for different bins of predicted cluster mass. This table shows the scatter in the predicted cluster mass for the Perfect (top section), Targeted (middle section), and Survey (bottom section) observations in different predicted mass bins. The different mass recovery methods are given in the leftmost column. It can be used to understand how the predicted cluster mass differs from the true cluster masses. Positive numbers indicate the predicted cluster mass is over estimated when compared to the true cluster mass.}
 \begin{tabular}{cccccccc} 
 		&& \multic{6}{Bins -- Log $M_{pred}$} \\
 		\cline{3-8} 
@@ -426,14 +426,14 @@ We quantify the bias and scatter for all of the different cluster mass recovery 
 \label{tbl:mass scatter}
 \end{table*}
 
-A few caveats apply to the numbers given in Table \ref{tbl:mass bias} and Table \ref{tbl:mass scatter}. While we provide corrections for cluster masses above $10^{15}$ \msol, they are estimated from only a handful of objects, and may not constitute a representative sample of clusters. This becomes particularly apparent for the probability methods with many features. As the number of observed features increases, the number of training clusters in any particular bin decreases. This leads to highly skewed biases and scatters for the high mass clusters and probability methods. We do not report any bin where such small number statistics dominate in Tables~\ref{tbl:mass bias} and \ref{tbl:mass scatter}. On the opposite end of the cluster mass spectrum, there are very few, if any, clusters detected with Targeted or Survey observations below $5\times10^{12}$ \msol. Therefore, while we show these points in Figures~\ref{fig:Probability comparison} and \ref{fig: ML comparison}, we exclude their biases and scatters from Tables~\ref{tbl:mass bias} and \ref{tbl:mass scatter} for the same reasons. 
+A few caveats apply to the numbers given in Table \ref{tbl:mass bias} and Table \ref{tbl:mass scatter}. While we provide corrections for cluster masses above $10^{15}$ \msol, they are estimated from only a handful of objects owing to the volume in the mock galaxy catalog. These may not constitute a representative sample of clusters due to the limited volume and range of possible features. This becomes particularly apparent for the probability methods with many features. As the number of observed features increases, the number of training clusters in any particular bin decreases. This leads to highly skewed biases and scatters for the high mass clusters and probability methods. We do not report any bin where such small number statistics dominate in Tables~\ref{tbl:mass bias} and \ref{tbl:mass scatter}. On the opposite end of the cluster mass spectrum, there are very few, if any, clusters detected with Targeted or Survey observations below $5\times10^{12}$ \msol. Therefore, while we show these points in Figures~\ref{fig:Probability comparison} and \ref{fig: ML comparison}, we exclude their biases and scatters from Tables~\ref{tbl:mass bias} and \ref{tbl:mass scatter} for the same reasons. 
  
-The method which produce the lowest scatter and bias depends on the mass of the cluster in question and the type of observations used. For the Targeted observations, the power law method outperforms all other methods, in terms of bias and scatter, for the highest mass clusters. But outside of the two highest mass bins, the $\mathrm{ML}_{\sigma, z, N_{gal}}$ method shows the smallest amount of scatter and bias most consistently. With Survey observations, the power law again provides the lowest bias in the highest cluster mass bins, but is outperformed in terms of scatter by the other two methods. The $\mathrm{ML}_{\sigma, z, N_{gal}}$ method shows the smallest amount of scatter and bias most consistently across the cluster mass range in question.
+The method that produces the lowest scatter and bias depends on the mass of the cluster in question and the type of observations used. For the Targeted observations, the power law method outperforms all other methods, in terms of bias and scatter, for the highest mass clusters. But outside of the two highest mass bins, the $\mathrm{ML}_{\sigma, z, N_{gal}}$ method shows the smallest amount of scatter and bias most consistently. With Survey observations, the power law again provides the lowest bias in the highest cluster mass bins, but is outperformed in terms of scatter by the other two methods. The $\mathrm{ML}_{\sigma, z, N_{gal}}$ method shows the smallest amount of scatter and bias most consistently across the cluster mass range in question.
  
 \subsection{Impact of Training Sample Cosmology}
-All simulations (including that used for Buzzard) use specific values for cosmological parameters. When using simulation data to train ML methods, we incorporate all of those assumptions into the learned feature associations. One could imagine that the specific values of the cosmological parameters in the training sample could bias the ML results when applied to data (real or simulated) created from an unknown true set of cosmological parameters. In addition, each simulation realizes galaxy populations in slightly different ways. The details of the simulation affect which galaxies are observed or not, and thus influences our ability to recover the desired cluster properties. 
+All simulations (including that used for Buzzard) use specific values for cosmological parameters. When using simulation data to train ML methods, our tests incorporate all of this specific cosmology into the learned feature associations. One could imagine that the specific values of the cosmological parameters in the training sample could bias the ML results when applied to data (real or simulated) created from an unknown true set of cosmological parameters. In addition, each simulation realizes galaxy populations in slightly different ways. The details of the simulation affect which galaxies are observed or not, and thus influences our ability to recover the desired cluster properties. 
 
-To test for this, we used the Millennium simulation \citep{Springel2005a} as an alternative data set. The Millennium simulation adopts a flat cosmological model based of the values derived from the Two-degree Field Galaxy Redshift Survey \citep{Colless2001} and the first year data of the \emph{Wilkinson Microwave Anisotropy Probe} (WMAP; \citealt{Spergel2003}): $\Omega_\Lambda = 0.75$, $\Omega_M = 0.25$, $\sigma_8 = 0.9$, $n_s = 1$ and $H_0= 73$ \kms \mpc. As this cosmology differs dramatically from that assumed in the Buzzard catalogs (see Section~\ref{sec: Buzzard}, the clusters in Millennium provide a testing sample to understand how a training sample derived from Buzzard will impact the mass recovery on a wholly new dataset. 
+To test for this, we used the Millennium simulation \citep{Springel2005a} as an alternative data set. The Millennium simulation adopts a flat cosmological model based of the values derived from the Two-degree Field Galaxy Redshift Survey \citep{Colless2001} and the first year data of the \emph{Wilkinson Microwave Anisotropy Probe} (WMAP; \citealt{Spergel2003}): $\Omega_\Lambda = 0.75$, $\Omega_M = 0.25$, $\sigma_8 = 0.9$, $n_s = 1$ and $H_0= 73$ \kms \mpc. As this cosmology differs dramatically from that assumed in the Buzzard catalogs (see Section~\ref{sec: Buzzard}, the clusters in Millennium provide an independent mock sample to understand how a training sample derived from Buzzard will impact the mass recovery on a wholly new dataset. 
 
 We repeat our analysis using cluster halo and galaxy catalogs from the Millennium simulation obtained via querying the Millennium online database\footnote{\url{http://gavo.mpa-garching.mpg.de/Millennium/}} \citep{Lemson2006}. The Millennium simulation tracks $2160^3$ dark matter particles of $8.6\times 10^8 ~h^{-1}$ \Msol\ inside a comoving 500 $(h^{-1} \mathrm{Mpc})^3$ box from $z=127$ to 0. The following SQL query selects the cluster halos:
 \begin{lstlisting}[language=SQL]
@@ -462,16 +462,16 @@ SELECT sh.fofid,
        sdss.i_sdss 
 FROM   mfield..fofsubhalo AS sh 
        INNER JOIN mpagalaxies..delucia2006a AS g 
-               ON sh.subhaloid = g.subhaloid 
+              ON sh.subhaloid = g.subhaloid 
        INNER JOIN mpagalaxies..delucia2006a_sdss2mass AS sdss 
-               ON g.galaxyid = sdss.galaxyid 
+              ON g.galaxyid = sdss.galaxyid 
 WHERE  sh.fofid IN (SELECT fofid 
-                FROM   mfield..fof 
-                WHERE  snapnum IN (SELECT snapnum 
-                               FROM   snapshots..mr 
-                               WHERE  z BETWEEN 0.01 AND 0.5) 
-                       AND m_crit200 > 1000 
-                       AND random BETWEEN 0 AND 10000) 
+       FROM   mfield..fof 
+       WHERE  snapnum IN (SELECT snapnum 
+                      FROM   snapshots..mr 
+                      WHERE  z BETWEEN 0.01 AND 0.5) 
+              AND m_crit200 > 1000 
+              AND random BETWEEN 0 AND 10000) 
 \end{lstlisting}
 
 We select 4,806 clusters, comprised of 623,663 galaxies, at $0.02 < z < 0.5$ and $M > 10^{13}$ \Msol, and apply the same data processing as with the Buzzard galaxies. We begin by assigning each galaxy an \hbox{[\ion{O}{II}]} flux value (see Section \ref{sec: oii luminosity}), and ``observe'' each galaxy using realistic (see Section \ref{sec: observations}) observational limits. After recovering 3750 clusters which have at least five galaxies observed, we calculate the LOSVD of each cluster as in Section \ref{sec: LOSVD}. 
