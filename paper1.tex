@@ -76,28 +76,28 @@ The distribution of massive clusters of galaxies depends strongly on the total c
 \end{abstract}
 
 \section{Introduction}\label{sec: Introduction}
-Our ability to perform precision cosmology with clusters of galaxies has reached a critical point. The widely accepted $\Lambda$CDM model of cosmology makes explicit predictions about the mass function of galaxy clusters in the universe. Measuring this mass function across many redshifts, in turn, provides constraints on the cosmology. Today, large-area sky surveys are providing observations of large numbers of clusters, but systematics in deriving cluster masses dominate the error budget \citeeg{Sehgal2011,Plank2014, Bocquet2015}. To place further constraints on the $\Lambda$CDM model of cosmology, we must decrease these systematics. 
+Our ability to perform precision cosmology with clusters of galaxies has reached a critical point. The widely accepted $\Lambda$CDM model of cosmology makes explicit predictions about the mass function of galaxy clusters in the universe. Measuring this mass function across many redshifts, in turn, provides constraints on the cosmology. Today, large-area sky surveys are providing observations of large numbers of clusters, but systematics in deriving cluster masses dominate the error budget \citeeg{Sehgal2011,Plank2014, Bocquet2015}. To place further constraints on the $\Lambda$CDM model of cosmology, we must decrease these systematics.
 
 As mass is not a direct observable, a lot of work is underway to characterize galaxy cluster masses with an observable feature of galaxy clusters \citeeg{Mantz2016,Bocquet2015,Old2015,Old2014, Pearson2015}. The goal is to constrain $P(M|z, \vec{x})$ the probability density ($P$) that a galaxy cluster of given mass ($M$), located at a specific redshift ($z$), determined using an observable parameter or parameters ($\vec{x}$). Generally, cluster mass calibrations are done in one of three ways, through simulations, direct or statistical calibration.
 
-Previous studies have attempted to use various simulations to calibrate this observable-mass relation \citeeg{Vanderlinde2010, Sehgal2011}. However, the primary challenge to this method is the incomplete understanding of the baryonic physics which take place in galaxy cluster environments. While there have been (and continue to be) many improvements in the accuracy and power of simulations it is doubtful that in the coming years they will reach the accuracy level required, due to limitations of the current models, where the observable--mass relation is dominated only by statistics \citep{Weinberg2013}. 
- 
+Previous studies have attempted to use various simulations to calibrate this observable-mass relation \citeeg{Vanderlinde2010, Sehgal2011}. However, the primary challenge to this method is the incomplete understanding of the baryonic physics which take place in galaxy cluster environments. While there have been (and continue to be) many improvements in the accuracy and power of simulations it is doubtful that in the coming years they will reach the accuracy level required, due to limitations of the current models, where the observable--mass relation is dominated only by statistics \citep{Weinberg2013}.
+
 The second broad method is the direct calibration of cluster masses. This recipe has two distinct but often related tracks. The ``direct'' method uses observations of a relatively small set of clusters and then uses observable mass proxies, including X-ray temperatures and luminosities \citeeg{Mantz2010, Rykoff2014}, microwave observations \citeeg{Vanderlinde2010, Sehgal2011}, optical richness \citeeg{Abell1958, Rykoff2012} or weak lensing (WL; \eg\ \citealt{Rozo2010}) as examples, which provide a ``true'' mass. This directly calibrates the observable-mass relation which is then applied to a much larger sample. The complications lie in that the ``true'' masses are, in fact, estimations, and the methods used to recover these cluster masses are subject to their own limitations. X-ray based cluster masses assume hydrostatic equilibrium \citeeg{Mantz2015} which may only be valid for a very small number and range of cluster masses. The Sunyaev-Zel'dovich Effect (SZE; \citealt{Sunyaev1972}), which uses the up-scattering of cosmic microwave background (CMB) photons to estimate cluster masses, provides accurate estimations of mass, but the ability to detect low mass galaxy clusters is currently limited by technology \citeeg{Carlstrom2002a} and can also be effected by the properties of the intracluster medium \citeeg{Pipino2010}. WL estimates are, in principle, correct in the mean, but they suffer from signal-to-noise requirements, limiting their usefulness in low mass clusters (where the lensing signal is particularly weak), and potentially suffer from line-of-sight effects as WL is sensitive to all mass along the line-of-sight. Virial mass estimators which determine the cluster mass based on the motions of member galaxies \citeeg{Ruel2014, Sifon2015} are promising in that it is a direct measurement of the depth of a cluster's potential well, but suffer from systematics due to cluster formation physics which disrupts the velocity field, such as cluster mergers \citeeg{Evrard2008} and tidal stripping \citeeg{Faltenbacher2006}. As all methods possess different strengths, systematics, and assumptions, it is important to compare multiple methods to understand how these affect the inferred cluster mass.
- 
+
 The statistical method of determining galaxy cluster mass relies not on direct measurements of individual clusters but the calibration of observables for the entire sample which correlate with cluster mass. One example is the spatial clustering of the galaxy clusters themselves \citeeg{Baxter2016}. See \cite{Weinberg2013} for a comprehensive review. In practice, it will be a combination of the three methods touched on that will provide the most reliable determination of cluster masses.
 
 Large-area sky surveys, both on-going and planned, are revolutionizing cluster cosmology using a large range of wavelengths. The South Pole Telescope (SPT; \citealt{Carlstrom2011}) and the Atacama Cosmology Telescope (ACT; \citealt{Swetz2011}) are discovering many clusters through the SZE. Optically, the on going Dark Energy Survey (DES; \citealt{DES2005}) and planned Large Synoptic Survey Telescope (LSST; \citealt{LSST2012}) will identify many thousands of clusters to much lower masses than is possible with SZE measurements. However, regardless of the discovery method used, spectroscopic follow-up is needed to further constrain $P(M|z,\vec{x})$. This follow-up becomes increasingly important to help constrain the scatter in the mass estimates of other methods, and provides an additional, independent check of the observable-mass relationship used. But as the cluster dataset grows to many tens of thousands of clusters individual follow-up becomes increasingly impractical. Therefore, large spectroscopic surveys are needed to more fully understand the observable-mass relation of clusters.
 
 Here, we consider how a blind spectroscopic survey, such as the Hobby Eberly Telescope Dark Energy eXperiment (HETDEX; \citealt{Hill2008}) can be used to calibrate the observable--cluster mass relationship, and to further constrain the scatter in the calibration. We create and evaluate a HETDEX like selection ``function'' of galaxies over a similarly large portion of the sky and use well adopted techniques to recover the dynamical properties, such as velocity dispersion and cluster mass. In addition to standard techniques of cluster mass estimation, we investigate probability based and machine learning based approaches of cluster mass prediction. We compare these results to a series of targeted galaxy cluster observations, where each member galaxy is assumed to be observed. Each of these observations use realistic uncertainties from galaxy magnitude and line-flux limits. These strategies will better allow future work to predict the number and types of galaxy clusters which should be observed with VIRUS during both the HETDEX survey portion and through targeted follow up observations.
 
-We begin in Section \ref{sec:Data} by giving an overview of what data is used, how it is created, and how we make our ``observations.'' Details about the determination of cluster parameters, velocity dispersion, total mass, etc., are discussed in Section \ref{sec:recovery}. Next, we present the results of our study in Section \ref{sec:results} and discuss their implications in Section \ref{sec:discussion}. Finally we summarize our findings in Section \ref{sec:summary}. A follow-up to this work Boada \etal\ (in Preparation) will will apply these techniques to real data so as to empirically validate our conclusions. 
+We begin in Section \ref{sec:Data} by giving an overview of what data is used, how it is created, and how we make our ``observations.'' Details about the determination of cluster parameters, velocity dispersion, total mass, etc., are discussed in Section \ref{sec:recovery}. Next, we present the results of our study in Section \ref{sec:results} and discuss their implications in Section \ref{sec:discussion}. Finally we summarize our findings in Section \ref{sec:summary}. A follow-up to this work Boada \etal\ (in Preparation) will will apply these techniques to real data so as to empirically validate our conclusions.
 
-Throughout this paper, we adopt the following cosmological model: $\Omega_\Lambda = 0.714$, $\Omega_M = 0.286$, $\sigma_8 = 0.82$ and $H_0= 70$ \kms \mpc (taken from mock galaxy catalogs derived from an N-body simulation using this cosmology; see below), assume a Chabrier initial mass function (IMF; \citealt{Chabrier2003}), and use AB magnitudes \citep{Oke1974}. 
+Throughout this paper, we adopt the following cosmological model: $\Omega_\Lambda = 0.714$, $\Omega_M = 0.286$, $\sigma_8 = 0.82$ and $H_0= 70$ \kms \mpc (taken from mock galaxy catalogs derived from an N-body simulation using this cosmology; see below), assume a Chabrier initial mass function (IMF; \citealt{Chabrier2003}), and use AB magnitudes \citep{Oke1974}.
 
 \begin{figure*}
-	\includegraphics[width=\textwidth]{figures/oii_sdss.pdf} 
+	\includegraphics[width=\textwidth]{figures/oii_sdss.pdf}
 	\caption{\textit{Left}: CMD of 503,113 $z<0.2$ galaxies take from the SDSS DR12 where the shading scales with the density of points. The two colored boxes show regions containing potential catalog galaxies. \textit{Right}: Probability histograms of the Log \hbox{[\ion{O}{II}]} luminosity for the SDSS galaxies located in the two highlighted regions on the right. The \hbox{[\ion{O}{II}]} luminosities are assigned to catalog galaxies from slice sampling the probability histogram and converted to fluxes using the redshift of each galaxy.}
-	\label{fig: oii sdss} 
+	\label{fig: oii sdss}
 \end{figure*}
 
 \section{Data and Mock Observations}\label{sec:Data}
@@ -121,36 +121,39 @@ The catalog information used in this study is broken into two large portions. Th
 We investigate the accuracy of the halo mass distribution by comparing the cumulative number density of halos above a mass ($M_{200c}$) threshold to the halo mass function (HMF) of \cite{Tinker2008}. We calculate the HMF at central redshifts of 0.1, 0.2, and 0.4 using {\sc HMFcalc} \citep{Murray2013} and compare it to galaxy clusters in a redshift window of $\Delta z\pm0.01$. In each of the three test cases we use a $\chi^2$-test, using clusters with masses $10^{10} - 10^{15}$ \msol. We find very good agreement between the predicted HMF and the observed distribution of clusters with the minimum $\chi^2$ statistic $\sim0.004$ and a corresponding p-value $>0.95$.
 
 \subsection{Conditional {\rm[\ion{O}{II}]} Flux Probability Distribution Functions}\label{sec: oii luminosity}
-We use the SDSS Data Release 12 \citep{Alam2015} catalogs to assign [\ion{O}{II}] emission line strengths to the galaxies in the Buzzard catalog. We use 503,113 objects classified as galaxies selected over $z = 0.02 - 0.2$ with {\sc zwarning $=0$} and a measured [\ion{O}{II}] line flux signal-to-noise of at least five. Figure~\ref{fig: oii sdss} shows the color-magnitude diagram (CMD) of $M_r$ and $g-r$ for these galaxies, and the following SQL query selects the appropriate galaxies:
+We use the SDSS Data Release 12 \citep{Alam2015} catalogs to assign [\ion{O}{II}] emission line strengths to the galaxies in the Buzzard catalog. We use 503,094 objects classified as galaxies selected over $z = 0.02 - 0.2$ with {\sc zwarning $=0$} and a measured [\ion{O}{II}] line flux of at least one. Figure~\ref{fig: oii sdss} shows the color-magnitude diagram (CMD) of $M_r$ and $g-r$ for these galaxies, and the following SQL query selects the appropriate galaxies:
 \begin{lstlisting}[language=SQL]
-SELECT GAL.objid, 
-       GAL.u, 
-       GAL.err_u, 
-       GAL.g, 
-       GAl.err_g, 
-       GAL.r, 
-       GAL.err_r, 
-       GAL.i, 
-       GAl.err_i, 
-       GAL.z, 
-       GAL.err_z, 
-       g.oii_3726_flux, 
-       g.oii_3726_flux_err, 
-       s.z as redshift 
-FROM   galaxy AS GAL 
-       JOIN specobj AS s 
-         ON s.bestobjid = GAL.objid 
-       JOIN galspecline AS g 
-         ON g.specobjid = s.specobjid 
-WHERE  oii_3726_flux > oii_3726_flux_err * 5 
-       AND oii_3726_flux_err > 0 
-       AND s.class = 'GALAXY' 
-       AND s.zwarning = 0 
+SELECT GAL.objid,
+SELECT GAL.objid,
+       GAL.u,
+       GAL.err_u,
+       GAL.g,
+       GAl.err_g,
+       GAL.r,
+       GAL.err_r,
+       GAL.i,
+       GAl.err_i,
+       GAL.z,
+       GAL.err_z,
+       g.oii_3726_flux,
+       g.oii_3726_flux_err,
+       s.z AS redshift
+INTO   mydb.sdsstraining
+FROM   galaxy AS GAL
+       JOIN specobj AS s
+         ON s.bestobjid = GAL.objid
+       JOIN galspecline AS g
+         ON g.specobjid = s.specobjid
+WHERE  oii_3726_flux > oii_3726_flux_err
+       AND oii_3726_flux_err > 0
+       AND s.z BETWEEN 0.02 AND 0.2
+       AND s.class = 'GALAXY'
+       AND s.zwarning = 0
 \end{lstlisting}
 
-To assign an [\ion{O}{II}] luminosity to each galaxy in our catalog, we place the catalog galaxies on the same CMD and select all SDSS galaxies in a small 2D ($M_r$, $g-r$) bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their [\ion{O}{II}] luminosities, the right panel of Figure \ref{fig: oii sdss}. Using a slice sampling technique \citep{Neal1997} we assign the catalog galaxy an [\ion{O}{II}] luminosity based on the distribution of SDSS galaxies in that bin. In very few cases (1.3\% of galaxies), the $g-r$ and $M_r$ magnitudes of the galaxies in the Buzzard catalog do not overlap with the distributions in SDSS. For these objects, we assign them zero [\ion{O}{II}] flux, but this has no impact on our analysis. For catalog galaxies with have very few ($1\leq N<10$) SDSS galaxies in their respective bin, we assign it the mean [\ion{O}{II}] flux. 
+To assign an [\ion{O}{II}] luminosity to each galaxy in our catalog, we place the catalog galaxies on the same CMD and select all SDSS galaxies in a small 2D ($M_r$, $g-r$) bin around the galaxy. We extract all of the SDSS galaxies inside that bin and create a histogram of their [\ion{O}{II}] luminosities, the right panel of Figure \ref{fig: oii sdss}. Using a slice sampling technique \citep{Neal1997} we assign the catalog galaxy an [\ion{O}{II}] luminosity based on the distribution of SDSS galaxies in that bin. In very few cases (1.3\% of galaxies), the $g-r$ and $M_r$ magnitudes of the galaxies in the Buzzard catalog do not overlap with the distributions in SDSS. For these objects, we assign them zero [\ion{O}{II}] flux, but this has no impact on our analysis. For catalog galaxies with have very few ($1\leq N<10$) SDSS galaxies in their respective bin, we assign it the mean [\ion{O}{II}] flux.
 
-Figure~\ref{fig: oii sdss} illustrates this process. The numbered boxes in the left panel show the bins corresponding to two example Buzzard galaxies ($M_r, g-r = -17.7,~0.49$ and $M_r, g-r = -21.4,~1.24$). The right panel shows the [\ion{O}{II}] luminosity distribution functions, $P(\log\ L_{[\ion{O}{II}]}| M_r, g-r)$, which we use to assign [\ion{O}{II}] luminosity to each object. The luminosity is then converted into an [\ion{O}{II}] flux through 
+Figure~\ref{fig: oii sdss} illustrates this process. The numbered boxes in the left panel show the bins corresponding to two example Buzzard galaxies ($M_r, g-r = -17.7,~0.49$ and $M_r, g-r = -21.4,~1.24$). The right panel shows the [\ion{O}{II}] luminosity distribution functions, $P(\log\ L_{[\ion{O}{II}]}| M_r, g-r)$, which we use to assign [\ion{O}{II}] luminosity to each object. The luminosity is then converted into an [\ion{O}{II}] flux through
 \begin{equation}
 	F = \frac{L}{4\pi D_L^2}
 \end{equation}
@@ -158,9 +161,9 @@ where $D_L$ is the luminosity distance \citeeg{Hogg1999}.
 
 \subsection{HETDEX}\label{sec: hetdex}
 \begin{figure}
-\includegraphics[width=\columnwidth]{figures/pointings.pdf} 
-	\caption[HETDEX pointing strategy.]{\emph{Top:} Representative observation tiling scheme for the HETDEX $16' \times 16'$ pointings over a small region of the sky. \emph{Bottom:} The simplified tiling pattern used in this study. In both schemes, the dashed octagons approximate the size of a single observation. Each observation consists of the 78 VIRUS IFUs, represented by the turquoise squares in the bottom panel shown for one of the HETDEX pointings. Inside each IFU HETDEX will achieve near complete coverage through three dithers. See the text for more details.} 
-	\label{fig: ifu layout} 
+\includegraphics[width=\columnwidth]{figures/pointings.pdf}
+	\caption[HETDEX pointing strategy.]{\emph{Top:} Representative observation tiling scheme for the HETDEX $16' \times 16'$ pointings over a small region of the sky. \emph{Bottom:} The simplified tiling pattern used in this study. In both schemes, the dashed octagons approximate the size of a single observation. Each observation consists of the 78 VIRUS IFUs, represented by the turquoise squares in the bottom panel shown for one of the HETDEX pointings. Inside each IFU HETDEX will achieve near complete coverage through three dithers. See the text for more details.}
+	\label{fig: ifu layout}
 \end{figure}
 
 The Hobby Eberly Telescope Dark Energy eXperiment (HETDEX; \citealt{Hill2008}) is a blind spectroscopic survey of 420 \degsq\ (300 \degsq, Spring field and 120 \degsq, Fall field) of the northern sky. The Spring field is $42\times7$ degrees centered at 13$^h\, +53\degree$, and the Fall field is $28\times5$ degrees centered at $1.5^h\, +0\degree$. HETDEX will observe high-redshift large scale structures using cutting edge wide-field integral field unit (IFU) spectrographs. The survey is designed to probe the evolution of the dark energy equation of state etched onto high redshift ($z>2$) galaxies by the Baryon Acoustic Oscillations (BAO) \citep{Eisenstein2005}. Tuned to find \lya\ emitting (LAE) galaxies at $1.9<z<3.5$, HETDEX expects to find 800,000 LAEs, and more than one million [\ion{O}{II}] emitting galaxies at $z<0.5$ masquerading as high-redshift galaxies \citep{Acquaviva2014}.
@@ -182,7 +185,7 @@ We measure cluster velocity dispersions using three different spectroscopic obse
 In the following sections, we assume that we know \textit{a priori} which galaxies belong to each individual cluster. So while our observations may include many field galaxies which do not belong to the cluster in question, we exclude those galaxies during the analysis of the cluster parameters. Cluster membership is a critical issue which must be addressed when utilizing real observations. To that end, we assay a small sample of real galaxy clusters in a follow up work (Boada \etal\ in Preparation).
 
 \subsection{Cluster Redshift}
-The accurate determination of the cluster redshift ($z_c$) is crucial to the reliability of all following measurements. An incorrect cluster redshift introduces error into the measured line-of-sight velocity (LOSV) and corresponding dispersion, which, in turn, contributes to errors associated with dynamical mass and radius. 
+The accurate determination of the cluster redshift ($z_c$) is crucial to the reliability of all following measurements. An incorrect cluster redshift introduces error into the measured line-of-sight velocity (LOSV) and corresponding dispersion, which, in turn, contributes to errors associated with dynamical mass and radius.
 
 In simple terms, the cluster redshift is the mean of the redshifts of all galaxies associated with the cluster, where the mean is the first moment of the velocity (redshift) distribution function $P(z)$. In practice, the first moment is strongly subject to outliers, so we rely instead on the biweight location estimator \citep{Beers1990} through\footnote{Implemented as part of the {\sc astLib} Python library \citep{astlib}. See \hbox{\url{http://astlib.sourceforge.net}}}:
 \begin{equation}
@@ -192,7 +195,7 @@ where $z_i$ are the individual redshifts, $z_{med}$ is the median redshift and $
 \begin{equation}
 	u_i = \frac{(z_i - M)}{C\,\mathrm{MAD}}.
 \end{equation}
-MAD is the median absolute deviation, also defined in \cite{Beers1990}, and $C$ is the a tuning constant. We choose $C=6$ (the \citealt{Beers1990} suggested value). 
+MAD is the median absolute deviation, also defined in \cite{Beers1990}, and $C$ is the a tuning constant. We choose $C=6$ (the \citealt{Beers1990} suggested value).
 % Although this work assumes that we know each galaxy's redshift to infinite precision, in practice, we find a simple weighted mean provides a reliable estimate of $z_c$ when there are uncertainties on the individual galaxy redshifts.
 
 \subsection{Line-of-Sight Velocity Dispersion}\label{sec: LOSVD}
@@ -218,7 +221,7 @@ The relationship between the LOSVD and cluster dynamical mass has been the focus
 \end{equation}
 with $A_{1D} = 1177 \pm 4.2$ \kms\ (\citealt{Munari2013}; referred to as $\sigma_{15}$ in \citealt{Evrard2008} and other works), $\alpha = 1/3$, $h(z) = H(z)/100$ \kms\ \mpc, and $\sigma_{1D}$ is the LOSVD of the velocity tracers (dark matter particles, subhalos or galaxies). $H(z) = H_0\, E(z)$ and $E(z) = \sqrt{\Omega_m(1+z^3)+\Omega_{\Lambda}}$ (assuming a flat cosmology).
 
-Recent work suggests that there is a significant difference in the observed LOSVD depending on the velocity tracers used \citep{Munari2013}. Specifically, while there is little difference between using galaxies and their host DM subhalos, there is a significant over estimation of the LOSVD when using galaxies/subhalos compared to DM particles. We follow other works \citeeg{Kirk2015, Sifon2015a} using the scaling relation, given in Equation~\ref{eq:power law} to facilitate comparisons with other observational studies, which rely on galaxies as tracers. 
+Recent work suggests that there is a significant difference in the observed LOSVD depending on the velocity tracers used \citep{Munari2013}. Specifically, while there is little difference between using galaxies and their host DM subhalos, there is a significant over estimation of the LOSVD when using galaxies/subhalos compared to DM particles. We follow other works \citeeg{Kirk2015, Sifon2015a} using the scaling relation, given in Equation~\ref{eq:power law} to facilitate comparisons with other observational studies, which rely on galaxies as tracers.
 
 \subsubsection{Other Estimates of Dynamical Mass -- Introduction}
 In the following subsections we use two methods to predict the mass of a cluster based on other observables. Often the cluster mass is estimated based on a single observable, \eg\ X-ray temperature, LOSVD, richness and others (see Section~\ref{sec: Introduction} for referenced examples). Here we combine many observables to attempt to correct the mass inferred solely from the velocity dispersion. The first method is traditional ``probability based'' where we marginalize over a series of observables to find the most probable cluster mass. The second is based on a machine learning (ML) algorithm which attempts to infer the relationship between the observables and the desired output, the cluster mass. Both of these methods are examples of supervised learning algorithms where the relationship between the observable parameters and the target parameter (the cluster mass) are both known.
@@ -229,9 +232,9 @@ As with any predictive analysis it is important to test the model on data that t
 For internal consistency between this and the ML based method we use 70\% of the clusters to establish a conditional probability density of $P(\log\ M_{200c} | \vec{x})$ which we then use as the cluster mass probability density for the remaining clusters with similar features. In this way we, ``train'' the probability density using the existing simulated data, and apply it to the ``test'' sample (the remaining 30\% of the data not used as the training set).
 
 \begin{figure*}
-	\includegraphics[width=\textwidth]{figures/prob_example.pdf} 
+	\includegraphics[width=\textwidth]{figures/prob_example.pdf}
 	\caption[Illustration of the probability based cluster mass prediction method.]{Illustration of the probability based cluster mass prediction method. \emph{Left}: The two dimensional posterior probability distribution of LOSVD and redshift used to determine the correct cluster mass. The pink and green rectangles show the locations of two example galaxy, $\vec{x}_1 = \{z=0.16,\ \log~\sigma=2.4\}$ and $\vec{x}_2 = \{z=0.36,\ \log~\sigma=2.7\}$, clusters used to create the conditional probability distribution of the mass, $P(\log\ M_{200c}|z, \mathrm{Log}\, \sigma)$. \emph{Right}: The conditional probability distribution of the cluster mass for the two example galaxies. See text for a complete description.}
-	\label{fig: probability corner} 
+	\label{fig: probability corner}
 \end{figure*}
 
 In this method, the cluster masses are predicted using the method illustrated in Figure~\ref{fig: probability corner}. The left panel shows the two dimensional (joint probability) projections of the posterior probability distributions of the feature training data. The conditional probability of the cluster mass $P(\log\ M_{200c}|\vec{x}= \{ x_1,x_2,...\})$ (shown in the right panel) is determined by selecting a region in the joint probability distribution. For example, using the LOSVD and redshift features we create $P(\log\ M_{200c}|\vec{x})$ for two test galaxies, shown by the green and pink boxes in the left panel of Figure~\ref{fig: probability corner}. These example galaxies have features $\vec{x} = \{\sigma=200\, \kms,z=0.16\}$ and $\vec{x} = \{\sigma=400\, \kms,z=0.36\}$. We select all galaxies in our training sample with similar features and create the conditional probability distributions shown in the right panel.
@@ -264,9 +267,9 @@ Here we explore the cluster member recovery rate and mass estimates for the two 
 
 \subsection{Recovery of Cluster Members}
 \begin{figure*}
-	\includegraphics[width=0.8\textwidth]{figures/recovery.pdf} 
+	\includegraphics[width=0.8\textwidth]{figures/recovery.pdf}
 	\caption[Recovery fractions for the Targeted and Survey observations.]{Recovery fractions ($N_{obs}/N_{True}$) of cluster member galaxies as a function of redshift and true cluster mass for the Targeted and Survey observing strategies. The Targeted observations include HETDEX line and continuum flux limits and have a unity fill factor. The Survey observations again include HETDEX-like flux limits but a HETDEX-like fill factor, 1/4.5. We require at least five galaxies to be detected for a cluster to be recovered. The shading indicates the mean recovery fraction for clusters within each small bin of redshift and cluster mass. We find a significant decrease in the recovery of galaxies with increasing redshift. This leads to lower recovery fractions of high mass clusters as many only exist at larger redshifts. The significant decline in the number of galaxies observed with the Survey strategy is due to gaps in the VIRUS IFU, where the galaxies are missed.}
-	\label{fig: recovery} 
+	\label{fig: recovery}
 \end{figure*}
 
 As discussed in Section \ref{sec: observations}, the observational constraints place limits on the total number of clusters member galaxies expected to be recovered. Knowing these limits will provide important information for potential future follow up or Targeted observations. We recover 14,189 clusters with Targeted observations and 1,760 clusters with Survey observations, where we require a detection of $N_{obs} >=5$ galaxies for a cluster to be detected. It is worth noting that we are using galaxies which are a priori known to belong to each cluster. This is not possible to do when analyzing real data, but this will be investigated in a follow up paper, Boada \etal\ (in Preparation).
@@ -275,17 +278,17 @@ Figure \ref{fig: recovery} shows the recovery fraction of member galaxies, the n
 
 For the Targeted observations, shown in the left panel of Figure~\ref{fig: recovery}, the decreasing recovery fraction as a function of redshift (y-direction) is due to the observational limits of the survey. Because the redshift success rate of HETDEX is limited by apparent magnitude, we expect to recover fewer galaxies at higher redshift, where the galaxies are often below our $5\sigma$ detection threshold. We tested this by constructing an artificial HETDEX-like survey, limited by volume for all galaxies with $M_g < -11$. In this case, our recovery fraction increases to $>70$\%, which shows that the flux limit is dominating the (lower) recovery of our flux-limited survey.
 
-For the recovery fraction as a function of true cluster mass (x-direction), we find a general decrease in the number of member galaxies with increasing cluster mass. This  is entirely a result of the flux limited survey (see previous paragraph). Because there are few high mass ($M_{200c}>5\times10^{14}$ \Msol) clusters, many of which are at moderately high redshift, the higher redshift cluster members suffer from the limiting apparent magnitude and suppress the recovery fraction at fixed mass. If we were to limit the Survey to $z<0.2$ we find the recovery fraction of clusters, at fixed masses, increases 40\%-50\%, and we find a much more consistent detection fraction across all masses. However, doing so limits severely the number of clusters at masses greater than $10^{14}$ \Msol because of the limited survey volume. 
+For the recovery fraction as a function of true cluster mass (x-direction), we find a general decrease in the number of member galaxies with increasing cluster mass. This  is entirely a result of the flux limited survey (see previous paragraph). Because there are few high mass ($M_{200c}>5\times10^{14}$ \Msol) clusters, many of which are at moderately high redshift, the higher redshift cluster members suffer from the limiting apparent magnitude and suppress the recovery fraction at fixed mass. If we were to limit the Survey to $z<0.2$ we find the recovery fraction of clusters, at fixed masses, increases 40\%-50\%, and we find a much more consistent detection fraction across all masses. However, doing so limits severely the number of clusters at masses greater than $10^{14}$ \Msol because of the limited survey volume.
 
 For the Survey observations, the right panel of Figure~\ref{fig: recovery}, all of the same effects are at work. In addition we find that the fill factor, due to the gaps between the VIRUS IFUs, further reduces the number of cluster members detected. The median recovery fraction in Survey observations is almost exactly 4.5 times less than the Targeted median recovery fraction. As the total filling factor of the Survey observations increases the two lines will converge.
 
 The recovery fractions in Figure~\ref{fig: recovery} are an outcome of the magnitude limit and [\ion{O}{II}] line-flux limit of the survey. For Perfect observations, we would measure redshifts for all members across all cluster masses and redshifts. Recovery fractions of clusters located a the low end of the redshift distribution will improve the most by follow-up targeted observations. But generally, the number of members observed (and subsequently more accurate cluster mass estimates) will benefit from follow-up observations regardless of the redshift, which can be tailored for the specific scientific goal.
 
 \subsection{Mass estimates}
-\begin{figure*} 
-	\includegraphics[width=\textwidth]{figures/Probcomparison.pdf} 
+\begin{figure*}
+	\includegraphics[width=\textwidth]{figures/Probcomparison.pdf}
 	\caption[Probability based cluster mass predictions.]{Mass predictions for the power law scaling relation (Equation~\ref{eq:power law}) and the probability based technique with different input features as a function of true cluster mass. The bottom row of panels shows the fractional error (Equation~\ref{eq: fractional error}) also as a function of true cluster mass. The solid black line shows the 1:1 relation. The orange, dash-dotted line is the median predicted mass for Perfect observations. The solid, purple line is the median predicted mass for the Targeted observing, and the green, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions represent the 68\% scatter around the median values.}
-	\label{fig:Probability comparison} 
+	\label{fig:Probability comparison}
 \end{figure*}
 
 In this section we discuss the accuracy of the recovered masses compared to the true cluster mass from a set of observations. We report on three methods, the power law based approach (Eq. \ref{eq:power law}), the probability based approach (Section \ref{sec:probability method}) and the ML based method (Section \ref{sec:machine learning method}). For each method we consider observations with Perfect knowledge, Targeted observations and Survey observations.
@@ -300,17 +303,17 @@ where $y$ are the true values and $y_{pred}$ are the predicted values, and the s
 \end{equation}
 with $N$ clusters in a given bin. Both metrics evaluate how closely the ensemble of predicted cluster masses are to the true cluster masses.
 
-We begin with the Perfect knowledge observations. These observations are of the same clusters as the Targeted observations but without any observational limits. The cluster masses predicted by Equation \ref{eq:power law} gives the following results. For clusters with masses between Log M/\Msol $= 13 - 15.5$, we find $\mu_{bias} = 0.148\pm{0.008}$ dex and $\sigma_{bias} = 0.193\pm{0.001}$, but the bias does vary with cluster mass. The scatter in recovered masses can be attributed to both physical and numerical effects. The presence of any in-falling matter onto lower mass clusters can introduce a significant amount of substructure, leading to artificial biasing of the measured LOSVD to higher values, increasing the predicted mass \citeeg{Ntampaka2015}. Also, as the number of cluster galaxies decreases the LOSVD probability distribution function is poorly sampled leading to poorly recovered cluster masses due to numerical effects. 
+We begin with the Perfect knowledge observations. These observations are of the same clusters as the Targeted observations but without any observational limits. The cluster masses predicted by Equation \ref{eq:power law} gives the following results. For clusters with masses between Log M/\Msol $= 13 - 15.5$, we find $\mu_{bias} = 0.148\pm{0.008}$ dex and $\sigma_{bias} = 0.193\pm{0.001}$, but the bias does vary with cluster mass. The scatter in recovered masses can be attributed to both physical and numerical effects. The presence of any in-falling matter onto lower mass clusters can introduce a significant amount of substructure, leading to artificial biasing of the measured LOSVD to higher values, increasing the predicted mass \citeeg{Ntampaka2015}. Also, as the number of cluster galaxies decreases the LOSVD probability distribution function is poorly sampled leading to poorly recovered cluster masses due to numerical effects.
 
 For the Targeted and Survey observations the power law predicted cluster masses give $\mu_{bias} =0.135\pm{0.003}$ dex, $\sigma_{bias} = 0.370\pm{0.002}$ dex and $\mu_{bias} =0.148\pm{0.008}$ dex, $\sigma_{bias} = 0.324\pm{0.006}$ dex, respectively. So for the clusters that we detect with Survey observations, we obtain similar levels of accuracy as to the Targeted observations, on the average. This does not mean that the Survey observations cannot be improved by Targeted observations. In fact, when comparing only the galaxies which overlap between the two samples the bias and scatter of the Targeted observations is significantly decreased as more cluster member galaxies are detected, owing to better sampling of the LOSVD probability distribution function. The Targeted observations perform similarly on the average because many lower mass clusters are included in the sample, increasing the bias of the overall sample.
 
-\begin{figure*} 
-	\includegraphics[width=\textwidth]{figures/MLcomparison.pdf} 
+\begin{figure*}
+	\includegraphics[width=\textwidth]{figures/MLcomparison.pdf}
 	\caption[ML based cluster mass predictions]{Mass predictions for the power law scaling relation (Equation~\ref{eq:power law}) and the ML based technique with different input features as a function of true cluster mass. The bottom row of panels shows the fractional error (Equation~\ref{eq: fractional error}) also as a function of true cluster mass. The solid black line shows the 1:1 relation. The orange, dash-dotted line is the median predicted mass for Perfect observations. The solid, purple line is the median predicted mass for the Targeted observing, and the green, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions represent the 68\% scatter around the median values.}
-	\label{fig: ML comparison} 
+	\label{fig: ML comparison}
 \end{figure*}
 
-In both Figures \ref{fig:Probability comparison} and \ref{fig: ML comparison}, we show the predicted ($M_{pred}$) versus true ($M_{200c}$) cluster masses for each of the two observing strategries. The lower panels show the fractional cluster mass error defined as: 
+In both Figures \ref{fig:Probability comparison} and \ref{fig: ML comparison}, we show the predicted ($M_{pred}$) versus true ($M_{200c}$) cluster masses for each of the two observing strategries. The lower panels show the fractional cluster mass error defined as:
 \begin{equation}\label{eq: fractional error}
 	\epsilon = (M_{pred} - M_{200c})/M_{200c}
 \end{equation}
@@ -321,164 +324,168 @@ Qualitatively, the top panels of Figures \ref{fig:Probability comparison} and \r
 \begin{table*}
 \centering
 \caption[Mean bias for different bins of predicted cluster mass.]{Mean bias (Eqn.~\ref{eqn: bias}) for different bins of predicted cluster mass. This table shows the bias in the predicted cluster mass for the Perfect (top section), Targeted (middle section), and Survey (bottom section) observations in different predicted mass bins. The different mass recovery strategies are given in the leftmost column. It can be used to understand how the predicted cluster mass differs from the true cluster masses. Positive numbers indicate the predicted cluster mass over estimates when compared to the true cluster mass.}
-\begin{tabular}{cccccccc} 
-		&& \multic{6}{Bins -- Log $M_{pred}$} \\
-		\cline{3-8} 
-		\multicolumn{2}{c}{Method} & $12.5-13$ & $13-13.5$ & $13.5-14$ & $14-14.5$ & $14.5-15$ & $15-15.5$ \\
-		\hline
-&& \multic{6}{Perfect Observations} \\
-\hline
-\multicolumn{2}{c}{Power Law} & $0.23\pm{0.007}$ & $0.16\pm{0.003}$ & $0.11\pm{0.002}$ & $0.07\pm{0.004}$ & $0.02\pm{0.011}$ & $-0.07\pm{0.045}$ \\
-\hline 
-\rottext{3}{Prob} &$\sigma$ & $0.32\pm{0.005}$ & $0.16\pm{0.003}$ & $0.10\pm{0.002}$ & $0.07\pm{0.004}$ & $0.05\pm{0.012}$ & $-0.18\pm{0.078}$ \\
-&$\sigma, z$ & $0.17\pm{0.005}$ & $0.01\pm{0.003}$ & $-0.06\pm{0.002}$ & $-0.11\pm{0.015}$ & $-0.14\pm{0.012}$ & $-0.38\pm{0.159}$ \\
-&$\sigma, z, N_{gal}$ & $0.04\pm{0.009}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.002}$ & $-0.05\pm{0.014}$ & $-0.22\pm{0.126}$ & \nd \\
-\hline
-\rottext{4}{ML} &$\sigma$ & $0.14\pm{0.006}$ & $-0.01\pm{0.003}$ & $-0.07\pm{0.003}$ & $-0.09\pm{0.005}$ & $-0.11\pm{0.014}$ & $-0.17\pm{0.090}$ \\
-&$\sigma, z$ & $0.12\pm{0.005}$ & $-0.01\pm{0.003}$ & $-0.06\pm{0.003}$ & $-0.08\pm{0.004}$ & $-0.11\pm{0.012}$ & $-0.24\pm{0.076}$ \\
-&$\sigma, N_{gal}$ & $0.04\pm{0.004}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.006}$ & $-0.08\pm{0.041}$ \\
-&$\sigma, z, N_{gal}$ & $0.04\pm{0.003}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.001}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.005}$ & $-0.08\pm{0.043}$ \\
-\hline
+\begin{tabular}{cccccccc}
+	\multic{8}{Mean Bias in the Recovered Cluster Mass Compared to the True Cluster Mass}\\
+	\hline
+	&& \multic{6}{Bins -- Log M$_{pred}/$\Msol} \\
+	\cline{3-8}
+	\multicolumn{2}{c}{Method} & $12.5-13$ & $13-13.5$ & $13.5-14$ & $14-14.5$ & $14.5-15$ & $15-15.5$ \\
+	\hline
+	&& \multic{6}{Perfect Observations} \\
+	\hline
+	\multicolumn{2}{c}{Power Law} & $0.23\pm{0.007}$ & $0.16\pm{0.003}$ & $0.11\pm{0.002}$ & $0.07\pm{0.004}$ & $0.02\pm{0.011}$ & $-0.07\pm{0.045}$ \\
+	\hline
+	\rottext{3}{Prob} &$\sigma$ & $0.32\pm{0.005}$ & $0.16\pm{0.003}$ & $0.10\pm{0.002}$ & $0.07\pm{0.004}$ & $0.05\pm{0.012}$ & $-0.18\pm{0.078}$ \\
+	&$\sigma, z$ & $0.17\pm{0.005}$ & $0.01\pm{0.003}$ & $-0.06\pm{0.002}$ & $-0.11\pm{0.015}$ & $-0.14\pm{0.012}$ & $-0.38\pm{0.159}$ \\
+	&$\sigma, z, N_{gal}$ & $0.04\pm{0.009}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.002}$ & $-0.05\pm{0.014}$ & $-0.22\pm{0.126}$ & \nd \\
+	\hline
+	\rottext{4}{ML} &$\sigma$ & $0.14\pm{0.006}$ & $-0.01\pm{0.003}$ & $-0.07\pm{0.003}$ & $-0.09\pm{0.005}$ & $-0.11\pm{0.014}$ & $-0.17\pm{0.090}$ \\
+	&$\sigma, z$ & $0.12\pm{0.005}$ & $-0.01\pm{0.003}$ & $-0.06\pm{0.003}$ & $-0.08\pm{0.004}$ & $-0.11\pm{0.012}$ & $-0.24\pm{0.076}$ \\
+	&$\sigma, N_{gal}$ & $0.04\pm{0.004}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.006}$ & $-0.08\pm{0.041}$ \\
+	&$\sigma, z, N_{gal}$ & $0.04\pm{0.003}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.001}$ & $-0.02\pm{0.002}$ & $-0.02\pm{0.005}$ & $-0.08\pm{0.043}$ \\
+	\hline
 
-&& \multic{6}{Targeted Observations} \\
-\hline
-\multicolumn{2}{c}{Power Law} & $0.20\pm{0.008}$ & $0.13\pm{0.005}$ & $0.10\pm{0.005}$ & $0.09\pm{0.007}$ & $0.02\pm{0.014}$ & $-0.08\pm{0.043}$ \\
-\hline
-\rottext{3}{Prob} &$\sigma$ & $0.40\pm{0.005}$ & $0.17\pm{0.003}$ & $0.02\pm{0.004}$ & $-0.08\pm{0.006}$ & $-0.19\pm{0.015}$ & $-0.35\pm{0.122}$ \\
-&$\sigma, z$ & $0.25\pm{0.005}$ & $0.08\pm{0.003}$ & $-0.06\pm{0.003}$ & $-0.21\pm{0.015}$ & $-0.35\pm{0.016}$ & $-0.59\pm{0.145}$ \\
-&$\sigma, z, N_{gal}$ & $0.13\pm{0.004}$ & $0.01\pm{0.003}$ & $-0.05\pm{0.003}$ & $-0.12\pm{0.018}$ & $-0.44\pm{0.177}$ & \nd \\
-\hline
-\rottext{4}{ML} &$\sigma$ & $0.26\pm{0.006}$ & $0.02\pm{0.004}$ & $-0.13\pm{0.005}$ & $-0.24\pm{0.008}$ & $-0.35\pm{0.022}$ & $-0.39\pm{0.054}$ \\
-&$\sigma, z$ & $0.18\pm{0.005}$ & $0.03\pm{0.003}$ & $-0.10\pm{0.004}$ & $-0.21\pm{0.006}$ & $-0.31\pm{0.021}$ & $-0.33\pm{0.063}$ \\
-&$\sigma, N_{gal}$ & $0.22\pm{0.005}$ & $0.00\pm{0.004}$ & $-0.13\pm{0.004}$ & $-0.16\pm{0.007}$ & $-0.13\pm{0.014}$ & $-0.19\pm{0.059}$ \\
-&$\sigma, z, N_{gal}$ & $0.09\pm{0.004}$ & $-0.01\pm{0.002}$ & $-0.05\pm{0.002}$ & $-0.08\pm{0.004}$ & $-0.08\pm{0.010}$ & $-0.19\pm{0.060}$ \\
-\hline
+	&& \multic{6}{Targeted Observations} \\
+	\hline
+	\multicolumn{2}{c}{Power Law} & $0.20\pm{0.008}$ & $0.13\pm{0.005}$ & $0.10\pm{0.005}$ & $0.09\pm{0.007}$ & $0.02\pm{0.014}$ & $-0.08\pm{0.043}$ \\
+	\hline
+	\rottext{3}{Prob} &$\sigma$ & $0.40\pm{0.005}$ & $0.17\pm{0.003}$ & $0.02\pm{0.004}$ & $-0.08\pm{0.006}$ & $-0.19\pm{0.015}$ & $-0.35\pm{0.122}$ \\
+	&$\sigma, z$ & $0.25\pm{0.005}$ & $0.08\pm{0.003}$ & $-0.06\pm{0.003}$ & $-0.21\pm{0.015}$ & $-0.35\pm{0.016}$ & $-0.59\pm{0.145}$ \\
+	&$\sigma, z, N_{gal}$ & $0.13\pm{0.004}$ & $0.01\pm{0.003}$ & $-0.05\pm{0.003}$ & $-0.12\pm{0.018}$ & $-0.44\pm{0.177}$ & \nd \\
+	\hline
+	\rottext{4}{ML} &$\sigma$ & $0.26\pm{0.006}$ & $0.02\pm{0.004}$ & $-0.13\pm{0.005}$ & $-0.24\pm{0.008}$ & $-0.35\pm{0.022}$ & $-0.39\pm{0.054}$ \\
+	&$\sigma, z$ & $0.18\pm{0.005}$ & $0.03\pm{0.003}$ & $-0.10\pm{0.004}$ & $-0.21\pm{0.006}$ & $-0.31\pm{0.021}$ & $-0.33\pm{0.063}$ \\
+	&$\sigma, N_{gal}$ & $0.22\pm{0.005}$ & $0.00\pm{0.004}$ & $-0.13\pm{0.004}$ & $-0.16\pm{0.007}$ & $-0.13\pm{0.014}$ & $-0.19\pm{0.059}$ \\
+	&$\sigma, z, N_{gal}$ & $0.09\pm{0.004}$ & $-0.01\pm{0.002}$ & $-0.05\pm{0.002}$ & $-0.08\pm{0.004}$ & $-0.08\pm{0.010}$ & $-0.19\pm{0.060}$ \\
+	\hline
 
-&& \multic{6}{Survey Observations} \\
-\hline
-\multicolumn{2}{c}{Power Law} & $0.17\pm{0.068}$ & $0.17\pm{0.023}$ & $0.13\pm{0.014}$ & $0.07\pm{0.014}$ & $0.01\pm{0.022}$ & $-0.09\pm{0.062}$ \\
-\hline
-\rottext{3}{Prob} & $\sigma$ & $0.77\pm{0.030}$ & $0.42\pm{0.011}$ & $0.18\pm{0.008}$ & $-0.03\pm{0.009}$ & $-0.18\pm{0.017}$ & $-0.39\pm{0.102}$ \\
-&$\sigma, z$ & $0.61\pm{0.036}$ & $0.29\pm{0.012}$ & $0.08\pm{0.008}$ & $-0.11\pm{0.009}$ & $-0.38\pm{0.118}$ & $-0.48\pm{0.127}$ \\
-&$\sigma, z, N_{gal}$ & $0.48\pm{0.038}$ & $0.18\pm{0.011}$ & $0.02\pm{0.007}$ & $-0.08\pm{0.008}$ & $-0.50\pm{0.203}$ & \nd \\
-\hline
-\rottext{4}{ML} &$\sigma$ & $0.57\pm{0.046}$ & $0.24\pm{0.015}$ & $0.02\pm{0.012}$ & $-0.17\pm{0.013}$ & $-0.28\pm{0.027}$ & $-0.27\pm{0.117}$ \\
-&$\sigma, z$ & $0.48\pm{0.034}$ & $0.20\pm{0.013}$ & $0.03\pm{0.009}$ & $-0.13\pm{0.011}$ & $-0.26\pm{0.021}$ & $-0.31\pm{0.110}$ \\
-&$\sigma, N_{gal}$ & $0.55\pm{0.043}$ & $0.22\pm{0.013}$ & $0.00\pm{0.010}$ & $-0.14\pm{0.011}$ & $-0.22\pm{0.025}$ & $-0.19\pm{0.079}$ \\
-&$\sigma, z, N_{gal}$ & $0.42\pm{0.029}$ & $0.13\pm{0.011}$ & $-0.00\pm{0.007}$ & $-0.08\pm{0.008}$ & $-0.14\pm{0.016}$ & $-0.19\pm{0.079}$ \\
-\hline
+	&& \multic{6}{Survey Observations} \\
+	\hline
+	\multicolumn{2}{c}{Power Law} & $0.17\pm{0.068}$ & $0.17\pm{0.023}$ & $0.13\pm{0.014}$ & $0.07\pm{0.014}$ & $0.01\pm{0.022}$ & $-0.09\pm{0.062}$ \\
+	\hline
+	\rottext{3}{Prob} & $\sigma$ & $0.77\pm{0.030}$ & $0.42\pm{0.011}$ & $0.18\pm{0.008}$ & $-0.03\pm{0.009}$ & $-0.18\pm{0.017}$ & $-0.39\pm{0.102}$ \\
+	&$\sigma, z$ & $0.61\pm{0.036}$ & $0.29\pm{0.012}$ & $0.08\pm{0.008}$ & $-0.11\pm{0.009}$ & $-0.38\pm{0.118}$ & $-0.48\pm{0.127}$ \\
+	&$\sigma, z, N_{gal}$ & $0.48\pm{0.038}$ & $0.18\pm{0.011}$ & $0.02\pm{0.007}$ & $-0.08\pm{0.008}$ & $-0.50\pm{0.203}$ & \nd \\
+	\hline
+	\rottext{4}{ML} &$\sigma$ & $0.57\pm{0.046}$ & $0.24\pm{0.015}$ & $0.02\pm{0.012}$ & $-0.17\pm{0.013}$ & $-0.28\pm{0.027}$ & $-0.27\pm{0.117}$ \\
+	&$\sigma, z$ & $0.48\pm{0.034}$ & $0.20\pm{0.013}$ & $0.03\pm{0.009}$ & $-0.13\pm{0.011}$ & $-0.26\pm{0.021}$ & $-0.31\pm{0.110}$ \\
+	&$\sigma, N_{gal}$ & $0.55\pm{0.043}$ & $0.22\pm{0.013}$ & $0.00\pm{0.010}$ & $-0.14\pm{0.011}$ & $-0.22\pm{0.025}$ & $-0.19\pm{0.079}$ \\
+	&$\sigma, z, N_{gal}$ & $0.42\pm{0.029}$ & $0.13\pm{0.011}$ & $-0.00\pm{0.007}$ & $-0.08\pm{0.008}$ & $-0.14\pm{0.016}$ & $-0.19\pm{0.079}$ \\
+	\hline
 	\end{tabular}
 \label{tbl:mass bias}
 \end{table*}
 
-We quantify the bias and scatter for all of the different cluster mass recovery strategies and observing methods in Table \ref{tbl:mass bias} and Table \ref{tbl:mass scatter}. It serves as a reference for future cluster observations with HETDEX. The columns represent bins of predicted galaxy cluster mass and the individual values show the bias and scatter of the true cluster mass. The three horizontal sections represent Perfect, Targeted and Survey observations respectively. So, for example, if a cluster mass is predicted using the $\mathrm{ML}_{\sigma, z}$ method and Targeted observations to be Log M/\Msol\ $=13-13.5$, it is biased upward by $0.03\pm{0.003}$ dex and has a scatter of $0.24\pm0.009$ dex. 
+We quantify the bias and scatter for all of the different cluster mass recovery strategies and observing methods in Table \ref{tbl:mass bias} and Table \ref{tbl:mass scatter}. It serves as a reference for future cluster observations with HETDEX. The columns represent bins of predicted galaxy cluster mass and the individual values show the bias and scatter of the true cluster mass. The three horizontal sections represent Perfect, Targeted and Survey observations respectively. So, for example, if a cluster mass is predicted using the $\mathrm{ML}_{\sigma, z}$ method and Targeted observations to be Log M/\Msol\ $=13-13.5$, it is biased upward by $0.03\pm{0.003}$ dex and has a scatter of $0.24\pm0.009$ dex.
 
 \begin{table*}
 \centering
 \caption[Mean scatter in cluster mass after bias correction for different bins of predicted cluster mass.]{Mean scatter (Eqn.~\ref{eqn: scatter}) in cluster mass after bias correction for different bins of predicted cluster mass. This table shows the scatter in the predicted cluster mass for the Perfect (top section), Targeted (middle section), and Survey (bottom section) observations in different predicted mass bins. The different mass recovery methods are given in the leftmost column. It can be used to understand how the predicted cluster mass differs from the true cluster masses. Positive numbers indicate the predicted cluster mass is over estimated when compared to the true cluster mass.}
-\begin{tabular}{cccccccc} 
-		&& \multic{6}{Bins -- Log $M_{pred}$} \\
-		\cline{3-8} 
-		\multicolumn{2}{c}{Method} & $12.5-13$ & $13-13.5$ & $13.5-14$ & $14-14.5$ & $14.5-15$ & $15-15.5$ \\
-		\hline 
-		&& \multic{6}{Perfect Observations} \\
-		\hline
-		\multicolumn{2}{c}{Power Law} & $0.34\pm{0.005}$ & $0.22\pm{0.002}$ & $0.16\pm{0.002}$ & $0.14\pm{0.003}$ & $0.14\pm{0.008}$ & $0.11\pm{0.040}$ \\
-		\hline 
-		\rottext{3}{Prob} &$\sigma$ & $0.26\pm{0.004}$ & $0.20\pm{0.002}$ & $0.16\pm{0.002}$ & $0.14\pm{0.003}$ & $0.16\pm{0.009}$ & $0.19\pm{0.071}$ \\
-		&$\sigma, z$ & $0.23\pm{0.003}$ & $0.19\pm{0.002}$ & $0.16\pm{0.002}$ & $0.55\pm{0.010}$ & $0.16\pm{0.009}$ & $0.39\pm{0.143}$ \\
-		&$\sigma, z, N_{gal}$ & $0.47\pm{0.007}$ & $0.14\pm{0.001}$ & $0.10\pm{0.001}$ & $0.54\pm{0.010}$ & \nd & \nd \\
-		\hline
-		\rottext{4}{ML}	&$\sigma$ & $0.29\pm{0.004}$ & $0.24\pm{0.002}$ & $0.21\pm{0.002}$ & $0.19\pm{0.004}$ & $0.18\pm{0.010}$ & $0.22\pm{0.081}$ \\
-		&$\sigma, z$ & $0.24\pm{0.003}$ & $0.20\pm{0.002}$ & $0.18\pm{0.002}$ & $0.16\pm{0.003}$ & $0.16\pm{0.009}$ & $0.19\pm{0.068}$ \\
-		&$\sigma, N_{gal}$ & $0.19\pm{0.003}$ & $0.14\pm{0.001}$ & $0.10\pm{0.001}$ & $0.08\pm{0.002}$ & $0.07\pm{0.004}$ & $0.10\pm{0.037}$ \\
-		&$\sigma, z, N_{gal}$ & $0.17\pm{0.002}$ & $0.13\pm{0.001}$ & $0.10\pm{0.001}$ & $0.07\pm{0.001}$ & $0.07\pm{0.004}$ & $0.11\pm{0.039}$ \\
-		\hline
+\begin{tabular}{cccccccc}
+	\multic{8}{Mean Scatter in the Recovered Cluster Mass}\\
+	\hline
+	&& \multic{6}{Bins -- Log M$_{pred}/$\Msol} \\
+	\cline{3-8}
+	\multicolumn{2}{c}{Method} & $12.5-13$ & $13-13.5$ & $13.5-14$ & $14-14.5$ & $14.5-15$ & $15-15.5$ \\
+	\hline
+	&& \multic{6}{Perfect Observations} \\
+	\hline
+	\multicolumn{2}{c}{Power Law} & $0.34\pm{0.005}$ & $0.22\pm{0.002}$ & $0.16\pm{0.002}$ & $0.14\pm{0.003}$ & $0.14\pm{0.008}$ & $0.11\pm{0.040}$ \\
+	\hline
+	\rottext{3}{Prob} &$\sigma$ & $0.26\pm{0.004}$ & $0.20\pm{0.002}$ & $0.16\pm{0.002}$ & $0.14\pm{0.003}$ & $0.16\pm{0.009}$ & $0.19\pm{0.071}$ \\
+	&$\sigma, z$ & $0.23\pm{0.003}$ & $0.19\pm{0.002}$ & $0.16\pm{0.002}$ & $0.55\pm{0.010}$ & $0.16\pm{0.009}$ & $0.39\pm{0.143}$ \\
+	&$\sigma, z, N_{gal}$ & $0.47\pm{0.007}$ & $0.14\pm{0.001}$ & $0.10\pm{0.001}$ & $0.54\pm{0.010}$ & \nd & \nd \\
+	\hline
+	\rottext{4}{ML}	&$\sigma$ & $0.29\pm{0.004}$ & $0.24\pm{0.002}$ & $0.21\pm{0.002}$ & $0.19\pm{0.004}$ & $0.18\pm{0.010}$ & $0.22\pm{0.081}$ \\
+	&$\sigma, z$ & $0.24\pm{0.003}$ & $0.20\pm{0.002}$ & $0.18\pm{0.002}$ & $0.16\pm{0.003}$ & $0.16\pm{0.009}$ & $0.19\pm{0.068}$ \\
+	&$\sigma, N_{gal}$ & $0.19\pm{0.003}$ & $0.14\pm{0.001}$ & $0.10\pm{0.001}$ & $0.08\pm{0.002}$ & $0.07\pm{0.004}$ & $0.10\pm{0.037}$ \\
+	&$\sigma, z, N_{gal}$ & $0.17\pm{0.002}$ & $0.13\pm{0.001}$ & $0.10\pm{0.001}$ & $0.07\pm{0.001}$ & $0.07\pm{0.004}$ & $0.11\pm{0.039}$ \\
+	\hline
 
-		&& \multic{6}{Targeted Observations} \\
-		\hline
-		 \multicolumn{2}{c}{Power Law} & $0.43\pm{0.006}$ & $0.39\pm{0.004}$ & $0.33\pm{0.004}$ & $0.27\pm{0.005}$ & $0.18\pm{0.010}$ & $0.11\pm{0.039}$ \\
-		 \hline
-		\rottext{3}{Prob} &$\sigma$ & $0.24\pm{0.003}$ & $0.25\pm{0.002}$ & $0.25\pm{0.003}$ & $0.22\pm{0.004}$ & $0.19\pm{0.011}$ & $0.30\pm{0.110}$ \\
-		&$\sigma, z$ & $0.24\pm{0.003}$ & $0.24\pm{0.002}$ & $0.23\pm{0.002}$ & $0.56\pm{0.011}$ & $0.21\pm{0.012}$ & $0.36\pm{0.131}$ \\
-		&$\sigma, z, N_{gal}$ & $0.20\pm{0.003}$ & $0.19\pm{0.002}$ & $0.17\pm{0.002}$ & $0.67\pm{0.013}$ & \nd & \nd \\
-		\hline
-		\rottext{4}{ML} &$\sigma$ & $0.30\pm{0.004}$ & $0.32\pm{0.003}$ & $0.32\pm{0.003}$ & $0.30\pm{0.006}$ & $0.29\pm{0.016}$ & $0.13\pm{0.049}$ \\
-		&$\sigma, z$ & $0.26\pm{0.004}$ & $0.25\pm{0.002}$ & $0.24\pm{0.003}$ & $0.23\pm{0.004}$ & $0.27\pm{0.015}$ & $0.16\pm{0.057}$ \\
-		&$\sigma, N_{gal}$ & $0.27\pm{0.004}$ & $0.27\pm{0.003}$ & $0.27\pm{0.003}$ & $0.25\pm{0.005}$ & $0.18\pm{0.010}$ & $0.15\pm{0.053}$ \\
-		&$\sigma, z, N_{gal}$ & $0.21\pm{0.003}$ & $0.18\pm{0.002}$ & $0.16\pm{0.002}$ & $0.14\pm{0.003}$ & $0.12\pm{0.007}$ & $0.15\pm{0.054}$ \\
-		\hline
+	&& \multic{6}{Targeted Observations} \\
+	\hline
+	\multicolumn{2}{c}{Power Law} & $0.43\pm{0.006}$ & $0.39\pm{0.004}$ & $0.33\pm{0.004}$ & $0.27\pm{0.005}$ & $0.18\pm{0.010}$ & $0.11\pm{0.039}$ \\
+	\hline
+	\rottext{3}{Prob} &$\sigma$ & $0.24\pm{0.003}$ & $0.25\pm{0.002}$ & $0.25\pm{0.003}$ & $0.22\pm{0.004}$ & $0.19\pm{0.011}$ & $0.30\pm{0.110}$ \\
+	&$\sigma, z$ & $0.24\pm{0.003}$ & $0.24\pm{0.002}$ & $0.23\pm{0.002}$ & $0.56\pm{0.011}$ & $0.21\pm{0.012}$ & $0.36\pm{0.131}$ \\
+	&$\sigma, z, N_{gal}$ & $0.20\pm{0.003}$ & $0.19\pm{0.002}$ & $0.17\pm{0.002}$ & $0.67\pm{0.013}$ & \nd & \nd \\
+	\hline
+	\rottext{4}{ML} &$\sigma$ & $0.30\pm{0.004}$ & $0.32\pm{0.003}$ & $0.32\pm{0.003}$ & $0.30\pm{0.006}$ & $0.29\pm{0.016}$ & $0.13\pm{0.049}$ \\
+	&$\sigma, z$ & $0.26\pm{0.004}$ & $0.25\pm{0.002}$ & $0.24\pm{0.003}$ & $0.23\pm{0.004}$ & $0.27\pm{0.015}$ & $0.16\pm{0.057}$ \\
+	&$\sigma, N_{gal}$ & $0.27\pm{0.004}$ & $0.27\pm{0.003}$ & $0.27\pm{0.003}$ & $0.25\pm{0.005}$ & $0.18\pm{0.010}$ & $0.15\pm{0.053}$ \\
+	&$\sigma, z, N_{gal}$ & $0.21\pm{0.003}$ & $0.18\pm{0.002}$ & $0.16\pm{0.002}$ & $0.14\pm{0.003}$ & $0.12\pm{0.007}$ & $0.15\pm{0.054}$ \\
+	\hline
 
-&& \multic{6}{Survey Observations} \\
-\hline
-\multicolumn{2}{c}{Power Law} &$0.40\pm{0.050}$ & $0.41\pm{0.016}$ & $0.38\pm{0.010}$ & $0.32\pm{0.010}$ & $0.25\pm{0.016}$ & $0.15\pm{0.056}$ \\
-\hline
-\rottext{3}{Prob} &$\sigma$ & $0.11\pm{0.024}$ & $0.18\pm{0.008}$ & $0.22\pm{0.006}$ & $0.22\pm{0.007}$ & $0.19\pm{0.012}$ & $0.25\pm{0.092}$ \\
-&$\sigma, z$ & $0.13\pm{0.028}$ & $0.19\pm{0.008}$ & $0.22\pm{0.006}$ & $0.21\pm{0.007}$ & $1.31\pm{0.084}$ & $0.32\pm{0.115}$ \\
-&$\sigma, z, N_{gal}$ & $0.14\pm{0.030}$ & $0.18\pm{0.008}$ & $0.19\pm{0.005}$ & $0.19\pm{0.006}$ & \nd & \nd \\
-\hline
-\rottext{4}{ML} &$\sigma$ & $0.27\pm{0.034}$ & $0.27\pm{0.011}$ & $0.31\pm{0.008}$ & $0.30\pm{0.009}$ & $0.30\pm{0.019}$ & $0.29\pm{0.106}$ \\
-&$\sigma, z$ & $0.20\pm{0.025}$ & $0.24\pm{0.009}$ & $0.24\pm{0.006}$ & $0.25\pm{0.008}$ & $0.24\pm{0.015}$ & $0.27\pm{0.100}$ \\
-&$\sigma, N_{gal}$ & $0.25\pm{0.032}$ & $0.23\pm{0.009}$ & $0.27\pm{0.007}$ & $0.26\pm{0.008}$ & $0.27\pm{0.018}$ & $0.20\pm{0.072}$ \\
-&$\sigma, z, N_{gal}$ & $0.17\pm{0.021}$ & $0.21\pm{0.008}$ & $0.20\pm{0.005}$ & $0.19\pm{0.006}$ & $0.17\pm{0.011}$ & $0.20\pm{0.071}$ \\
-\hline
+	&& \multic{6}{Survey Observations} \\
+	\hline
+	\multicolumn{2}{c}{Power Law} &$0.40\pm{0.050}$ & $0.41\pm{0.016}$ & $0.38\pm{0.010}$ & $0.32\pm{0.010}$ & $0.25\pm{0.016}$ & $0.15\pm{0.056}$ \\
+	\hline
+	\rottext{3}{Prob} &$\sigma$ & $0.11\pm{0.024}$ & $0.18\pm{0.008}$ & $0.22\pm{0.006}$ & $0.22\pm{0.007}$ & $0.19\pm{0.012}$ & $0.25\pm{0.092}$ \\
+	&$\sigma, z$ & $0.13\pm{0.028}$ & $0.19\pm{0.008}$ & $0.22\pm{0.006}$ & $0.21\pm{0.007}$ & $1.31\pm{0.084}$ & $0.32\pm{0.115}$ \\
+	&$\sigma, z, N_{gal}$ & $0.14\pm{0.030}$ & $0.18\pm{0.008}$ & $0.19\pm{0.005}$ & $0.19\pm{0.006}$ & \nd & \nd \\
+	\hline
+	\rottext{4}{ML} &$\sigma$ & $0.27\pm{0.034}$ & $0.27\pm{0.011}$ & $0.31\pm{0.008}$ & $0.30\pm{0.009}$ & $0.30\pm{0.019}$ & $0.29\pm{0.106}$ \\
+	&$\sigma, z$ & $0.20\pm{0.025}$ & $0.24\pm{0.009}$ & $0.24\pm{0.006}$ & $0.25\pm{0.008}$ & $0.24\pm{0.015}$ & $0.27\pm{0.100}$ \\
+	&$\sigma, N_{gal}$ & $0.25\pm{0.032}$ & $0.23\pm{0.009}$ & $0.27\pm{0.007}$ & $0.26\pm{0.008}$ & $0.27\pm{0.018}$ & $0.20\pm{0.072}$ \\
+	&$\sigma, z, N_{gal}$ & $0.17\pm{0.021}$ & $0.21\pm{0.008}$ & $0.20\pm{0.005}$ & $0.19\pm{0.006}$ & $0.17\pm{0.011}$ & $0.20\pm{0.071}$ \\
+	\hline
 	\end{tabular}
 \label{tbl:mass scatter}
 \end{table*}
 
-A few caveats apply to the numbers given in Table \ref{tbl:mass bias} and Table \ref{tbl:mass scatter}. While we provide corrections for cluster masses above $10^{15}$ \msol, they are estimated from only a handful of objects owing to the volume in the mock galaxy catalog. These may not constitute a representative sample of clusters due to the limited volume and range of possible features. This becomes particularly apparent for the probability methods with many features. As the number of observed features increases, the number of training clusters in any particular bin decreases. This leads to highly skewed biases and scatters for the high mass clusters and probability methods. We do not report any bin where such small number statistics dominate in Tables~\ref{tbl:mass bias} and \ref{tbl:mass scatter}. On the opposite end of the cluster mass spectrum, there are very few, if any, clusters detected with Targeted or Survey observations below $5\times10^{12}$ \msol. Therefore, while we show these points in Figures~\ref{fig:Probability comparison} and \ref{fig: ML comparison}, we exclude their biases and scatters from Tables~\ref{tbl:mass bias} and \ref{tbl:mass scatter} for the same reasons. 
- 
-The method that produces the lowest scatter and bias depends on the mass of the cluster in question and the type of observations used. For the Targeted observations, the power law method outperforms all other methods, in terms of bias and scatter, for the highest mass clusters. But outside of the two highest mass bins, the $\mathrm{ML}_{\sigma, z, N_{gal}}$ method shows the smallest amount of scatter and bias most consistently. With Survey observations, the power law again provides the lowest bias in the highest cluster mass bins, but is outperformed in terms of scatter by the other two methods. The $\mathrm{ML}_{\sigma, z, N_{gal}}$ method shows the smallest amount of scatter and bias most consistently across the cluster mass range in question.
- 
-\subsection{Impact of Training Sample Cosmology}
-All simulations (including that used for Buzzard) use specific values for cosmological parameters. When using simulation data to train ML methods, our tests incorporate all of this specific cosmology into the learned feature associations. One could imagine that the specific values of the cosmological parameters in the training sample could bias the ML results when applied to data (real or simulated) created from an unknown true set of cosmological parameters. In addition, each simulation realizes galaxy populations in slightly different ways. The details of the simulation affect which galaxies are observed or not, and thus influences our ability to recover the desired cluster properties. 
+A few caveats apply to the numbers given in Table \ref{tbl:mass bias} and Table \ref{tbl:mass scatter}. While we provide corrections for cluster masses above $10^{15}$ \msol, they are estimated from only a handful of objects owing to the volume in the mock galaxy catalog. These may not constitute a representative sample of clusters due to the limited volume and range of possible features. This becomes particularly apparent for the probability methods with many features. As the number of observed features increases, the number of training clusters in any particular bin decreases. This leads to highly skewed biases and scatters for the high mass clusters and probability methods. We do not report any bin where such small number statistics dominate in Tables~\ref{tbl:mass bias} and \ref{tbl:mass scatter}. On the opposite end of the cluster mass spectrum, there are very few, if any, clusters detected with Targeted or Survey observations below $5\times10^{12}$ \msol. Therefore, while we show these points in Figures~\ref{fig:Probability comparison} and \ref{fig: ML comparison}, we exclude their biases and scatters from Tables~\ref{tbl:mass bias} and \ref{tbl:mass scatter} for the same reasons.
 
-To test for this, we used the Millennium simulation \citep{Springel2005a} as an alternative data set. The Millennium simulation adopts a flat cosmological model based of the values derived from the Two-degree Field Galaxy Redshift Survey \citep{Colless2001} and the first year data of the \emph{Wilkinson Microwave Anisotropy Probe} (WMAP; \citealt{Spergel2003}): $\Omega_\Lambda = 0.75$, $\Omega_M = 0.25$, $\sigma_8 = 0.9$, $n_s = 1$ and $H_0= 73$ \kms \mpc. As this cosmology differs dramatically from that assumed in the Buzzard catalogs (see Section~\ref{sec: Buzzard}, the clusters in Millennium provide an independent mock sample to understand how a training sample derived from Buzzard will impact the mass recovery on a wholly new dataset. 
+The method that produces the lowest scatter and bias depends on the mass of the cluster in question and the type of observations used. For the Targeted observations, the power law method outperforms all other methods, in terms of bias and scatter, for the highest mass clusters. But outside of the two highest mass bins, the $\mathrm{ML}_{\sigma, z, N_{gal}}$ method shows the smallest amount of scatter and bias most consistently. With Survey observations, the power law again provides the lowest bias in the highest cluster mass bins, but is outperformed in terms of scatter by the other two methods. The $\mathrm{ML}_{\sigma, z, N_{gal}}$ method shows the smallest amount of scatter and bias most consistently across the cluster mass range in question.
+
+\subsection{Impact of Training Sample Cosmology}
+All simulations (including that used for Buzzard) use specific values for cosmological parameters. When using simulation data to train ML methods, our tests incorporate all of this specific cosmology into the learned feature associations. One could imagine that the specific values of the cosmological parameters in the training sample could bias the ML results when applied to data (real or simulated) created from an unknown true set of cosmological parameters. In addition, each simulation realizes galaxy populations in slightly different ways. The details of the simulation affect which galaxies are observed or not, and thus influences our ability to recover the desired cluster properties.
+
+To test for this, we used the Millennium simulation \citep{Springel2005a} as an alternative data set. The Millennium simulation adopts a flat cosmological model based of the values derived from the Two-degree Field Galaxy Redshift Survey \citep{Colless2001} and the first year data of the \emph{Wilkinson Microwave Anisotropy Probe} (WMAP; \citealt{Spergel2003}): $\Omega_\Lambda = 0.75$, $\Omega_M = 0.25$, $\sigma_8 = 0.9$, $n_s = 1$ and $H_0= 73$ \kms \mpc. As this cosmology differs dramatically from that assumed in the Buzzard catalogs (see Section~\ref{sec: Buzzard}, the clusters in Millennium provide an independent mock sample to understand how a training sample derived from Buzzard will impact the mass recovery on a wholly new dataset.
 
 We repeat our analysis using cluster halo and \cite{DeLucia2007} galaxy catalogs derived from the Millennium simulation and obtained via querying the Millennium online database\footnote{\url{http://gavo.mpa-garching.mpg.de/Millennium/}} \citep{Lemson2006}. The Millennium simulation tracks $2160^3$ dark matter particles of $8.6\times 10^8 ~h^{-1}$ \Msol\ inside a comoving 500 $(h^{-1} \mathrm{Mpc})^3$ box from $z=127$ to 0. The following SQL query selects the cluster halos:
 \begin{lstlisting}[language=SQL]
-SELECT * 
-FROM   mfield..fof 
-WHERE  snapnum IN (SELECT snapnum 
-                   FROM   snapshots..mr 
-                   WHERE  z BETWEEN 0.01 AND 0.5) 
-       AND m_crit200 > 100 
-       AND random BETWEEN 0 AND 10000 
+SELECT *
+FROM   mfield..fof
+WHERE  snapnum IN (SELECT snapnum
+                   FROM   snapshots..mr
+                   WHERE  z BETWEEN 0.01 AND 0.5)
+       AND m_crit200 > 100
+       AND random BETWEEN 0 AND 10000
 \end{lstlisting}
 To select the corresponding galaxies, we use:
 \begin{lstlisting}[language=SQL, breaklines=true]
-SELECT sh.fofid, 
-       sh.subhaloid, 
-       g.galaxyid, 
-       g.x, 
-       g.y, 
-       g.z, 
-       g.redshift, 
-       g.velx, 
-       g.vely, 
-       g.velz, 
-       sdss.g_sdss, 
-       sdss.r_sdss, 
-       sdss.i_sdss 
-FROM   mfield..fofsubhalo AS sh 
-       INNER JOIN mpagalaxies..delucia2006a AS g 
-              ON sh.subhaloid = g.subhaloid 
-       INNER JOIN mpagalaxies..delucia2006a_sdss2mass AS sdss 
-              ON g.galaxyid = sdss.galaxyid 
-WHERE  sh.fofid IN (SELECT fofid 
-       FROM   mfield..fof 
-       WHERE  snapnum IN (SELECT snapnum 
-                      FROM   snapshots..mr 
-                      WHERE  z BETWEEN 0.01 AND 0.5) 
-              AND m_crit200 > 1000 
-              AND random BETWEEN 0 AND 10000) 
+SELECT sh.fofid,
+       sh.subhaloid,
+       g.galaxyid,
+       g.x,
+       g.y,
+       g.z,
+       g.redshift,
+       g.velx,
+       g.vely,
+       g.velz,
+       sdss.g_sdss,
+       sdss.r_sdss,
+       sdss.i_sdss
+FROM   mfield..fofsubhalo AS sh
+       INNER JOIN mpagalaxies..delucia2006a AS g
+              ON sh.subhaloid = g.subhaloid
+       INNER JOIN mpagalaxies..delucia2006a_sdss2mass AS sdss
+              ON g.galaxyid = sdss.galaxyid
+WHERE  sh.fofid IN (SELECT fofid
+       FROM   mfield..fof
+       WHERE  snapnum IN (SELECT snapnum
+                      FROM   snapshots..mr
+                      WHERE  z BETWEEN 0.01 AND 0.5)
+              AND m_crit200 > 1000
+              AND random BETWEEN 0 AND 10000)
 \end{lstlisting}
 
-We select 4,806 clusters, comprised of 623,663 galaxies, at $0.02 < z < 0.5$ and $M > 10^{13}$ \Msol, and apply the same data processing as with the Buzzard galaxies. We begin by assigning each galaxy an \hbox{[\ion{O}{II}]} flux value (see Section \ref{sec: oii luminosity}), and ``observe'' each galaxy using realistic (see Section \ref{sec: observations}) observational limits. After recovering 3750 clusters which have at least five galaxies observed, we calculate the LOSVD of each cluster as in Section \ref{sec: LOSVD}. 
+We select 4,806 clusters, comprised of 623,663 galaxies, at $0.02 < z < 0.5$ and $M > 10^{13}$ \Msol, and apply the same data processing as with the Buzzard galaxies. We begin by assigning each galaxy an \hbox{[\ion{O}{II}]} flux value (see Section \ref{sec: oii luminosity}), and ``observe'' each galaxy using realistic (see Section \ref{sec: observations}) observational limits. After recovering 3750 clusters which have at least five galaxies observed, we calculate the LOSVD of each cluster as in Section \ref{sec: LOSVD}.
 
-\begin{figure} 
-	\includegraphics[width=\columnwidth]{figures/millBuzzComparison.pdf} 
-	\caption[ML based cluster mass predictions in the Millennium Simulation]{\emph{Top:} ML based cluster mass predictions for the Millennium simulation clusters where the ML method has been trained with either a subset of the Millennium clusters (solid line) or the Buzzard catalog (dashed line). The shaded areas show the 68\% scatter around the median. The solid black line shows the 1:1 relation. \emph{Bottom:} The fractional error (Equation~\ref{eq: fractional error}) also as a function of true cluster mass. The similarity of the predictions with the different training sets demonstrates how the ML method is not sensitive to the underlying cosmological assumptions.} \label{fig: mill buzz comparison} 
+\begin{figure}
+	\includegraphics[width=\columnwidth]{figures/millBuzzComparison.pdf}
+	\caption[ML based cluster mass predictions in the Millennium Simulation]{\emph{Top:} ML based cluster mass predictions for the Millennium simulation clusters where the ML method has been trained with either a subset of the Millennium clusters (solid line) or the Buzzard catalog (dashed line). The shaded areas show the 68\% scatter around the median. The solid black line shows the 1:1 relation. \emph{Bottom:} The fractional error (Equation~\ref{eq: fractional error}) also as a function of true cluster mass. The similarity of the predictions with the different training sets demonstrates how the ML method is not sensitive to the underlying cosmological assumptions.} \label{fig: mill buzz comparison}
 \end{figure}
 
 We conduct our test in two ways. Both use the ML methods (see Section \ref{sec:machine learning method}) to predict the cluster masses of the Millennium clusters, but each test uses a different training set. First, we use the full set of clusters detected in the Buzzard catalogs (14,000 clusters with $M > 10^{11}$ \msol) to train the ML. Second, the Millennium clusters are split into training-testing samples. This provides a test case where we have different cosmological choices between the training and testing samples (Buzzard training; Millennium testing), and the same cosmological assumptions in both training and testing. In addition, it provides two different treatments of galaxy evolution in cluster environments. The differing galaxy evolution effects can impact observed galaxy magnitude and color evolution. This provides an important check to understand whether the specific assumptions made in the models affect the results of this analysis.
@@ -496,15 +503,15 @@ To get a sense of how well observations of z < 0.5 galaxy clusters from HETDEX w
 
 To estimate the error associated with a measurement of $\sigma_8$ (which \citetalias{Weinberg2013} refer to as $\sigma_{11,abs}$), \citetalias{Weinberg2013} consider two sources of uncertainty, the systematic uncertainties in cluster mass calibration and the statistical uncertainty in the observed number density of clusters. The authors combine these two uncertainties though (their Eq. 141):
 \begin{equation}
-\Delta \ln \sigma_8(z) \approx q(z)\times 
+\Delta \ln \sigma_8(z) \approx q(z)\times
         \max\left[ \Delta \ln M, \alpha(z)^{-1} \Delta \ln N \right].
 \label{eq:sigElapprox}
 \end{equation}
 where $q$ is the degeneracy exponent between $\sigma_8$ and $\Omega_m$, $\Delta \ln M$ is the mass scale uncertainty, $\Delta \ln N$ is the cluster statistical uncertainty, and $\alpha$ is slope of the cumulative HMF. Using the \cite{Tinker2008} HMF at $z\sim0.2$ and a limiting cluster mass of $10^{14}$ \Msol, \citetalias{Weinberg2013} estimate $q\sim0.4$, $\alpha\sim3$, and find that any cluster survey with more than 10-20 clusters is dominated by the uncertainty in the overall mass scale.
 
-For a survey such as HETDEX, we can estimate the constraints on $\sigma_8$ using Equation \ref{eq:sigElapprox}. If we consider clusters with masses above $10^{14}$ \Msol\ and with Perfect knowledge observations, the lowest mass scale uncertainty (given in Table~\ref{tbl:mass scatter}) is $\Delta_{log_{10}}M \sim 0.075$ dex, corresponding to fractional uncertainty of $\approx20\%$. This gives a uncertainty on $\sigma_8$ of 7\%. For clusters above $10^{14}$ \Msol, Survey observations constrain the masses to about 51\% which, in turn, constrains $\sigma_8$ to 20\%. 
+For a survey such as HETDEX, we can estimate the constraints on $\sigma_8$ using Equation \ref{eq:sigElapprox}. If we consider clusters with masses above $10^{14}$ \Msol\ and with Perfect knowledge observations, the lowest mass scale uncertainty (given in Table~\ref{tbl:mass scatter}) is $\Delta_{log_{10}}M \sim 0.075$ dex, corresponding to fractional uncertainty of $\approx20\%$. This gives a uncertainty on $\sigma_8$ of 7\%. For clusters above $10^{14}$ \Msol, Survey observations constrain the masses to about 51\% which, in turn, constrains $\sigma_8$ to 20\%.
 
-Because we assume $\Omega_m$ is perfectly known from other data, and the superior quality of the data (no contamination, signal-to-noise issues, etc.), realistic expectations for HETDEX is to directly constrain $\sigma_8$ is not yet competitive with other methods (\eg, CMB, WL, X-ray). For example, \cite{DeHaan2016} constrain $\sigma_8$ to $\sim5$\% using a sample of 337 SZE detected clusters from the SPT-SZE survey. 
+Because we assume $\Omega_m$ is perfectly known from other data, and the superior quality of the data (no contamination, signal-to-noise issues, etc.), realistic expectations for HETDEX is to directly constrain $\sigma_8$ is not yet competitive with other methods (\eg, CMB, WL, X-ray). For example, \cite{DeHaan2016} constrain $\sigma_8$ to $\sim5$\% using a sample of 337 SZE detected clusters from the SPT-SZE survey.
 
 While analysis of HETDEX clusters may not provide the most accurate constraint on $\sigma_8$, it will provide important systematics checks on other studies and will ultimately improve the measurements of $\sigma_8$. We can use the calculations given in \citetalias{Weinberg2013} (Equations 154--155) to estimate the uncertainties required in both the absolute cluster mass scale and the intrinsic scatter to keep a cosmological analysis limited by cluster statistics. For the $\sigma_8$ estimate derived from the $\sim 670$ Buzzard catalog clusters detected with Survey observations, with masses above $10^{14}$ \Msol, to be dominated by cluster statistics alone ($\Delta \ln N \sim N^{-1/2}$), the error on the absolute cluster mass calibration would need to be better than 1.3\%. For a fully Targeted survey, about 1600 Buzzard catalog clusters with masses above $10^{14}$ \Msol, this cluster mass calibration uncertainty reduces to $<1\%$. Similarly, the uncertainty associated with the scatter must be approximately 2.2\% and 1.4\% for Survey and Targeted observations respectively, after assuming an intrinsic scatter of 20\%. Comparing these estimates to the uncertainties associated with the Targeted and Survey observations, we are dominated by the uncertainty associated with the absolute cluster mass scale calibration.
 
@@ -513,18 +520,18 @@ Large-scale optical surveys (\eg, DES and LSST) expect to detect hundreds of tho
 
 One of the main goals of this study is to understand how well HETDEX will be able to measure the scatter in the richness--mass relationship. To test our ability to accurately measure the scatter in the richness-mass relationship, we choose to impose a richness--mass relation onto the clusters in the Buzzard catalogs. In realaity, the true richness--mass relation could depend strongly on the number and types of environmental effects, because such effects have a strong impact on the number and types of galaxies observed in clusters \citeeg{Gunn1972,Balogh2000,White2010}. Any environmental effects included in Buzzard could potentially impact our observed richness. The imposition of an empirical richness--mass relation ensures the richness values correspond correctly to the clusters in our sample, could provide direct observational tests in the future.
 
-We generate richnesses based on the true cluster masses, and for testing, we assume two versions of the richness--mass relationship. \cite{Farahi2016} base the relation on stacked velocity dispersions, and \cite{Simet2016} use weak lensing measurements to construct their relation. Because we are investigating HETDEX's ability to recover the overall cluster mass scale and underlying scatter in the mass-richness relationship, we use the true cluster masses perturbed by a known amount to estimate the observed richness. 
+We generate richnesses based on the true cluster masses, and for testing, we assume two versions of the richness--mass relationship. \cite{Farahi2016} base the relation on stacked velocity dispersions, and \cite{Simet2016} use weak lensing measurements to construct their relation. Because we are investigating HETDEX's ability to recover the overall cluster mass scale and underlying scatter in the mass-richness relationship, we use the true cluster masses perturbed by a known amount to estimate the observed richness.
 
-To confirm that measuring the underlying scatter is possible, after generating richness values we calculate the scatter of the cluster masses at fixed $\lambda$, $\sigma_{M|\lambda}$, by comparing the true, unperturbed cluster masses against the richness. We do recover the expected scatter, often, to well within 0.01 dex. We repeat the process with both assumed richness--mass relationships and recover the expected scatter in both instances. 
+To confirm that measuring the underlying scatter is possible, after generating richness values we calculate the scatter of the cluster masses at fixed $\lambda$, $\sigma_{M|\lambda}$, by comparing the true, unperturbed cluster masses against the richness. We do recover the expected scatter, often, to well within 0.01 dex. We repeat the process with both assumed richness--mass relationships and recover the expected scatter in both instances.
 
-We use the lambda values generated above in combination with the $\mathrm{M}_{\sigma,z,N_{gal}}$ predicted cluster mass which have been bias corrected using the values in Table~\ref{tbl:mass bias} and denoted $\mathrm{M_{pred,corr}}$. The use of biased cluster mass predictions inhibits our ability to accurately recover any scatter in richness--mass relationship, and is discussed further below. 
+We use the lambda values generated above in combination with the $\mathrm{M}_{\sigma,z,N_{gal}}$ predicted cluster mass which have been bias corrected using the values in Table~\ref{tbl:mass bias} and denoted $\mathrm{M_{pred,corr}}$. The use of biased cluster mass predictions inhibits our ability to accurately recover any scatter in richness--mass relationship, and is discussed further below.
 
 Primarily, we are interested in the intrinsic scatter of the richness--mass relationship. This is because HETDEX is uniquely situated to estimate the scatter, whereas studies relying on stacked data \citeeg{Farahi2016,Simet2016} lose that information. We begin by attempting to constrain the absolute mass scale, and as part of our fitting process, we estimate the overall scatter in the relationship. In order to understand how HETDEX will constrain the absolute mass scale, we find the best fitting relation to our richness--mass data. To generate the best fitting lines, we follow the general procedure of \cite{Hogg2010}, by defining an objective function and then minimizing the loss. Our objective function is
 \begin{equation}\label{eq:objectivei}
 P(y_i|x_i,\sigma_{yi},m,b,\sigma) = \frac{1}{\sqrt{2\,\pi\,(\sigma_{yi}^2+\sigma^2)}}
  \,\exp\left(-\frac{[y_i - m\,x_i - b]^2}{2\,(\sigma_{yi}^2+\sigma^2)}\right)
 \end{equation}
-where $y_i$ is the observed cluster mass, $x_i$ is the observed richness, $\sigma_{yi}$ is the uncertainty in observed cluster mass, $m$ is the power law slope, $b$ is the overall cluster mass scale, and $\sigma$ is the intrinsic scatter between richness and cluster mass. We assume that the intrinsic scatter is constant from point to point and that all of the measurement errors are Gaussian. We convert this objective function into a likelihood by taking the product of all the individual probabilities:  
+where $y_i$ is the observed cluster mass, $x_i$ is the observed richness, $\sigma_{yi}$ is the uncertainty in observed cluster mass, $m$ is the power law slope, $b$ is the overall cluster mass scale, and $\sigma$ is the intrinsic scatter between richness and cluster mass. We assume that the intrinsic scatter is constant from point to point and that all of the measurement errors are Gaussian. We convert this objective function into a likelihood by taking the product of all the individual probabilities:
 \begin{equation}\label{eq:like}
 \mathscr{L} = \prod_{i=1}^N \ P(y_i|x_i,\sigma_{yi},m,b, \sigma).
 \end{equation}
@@ -533,24 +540,24 @@ We again rely on MCMC samples to sample the posterior probability distribution a
 We limit our clusters to those with $10 \leq \lambda < 130$ in our fitting analysis because above $\lambda=130$ there are too few clusters and number-counting errors dominate. Other observational studies \citeeg{Saro2015} which have lower limits on $\lambda$, so we exclude anything less than $\lambda=10$. For a richness--mass relation with an intrinsic scatter of $\langle \sigma_{M|\lambda} \rangle = 0.25$ dex, we find a best-fitting relation for the Targeted observations as
 \begin{equation}
 	\log\ M_{200c}/\Msol = 12.46\pm0.02 + 1.07\pm0.02\ \log\ \lambda
-\end{equation} 
+\end{equation}
 and the Survey observations as
 \begin{equation}
 	\log\ M_{200c}/\Msol = 12.64\pm0.05 + 0.98\pm0.03\ \log\ \lambda
-\end{equation} 
+\end{equation}
 This gives $M_{200c} = (1.45\pm0.12)\times10^{14}$ \Msol\ and $M_{200c} = (1.59\pm0.27)\times10^{14}$ \Msol\ at $\lambda=40$ for the Targeted and Survey observations respectively. In both cases, this normalization differs significantly from the $M_{200c} \approx 2.1\times10^{14} h^{-1}$ \Msol\ found in recent work \cite{Li2016, Simet2016}. If the intrinsic scatter is reduced to $\sim 0.05$ dex we recover an overall normalization of $M_{200c} = (2.14\pm0.12)\times10^{14}$ \Msol\ and $M_{200c} = (2.10\pm0.26)\times10^{14}$ for the Targeted and Survey observations at $\lambda=40$.
 
-We also estimate the intrinsic scatter. For observations with a richness--mass relation intrinsic scatter of $\langle \sigma_{M|\lambda} \rangle = 0.25$ dex, we recover $\langle \sigma_{M|\lambda} \rangle = 0.236\pm0.003$ dex and $\langle \sigma_{M|\lambda} \rangle = 0.257\pm0.007$ dex for the Targeted and Survey observations respectively. 
+We also estimate the intrinsic scatter. For observations with a richness--mass relation intrinsic scatter of $\langle \sigma_{M|\lambda} \rangle = 0.25$ dex, we recover $\langle \sigma_{M|\lambda} \rangle = 0.236\pm0.003$ dex and $\langle \sigma_{M|\lambda} \rangle = 0.257\pm0.007$ dex for the Targeted and Survey observations respectively.
 
 %The discrepancy between the intrinsic value and the measured value is due to the uncertainties in the individual cluster mass predictions. As the prediction intervals are narrowed, the recovered intrinsic scatter approaches the true value. For example, with cluster mass prediction intervals half the size of the current intervals we measure $\langle \sigma_{M|\lambda} \rangle$ to be $\sim 0.25$ and $\sim 0.23$ dex for the two sets of observations.
 
-\begin{figure} 
-	\includegraphics[width=\columnwidth]{figures/massRichness.pdf} 
+\begin{figure}
+	\includegraphics[width=\columnwidth]{figures/massRichness.pdf}
 	\caption[Optical richness versus corrected cluster mass]{\emph{Top}: The optical richness, $\lambda$, versus the corrected predicted cluster mass. The solid, purple line is the median predicted mass for the Targeted observing, and the turquoise, dashed line is the median recovered mass for the HETDEX-like observations. The shaded regions represent the 68\% scatter around the median values. \emph{Bottom}: The scatter in the relation at fixed richness. The solid black line shows the intrinsic scatter of $\sigma_{true}=0.25$ dex. Color coding is the same as the top panel. \emph{Inset}: The evolution of the intrinsic scatter versus the average recovered scatter, $\sigma_{rec}$.}
-	\label{fig:mass richness} 
+	\label{fig:mass richness}
 \end{figure}
 
-Figure \ref{fig:mass richness} summarizes the main results of this investigation. The top panel shows the generated optical richness, $\lambda$, versus the predicted cluster mass. The cluster masses are the $\mathrm{ML}_{\sigma, z, N_{gal}}$ based and correspond to the Targeted and Survey observation strategies. The bottom panel of Figure \ref{fig:mass richness} shows the scatter in the predicted cluster masses at fixed richness, $\sigma_{M|\lambda}$. The solid line represents the intrinsic amount of scatter added to the masses. The cluster masses are binned in increasing ten richness intervals ($10-20$, $20-30$, etc.). The inset upper panel shows the intrinsic scatter versus the recovered average scatter at fixed richness, $\langle \sigma_{M|\lambda} \rangle$ and illustrates how well the two observation strategies recover the intrinsic scatter. 
+Figure \ref{fig:mass richness} summarizes the main results of this investigation. The top panel shows the generated optical richness, $\lambda$, versus the predicted cluster mass. The cluster masses are the $\mathrm{ML}_{\sigma, z, N_{gal}}$ based and correspond to the Targeted and Survey observation strategies. The bottom panel of Figure \ref{fig:mass richness} shows the scatter in the predicted cluster masses at fixed richness, $\sigma_{M|\lambda}$. The solid line represents the intrinsic amount of scatter added to the masses. The cluster masses are binned in increasing ten richness intervals ($10-20$, $20-30$, etc.). The inset upper panel shows the intrinsic scatter versus the recovered average scatter at fixed richness, $\langle \sigma_{M|\lambda} \rangle$ and illustrates how well the two observation strategies recover the intrinsic scatter.
 
 We find that we are able to accurately recover an average intrinsic scatter of $0.2 <\langle \sigma_{M|\lambda} \rangle <0.3$ dex, finding $\langle \sigma_{M|\lambda} \rangle = 0.257\pm0.007$ at $\sigma_{true} = 0.25$ with Survey observations. As the intrinsic scatter increases or decreases, we fail to recover the scatter as accurately.
 
@@ -632,8 +639,8 @@ This work is supported by the National Science Foundation through grant AST-1413
 % \editorial{This all needs to be stripped out and reworked.}
 % The choice $A_{1D}$ and $\alpha$ varies between studies \citeeg{Munari2013, VanderBurg2014} and should be calibrated on a individual basis. To do this, we randomly select 47494, $z<0.5$ clusters composed of 36000 $10^{13}$, 6000 $10^{14}$ and two $10^{15}~\Msol$ halos. We perform a linear fit to the $\sigma_{1D}-M_{200}$ values allowing both $A_{1D}$ and $\alpha$ to vary. We find best fitting parameters of $A_{1D} = 1117.9~\kms$ and $\alpha = 0.3297$, both of which are very near the values from \cite{Evrard2008} of $A_{1D} = 1082.9 \pm 4.0~\kms$ and $\alpha = 0.3361$. Therefore, we chose to adopt the parameters from \cite{Evrard2008} to better facilitate with other simulations \citeeg{Old2014}, and observational studies \citeeg{Brodwin2010}.
 
-%Much like the MAE and RMSE associated with the cluster mass recovery, comparing the individual $\sigma_{M|\lambda}$ values directly is incorrect. When comparing only the clusters with observations in both the targeted and survey strategies we 
-	
+%Much like the MAE and RMSE associated with the cluster mass recovery, comparing the individual $\sigma_{M|\lambda}$ values directly is incorrect. When comparing only the clusters with observations in both the targeted and survey strategies we
+
 %Applying my current work to a large photometric survey such as those mentioned above is the logical next step. For example, the HETDEX observations overlap with the DES area and SDSS Stripe 82 which provides a wealth of external data. Using preexisting datasets, the observations from HETDEX, or through dedicated follow-up spectroscopic observations, I will be able to measure the absolute mass scale of the richness estimator and measure the scatter of the richness--mass relation, $\sigma_{M|\lambda}$. An accurate measure of this scatter can lead to a decrease on the error bar on cosmological measures ($\sigma_8$ and $\Omega_M$) by as much as 50\% \citep{Rozo2010}. An absolute calibration of the richness--mass relation will provide a much needed tool for future imaging surveys which will identify clusters to $z=1$ and beyond.
 
 % \subsection{Potential Improvements}
